@@ -386,7 +386,7 @@ export default function WhySevenX() {
   return (
     <section
       id="why-sevenx"
-      className="relative w-full py-20 lg:py-28 bg-[#FAF9F6] text-zinc-900 border-t border-black/[0.06] overflow-hidden font-sans select-none"
+      className="relative w-full pt-16 pb-12 lg:pt-20 lg:pb-16 bg-[#FAF9F6] text-zinc-900 border-t border-black/[0.06] overflow-hidden font-sans select-none"
     >
       {/* Background: Architectural Grid & Ambient Glow */}
       <div className="absolute inset-0 pointer-events-none z-0">

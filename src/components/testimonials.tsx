@@ -74,7 +74,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative w-full py-24 md:py-32 bg-[#FAF9F6] text-zinc-900 select-none overflow-hidden font-space border-t border-black/[0.06]"
+      className="relative w-full pt-12 pb-16 lg:pt-16 lg:pb-20 bg-[#FAF9F6] text-zinc-900 select-none overflow-hidden font-space border-t border-black/[0.06]"
     >
       {/* Ambient Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-blue-100/20 via-purple-100/15 to-transparent rounded-full blur-3xl pointer-events-none" />

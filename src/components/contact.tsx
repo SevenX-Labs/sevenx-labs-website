@@ -86,7 +86,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full py-28 lg:py-40 bg-[#FAF9F6] text-zinc-900 border-t border-black/[0.06] overflow-hidden font-sans select-none"
+      className="relative w-full pt-14 pb-20 lg:pt-18 lg:pb-28 bg-[#FAF9F6] text-zinc-900 border-t border-black/[0.06] overflow-hidden font-sans select-none"
     >
       {/* Background Subtle Architectural Grid & Ambient Glows */}
       <div className="absolute inset-0 pointer-events-none z-0">
