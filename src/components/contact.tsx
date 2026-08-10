@@ -17,21 +17,13 @@ const PROJECT_TYPES = [
   "Other",
 ];
 
-const BUDGET_RANGES = [
-  "₹1L–₹3L",
-  "₹3L–₹5L",
-  "₹5L–₹10L",
-  "₹10L+",
-  "Let's discuss",
-];
-
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     projectDetails: "",
     projectType: "Web",
-    budget: "₹3L–₹5L",
+    budget: "",
   });
 
   const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -79,7 +71,7 @@ export default function Contact() {
       email: "",
       projectDetails: "",
       projectType: "Web",
-      budget: "₹3L–₹5L",
+      budget: "",
     });
     setIsSubmitted(false);
     setErrorMsg("");
@@ -288,30 +280,29 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  {/* FIELD 05: BUDGET RANGE (SELECTABLE PILLS) */}
-                  <div className="flex flex-col gap-3">
-                    <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-slate-500">
-                      05 — BUDGET RANGE
-                    </span>
-                    <div className="flex flex-wrap gap-2.5">
-                      {BUDGET_RANGES.map((range) => {
-                        const isSelected = formData.budget === range;
-                        return (
-                          <button
-                            key={range}
-                            type="button"
-                            onClick={() => setFormData({ ...formData, budget: range })}
-                            className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all ${
-                              isSelected
-                                ? "bg-blue-600 text-white shadow-md border border-blue-600 scale-[1.02]"
-                                : "bg-[#FAF9F6] text-slate-700 border border-black/[0.1] hover:border-black/[0.25] hover:bg-white"
-                            }`}
-                          >
-                            {range}
-                          </button>
-                        );
-                      })}
-                    </div>
+                  {/* FIELD 05: BUDGET RANGE (TEXT INPUT) */}
+                  <div className="flex flex-col gap-2 relative">
+                    <label
+                      htmlFor="budget"
+                      className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-slate-500 flex items-center justify-between"
+                    >
+                      <span>05 — BUDGET RANGE</span>
+                      {focusedField === "budget" && (
+                        <span className="text-blue-600 text-[10px] font-medium tracking-normal lowercase">
+                          approx. budget or expected range
+                        </span>
+                      )}
+                    </label>
+                    <input
+                      id="budget"
+                      type="text"
+                      value={formData.budget}
+                      onFocus={() => setFocusedField("budget")}
+                      onBlur={() => setFocusedField(null)}
+                      onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                      placeholder="e.g. ₹3L–₹5L, $5k–$10k, or Let's discuss"
+                      className="w-full bg-transparent py-3 text-base sm:text-lg text-black placeholder:text-slate-400 font-medium focus:outline-none border-b border-black/[0.12] focus:border-blue-600 transition-colors"
+                    />
                   </div>
 
                   {/* INLINE VALIDATION ERROR */}
