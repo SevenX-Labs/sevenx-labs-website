@@ -641,51 +641,63 @@ export default function ServicesParticleCanvas({ activeIdx }: ServicesParticleCa
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
-      const elapsedTime = clock.getElapsedTime();
 
-      const rawIdx = typeof activeIdxRef.current === "number" ? activeIdxRef.current : 0;
-      const currentIdx = Math.min(shapes.length - 1, Math.max(0, Math.floor(rawIdx)));
-      
-      // Toggle visibility of 3D mesh groups
-      meshGroups.forEach((grp, idx) => {
-        if (grp) grp.visible = idx === currentIdx;
-      });
+      try {
+        const elapsedTime = clock.getElapsedTime();
 
-      const targetShape = shapes[currentIdx] || shapes[0];
-      const targetColors = shapeColors[currentIdx] || shapeColors[0];
+        const rawIdx = typeof activeIdxRef.current === "number" ? activeIdxRef.current : 0;
+        const currentIdx = Math.min(shapes.length - 1, Math.max(0, Math.floor(rawIdx)));
+        
+        // Toggle visibility of 3D mesh groups
+        meshGroups.forEach((grp, idx) => {
+          if (grp) grp.visible = idx === currentIdx;
+        });
 
-      const posAttr = particleGeo.attributes.position as THREE.BufferAttribute;
-      const colAttr = particleGeo.attributes.color as THREE.BufferAttribute;
-      const posArray = posAttr.array as Float32Array;
-      const colArray = colAttr.array as Float32Array;
+        const targetShape = shapes[currentIdx] || shapes[0];
+        const targetColors = shapeColors[currentIdx] || shapeColors[0];
 
-      // Mouse Smooth Dampening
-      mouse.x += (mouse.targetX - mouse.x) * 0.05;
-      mouse.y += (mouse.targetY - mouse.y) * 0.05;
+        const posAttr = particleGeo.attributes.position as THREE.BufferAttribute;
+        const colAttr = particleGeo.attributes.color as THREE.BufferAttribute;
+        if (!posAttr || !colAttr) return;
 
-      // Morphing Lerp (Positions & Colors)
-      for (let i = 0; i < N * 3; i++) {
-        posArray[i] += (targetShape[i] - posArray[i]) * 0.08;
-        colArray[i] += (targetColors[i] - colArray[i]) * 0.08;
+        const posArray = posAttr.array as Float32Array;
+        const colArray = colAttr.array as Float32Array;
+        if (!posArray || !colArray || !targetShape || !targetColors) return;
+
+        // Mouse Smooth Dampening
+        mouse.x += (mouse.targetX - mouse.x) * 0.05;
+        mouse.y += (mouse.targetY - mouse.y) * 0.05;
+
+        // Morphing Lerp (Positions & Colors)
+        const limit = Math.min(N * 3, posArray.length, targetShape.length);
+        for (let i = 0; i < limit; i++) {
+          posArray[i] += (targetShape[i] - posArray[i]) * 0.08;
+          colArray[i] += (targetColors[i] - colArray[i]) * 0.08;
+        }
+        posAttr.needsUpdate = true;
+        colAttr.needsUpdate = true;
+
+        // Continuous 3D Mesh Animations
+        if (coreMesh) {
+          coreMesh.rotation.y = elapsedTime * 0.5;
+          coreMesh.rotation.x = elapsedTime * 0.3;
+        }
+        if (ring1) ring1.rotation.z = elapsedTime * 0.4;
+        if (devRing) devRing.rotation.z = elapsedTime * 0.3;
+        if (radarMesh) radarMesh.rotation.z = elapsedTime * 0.5;
+        if (gemMesh) gemMesh.rotation.y = elapsedTime * 0.6;
+        if (gemLines) gemLines.rotation.y = elapsedTime * 0.6;
+        if (targetRing) targetRing.rotation.z = elapsedTime * 0.4;
+
+        // Group Rotation & Interactive Tilt
+        mainGroup.rotation.y = elapsedTime * 0.25 + mouse.x * 0.4;
+        mainGroup.rotation.x = Math.sin(elapsedTime * 0.4) * 0.08 - mouse.y * 0.3;
+        mainGroup.position.y = Math.sin(elapsedTime * 1.6) * 6;
+
+        renderer.render(scene, camera);
+      } catch (err) {
+        console.warn("Particle canvas render error:", err);
       }
-      posAttr.needsUpdate = true;
-      colAttr.needsUpdate = true;
-
-      // Continuous 3D Mesh Animations
-      coreMesh.rotation.y = elapsedTime * 0.5;
-      coreMesh.rotation.x = elapsedTime * 0.3;
-      ring1.rotation.z = elapsedTime * 0.4;
-      devRing.rotation.z = elapsedTime * 0.3;
-      radarMesh.rotation.z = elapsedTime * 0.5;
-      gemMesh.rotation.y = elapsedTime * 0.6;
-      gemLines.rotation.y = elapsedTime * 0.6;
-
-      // Group Rotation & Interactive Tilt
-      mainGroup.rotation.y = elapsedTime * 0.25 + mouse.x * 0.4;
-      mainGroup.rotation.x = Math.sin(elapsedTime * 0.4) * 0.08 - mouse.y * 0.3;
-      mainGroup.position.y = Math.sin(elapsedTime * 1.6) * 6;
-
-      renderer.render(scene, camera);
     };
 
     animate();
