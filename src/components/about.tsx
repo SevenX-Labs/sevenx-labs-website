@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full py-28 lg:py-36 bg-[#FDFDFD] text-zinc-900 border-t border-black/[0.06] overflow-hidden font-sans select-none"
+      className="relative w-full py-16 sm:py-24 lg:py-36 bg-[#FDFDFD] text-zinc-900 border-t border-black/[0.06] overflow-hidden font-sans select-none"
     >
       {/* Subtle Architectural Grid Texture & Background Glow */}
       <div className="absolute inset-0 pointer-events-none z-0">

@@ -97,32 +97,32 @@ export default function Services() {
         </div>
 
         {/* HEADER */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 shrink-0">
-          <div className="flex flex-col gap-1.5 md:gap-2">
-            <span className="px-3.5 py-1 bg-black/[0.04] text-[#3B82F6] text-[11px] font-mono font-bold uppercase tracking-[0.25em] rounded-full border border-blue-200/60 w-max flex items-center gap-2">
+        <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row md:items-end justify-between gap-2 md:gap-6 shrink-0">
+          <div className="flex flex-col gap-1 md:gap-2">
+            <span className="px-3.5 py-1 bg-black/[0.04] text-[#3B82F6] text-[10.5px] font-mono font-bold uppercase tracking-[0.25em] rounded-full border border-blue-200/60 w-max flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse" />
               OUR CAPABILITIES
             </span>
 
-            <h2 className="font-general text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-black tracking-tight uppercase leading-[1.08]">
+            <h2 className="font-general text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-black tracking-tight uppercase leading-[1.08]">
               OUR SERVICES.
             </h2>
           </div>
 
-          <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed max-w-md font-normal">
+          <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed max-w-md font-normal hidden sm:block">
             We offer comprehensive digital solutions that transform your business and drive innovation across every touchpoint.
           </p>
         </div>
 
-        {/* MAIN DISPLAY STAGE - 2 Columns (3D Particle Canvas on Left, Cards on Right) */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full flex-1 my-2 md:my-4 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[380px] max-h-[460px]">
+        {/* MAIN DISPLAY STAGE - 2 Columns on desktop (3D Particle Canvas on Left, Cards on Right) */}
+        <div className="relative z-10 max-w-7xl mx-auto w-full flex-1 my-2 md:my-4 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center min-h-[340px] max-h-[460px]">
           
-          {/* LEFT COLUMN: Dedicated 3D Morphing Particle Emblem Canvas */}
-          <div className="flex lg:col-span-5 items-center justify-center h-[220px] sm:h-[280px] lg:h-full relative shrink-0">
+          {/* LEFT COLUMN: Dedicated 3D Morphing Particle Emblem Canvas (Desktop & Tablets) */}
+          <div className="hidden lg:flex lg:col-span-5 items-center justify-center lg:h-full relative shrink-0">
             <ServicesParticleCanvas activeIdx={activeIdx} />
             
             {/* Dynamic Label underneath 3D Particle Canvas */}
-            <div className="absolute bottom-1 lg:bottom-2 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-black/10 text-[11px] font-mono font-bold text-zinc-700 shadow-sm flex items-center gap-2 z-10 pointer-events-none">
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-black/10 text-[11px] font-mono font-bold text-zinc-700 shadow-sm flex items-center gap-2 z-10 pointer-events-none">
               <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-ping" />
               <span>3D EMBLEM: {services[activeIdx].category}</span>
             </div>
@@ -133,12 +133,12 @@ export default function Services() {
             {services.map((service, idx) => {
               const offset = idx - activeIdx;
               
-              let posX = offset * 420;
+              let posX = offset * 360;
               let opacity = 1;
               let scale = 1;
 
               if (offset < 0) {
-                posX = offset * 480;
+                posX = offset * 420;
                 opacity = 0;
                 scale = 0.9;
               } else if (offset === 0) {
@@ -146,11 +146,11 @@ export default function Services() {
                 opacity = 1;
                 scale = 1;
               } else if (offset === 1) {
-                posX = 440; // Clean gap on right
+                posX = 340;
                 opacity = 0.85;
                 scale = 0.94;
               } else {
-                posX = 900 + (offset - 2) * 440;
+                posX = 700 + (offset - 2) * 340;
                 opacity = 0;
                 scale = 0.9;
               }
@@ -160,7 +160,7 @@ export default function Services() {
               return (
                 <div
                   key={service.number}
-                  className={`group absolute w-[320px] sm:w-[380px] md:w-[410px] h-[400px] sm:h-[430px] md:h-[440px] p-6 sm:p-8 md:p-9 rounded-[28px] border transition-all duration-700 ease-out flex flex-col justify-between overflow-hidden shadow-2xl ${
+                  className={`group absolute w-[90vw] max-w-[340px] sm:w-[380px] lg:w-[410px] h-[330px] sm:h-[390px] lg:h-[440px] p-5 sm:p-7 md:p-9 rounded-[24px] sm:rounded-[28px] border transition-all duration-700 ease-out flex flex-col justify-between overflow-hidden shadow-2xl ${
                     isRevealed
                       ? "bg-[#121217] text-white border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.25)]"
                       : "bg-[#181820] text-zinc-400 border-white/5 opacity-70"
@@ -190,7 +190,7 @@ export default function Services() {
                     </span>
 
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                         isRevealed
                           ? "bg-[#3B82F6] text-white shadow-lg"
                           : "bg-white/5 text-zinc-600 border border-white/10"
@@ -210,7 +210,7 @@ export default function Services() {
 
                   {/* CONTENT (Revealed ONLY when card reaches front/center) */}
                   <div
-                    className={`relative z-10 flex-1 flex flex-col justify-center gap-3 transition-all duration-500 ${
+                    className={`relative z-10 flex-1 flex flex-col justify-center gap-2 sm:gap-3 transition-all duration-500 ${
                       isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                     }`}
                   >
@@ -220,19 +220,19 @@ export default function Services() {
                           {service.category}
                         </span>
 
-                        <h3 className="font-general text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight uppercase">
+                        <h3 className="font-general text-lg sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight uppercase">
                           {service.title}
                         </h3>
 
-                        <p className="text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed font-normal">
+                        <p className="text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed font-normal line-clamp-3 sm:line-clamp-none">
                           {service.description}
                         </p>
 
                         <div className="flex flex-wrap gap-1.5 pt-1">
-                          {service.tags.map((tag) => (
+                          {service.tags.slice(0, 4).map((tag) => (
                             <span
                               key={tag}
-                              className="px-2.5 py-0.5 bg-white/10 rounded-full text-[11px] font-mono text-zinc-200 border border-white/10"
+                              className="px-2 py-0.5 bg-white/10 rounded-full text-[10px] sm:text-[11px] font-mono text-zinc-200 border border-white/10"
                             >
                               {tag}
                             </span>
@@ -243,7 +243,7 @@ export default function Services() {
                   </div>
 
                   {/* BOTTOM COUNTER */}
-                  <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-zinc-500 pt-2 border-t border-white/5">
+                  <div className="relative z-10 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-zinc-500 pt-2 border-t border-white/5">
                     <span>CAPABILITY</span>
                     <span>0{idx + 1} / 06</span>
                   </div>

@@ -20,14 +20,17 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
     if (!container) return;
 
     // ═══════════════════════════════════════════════════════
-    // 1. SCENE SETUP — Fullscreen Viewport WebGL Canvas
+    // 1. SCENE SETUP — Local on Mobile/Tablet, Fullscreen on Desktop
     // ═══════════════════════════════════════════════════════
     const scene = new THREE.Scene();
-    let w = window.innerWidth;
-    let h = window.innerHeight;
+    const isMobileInit = window.innerWidth < 1024;
+    // On mobile: use viewport-based square size (container.clientHeight is 0 at mount time)
+    const mobileSize = Math.min(window.innerWidth - 40, 280);
+    let w = isMobileInit ? mobileSize : window.innerWidth;
+    let h = isMobileInit ? mobileSize : window.innerHeight;
 
     const camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 3000);
-    camera.position.set(0, 0, 750);
+    camera.position.set(0, 0, isMobileInit ? 520 : 750);
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -467,70 +470,100 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
         logoGroup.rotation.x = 0.08;
 
         // Dynamic Responsive Scale based on screen width & zoom level
-        const responsiveScale = window.innerWidth < 768 ? 0.65 : window.innerWidth < 1024 ? 0.82 : 1.0;
+        const isMobile = window.innerWidth < 1024;
+        const responsiveScale = window.innerWidth < 768 ? 0.52 : window.innerWidth < 1024 ? 0.70 : 1.0;
         logoGroup.scale.setScalar(responsiveScale);
 
-        // ── 3-STAGE DYNAMIC ANCHOR SCROLL TRANSITION ─────────────
-        if (smoothScrollRatio <= 0.01) {
-          // Stage 1: Lock onto Hero Right Column Anchor (#hero-logo-anchor)
-          logoGroup.position.x = heroPos.x;
-          logoGroup.position.y = heroPos.y;
+        if (isMobile) {
+          // ── MOBILE & TABLET: Perfectly centered in Hero container (No offset) ──
+          logoGroup.visible = true;
+          logoGroup.position.set(0, 0, 0);
+          logoGroup.scale.setScalar(0.72);
 
+          const pArray = geo.attributes.position.array as Float32Array;
           for (let i = 0; i < N; i++) {
             const i3 = i * 3;
-            currTargP[i3] = targSevenX[i3];
-            currTargP[i3 + 1] = targSevenX[i3 + 1];
-            currTargP[i3 + 2] = targSevenX[i3 + 2];
+            const s = seeds[i];
+            const t = targets[i];
+
+            const tx = targSevenX[i3];
+            const ty = targSevenX[i3 + 1];
+            const tz = targSevenX[i3 + 2];
+
+            const breath = Math.sin(elapsed * 1.2 + s * 7) * (t.isAccent ? 1.4 : 0.7);
+            pArray[i3] = tx + breath * 0.4;
+            pArray[i3 + 1] = ty + breath * 0.4;
+            pArray[i3 + 2] = tz;
           }
-        } else if (smoothScrollRatio <= 0.50) {
-          // Stage 2: Hero -> Mid-scroll Globe Sphere (Center-Right clearance path)
-          const t = smoothScrollRatio / 0.50;
-          const easeT = Math.sin((t * Math.PI) / 2);
 
-          const midX = (heroPos.x + aboutPos.x) / 2 + 100;
-          const midY = (heroPos.y + aboutPos.y) / 2;
-
-          logoGroup.position.x = heroPos.x + (midX - heroPos.x) * easeT;
-          logoGroup.position.y = heroPos.y + (midY - heroPos.y) * easeT;
-
-          for (let i = 0; i < N; i++) {
-            const i3 = i * 3;
-            const sx = targSevenX[i3];
-            const sy = targSevenX[i3 + 1];
-            const sz = targSevenX[i3 + 2];
-
-            const gx = targGlobe[i3];
-            const gy = targGlobe[i3 + 1];
-            const gz = targGlobe[i3 + 2];
-
-            currTargP[i3] = sx + (gx - sx) * easeT;
-            currTargP[i3 + 1] = sy + (gy - sy) * easeT;
-            currTargP[i3 + 2] = sz + (gz - sz) * easeT;
-          }
+          geo.attributes.position.needsUpdate = true;
+          renderer.render(scene, camera);
+          return;
         } else {
-          // Stage 3: Mid-scroll -> Lock onto About Left Column Anchor (#about-logo-anchor)
-          const t = (smoothScrollRatio - 0.50) / 0.50;
-          const easeT = Math.sin((t * Math.PI) / 2);
+          // ── DESKTOP & LAPTOP ONLY: Full 3-Stage Cinematic Movie (Hero -> Globe -> About) ──
+          logoGroup.visible = true;
 
-          const midX = (heroPos.x + aboutPos.x) / 2 + 100;
-          const midY = (heroPos.y + aboutPos.y) / 2;
+          if (smoothScrollRatio <= 0.01) {
+            // Stage 1: Lock onto Hero Right Column Anchor (#hero-logo-anchor)
+            logoGroup.position.x = heroPos.x;
+            logoGroup.position.y = heroPos.y;
 
-          logoGroup.position.x = midX + (aboutPos.x - midX) * easeT;
-          logoGroup.position.y = midY + (aboutPos.y - midY) * easeT;
+            for (let i = 0; i < N; i++) {
+              const i3 = i * 3;
+              currTargP[i3] = targSevenX[i3];
+              currTargP[i3 + 1] = targSevenX[i3 + 1];
+              currTargP[i3 + 2] = targSevenX[i3 + 2];
+            }
+          } else if (smoothScrollRatio <= 0.50) {
+            // Stage 2: Hero -> Mid-scroll Globe Sphere (Center-Right clearance path)
+            const t = smoothScrollRatio / 0.50;
+            const easeT = Math.sin((t * Math.PI) / 2);
 
-          for (let i = 0; i < N; i++) {
-            const i3 = i * 3;
-            const gx = targGlobe[i3];
-            const gy = targGlobe[i3 + 1];
-            const gz = targGlobe[i3 + 2];
+            const midX = (heroPos.x + aboutPos.x) / 2 + 100;
+            const midY = (heroPos.y + aboutPos.y) / 2;
 
-            const ax = targArch[i3];
-            const ay = targArch[i3 + 1];
-            const az = targArch[i3 + 2];
+            logoGroup.position.x = heroPos.x + (midX - heroPos.x) * easeT;
+            logoGroup.position.y = heroPos.y + (midY - heroPos.y) * easeT;
 
-            currTargP[i3] = gx + (ax - gx) * easeT;
-            currTargP[i3 + 1] = gy + (ay - gy) * easeT;
-            currTargP[i3 + 2] = gz + (az - gz) * easeT;
+            for (let i = 0; i < N; i++) {
+              const i3 = i * 3;
+              const sx = targSevenX[i3];
+              const sy = targSevenX[i3 + 1];
+              const sz = targSevenX[i3 + 2];
+
+              const gx = targGlobe[i3];
+              const gy = targGlobe[i3 + 1];
+              const gz = targGlobe[i3 + 2];
+
+              currTargP[i3] = sx + (gx - sx) * easeT;
+              currTargP[i3 + 1] = sy + (gy - sy) * easeT;
+              currTargP[i3 + 2] = sz + (gz - sz) * easeT;
+            }
+          } else {
+            // Stage 3: Mid-scroll -> Lock onto About Left Column Anchor (#about-logo-anchor)
+            const t = (smoothScrollRatio - 0.50) / 0.50;
+            const easeT = Math.sin((t * Math.PI) / 2);
+
+            const midX = (heroPos.x + aboutPos.x) / 2 + 100;
+            const midY = (heroPos.y + aboutPos.y) / 2;
+
+            logoGroup.position.x = midX + (aboutPos.x - midX) * easeT;
+            logoGroup.position.y = midY + (aboutPos.y - midY) * easeT;
+
+            for (let i = 0; i < N; i++) {
+              const i3 = i * 3;
+              const gx = targGlobe[i3];
+              const gy = targGlobe[i3 + 1];
+              const gz = targGlobe[i3 + 2];
+
+              const ax = targArch[i3];
+              const ay = targArch[i3 + 1];
+              const az = targArch[i3 + 2];
+
+              currTargP[i3] = gx + (ax - gx) * easeT;
+              currTargP[i3 + 1] = gy + (ay - gy) * easeT;
+              currTargP[i3 + 2] = gz + (az - gz) * easeT;
+            }
           }
         }
 
@@ -607,9 +640,12 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
     // 6. RESPONSIVE RESIZE & CLEANUP
     // ═══════════════════════════════════════════════════════
     const handleResize = () => {
-      w = window.innerWidth;
-      h = window.innerHeight;
+      const isMobileNow = window.innerWidth < 1024;
+      const mobileSizeNow = Math.min(window.innerWidth - 40, 280);
+      w = isMobileNow ? mobileSizeNow : window.innerWidth;
+      h = isMobileNow ? mobileSizeNow : window.innerHeight;
       camera.aspect = w / h;
+      camera.position.set(0, 0, isMobileNow ? 520 : 750);
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
     };
@@ -634,7 +670,7 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 pointer-events-none z-20 select-none overflow-hidden"
+      className="w-full h-full relative lg:fixed lg:inset-0 pointer-events-none z-20 select-none overflow-hidden flex items-center justify-center"
       onContextMenu={(e) => e.preventDefault()}
     />
   );
