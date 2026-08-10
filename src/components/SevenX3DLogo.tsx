@@ -25,7 +25,7 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
     const scene = new THREE.Scene();
     const isMobileInit = window.innerWidth < 1024;
     let w = isMobileInit ? 260 : window.innerWidth;
-    let h = isMobileInit ? 190 : window.innerHeight;
+    let h = isMobileInit ? 220 : window.innerHeight;
 
     const camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 3000);
     camera.position.set(0, 0, isMobileInit ? 440 : 750);
@@ -473,10 +473,10 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
         logoGroup.scale.setScalar(responsiveScale);
 
         if (isMobile) {
-          // ── MOBILE & TABLET: Lifted up and centered in Hero container ──
+          // ── MOBILE & TABLET: Centered with full clearance ──
           logoGroup.visible = true;
-          logoGroup.position.set(0, 10, 0);
-          logoGroup.scale.setScalar(0.62);
+          logoGroup.position.set(0, 0, 0);
+          logoGroup.scale.setScalar(0.65);
 
           const pArray = geo.attributes.position.array as Float32Array;
           for (let i = 0; i < N; i++) {
@@ -640,7 +640,7 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
     const handleResize = () => {
       const isMobileNow = window.innerWidth < 1024;
       w = isMobileNow ? 260 : window.innerWidth;
-      h = isMobileNow ? 190 : window.innerHeight;
+      h = isMobileNow ? 220 : window.innerHeight;
       camera.aspect = w / h;
       camera.position.set(0, 0, isMobileNow ? 440 : 750);
       camera.updateProjectionMatrix();

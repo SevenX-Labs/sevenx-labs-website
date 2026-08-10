@@ -30,7 +30,7 @@ export default function Hero() {
       </div>
 
       {/* Main Hero Container */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-24 sm:pt-28 lg:pt-20 pb-4 lg:pb-16">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-24 sm:pt-28 lg:pt-20 pb-14 sm:pb-16 lg:pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 items-center">
 
           {/* Left Column: Headline & Content */}
@@ -91,8 +91,8 @@ export default function Hero() {
           </div>
 
           {/* Right Column / Bottom on Mobile: 3D SevenX Logo */}
-          <div id="hero-logo-anchor" className="lg:col-span-5 relative flex items-center justify-center lg:justify-end h-[190px] sm:h-[240px] lg:h-[450px] mt-1 lg:mt-0">
-            <div className="relative w-full h-full flex items-center justify-center max-w-[260px] sm:max-w-[320px] lg:max-w-[450px]">
+          <div id="hero-logo-anchor" className="lg:col-span-5 relative flex items-center justify-center lg:justify-end h-[220px] sm:h-[260px] lg:h-[450px] mt-2 lg:mt-0">
+            <div className="relative w-full h-full flex items-center justify-center max-w-[280px] sm:max-w-[340px] lg:max-w-[450px]">
               <SevenX3DLogo isReady={!showPreloader} />
             </div>
           </div>
