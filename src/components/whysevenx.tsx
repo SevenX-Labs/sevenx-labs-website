@@ -42,13 +42,7 @@ const differentiators = [
   },
 ];
 
-const comparisons = [
-  { trad: "Takes requirements", svx: "Understands the problem" },
-  { trad: "Builds features", svx: "Builds products" },
-  { trad: "Focuses on delivery", svx: "Focuses on outcomes" },
-  { trad: "Launches and leaves", svx: "Builds long-term" },
-  { trad: "Uses familiar tools", svx: "Chooses the right technology" },
-];
+
 
 /* ─────────── Three.js Computational Sculpture ─────────── */
 
@@ -651,46 +645,6 @@ export default function WhySevenX() {
           </div>
         </div>
 
-        {/* ═══ COMPARISON STRIP ═══ */}
-        <div
-          className={`relative max-w-3xl mx-auto transition-all duration-[1200ms] ease-out delay-500 ${
-            revealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          {/* Header */}
-          <div className="flex items-center justify-between mb-8">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-slate-400">
-              TRADITIONAL AGENCY
-            </span>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-blue-500">
-              SEVENX
-            </span>
-          </div>
-
-          {/* Thin top border */}
-          <div className="h-px bg-black/[0.08] mb-0" />
-
-          {/* Comparison rows */}
-          {comparisons.map((c, idx) => (
-            <div
-              key={idx}
-              className="group flex items-center justify-between py-4 border-b border-black/[0.05] transition-all duration-300 hover:bg-blue-50/30 hover:px-4 cursor-default"
-            >
-              <span className="text-sm text-slate-400 font-normal transition-colors group-hover:text-slate-500 flex-1">
-                {c.trad}
-              </span>
-              {/* Center divider */}
-              <div className="mx-6 flex items-center gap-2">
-                <span className="w-4 h-px bg-slate-200" />
-                <span className="w-1 h-1 rounded-full bg-slate-300" />
-                <span className="w-4 h-px bg-slate-200" />
-              </div>
-              <span className="text-sm text-black font-semibold transition-colors group-hover:text-blue-600 flex-1 text-right">
-                {c.svx}
-              </span>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
