@@ -24,13 +24,11 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
     // ═══════════════════════════════════════════════════════
     const scene = new THREE.Scene();
     const isMobileInit = window.innerWidth < 1024;
-    // On mobile: use viewport-based square size (container.clientHeight is 0 at mount time)
-    const mobileSize = Math.min(window.innerWidth - 40, 280);
-    let w = isMobileInit ? mobileSize : window.innerWidth;
-    let h = isMobileInit ? mobileSize : window.innerHeight;
+    let w = isMobileInit ? 260 : window.innerWidth;
+    let h = isMobileInit ? 190 : window.innerHeight;
 
     const camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 3000);
-    camera.position.set(0, 0, isMobileInit ? 520 : 750);
+    camera.position.set(0, 0, isMobileInit ? 440 : 750);
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -475,10 +473,10 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
         logoGroup.scale.setScalar(responsiveScale);
 
         if (isMobile) {
-          // ── MOBILE & TABLET: Perfectly centered in Hero container (No offset) ──
+          // ── MOBILE & TABLET: Lifted up and centered in Hero container ──
           logoGroup.visible = true;
-          logoGroup.position.set(0, 0, 0);
-          logoGroup.scale.setScalar(0.72);
+          logoGroup.position.set(0, 10, 0);
+          logoGroup.scale.setScalar(0.62);
 
           const pArray = geo.attributes.position.array as Float32Array;
           for (let i = 0; i < N; i++) {
@@ -641,11 +639,10 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
     // ═══════════════════════════════════════════════════════
     const handleResize = () => {
       const isMobileNow = window.innerWidth < 1024;
-      const mobileSizeNow = Math.min(window.innerWidth - 40, 280);
-      w = isMobileNow ? mobileSizeNow : window.innerWidth;
-      h = isMobileNow ? mobileSizeNow : window.innerHeight;
+      w = isMobileNow ? 260 : window.innerWidth;
+      h = isMobileNow ? 190 : window.innerHeight;
       camera.aspect = w / h;
-      camera.position.set(0, 0, isMobileNow ? 520 : 750);
+      camera.position.set(0, 0, isMobileNow ? 440 : 750);
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
     };

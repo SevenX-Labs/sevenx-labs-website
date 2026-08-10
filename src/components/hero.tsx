@@ -30,7 +30,7 @@ export default function Hero() {
       </div>
 
       {/* Main Hero Container */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-20 sm:pt-24 lg:pt-20 pb-8 lg:pb-16">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-24 sm:pt-28 lg:pt-20 pb-4 lg:pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 items-center">
 
           {/* Left Column: Headline & Content */}
@@ -38,7 +38,7 @@ export default function Hero() {
 
             {/* Typography Title */}
             <div className="relative">
-              <h1 className="font-general text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.35rem] xl:text-[3.7rem] font-extrabold tracking-tight text-black leading-[1.08] uppercase">
+              <h1 className="font-general text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3.35rem] xl:text-[3.7rem] font-extrabold tracking-tight text-black leading-[1.08] uppercase">
                 <span className="text-[#3B82F6]">WE BUILD</span>
                 <br />
                 <span className="relative inline-block pb-1">
@@ -63,12 +63,12 @@ export default function Hero() {
             </div>
 
             {/* Subtext */}
-            <p className="mt-4 sm:mt-6 text-sm sm:text-base text-slate-600 max-w-[510px] leading-relaxed font-normal">
+            <p className="mt-2.5 sm:mt-5 text-sm sm:text-base text-slate-600 max-w-[510px] leading-relaxed font-normal">
               We design and engineer high-performance web, mobile, AI and custom software solutions for ambitious businesses.
             </p>
 
             {/* CTA Buttons */}
-            <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
+            <div className="mt-3.5 sm:mt-6 flex flex-wrap items-center gap-4 sm:gap-6">
               <a
                 href="#contact"
                 className="group relative inline-flex items-center gap-3 pl-6 pr-3.5 py-3 sm:pl-7 sm:pr-4 sm:py-3.5 bg-black text-white text-sm font-semibold rounded-full overflow-hidden transition-all duration-300 hover:bg-zinc-800 shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-black/15 hover:-translate-y-0.5 active:scale-[0.98]"
@@ -91,8 +91,8 @@ export default function Hero() {
           </div>
 
           {/* Right Column / Bottom on Mobile: 3D SevenX Logo */}
-          <div id="hero-logo-anchor" className="lg:col-span-5 relative flex items-center justify-center lg:justify-end h-[240px] sm:h-[280px] lg:h-[450px] mt-4 sm:mt-6 lg:mt-0">
-            <div className="relative w-full h-full flex items-center justify-center">
+          <div id="hero-logo-anchor" className="lg:col-span-5 relative flex items-center justify-center lg:justify-end h-[190px] sm:h-[240px] lg:h-[450px] mt-1 lg:mt-0">
+            <div className="relative w-full h-full flex items-center justify-center max-w-[260px] sm:max-w-[320px] lg:max-w-[450px]">
               <SevenX3DLogo isReady={!showPreloader} />
             </div>
           </div>
