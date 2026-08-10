@@ -4,6 +4,7 @@ import Services from "@/components/services";
 import HowWeWork from "@/components/howwework";
 import WhySevenX from "@/components/whysevenx";
 import Testimonials from "@/components/testimonials";
+import Contact from "@/components/contact";
 import Navbar from "@/components/navbar";
 
 export default function Home() {
@@ -16,6 +17,8 @@ export default function Home() {
       <HowWeWork />
       <WhySevenX />
       <Testimonials />
+      <Contact />
     </div>
   );
 }
+
