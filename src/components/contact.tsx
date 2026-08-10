@@ -131,108 +131,45 @@ export default function Contact() {
               </p>
             </div>
 
-            {/* Project Availability Beacon */}
-            <div className="w-full max-w-md py-3.5 px-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-black/[0.07] shadow-sm flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-                </span>
-                <span className="text-xs font-semibold text-slate-800">
-                  Available for new projects
-                </span>
-              </div>
-              <span className="text-[11px] font-mono font-medium text-slate-500 uppercase tracking-wider">
-                Q3 / Q4
-              </span>
-            </div>
-
-            {/* Direct Communication Channels (Email + LinkedIn) */}
-            <div className="flex flex-col gap-3.5 w-full max-w-md pt-2">
+            {/* Direct Communication Channels (Gmail Icon & LinkedIn Icon Only) */}
+            <div className="flex flex-col gap-3 pt-2">
               <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-slate-400">
-                DIRECT INQUIRIES
+                DIRECT CHANNELS
               </span>
 
-              <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3.5">
                 
-                {/* 1. Official Email Card (Full Clickable mailto + dedicated Copy) */}
-                <div className="group relative flex items-center justify-between p-4 sm:p-4.5 rounded-2xl bg-white hover:bg-white border border-black/[0.08] hover:border-blue-500/50 transition-all duration-300 shadow-sm hover:shadow-md">
-                  <a
-                    href={`mailto:${officialEmail}?subject=Project%20Inquiry%20-%20SevenX%20Labs`}
-                    className="flex items-center gap-3.5 flex-1 min-w-0"
-                  >
-                    {/* Mail Vector SVG Icon */}
-                    <div className="w-10 h-10 rounded-xl bg-blue-50/80 border border-blue-200/60 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shrink-0">
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    </div>
+                {/* 1. Gmail Icon Button (Redirects to mailto) */}
+                <a
+                  href={`mailto:${officialEmail}?subject=Project%20Inquiry%20-%20SevenX%20Labs`}
+                  title={`Email us: ${officialEmail}`}
+                  className="group relative w-14 h-14 rounded-2xl bg-white hover:bg-red-50/30 border border-black/[0.08] hover:border-red-500/40 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1 cursor-pointer"
+                >
+                  <svg className="w-7 h-7 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+                    <path
+                      fill="#EA4335"
+                      d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"
+                    />
+                  </svg>
+                </a>
 
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-semibold">
-                        Email Us
-                      </span>
-                      <span className="text-sm sm:text-[15px] font-bold text-black group-hover:text-blue-600 transition-colors truncate">
-                        {officialEmail}
-                      </span>
-                    </div>
-                  </a>
-
-                  <button
-                    type="button"
-                    title="Copy Email"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      handleCopyEmail();
-                    }}
-                    className={`ml-2 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer shrink-0 ${
-                      copiedEmail
-                        ? "bg-emerald-500 text-white shadow-sm"
-                        : "bg-slate-100 text-slate-700 hover:bg-black hover:text-white"
-                    }`}
-                  >
-                    {copiedEmail ? "COPIED ✓" : "COPY"}
-                  </button>
-                </div>
-
-                {/* 2. Official LinkedIn Card (Full Clickable Redirect) */}
+                {/* 2. LinkedIn Icon Button (Redirects to LinkedIn page) */}
                 <a
                   href={linkedInUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex items-center justify-between p-4 sm:p-4.5 rounded-2xl bg-white hover:bg-white border border-black/[0.08] hover:border-[#0A66C2]/60 transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
+                  title="Visit SevenX Labs on LinkedIn"
+                  className="group relative w-14 h-14 rounded-2xl bg-white hover:bg-blue-50/30 border border-black/[0.08] hover:border-[#0A66C2]/40 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1 cursor-pointer"
                 >
-                  <div className="flex items-center gap-3.5 flex-1 min-w-0">
-                    {/* LinkedIn Official Vector SVG Icon */}
-                    <div className="w-10 h-10 rounded-xl bg-blue-50/60 border border-blue-200/50 flex items-center justify-center text-[#0A66C2] group-hover:bg-[#0A66C2] group-hover:text-white transition-all shrink-0">
-                      <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                      </svg>
-                    </div>
-
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-semibold">
-                        LinkedIn
-                      </span>
-                      <span className="text-sm sm:text-[15px] font-bold text-black group-hover:text-[#0A66C2] transition-colors truncate">
-                        SevenX Labs
-                      </span>
-                    </div>
-                  </div>
-
-                  <span className="ml-2 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 text-xs font-mono font-bold group-hover:bg-[#0A66C2] group-hover:text-white transition-all flex items-center gap-1 shrink-0">
-                    <span>VISIT</span>
-                    <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                      ↗
-                    </span>
-                  </span>
+                  <svg className="w-7 h-7 fill-[#0A66C2] transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.25a1.62 1.62 0 0 0-1.62 1.62c0 .89.73 1.62 1.62 1.62a1.62 1.62 0 0 0 1.62-1.62c0-.89-.73-1.62-1.62-1.62Z" />
+                  </svg>
                 </a>
 
               </div>
 
               {/* Response Time Indicator */}
-              <div className="flex items-center gap-2 pt-1 text-xs text-slate-500 font-mono">
+              <div className="flex items-center gap-2 pt-2 text-xs text-slate-500 font-mono">
                 <span className="w-2 h-2 rounded-full bg-blue-500" />
                 <span>Response time: under 24 hours · NDA on request</span>
               </div>
