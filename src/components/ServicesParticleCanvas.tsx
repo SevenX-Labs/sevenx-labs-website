@@ -550,7 +550,7 @@ export default function ServicesParticleCanvas({ activeIdx }: ServicesParticleCa
       } else if (p < 0.75) {
         // Analytics Bar Pillars
         const u = (p - 0.45) / 0.30;
-        const barIdx = Math.floor(u * 4);
+        const barIdx = Math.min(Math.floor(u * 4), 3);
         const barHeights = [40, 75, 110, 145];
         const barH = barHeights[barIdx];
         const barX = -80 + barIdx * 52;
@@ -637,9 +637,11 @@ export default function ServicesParticleCanvas({ activeIdx }: ServicesParticleCa
 
     // ─── 7. ANIMATION LOOP ───
     let animationFrameId: number;
+    let disposed = false;
     const clock = new THREE.Clock();
 
     const animate = () => {
+      if (disposed) return;
       animationFrameId = requestAnimationFrame(animate);
 
       try {
@@ -713,6 +715,7 @@ export default function ServicesParticleCanvas({ activeIdx }: ServicesParticleCa
     window.addEventListener("resize", handleResize);
 
     return () => {
+      disposed = true;
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
