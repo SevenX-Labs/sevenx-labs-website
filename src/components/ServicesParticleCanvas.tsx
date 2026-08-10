@@ -214,7 +214,40 @@ export default function ServicesParticleCanvas({ activeIdx }: ServicesParticleCa
     group4.visible = false;
     meshesGroup.add(group4);
 
-    const meshGroups = [group0, group1, group2, group3, group4];
+    // ─── Group 5: SEO, Analytics & Strategy (3D Bar Chart & Target Rings) ───
+    const group5 = new THREE.Group();
+
+    // 3D Bar 1
+    const bar1Geo = new THREE.BoxGeometry(18, 55, 18);
+    const bar1Mat = new THREE.MeshStandardMaterial({ color: 0x3b82f6, metalness: 0.8, roughness: 0.2 });
+    const bar1 = new THREE.Mesh(bar1Geo, bar1Mat);
+    bar1.position.set(-36, -20, 0);
+    group5.add(bar1);
+
+    // 3D Bar 2
+    const bar2Geo = new THREE.BoxGeometry(18, 90, 18);
+    const bar2Mat = new THREE.MeshStandardMaterial({ color: 0x8b5cf6, metalness: 0.8, roughness: 0.2 });
+    const bar2 = new THREE.Mesh(bar2Geo, bar2Mat);
+    bar2.position.set(0, -2, 0);
+    group5.add(bar2);
+
+    // 3D Bar 3
+    const bar3Geo = new THREE.BoxGeometry(18, 125, 18);
+    const bar3Mat = new THREE.MeshStandardMaterial({ color: 0x06b6d4, metalness: 0.8, roughness: 0.2 });
+    const bar3 = new THREE.Mesh(bar3Geo, bar3Mat);
+    bar3.position.set(36, 15, 0);
+    group5.add(bar3);
+
+    // Dynamic Target Ring
+    const targetRingGeo = new THREE.TorusGeometry(130, 2, 16, 100);
+    const targetRingMat = new THREE.MeshBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.5 });
+    const targetRing = new THREE.Mesh(targetRingGeo, targetRingMat);
+    group5.add(targetRing);
+
+    group5.visible = false;
+    meshesGroup.add(group5);
+
+    const meshGroups = [group0, group1, group2, group3, group4, group5];
 
     // ─── 5. HIGH DENSITY 3D MORPHING PARTICLE CLOUD (N = 2000) ───
     const N = 2000;
@@ -496,8 +529,57 @@ export default function ServicesParticleCanvas({ activeIdx }: ServicesParticleCa
       colorsShield[i3 + 2] = col.b;
     }
 
-    const shapes = [shapeCode, shapeAI, shapeCloud, shapeRocket, shapeShield];
-    const shapeColors = [colorsCode, colorsAI, colorsCloud, colorsRocket, colorsShield];
+    // Shape 5: SEO, Analytics & Growth Graph
+    const shapeAnalytics = new Float32Array(N * 3);
+    const colorsAnalytics = new Float32Array(N * 3);
+    const pal5 = servicePalettes[5];
+
+    for (let i = 0; i < N; i++) {
+      const i3 = i * 3;
+      const p = i / N;
+      let sx = 0, sy = 0, sz = (Math.random() - 0.5) * 35;
+      let col = pal5.primary;
+
+      if (p < 0.45) {
+        // Upward Growth Spline Curve
+        const t = p / 0.45;
+        sx = -120 + t * 240;
+        sy = -70 + Math.pow(t, 1.8) * 160;
+        sz = Math.sin(t * Math.PI * 3) * 20;
+        col = pal5.highlight;
+      } else if (p < 0.75) {
+        // Analytics Bar Pillars
+        const u = (p - 0.45) / 0.30;
+        const barIdx = Math.floor(u * 4);
+        const barHeights = [40, 75, 110, 145];
+        const barH = barHeights[barIdx];
+        const barX = -80 + barIdx * 52;
+        sx = barX + (Math.random() - 0.5) * 24;
+        sy = -60 + Math.random() * barH;
+        sz = (Math.random() - 0.5) * 24;
+        col = barIdx % 2 === 0 ? pal5.primary : pal5.secondary;
+      } else {
+        // Radar Circle Orbit
+        const u = (p - 0.75) / 0.25;
+        const angle = u * Math.PI * 2;
+        const rad = 130 + Math.sin(u * 10) * 10;
+        sx = Math.cos(angle) * rad;
+        sy = Math.sin(angle) * rad * 0.7;
+        sz = Math.sin(angle * 3) * 30;
+        col = pal5.secondary;
+      }
+
+      shapeAnalytics[i3] = sx;
+      shapeAnalytics[i3 + 1] = sy;
+      shapeAnalytics[i3 + 2] = sz;
+
+      colorsAnalytics[i3] = col.r;
+      colorsAnalytics[i3 + 1] = col.g;
+      colorsAnalytics[i3 + 2] = col.b;
+    }
+
+    const shapes = [shapeCode, shapeAI, shapeCloud, shapeRocket, shapeShield, shapeAnalytics];
+    const shapeColors = [colorsCode, colorsAI, colorsCloud, colorsRocket, colorsShield, colorsAnalytics];
 
     // Geometry Buffer
     const particleGeo = new THREE.BufferGeometry();
@@ -561,15 +643,16 @@ export default function ServicesParticleCanvas({ activeIdx }: ServicesParticleCa
       animationFrameId = requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
-      const currentIdx = Math.min(5, Math.max(0, activeIdxRef.current));
+      const rawIdx = typeof activeIdxRef.current === "number" ? activeIdxRef.current : 0;
+      const currentIdx = Math.min(shapes.length - 1, Math.max(0, Math.floor(rawIdx)));
       
       // Toggle visibility of 3D mesh groups
       meshGroups.forEach((grp, idx) => {
-        grp.visible = idx === currentIdx;
+        if (grp) grp.visible = idx === currentIdx;
       });
 
-      const targetShape = shapes[currentIdx];
-      const targetColors = shapeColors[currentIdx];
+      const targetShape = shapes[currentIdx] || shapes[0];
+      const targetColors = shapeColors[currentIdx] || shapeColors[0];
 
       const posAttr = particleGeo.attributes.position as THREE.BufferAttribute;
       const colAttr = particleGeo.attributes.color as THREE.BufferAttribute;

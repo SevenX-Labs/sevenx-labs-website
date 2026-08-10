@@ -4,15 +4,22 @@ import { useState } from "react";
 import Preloader from "./preloader";
 import SevenX3DLogo from "./SevenX3DLogo";
 
+let hasAlreadyLoadedInSession = false;
+
 export default function Hero() {
-  const [showPreloader, setShowPreloader] = useState(true);
+  const [showPreloader, setShowPreloader] = useState(!hasAlreadyLoadedInSession);
+
+  const handlePreloaderComplete = () => {
+    hasAlreadyLoadedInSession = true;
+    setShowPreloader(false);
+  };
 
   return (
     <section className="relative w-full min-h-screen lg:min-h-[calc(100vh-68px)] flex items-center bg-[#FDFDFD] text-zinc-900 overflow-hidden font-sans selection:bg-black selection:text-white">
       {/* Animated Preloader */}
       {showPreloader && (
         <Preloader
-          onComplete={() => setShowPreloader(false)}
+          onComplete={handlePreloaderComplete}
         />
       )}
 
