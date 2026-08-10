@@ -5,6 +5,7 @@ import HowWeWork from "@/components/howwework";
 import WhySevenX from "@/components/whysevenx";
 import Testimonials from "@/components/testimonials";
 import Contact from "@/components/contact";
+import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <WhySevenX />
       <Testimonials />
       <Contact />
+      <Footer />
     </div>
   );
 }
