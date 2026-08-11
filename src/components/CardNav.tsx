@@ -181,6 +181,20 @@ const CardNav: React.FC<CardNavProps> = ({
     tl.reverse();
   };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    closeMenu();
+    if (typeof window !== "undefined") {
+      if (window.location.pathname === "/" || window.location.pathname === "") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        const heroEl = document.getElementById("hero");
+        if (heroEl) {
+          heroEl.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
+
   const setCardRef = (i: number) => (el: HTMLDivElement | null) => {
     if (el) cardsRef.current[i] = el;
   };
@@ -230,14 +244,18 @@ const CardNav: React.FC<CardNavProps> = ({
           {/* Center Logo */}
           <div className="logo-container flex items-center justify-center">
             {typeof logo === "string" ? (
-              <img src={logo} alt={logoAlt} className="logo h-[28px]" />
+              <Link href="/" onClick={handleLogoClick} className="focus:outline-none cursor-pointer">
+                <img src={logo} alt={logoAlt} className="logo h-[28px]" />
+              </Link>
             ) : logo ? (
-              logo
+              <div onClick={handleLogoClick} className="cursor-pointer focus:outline-none">
+                {logo}
+              </div>
             ) : (
               <Link
                 href="/"
-                onClick={closeMenu}
-                className="group flex items-center gap-1.5 focus:outline-none"
+                onClick={handleLogoClick}
+                className="group flex items-center gap-1.5 focus:outline-none cursor-pointer"
               >
                 <span className="text-lg md:text-xl font-extrabold tracking-tight text-black font-sans flex items-center gap-1">
                   <span>SevenX</span>

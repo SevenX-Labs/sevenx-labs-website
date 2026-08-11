@@ -15,7 +15,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full lg:min-h-[calc(100vh-68px)] flex items-start lg:items-center bg-[#FDFDFD] text-zinc-900 overflow-hidden font-sans selection:bg-black selection:text-white">
+    <section id="hero" className="relative w-full lg:min-h-[calc(100vh-68px)] flex items-start lg:items-center bg-[#FDFDFD] text-zinc-900 overflow-hidden font-sans selection:bg-black selection:text-white">
       {/* Animated Preloader */}
       {showPreloader && (
         <Preloader
