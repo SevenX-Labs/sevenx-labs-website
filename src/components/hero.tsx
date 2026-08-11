@@ -23,10 +23,52 @@ export default function Hero() {
         />
       )}
 
-      {/* Premium ambient light & technical background grid */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-32 -right-32 w-[550px] h-[550px] bg-gradient-to-br from-blue-100/30 via-cyan-100/15 to-transparent rounded-full blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] bg-[size:70px_70px]" />
+      {/* Ambient Gradient & Technical Grid Background */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-white">
+        
+        {/* ═══ TOP HALF-MOON CURVED GRADIENT (Arched downward from top) ═══ */}
+        <div
+          className="absolute -top-[140px] sm:-top-[180px] left-1/2 -translate-x-1/2 w-[150%] sm:w-[120%] max-w-[1600px] h-[360px] sm:h-[440px] rounded-[50%] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 60% at 50% 55%, rgba(59, 130, 246, 0.24) 0%, rgba(99, 102, 241, 0.14) 40%, rgba(147, 197, 253, 0.04) 70%, transparent 100%)",
+            filter: "blur(32px)",
+          }}
+        />
+        {/* Soft secondary top arc accent */}
+        <div
+          className="absolute -top-[100px] left-1/2 -translate-x-1/2 w-[110%] max-w-[1100px] h-[260px] rounded-[50%] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 50% at 50% 65%, rgba(59, 130, 246, 0.18) 0%, rgba(147, 197, 253, 0.08) 50%, transparent 85%)",
+            filter: "blur(24px)",
+          }}
+        />
+
+        {/* ═══ BOTTOM HALF-MOON CURVED GRADIENT (Arched upward from bottom) ═══ */}
+        <div
+          className="absolute -bottom-[140px] sm:-bottom-[180px] left-1/2 -translate-x-1/2 w-[150%] sm:w-[120%] max-w-[1600px] h-[360px] sm:h-[440px] rounded-[50%] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 60% at 50% 45%, rgba(59, 130, 246, 0.24) 0%, rgba(99, 102, 241, 0.14) 40%, rgba(147, 197, 253, 0.04) 70%, transparent 100%)",
+            filter: "blur(32px)",
+          }}
+        />
+        {/* Soft secondary bottom arc accent */}
+        <div
+          className="absolute -bottom-[100px] left-1/2 -translate-x-1/2 w-[110%] max-w-[1100px] h-[260px] rounded-[50%] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 50% at 50% 35%, rgba(59, 130, 246, 0.18) 0%, rgba(147, 197, 253, 0.08) 50%, transparent 85%)",
+            filter: "blur(24px)",
+          }}
+        />
+
+        {/* Technical Blueprint Grid Pattern across the entire hero */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] bg-[size:68px_68px]" />
+
+        {/* Crisp solid white top band mask for the navbar area (0 - 80px) */}
+        <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white via-white to-transparent pointer-events-none" />
       </div>
 
       {/* Main Hero Container */}

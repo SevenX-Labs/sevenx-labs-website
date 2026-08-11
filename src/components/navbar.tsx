@@ -41,7 +41,7 @@ export default function Navbar() {
           <span className="text-xl md:text-2xl font-extrabold tracking-tight text-black font-sans group-hover:opacity-85 transition-opacity flex items-center gap-1.5">
             <span>SevenX</span>
             <span className="font-light text-zinc-600">Labs</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 inline-block ml-0.5" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] inline-block ml-0.5" />
           </span>
         </Link>
 
