@@ -117,19 +117,32 @@ export default function Services() {
         {/* MAIN DISPLAY STAGE - 2 Columns on desktop (3D Particle Canvas on Left, Cards on Right) */}
         <div className="relative z-10 max-w-7xl mx-auto w-full flex-1 my-2 md:my-4 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center min-h-[340px] max-h-[460px]">
           
-          {/* LEFT COLUMN: Dedicated 3D Morphing Particle Emblem Canvas (Desktop & Tablets) */}
-          <div className="hidden lg:flex lg:col-span-5 items-center justify-center lg:h-full relative shrink-0">
-            <ServicesParticleCanvas activeIdx={activeIdx} />
-            
-            {/* Dynamic Label underneath 3D Particle Canvas */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-black/10 text-[11px] font-mono font-bold text-zinc-700 shadow-sm flex items-center gap-2 z-10 pointer-events-none">
-              <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-ping" />
-              <span>3D EMBLEM: {services[activeIdx].category}</span>
+          {/* LEFT COLUMN: Dedicated 3D Morphing Particle Emblem with Glassmorphism Backdrop (Above cards on desktop: z-30) */}
+          <div className="hidden lg:flex lg:col-span-5 items-center justify-center lg:h-full relative shrink-0 z-30 pointer-events-none">
+            {/* Glassmorphic Pod Container */}
+            <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[440px] rounded-[32px] bg-white/50 backdrop-blur-2xl border border-white/80 shadow-[0_20px_50px_rgba(0,0,0,0.06),inset_0_1px_2px_rgba(255,255,255,0.95)] flex items-center justify-center overflow-hidden">
+              
+              {/* Internal Ambient Radial Gradient Glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-blue-50/20 to-purple-50/15 pointer-events-none" />
+              
+              {/* Subtle Grid Pattern inside Glass */}
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000004_1px,transparent_1px),linear-gradient(to_bottom,#00000004_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+              
+              {/* 3D Particle Canvas */}
+              <div className="relative z-10 w-full h-full flex items-center justify-center">
+                <ServicesParticleCanvas activeIdx={activeIdx} />
+              </div>
+
+              {/* Dynamic Label underneath 3D Particle Canvas */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-black/[0.08] text-[11px] font-mono font-bold text-zinc-700 shadow-sm flex items-center gap-2 z-20 pointer-events-none">
+                <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-ping" />
+                <span>3D EMBLEM: {services[activeIdx].category}</span>
+              </div>
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Stacked Services Cards (Cards flow Right -> Left) */}
-          <div className="col-span-1 lg:col-span-7 relative h-full flex items-center justify-center">
+          {/* RIGHT COLUMN: Stacked Services Cards (Cards flow Right -> Left underneath 3D Pod on desktop: z-10) */}
+          <div className="col-span-1 lg:col-span-7 relative h-full flex items-center justify-center z-10">
             {services.map((service, idx) => {
               const offset = idx - activeIdx;
               
@@ -137,10 +150,15 @@ export default function Services() {
               let opacity = 1;
               let scale = 1;
 
-              if (offset < 0) {
+              if (offset === -1) {
+                // Card exits to the left, sliding underneath the 3D Glassmorphism pod on desktop
+                posX = -390;
+                opacity = 0.55;
+                scale = 0.92;
+              } else if (offset < -1) {
                 posX = offset * 420;
                 opacity = 0;
-                scale = 0.9;
+                scale = 0.85;
               } else if (offset === 0) {
                 posX = 0;
                 opacity = 1;
