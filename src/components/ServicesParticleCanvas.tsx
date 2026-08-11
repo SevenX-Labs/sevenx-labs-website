@@ -21,16 +21,14 @@ export default function ServicesParticleCanvas({ activeIdx }: ServicesParticleCa
 
     // ─── 1. SCENE, CAMERA & RENDERER ───
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      45,
-      container.clientWidth / container.clientHeight,
-      1,
-      1000
-    );
+    const initW = container.clientWidth > 0 ? container.clientWidth : 460;
+    const initH = container.clientHeight > 0 ? container.clientHeight : 440;
+
+    const camera = new THREE.PerspectiveCamera(45, initW / initH, 1, 1000);
     camera.position.set(0, 0, 420);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
+    renderer.setSize(initW, initH);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
@@ -704,19 +702,27 @@ export default function ServicesParticleCanvas({ activeIdx }: ServicesParticleCa
 
     animate();
 
-    // Resize Handler
+    // Resize Handler & Observer
     const handleResize = () => {
       if (!container) return;
-      camera.aspect = container.clientWidth / container.clientHeight;
+      const w = container.clientWidth > 0 ? container.clientWidth : 460;
+      const h = container.clientHeight > 0 ? container.clientHeight : 440;
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setSize(w, h);
     };
 
     window.addEventListener("resize", handleResize);
 
+    const resizeObserver = new ResizeObserver(() => {
+      handleResize();
+    });
+    resizeObserver.observe(container);
+
     return () => {
       disposed = true;
       cancelAnimationFrame(animationFrameId);
+      resizeObserver.disconnect();
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
       if (container.contains(renderer.domElement)) {

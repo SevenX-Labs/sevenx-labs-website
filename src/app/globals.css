@@ -30,9 +30,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
+/* Lenis Smooth Scroll Core Styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
 @keyframes spinSlow {

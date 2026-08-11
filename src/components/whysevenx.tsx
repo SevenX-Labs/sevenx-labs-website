@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import ScrollReveal from "./ScrollReveal";
 
 /* ═══════════════════════════════════════════════════════════════
    WHY SEVENX — Premium Differentiator Section
@@ -411,22 +412,31 @@ export default function WhySevenX() {
               <span className="h-px w-20 bg-gradient-to-r from-blue-400/30 to-transparent" />
             </div>
 
-            {/* Headline */}
-            <h2 className="font-general text-4xl sm:text-5xl md:text-[3.4rem] font-extrabold text-black leading-[1.05] tracking-tight uppercase">
-              ENGINEERING
-              <br />
-              THAT THINKS
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-blue-600 to-purple-600">
-                BEYOND CODE.
-              </span>
-            </h2>
+            {/* Headline with ScrollReveal animation */}
+            <ScrollReveal
+              baseOpacity={0.08}
+              enableBlur={true}
+              baseRotation={2}
+              blurStrength={10}
+              rotationEnd="bottom 45%"
+              wordAnimationEnd="bottom 45%"
+              textClassName="font-general text-4xl sm:text-5xl md:text-[3.2rem] font-extrabold text-black leading-[1.08] tracking-tight uppercase"
+            >
+              ENGINEERING THAT THINKS BEYOND CODE.
+            </ScrollReveal>
 
-            {/* Supporting text */}
-            <p className="text-slate-600 text-base md:text-lg leading-relaxed font-normal max-w-lg">
-              We combine product thinking, engineering expertise and long-term
-              partnership to build software that delivers real business value.
-            </p>
+            {/* Supporting text with ScrollReveal animation */}
+            <ScrollReveal
+              baseOpacity={0.12}
+              enableBlur={true}
+              baseRotation={0}
+              blurStrength={6}
+              rotationEnd="bottom 40%"
+              wordAnimationEnd="bottom 40%"
+              textClassName="text-slate-600 text-base md:text-lg leading-relaxed font-normal max-w-lg"
+            >
+              We combine product thinking, engineering expertise and long-term partnership to build software that delivers real business value.
+            </ScrollReveal>
           </div>
 
           {/* RIGHT: 3D Computational Sculpture */}
@@ -524,17 +534,33 @@ export default function WhySevenX() {
                       {d.label}
                     </span>
 
-                    <h3
-                      className={`font-general text-xl sm:text-2xl font-extrabold tracking-tight transition-colors duration-300 ${
+                    <ScrollReveal
+                      baseOpacity={0.1}
+                      enableBlur={true}
+                      baseRotation={0}
+                      blurStrength={7}
+                      rotationEnd="bottom 60%"
+                      wordAnimationEnd="bottom 60%"
+                      containerClassName="my-0"
+                      textClassName={`font-general text-xl sm:text-2xl font-extrabold tracking-tight transition-colors duration-300 ${
                         hoveredIdx === idx ? "text-blue-600" : "text-black"
                       }`}
                     >
                       {d.headline}
-                    </h3>
+                    </ScrollReveal>
 
-                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
+                    <ScrollReveal
+                      baseOpacity={0.15}
+                      enableBlur={true}
+                      baseRotation={0}
+                      blurStrength={5}
+                      rotationEnd="bottom 55%"
+                      wordAnimationEnd="bottom 55%"
+                      containerClassName="my-0"
+                      textClassName="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl font-normal"
+                    >
                       {d.body}
-                    </p>
+                    </ScrollReveal>
                   </div>
 
                 </div>
