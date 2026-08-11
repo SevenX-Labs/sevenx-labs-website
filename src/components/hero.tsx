@@ -31,7 +31,7 @@ export default function Hero() {
           className="absolute -top-[140px] sm:-top-[180px] left-1/2 -translate-x-1/2 w-[150%] sm:w-[120%] max-w-[1600px] h-[360px] sm:h-[440px] rounded-[50%] pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 50% 55%, rgba(59, 130, 246, 0.24) 0%, rgba(99, 102, 241, 0.14) 40%, rgba(147, 197, 253, 0.04) 70%, transparent 100%)",
+              "radial-gradient(ellipse 70% 60% at 50% 55%, rgba(59, 130, 246, 0.12) 0%, rgba(99, 102, 241, 0.07) 40%, rgba(147, 197, 253, 0.02) 70%, transparent 100%)",
             filter: "blur(32px)",
           }}
         />
@@ -40,7 +40,7 @@ export default function Hero() {
           className="absolute -top-[100px] left-1/2 -translate-x-1/2 w-[110%] max-w-[1100px] h-[260px] rounded-[50%] pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 60% 50% at 50% 65%, rgba(59, 130, 246, 0.18) 0%, rgba(147, 197, 253, 0.08) 50%, transparent 85%)",
+              "radial-gradient(ellipse 60% 50% at 50% 65%, rgba(59, 130, 246, 0.09) 0%, rgba(147, 197, 253, 0.04) 50%, transparent 85%)",
             filter: "blur(24px)",
           }}
         />
@@ -50,7 +50,7 @@ export default function Hero() {
           className="absolute -bottom-[140px] sm:-bottom-[180px] left-1/2 -translate-x-1/2 w-[150%] sm:w-[120%] max-w-[1600px] h-[360px] sm:h-[440px] rounded-[50%] pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 50% 45%, rgba(59, 130, 246, 0.24) 0%, rgba(99, 102, 241, 0.14) 40%, rgba(147, 197, 253, 0.04) 70%, transparent 100%)",
+              "radial-gradient(ellipse 70% 60% at 50% 45%, rgba(59, 130, 246, 0.12) 0%, rgba(99, 102, 241, 0.07) 40%, rgba(147, 197, 253, 0.02) 70%, transparent 100%)",
             filter: "blur(32px)",
           }}
         />
@@ -59,7 +59,7 @@ export default function Hero() {
           className="absolute -bottom-[100px] left-1/2 -translate-x-1/2 w-[110%] max-w-[1100px] h-[260px] rounded-[50%] pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 60% 50% at 50% 35%, rgba(59, 130, 246, 0.18) 0%, rgba(147, 197, 253, 0.08) 50%, transparent 85%)",
+              "radial-gradient(ellipse 60% 50% at 50% 35%, rgba(59, 130, 246, 0.09) 0%, rgba(147, 197, 253, 0.04) 50%, transparent 85%)",
             filter: "blur(24px)",
           }}
         />
