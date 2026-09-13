@@ -1,139 +1,155 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
-import ServicesParticleCanvas from "./ServicesParticleCanvas";
+import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+
+const ServicesParticleCanvas = dynamic(
+  () => import("./ServicesParticleCanvas"),
+  {
+    ssr: false,
+    loading: () => <div className="w-full h-[360px]" />,
+  }
+);
 
 export default function Services() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const activeIdxRef = useRef(0);
+  activeIdxRef.current = activeIdx;
 
   const services = [
     {
       number: "01",
-      title: "Web & Mobile Engineering",
-      category: "WEBSITE DEV & MOBILE APPS",
+      title: "Web & SaaS Development",
+      slug: "web-development",
+      category: "Full-Stack Engineering",
       description:
-        "High-performance website development, custom UI/UX web design, and native/cross-platform Android & iOS mobile applications engineered for enterprise scale.",
-      tags: ["Website Dev", "Web Design", "iOS Apps", "Android Dev", "React / Next.js"],
+        "Custom web applications, multi-tenant SaaS platforms, and enterprise dashboards built for speed, conversion, and global scale.",
+      tags: ["Next.js", "React", "TypeScript", "Node.js"],
     },
     {
       number: "02",
-      title: "AI Automation & ML Agents",
-      category: "AI AUTOMATION & MACHINE LEARNING",
+      title: "AI Development & Agents",
+      slug: "ai-development",
+      category: "Intelligence & RAG",
       description:
-        "Building autonomous AI agents, machine learning (ML) models, predictive AI pipelines, and enterprise workflow automation.",
-      tags: ["AI Automation", "AI Agents", "Machine Learning", "Custom LLMs", "RAG Systems"],
+        "Autonomous AI agents, Retrieval-Augmented Generation (RAG) vector pipelines, and LLM integrations for intelligent workflow automation.",
+      tags: ["Python", "LangChain", "PGVector", "OpenAI"],
     },
     {
       number: "03",
-      title: "Cloud Ops & Infrastructure",
-      category: "DEVOPS & CLOUD ARCHITECTURE",
+      title: "Mobile App Development",
+      slug: "mobile-app-development",
+      category: "iOS & Android",
       description:
-        "Resilient multi-cloud management (AWS/GCP), Kubernetes microservices, 99.99% uptime SLA, automated CI/CD pipelines, and serverless scale.",
-      tags: ["Cloud Ops", "Kubernetes", "Docker", "AWS / GCP", "Terraform"],
+        "Native and cross-platform mobile applications delivering 60fps performance, offline resilience, and hardware biometric security.",
+      tags: ["React Native", "TypeScript", "iOS", "Android"],
     },
     {
       number: "04",
-      title: "Brand Design & Motion",
-      category: "LOGO DESIGN & ANIMATION",
+      title: "Custom Software Engineering",
+      slug: "custom-software-development",
+      category: "Enterprise Systems",
       description:
-        "Crafting iconic 2D/3D logo design, interactive logo animations, motion graphics, and cohesive digital design systems that elevate your brand.",
-      tags: ["Logo Design", "Logo Animation", "Motion Graphics", "Brand Identity", "UI/UX Design"],
+        "Tailored enterprise platforms, ERP/CRM systems, and legacy infrastructure modernization designed around your exact business workflows.",
+      tags: ["PostgreSQL", "Redis", "REST APIs", "GraphQL"],
     },
     {
       number: "05",
-      title: "E-Commerce & Enterprise CRM",
-      category: "ECOMMERCE & ENTERPRISE SOLUTIONS",
+      title: "UI/UX Design Systems",
+      slug: "ui-ux-design",
+      category: "Product Architecture",
       description:
-        "Custom e-commerce web & app development platforms, enterprise software solutions, and seamless CRM integrations (Salesforce, HubSpot, APIs).",
-      tags: ["E-Commerce Web & Apps", "Enterprise Solutions", "CRM Integration", "API Gateways"],
+        "User-centered design architecture, Figma component systems, interactive prototypes, and developer-ready design handoffs.",
+      tags: ["Figma", "Design Systems", "Prototyping", "UI Tokens"],
     },
     {
       number: "06",
-      title: "SEO, Analytics & Strategy",
-      category: "SEO OPTIMIZATION & PRODUCT STRATEGY",
+      title: "Cloud & DevOps Ops",
+      slug: "cloud-devops",
+      category: "Infrastructure & Scale",
       description:
-        "Data-driven search engine optimization (SEO), conversion rate analytics, user behavior tracking, and GTM Product Strategy.",
-      tags: ["SEO Optimization", "Analytics", "Product Strategy", "Conversion Rate", "Growth Roadmap"],
+        "High-availability cloud infrastructure on AWS and GCP with automated CI/CD pipelines, Kubernetes, Docker, and IaC deployment.",
+      tags: ["AWS", "GCP", "Kubernetes", "Terraform"],
     },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
       const windowH = window.innerHeight;
-      const totalScroll = rect.height - windowH;
-      if (totalScroll <= 0) return;
 
-      const current = -rect.top;
-      const progress = Math.min(1, Math.max(0, current / totalScroll));
-      setScrollProgress(progress);
+      const totalScrollableDistance = rect.height - windowH;
+      if (totalScrollableDistance <= 0) return;
+
+      const currentScrollProgress = -rect.top;
+      const progressRatio = Math.min(
+        1,
+        Math.max(0, currentScrollProgress / totalScrollableDistance)
+      );
+
+      const rawStep = progressRatio * (services.length - 1);
+      const targetStep = Math.min(
+        services.length - 1,
+        Math.max(0, Math.round(rawStep))
+      );
+
+      if (targetStep !== activeIdxRef.current) {
+        setActiveIdx(targetStep);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const totalSteps = services.length;
-  const rawStep = scrollProgress * (totalSteps - 0.2);
-  const activeIdx = Math.min(totalSteps - 1, Math.max(0, Math.floor(rawStep)));
+  }, [services.length]);
 
   return (
     <section
+      ref={sectionRef}
       id="services"
-      ref={containerRef}
-      className="relative w-full h-[550vh] bg-[#FAF9F6] text-zinc-900 select-none font-space border-t border-black/[0.06]"
+      className="relative w-full h-[320vh] bg-[#FAF9F6] text-zinc-900 font-space select-none border-t border-black/[0.06]"
     >
-      {/* Sticky Viewport Container - Adaptive Flex Layout */}
-      <div className="sticky top-0 w-full h-screen flex flex-col justify-between py-6 md:py-10 px-6 md:px-12 lg:px-16 overflow-hidden">
+      <div className="sticky top-0 w-full h-screen flex flex-col justify-between pt-20 sm:pt-24 pb-12 px-6 md:px-12 lg:px-16 overflow-hidden">
         
-        {/* Background Architectural Grid */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute top-1/4 -right-32 w-[650px] h-[650px] bg-gradient-to-br from-blue-100/20 via-cyan-100/10 to-transparent rounded-full blur-3xl" />
-          <div className="absolute bottom-10 left-0 w-[550px] h-[550px] bg-gradient-to-tr from-purple-100/15 to-transparent rounded-full blur-3xl" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:64px_64px]" />
-        </div>
+        {/* Ambient Gradient Background Glow */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-blue-100/25 via-purple-100/15 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-        {/* HEADER */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row md:items-end justify-between gap-2 md:gap-6 shrink-0">
-          <div className="flex flex-col gap-1 md:gap-2">
-            <span className="px-3.5 py-1 bg-black/[0.04] text-[#3B82F6] text-[10.5px] font-mono font-bold uppercase tracking-[0.25em] rounded-full border border-blue-200/60 w-max flex items-center gap-2">
+        {/* SECTION HEADER */}
+        <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row md:items-end justify-between gap-6 shrink-0">
+          <div className="flex flex-col gap-3">
+            <span className="px-3.5 py-1 bg-black/[0.04] text-[#3B82F6] text-[11px] font-mono font-bold uppercase tracking-[0.25em] rounded-full border border-blue-200/60 w-max flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse" />
-              OUR CAPABILITIES
+              CAPABILITIES & SERVICES
             </span>
 
-            <h2 className="font-general text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-black tracking-tight uppercase leading-[1.08]">
-              OUR SERVICES.
+            <h2 className="font-general text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-black tracking-tight uppercase leading-[1.08]">
+              WHAT WE ENGINEER.
             </h2>
           </div>
 
-          <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed max-w-md font-normal hidden sm:block">
-            We offer comprehensive digital solutions that transform your business and drive innovation across every touchpoint.
-          </p>
+          <div className="flex flex-col gap-2 max-w-md">
+            <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed font-normal">
+              Scroll down to explore our core product engineering, AI automation, and cloud architecture capabilities.
+            </p>
+          </div>
         </div>
 
-        {/* MAIN DISPLAY STAGE - 2 Columns on desktop (3D Particle Canvas on Left, Cards on Right) */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full flex-1 my-2 md:my-4 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center min-h-[340px] max-h-[460px]">
+        {/* MAIN DISPLAY GRID */}
+        <div className="relative z-10 max-w-7xl mx-auto w-full flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-4 overflow-hidden">
           
-          {/* LEFT COLUMN: Dedicated 3D Morphing Particle Emblem with Glassmorphism Backdrop (Above cards on desktop: z-30) */}
-          <div className="hidden lg:flex lg:col-span-5 items-center justify-center lg:h-full relative shrink-0 z-30 pointer-events-none">
-            {/* Glassmorphic Pod Container */}
-            <div className="relative w-full h-[380px] sm:h-[420px] lg:h-[440px] rounded-[32px] bg-white/50 backdrop-blur-2xl border border-white/80 shadow-[0_20px_50px_rgba(0,0,0,0.06),inset_0_1px_2px_rgba(255,255,255,0.95)] flex items-center justify-center overflow-hidden">
-              
-              {/* Internal Ambient Radial Gradient Glow */}
+          {/* LEFT COLUMN: 3D Interactive Emblem Pod */}
+          <div className="col-span-1 lg:col-span-5 relative flex items-center justify-center h-full z-20">
+            <div className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[460px] h-[300px] sm:h-[360px] md:h-[420px] rounded-[32px] bg-white/70 backdrop-blur-xl border border-black/[0.08] shadow-2xl overflow-hidden flex flex-col items-center justify-center p-6 transition-transform duration-500 hover:scale-[1.01]">
               <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-blue-50/20 to-purple-50/15 pointer-events-none" />
-              
-              {/* Subtle Grid Pattern inside Glass */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000004_1px,transparent_1px),linear-gradient(to_bottom,#00000004_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
               
-              {/* 3D Particle Canvas */}
               <div className="relative z-10 w-full h-full flex items-center justify-center">
                 <ServicesParticleCanvas activeIdx={activeIdx} />
               </div>
 
-              {/* Dynamic Label underneath 3D Particle Canvas */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-black/[0.08] text-[11px] font-mono font-bold text-zinc-700 shadow-sm flex items-center gap-2 z-20 pointer-events-none">
                 <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-ping" />
                 <span>3D EMBLEM: {services[activeIdx].category}</span>
@@ -141,7 +157,7 @@ export default function Services() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Stacked Services Cards (Cards flow Right -> Left underneath 3D Pod on desktop: z-10) */}
+          {/* RIGHT COLUMN: Stacked Services Cards */}
           <div className="col-span-1 lg:col-span-7 relative h-full flex items-center justify-center z-10">
             {services.map((service, idx) => {
               const offset = idx - activeIdx;
@@ -151,7 +167,6 @@ export default function Services() {
               let scale = 1;
 
               if (offset === -1) {
-                // Card exits to the left, sliding underneath the 3D Glassmorphism pod on desktop
                 posX = -390;
                 opacity = 0.55;
                 scale = 0.92;
@@ -189,15 +204,12 @@ export default function Services() {
                     zIndex: 10 - Math.abs(offset),
                   }}
                 >
-                  {/* Glowing Corner Aura */}
                   {isRevealed && (
                     <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-blue-600/30 via-purple-600/15 to-transparent rounded-full blur-2xl pointer-events-none" />
                   )}
 
-                  {/* Dot Matrix Texture */}
                   <div className="absolute bottom-4 right-4 w-36 h-36 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:12px_12px] opacity-30 pointer-events-none" />
 
-                  {/* TOP ROW: Stage Number & Arrow Button */}
                   <div className="relative z-10 flex items-center justify-between">
                     <span
                       className={`font-general font-extrabold text-2xl sm:text-3xl transition-colors ${
@@ -207,11 +219,13 @@ export default function Services() {
                       {service.number}
                     </span>
 
-                    <div
+                    <Link
+                      href={`/services/${service.slug}`}
+                      aria-label={`Explore ${service.title} engineering services`}
                       className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                         isRevealed
-                          ? "bg-[#3B82F6] text-white shadow-lg"
-                          : "bg-white/5 text-zinc-600 border border-white/10"
+                          ? "bg-[#3B82F6] text-white shadow-lg hover:bg-blue-500"
+                          : "bg-white/5 text-zinc-600 border border-white/10 hover:text-white"
                       }`}
                     >
                       <svg
@@ -223,10 +237,9 @@ export default function Services() {
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
                       </svg>
-                    </div>
+                    </Link>
                   </div>
 
-                  {/* CONTENT (Revealed ONLY when card reaches front/center) */}
                   <div
                     className={`relative z-10 flex-1 flex flex-col justify-center gap-2 sm:gap-3 transition-all duration-500 ${
                       isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -239,7 +252,9 @@ export default function Services() {
                         </span>
 
                         <h3 className="font-general text-lg sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight uppercase">
-                          {service.title}
+                          <Link href={`/services/${service.slug}`} aria-label={`View details for ${service.title}`}>
+                            {service.title}
+                          </Link>
                         </h3>
 
                         <p className="text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed font-normal line-clamp-3 sm:line-clamp-none">
@@ -260,8 +275,7 @@ export default function Services() {
                     )}
                   </div>
 
-                  {/* BOTTOM COUNTER */}
-                  <div className="relative z-10 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-zinc-500 pt-2 border-t border-white/5">
+                  <div className="relative z-10 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-zinc-400 pt-2 border-t border-white/5">
                     <span>CAPABILITY</span>
                     <span>0{idx + 1} / 06</span>
                   </div>
@@ -272,8 +286,7 @@ export default function Services() {
 
         </div>
 
-        {/* FOOTER SCROLL INDICATOR */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full flex items-center justify-between text-xs font-mono text-zinc-500 shrink-0">
+        <div className="relative z-10 max-w-7xl mx-auto w-full flex items-center justify-between text-xs font-mono text-zinc-400 shrink-0">
           <div className="flex items-center gap-2">
             <span className="font-bold text-black">0{activeIdx + 1}</span>
             <span>/ 06 SERVICES</span>

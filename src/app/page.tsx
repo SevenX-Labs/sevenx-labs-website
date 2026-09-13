@@ -12,15 +12,16 @@ export default function Home() {
   return (
     <div className="flex flex-col flex-1">
       <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <HowWeWork />
-      <WhySevenX />
-      <Testimonials />
-      <Contact />
+      <main className="flex flex-col flex-1" id="main-content">
+        <Hero />
+        <About />
+        <Services />
+        <HowWeWork />
+        <WhySevenX />
+        <Testimonials />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );
 }
-

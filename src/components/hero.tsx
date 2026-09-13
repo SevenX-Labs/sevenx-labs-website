@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Preloader from "./preloader";
-import SevenX3DLogo from "./SevenX3DLogo";
+
+const SevenX3DLogo = dynamic(() => import("./SevenX3DLogo"), {
+  ssr: false,
+  loading: () => <div className="w-full h-full" />,
+});
 
 let hasAlreadyLoadedInSession = false;
 
@@ -25,8 +30,6 @@ export default function Hero() {
 
       {/* Ambient Gradient & Technical Grid Background */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-white">
-        
-        {/* ═══ TOP HALF-MOON CURVED GRADIENT (Arched downward from top) ═══ */}
         <div
           className="absolute -top-[140px] sm:-top-[180px] left-1/2 -translate-x-1/2 w-[150%] sm:w-[120%] max-w-[1600px] h-[360px] sm:h-[440px] rounded-[50%] pointer-events-none"
           style={{
@@ -35,7 +38,6 @@ export default function Hero() {
             filter: "blur(32px)",
           }}
         />
-        {/* Soft secondary top arc accent */}
         <div
           className="absolute -top-[100px] left-1/2 -translate-x-1/2 w-[110%] max-w-[1100px] h-[260px] rounded-[50%] pointer-events-none"
           style={{
@@ -45,7 +47,6 @@ export default function Hero() {
           }}
         />
 
-        {/* ═══ BOTTOM HALF-MOON CURVED GRADIENT (Arched upward from bottom) ═══ */}
         <div
           className="absolute -bottom-[140px] sm:-bottom-[180px] left-1/2 -translate-x-1/2 w-[150%] sm:w-[120%] max-w-[1600px] h-[360px] sm:h-[440px] rounded-[50%] pointer-events-none"
           style={{
@@ -54,7 +55,6 @@ export default function Hero() {
             filter: "blur(32px)",
           }}
         />
-        {/* Soft secondary bottom arc accent */}
         <div
           className="absolute -bottom-[100px] left-1/2 -translate-x-1/2 w-[110%] max-w-[1100px] h-[260px] rounded-[50%] pointer-events-none"
           style={{
@@ -64,21 +64,15 @@ export default function Hero() {
           }}
         />
 
-        {/* Technical Blueprint Grid Pattern across the entire hero */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] bg-[size:68px_68px]" />
-
-        {/* Crisp solid white top band mask for the navbar area (0 - 80px) */}
         <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white via-white to-transparent pointer-events-none" />
       </div>
 
       {/* Main Hero Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-24 sm:pt-28 lg:pt-20 pb-14 sm:pb-16 lg:pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 items-center">
-
           {/* Left Column: Headline & Content */}
           <div className="lg:col-span-7 flex flex-col items-start max-w-2xl">
-
-            {/* Typography Title */}
             <div className="relative">
               <h1 className="font-general text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3.35rem] xl:text-[3.7rem] font-extrabold tracking-tight text-black leading-[1.08] uppercase">
                 <span className="text-[#3B82F6]">WE BUILD</span>
@@ -104,15 +98,14 @@ export default function Hero() {
               </h1>
             </div>
 
-            {/* Subtext */}
             <p className="mt-2.5 sm:mt-5 text-sm sm:text-base text-slate-600 max-w-[510px] leading-relaxed font-normal">
               We design and engineer high-performance web, mobile, AI and custom software solutions for ambitious businesses.
             </p>
 
-            {/* CTA Buttons */}
             <div className="mt-3.5 sm:mt-6 flex flex-wrap items-center gap-4 sm:gap-6">
               <a
                 href="#contact"
+                aria-label="Start a project with SevenX Labs"
                 className="group relative inline-flex items-center gap-3 pl-6 pr-3.5 py-3 sm:pl-7 sm:pr-4 sm:py-3.5 bg-black text-white text-sm font-semibold rounded-full overflow-hidden transition-all duration-300 hover:bg-zinc-800 shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-black/15 hover:-translate-y-0.5 active:scale-[0.98]"
               >
                 <span>Start a Project</span>
@@ -125,6 +118,7 @@ export default function Hero() {
               </a>
               <a
                 href="#portfolio"
+                aria-label="View SevenX Labs portfolio case studies"
                 className="inline-flex items-center text-sm font-semibold text-zinc-700 hover:text-black transition-colors py-2 relative after:content-[''] after:absolute after:bottom-1 after:left-0 after:w-0 after:h-[1.5px] after:bg-black hover:after:w-full after:transition-all after:duration-300"
               >
                 View Our Work
@@ -132,16 +126,14 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column / Bottom on Mobile: 3D SevenX Logo */}
+          {/* Right Column: 3D SevenX Logo (Lazy Loaded Client Component) */}
           <div id="hero-logo-anchor" className="lg:col-span-5 relative flex items-center justify-center lg:justify-end h-[220px] sm:h-[260px] lg:h-[450px] mt-2 lg:mt-0">
             <div className="relative w-full h-full flex items-center justify-center max-w-[280px] sm:max-w-[340px] lg:max-w-[450px]">
               <SevenX3DLogo isReady={!showPreloader} />
             </div>
           </div>
-
         </div>
       </div>
     </section>
   );
 }
-
