@@ -1,4 +1,6 @@
 "use client";
+import { ChevronDown } from "lucide-react";
+
 
 import React, { useState } from "react";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -41,13 +43,7 @@ export function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
                 <span className="font-general text-lg sm:text-xl font-bold text-black uppercase tracking-tight group-hover:text-blue-600 transition-colors">
                   {faq.question}
                 </span>
-                <span
-                  className={`w-8 h-8 rounded-full border border-black/10 flex items-center justify-center shrink-0 font-mono text-sm transition-transform duration-300 ${
-                    isOpen ? "rotate-180 bg-black text-white" : "bg-black/5 text-black"
-                  }`}
-                >
-                  ↓
-                </span>
+                <span className={`w-8 h-8 rounded-full border border-black/10 flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 bg-black text-white" : "bg-black/5 text-black"}`}><ChevronDown className="w-4 h-4" /></span>
               </button>
               
               {/* Answer DOM node rendered on server for 100% crawlability & accessibility */}

@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -163,7 +164,7 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyPageProps
                     className="text-xs font-bold font-mono text-blue-600 hover:underline flex items-center gap-1"
                   >
                     <span>{study.relatedIndustry.title}</span>
-                    <span>↗</span>
+                    <ArrowUpRight className="w-4 h-4 inline-block ml-1" />
                   </Link>
                 </div>
               )}

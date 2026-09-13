@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -167,7 +168,7 @@ export default async function IndustryDetailPage({ params }: IndustryPageProps) 
                   <p className="text-zinc-400 text-sm leading-relaxed">{study.overview}</p>
                   <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono font-bold text-zinc-300">
                     <span>{study.metric}</span>
-                    <span>Read Case Study ↗</span>
+                    <span className="inline-flex items-center gap-1">Read Case Study <ArrowUpRight className="w-3.5 h-3.5" /></span>
                   </div>
                 </Link>
               ))}

@@ -1,3 +1,5 @@
+"use client";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { SITE_CONFIG } from "@/lib/site-config";
@@ -44,9 +46,7 @@ export default function Footer() {
               className="group inline-flex items-center gap-3.5 px-8 py-4 bg-white text-black text-xs font-mono font-bold uppercase tracking-[0.2em] rounded-full hover:bg-zinc-200 transition-all duration-300 shadow-xl shadow-white/5 hover:-translate-y-0.5 active:scale-[0.98]"
             >
               <span>Start a Project</span>
-              <span className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                ↗
-              </span>
+              <span className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"><ArrowUpRight className="w-4 h-4" /></span>
             </Link>
           </div>
         </div>
@@ -149,9 +149,7 @@ export default function Footer() {
                     className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
                   >
                     <span>LinkedIn</span>
-                    <span className="text-xs text-zinc-500 group-hover:text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                      ↗
-                    </span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                 </li>
               )}

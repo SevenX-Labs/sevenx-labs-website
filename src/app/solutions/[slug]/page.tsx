@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -165,7 +166,7 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
               href={`/services/${relatedService.slug}`}
               className="px-6 py-3 bg-white text-black font-mono text-xs font-bold uppercase tracking-wider rounded-full hover:bg-zinc-200 transition-colors w-max shrink-0"
             >
-              Explore Service ↗
+              Explore Service <ArrowUpRight className="w-3.5 h-3.5 inline-block ml-1" />
             </Link>
           </div>
         </section>

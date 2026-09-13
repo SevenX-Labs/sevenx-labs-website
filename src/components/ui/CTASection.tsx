@@ -1,3 +1,5 @@
+"use client";
+import { ArrowUpRight } from "lucide-react";
 import React from "react";
 import Link from "next/link";
 
@@ -42,9 +44,7 @@ export function CTASection({
             className="group inline-flex items-center gap-3.5 px-8 py-4 bg-white text-black text-xs font-mono font-bold uppercase tracking-[0.2em] rounded-full hover:bg-zinc-200 transition-all duration-300 shadow-xl hover:-translate-y-0.5 active:scale-[0.98]"
           >
             <span>{buttonText}</span>
-            <span className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-              ↗
-            </span>
+            <span className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"><ArrowUpRight className="w-4 h-4" /></span>
           </Link>
         </div>
       </div>

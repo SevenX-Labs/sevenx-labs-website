@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -200,7 +201,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 <p className="text-slate-600 text-sm leading-relaxed">{study.overview}</p>
                 <div className="pt-4 border-t border-black/5 flex items-center justify-between text-xs font-mono font-bold">
                   <span>{study.metric}</span>
-                  <span>Read Case Study ↗</span>
+                  <span className="inline-flex items-center gap-1">Read Case Study <ArrowUpRight className="w-3.5 h-3.5" /></span>
                 </div>
               </Link>
             ))}

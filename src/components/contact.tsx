@@ -1,4 +1,6 @@
 "use client";
+import { Check, ArrowUpRight } from "lucide-react";
+
 
 import React, { useState } from "react";
 import Link from "next/link";
@@ -324,9 +326,7 @@ export default function Contact() {
                       ) : (
                         <>
                           <span>SEND PROJECT DETAILS</span>
-                          <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5">
-                            ↗
-                          </span>
+                          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                         </>
                       )}
                     </button>
@@ -336,9 +336,7 @@ export default function Contact() {
               ) : (
                 /* ─── SUCCESS STATE ─── */
                 <div className="flex flex-col items-start gap-6 py-12">
-                  <div className="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 text-xl font-bold">
-                    ✓
-                  </div>
+                  <div className="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600"><Check className="w-6 h-6" /></div>
 
                   <div className="flex flex-col gap-2">
                     <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-emerald-600">

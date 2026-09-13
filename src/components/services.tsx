@@ -1,4 +1,6 @@
 "use client";
+import { ArrowRight } from "lucide-react";
+
 
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
@@ -305,7 +307,7 @@ export default function Services() {
             <span>/ 06 SERVICES</span>
           </div>
 
-          <span className="uppercase font-semibold tracking-wider text-[10px] sm:text-[11px]">SCROLL DOWN TO REVEAL →</span>
+          <span className="uppercase font-semibold tracking-wider text-[10px] sm:text-[11px] inline-flex items-center gap-1.5"><span>SCROLL DOWN TO REVEAL</span><ArrowRight className="w-3.5 h-3.5" /></span>
         </div>
 
       </div>

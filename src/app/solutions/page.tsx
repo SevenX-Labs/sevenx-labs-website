@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/navbar";
@@ -73,7 +74,7 @@ export default function SolutionsIndexPage() {
                   className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-black group-hover:text-blue-600 transition-colors"
                 >
                   <span>Explore Solution</span>
-                  <span>↗</span>
+                  <ArrowUpRight className="w-4 h-4 inline-block ml-1" />
                 </Link>
               </div>
             </div>
