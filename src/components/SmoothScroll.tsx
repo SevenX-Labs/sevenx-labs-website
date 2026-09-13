@@ -66,7 +66,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     gsap.ticker.add(updateTicker);
     gsap.ticker.lagSmoothing(0);
 
-    // Global in-page anchor click smooth scroll handler (#about, #services, #contact, etc.)
+    // Global in-page anchor click smooth scroll handler (#about, /about#philosophy, etc.)
     const handleAnchorClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement)?.closest("a");
       if (!target) return;
@@ -74,36 +74,48 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       const href = target.getAttribute("href");
       if (!href) return;
 
-      // Handle pure hash links like "#about" or same-page "/#about"
-      if (href.startsWith("#") && href.length > 1) {
-        const elem = document.querySelector(href);
-        if (elem) {
-          e.preventDefault();
-          lenis.scrollTo(elem as HTMLElement, {
-            offset: -10,
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          });
+      try {
+        const targetUrl = new URL(href, window.location.origin);
+        if (targetUrl.pathname === window.location.pathname && targetUrl.hash) {
+          const elem = document.querySelector(targetUrl.hash);
+          if (elem) {
+            e.preventDefault();
+            if (window.location.hash !== targetUrl.hash) {
+              window.history.pushState(null, "", href);
+            }
+            lenis.scrollTo(elem as HTMLElement, {
+              offset: -80,
+              duration: 1.2,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            });
+          }
         }
-      } else if (href.startsWith("/#") && pathname === "/") {
-        const hash = href.slice(1);
-        const elem = document.querySelector(hash);
-        if (elem) {
-          e.preventDefault();
-          lenis.scrollTo(elem as HTMLElement, {
-            offset: -10,
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          });
-        }
+      } catch {
+        // Fallback
+      }
+    };
+
+    const handleHashScroll = () => {
+      if (typeof window === "undefined") return;
+      const hash = window.location.hash;
+      if (!hash) return;
+      const elem = document.querySelector(hash);
+      if (elem) {
+        lenis.scrollTo(elem as HTMLElement, {
+          offset: -80,
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
       }
     };
 
     document.addEventListener("click", handleAnchorClick, { capture: true });
+    window.addEventListener("hashchange", handleHashScroll);
 
-    // Ensure ScrollTrigger refreshes after initial layout calculation
+    // Ensure ScrollTrigger refreshes and initial hash is scrolled after layout calculation
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
+      handleHashScroll();
     }, 150);
 
     return () => {
@@ -111,6 +123,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       document.removeEventListener("click", handleAnchorClick, {
         capture: true,
       });
+      window.removeEventListener("hashchange", handleHashScroll);
       gsap.ticker.remove(updateTicker);
       lenis.destroy();
       lenisRef.current = null;
