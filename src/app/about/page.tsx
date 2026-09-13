@@ -1,3 +1,4 @@
+import { Zap, Brain, Code2, Handshake } from "lucide-react";
 import { Metadata } from "next";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -57,7 +58,7 @@ export default function AboutPage() {
 
           <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-8 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col gap-3">
-              <span className="text-2xl">⚡</span>
+              <div className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#3B82F6]"><Zap className="w-5 h-5" /></div>
               <h3 className="font-general text-xl font-bold uppercase text-black">Performance First</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 Speed is a core product feature. We engineer sub-second page loads, low-latency microservices, and smooth mobile interfaces that keep users engaged.
@@ -65,7 +66,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white p-8 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col gap-3">
-              <span className="text-2xl">🧠</span>
+              <div className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#3B82F6]"><Brain className="w-5 h-5" /></div>
               <h3 className="font-general text-xl font-bold uppercase text-black">Practical AI & Automation</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 We focus on real business impact. Our vector pipelines, agents, and RAG architectures solve actual operational bottlenecks.
@@ -73,7 +74,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white p-8 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col gap-3">
-              <span className="text-2xl">📐</span>
+              <div className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#3B82F6]"><Code2 className="w-5 h-5" /></div>
               <h3 className="font-general text-xl font-bold uppercase text-black">Clean Architecture</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 We write maintainable, well-structured TypeScript and Python codebases designed to adapt smoothly as business requirements evolve.
@@ -81,7 +82,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white p-8 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col gap-3">
-              <span className="text-2xl">🤝</span>
+              <div className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#3B82F6]"><Handshake className="w-5 h-5" /></div>
               <h3 className="font-general text-xl font-bold uppercase text-black">Transparent Partnership</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 Direct communication, agile sprints, continuous staging deployments, and zero hidden costs.
