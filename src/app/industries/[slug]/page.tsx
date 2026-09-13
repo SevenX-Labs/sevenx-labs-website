@@ -23,17 +23,26 @@ export async function generateMetadata({ params }: IndustryPageProps): Promise<M
   const ind = INDUSTRIES[slug];
   if (!ind) return {};
 
+  const fullTitle = ind.metaTitle.includes("SevenX Labs")
+    ? ind.metaTitle
+    : `${ind.metaTitle} | SevenX Labs`;
+
   return {
-    title: ind.metaTitle,
+    title: { absolute: fullTitle },
     description: ind.metaDescription,
     alternates: {
       canonical: absoluteUrl(`/industries/${slug}`),
     },
     openGraph: {
-      title: ind.metaTitle,
+      title: fullTitle,
       description: ind.metaDescription,
       url: absoluteUrl(`/industries/${slug}`),
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: fullTitle,
+      description: ind.metaDescription,
     },
   };
 }

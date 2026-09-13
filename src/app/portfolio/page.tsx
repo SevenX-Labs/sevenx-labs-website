@@ -6,7 +6,9 @@ import { absoluteUrl } from "@/lib/site-config";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Portfolio & Case Studies | SevenX Labs",
+  title: {
+    absolute: "Portfolio & Case Studies | SevenX Labs",
+  },
   description:
     "Explore our portfolio of high-concurrency web platforms, mobile applications, AI agents, and enterprise cloud solutions engineered by SevenX Labs.",
   alternates: {
@@ -18,6 +20,12 @@ export const metadata: Metadata = {
       "Explore our portfolio of high-concurrency web platforms, mobile applications, AI agents, and enterprise cloud solutions engineered by SevenX Labs.",
     url: absoluteUrl("/portfolio"),
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portfolio & Case Studies | SevenX Labs",
+    description:
+      "Explore our portfolio of high-concurrency web platforms, mobile applications, AI agents, and enterprise cloud solutions engineered by SevenX Labs.",
   },
 };
 

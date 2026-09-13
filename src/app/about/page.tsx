@@ -5,14 +5,28 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { CTASection } from "@/components/ui/CTASection";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { absoluteUrl } from "@/lib/site-config";
-import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About SevenX Labs | Digital Products & Engineering Studio",
+  title: {
+    absolute: "About SevenX Labs | Digital Products & Engineering Studio",
+  },
   description:
     "Learn about SevenX Labs, a product engineering studio designing high-performance web, mobile, AI and custom software solutions for growing businesses.",
   alternates: {
     canonical: absoluteUrl("/about"),
+  },
+  openGraph: {
+    title: "About SevenX Labs | Digital Products & Engineering Studio",
+    description:
+      "Learn about SevenX Labs, a product engineering studio designing high-performance web, mobile, AI and custom software solutions for growing businesses.",
+    url: absoluteUrl("/about"),
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About SevenX Labs | Digital Products & Engineering Studio",
+    description:
+      "Learn about SevenX Labs, a product engineering studio designing high-performance web, mobile, AI and custom software solutions for growing businesses.",
   },
 };
 
@@ -46,7 +60,7 @@ export default function AboutPage() {
               <span className="text-2xl">⚡</span>
               <h3 className="font-general text-xl font-bold uppercase text-black">Performance First</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Speed is a core product feature. We engineer sub-second page loads, low-latency microservices, and smooth 60fps mobile interfaces that keep users engaged.
+                Speed is a core product feature. We engineer sub-second page loads, low-latency microservices, and smooth mobile interfaces that keep users engaged.
               </p>
             </div>
 
@@ -54,7 +68,7 @@ export default function AboutPage() {
               <span className="text-2xl">🧠</span>
               <h3 className="font-general text-xl font-bold uppercase text-black">Practical AI & Automation</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                We focus on real business impact, avoiding AI hype. Our vector pipelines, agents, and RAG architectures solve actual operational bottlenecks.
+                We focus on real business impact. Our vector pipelines, agents, and RAG architectures solve actual operational bottlenecks.
               </p>
             </div>
 
@@ -62,7 +76,7 @@ export default function AboutPage() {
               <span className="text-2xl">📐</span>
               <h3 className="font-general text-xl font-bold uppercase text-black">Clean Architecture</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                We write maintainable, well-structured TypeScript and Python code bases designed to adapt smoothly as business requirements evolve.
+                We write maintainable, well-structured TypeScript and Python codebases designed to adapt smoothly as business requirements evolve.
               </p>
             </div>
 
@@ -70,7 +84,7 @@ export default function AboutPage() {
               <span className="text-2xl">🤝</span>
               <h3 className="font-general text-xl font-bold uppercase text-black">Transparent Partnership</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Direct communication, two-week agile sprints, continuous staging deployments, and zero hidden costs.
+                Direct communication, agile sprints, continuous staging deployments, and zero hidden costs.
               </p>
             </div>
           </div>

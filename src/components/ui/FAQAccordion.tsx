@@ -49,11 +49,15 @@ export function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
                   ↓
                 </span>
               </button>
-              {isOpen && (
-                <div className="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl animate-fadeIn">
-                  {faq.answer}
-                </div>
-              )}
+              
+              {/* Answer DOM node rendered on server for 100% crawlability & accessibility */}
+              <div
+                className={`mt-4 text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl ${
+                  isOpen ? "block animate-fadeIn" : "hidden"
+                }`}
+              >
+                {faq.answer}
+              </div>
             </div>
           );
         })}

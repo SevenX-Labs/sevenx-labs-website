@@ -4,7 +4,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Page Not Found | SevenX Labs",
+  title: { absolute: "Page Not Found | SevenX Labs" },
   description: "The requested page could not be found. Return home or explore SevenX Labs services and portfolio.",
   robots: {
     index: false,

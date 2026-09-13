@@ -24,17 +24,26 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   const service = SERVICES[slug];
   if (!service) return {};
 
+  const fullTitle = `${service.metaTitle} | SevenX Labs`;
+
   return {
-    title: service.metaTitle,
+    title: {
+      absolute: fullTitle,
+    },
     description: service.metaDescription,
     alternates: {
       canonical: absoluteUrl(`/services/${slug}`),
     },
     openGraph: {
-      title: service.metaTitle,
+      title: fullTitle,
       description: service.metaDescription,
       url: absoluteUrl(`/services/${slug}`),
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: fullTitle,
+      description: service.metaDescription,
     },
   };
 }
@@ -71,7 +80,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         ]}
       />
 
-      {/* OVERVIEW SECTION */}
       <section className="py-20 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-7 flex flex-col gap-6">
@@ -97,7 +105,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      {/* CORE CAPABILITIES */}
       <section className="py-20 bg-white border-y border-black/[0.06] w-full">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col gap-12">
           <div className="flex flex-col gap-3 max-w-2xl">
@@ -123,7 +130,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      {/* TECHNOLOGIES */}
       <section className="py-20 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full flex flex-col gap-8">
         <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
           TECHNOLOGY STACK
@@ -140,7 +146,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      {/* DEVELOPMENT PROCESS */}
       <section className="py-20 bg-[#0D0D11] text-white w-full border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col gap-12">
           <div className="flex flex-col gap-3 max-w-2xl">
@@ -167,7 +172,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      {/* RELATED CASE STUDIES */}
       {relatedStudies.length > 0 && (
         <section className="py-20 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full flex flex-col gap-12">
           <div className="flex flex-col gap-3">
@@ -184,6 +188,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               <Link
                 key={study.slug}
                 href={`/portfolio/${study.slug}`}
+                aria-label={`Read ${study.title} case study`}
                 className="group p-8 bg-white rounded-3xl border border-black/[0.08] hover:border-blue-500/40 transition-all flex flex-col gap-4 shadow-sm hover:shadow-xl"
               >
                 <span className="text-xs font-mono font-bold text-[#3B82F6] uppercase">
@@ -203,7 +208,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </section>
       )}
 
-      {/* FAQ SECTION */}
       {service.faqs && service.faqs.length > 0 && (
         <section className="py-20 max-w-5xl mx-auto px-6 md:px-12 w-full flex flex-col gap-10">
           <div className="flex flex-col gap-3">

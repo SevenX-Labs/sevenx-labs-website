@@ -9,7 +9,7 @@ export default function Navbar() {
       bgColor: "#18181b",
       textColor: "#ffffff",
       links: [
-        { label: "About SevenX", href: "/about", ariaLabel: "About SevenX Labs" },
+        { label: "About SevenX", href: "/about", ariaLabel: "About SevenX Labs Studio" },
         { label: "Our Philosophy", href: "/about#philosophy", ariaLabel: "Our Engineering Philosophy" },
         { label: "Why Choose Us", href: "/about#why-sevenx", ariaLabel: "Why Choose SevenX Labs" },
       ],
@@ -20,7 +20,7 @@ export default function Navbar() {
       textColor: "#ffffff",
       links: [
         { label: "Web Development", href: "/services/web-development", ariaLabel: "Web Development Services" },
-        { label: "AI & Automation", href: "/services/ai-development", ariaLabel: "AI and Automation Services" },
+        { label: "AI Development", href: "/services/ai-development", ariaLabel: "AI Development Services" },
         { label: "Mobile Apps", href: "/services/mobile-app-development", ariaLabel: "Mobile App Development" },
         { label: "All Services", href: "/services", ariaLabel: "View All Engineering Services" },
       ],
@@ -33,7 +33,7 @@ export default function Navbar() {
         { label: "SaaS Development", href: "/solutions/saas-development", ariaLabel: "SaaS Product Engineering" },
         { label: "MVP Development", href: "/solutions/mvp-development", ariaLabel: "Rapid MVP Development" },
         { label: "AI Automation", href: "/solutions/ai-automation", ariaLabel: "Enterprise AI Automation" },
-        { label: "All Solutions", href: "/solutions", ariaLabel: "View All Solutions" },
+        { label: "Industry Expertise", href: "/industries", ariaLabel: "View All Industry Sectors" },
       ],
     },
     {

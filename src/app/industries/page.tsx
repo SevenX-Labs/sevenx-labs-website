@@ -8,11 +8,26 @@ import { INDUSTRIES } from "@/lib/data/industries";
 import { absoluteUrl } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Industry Specific Software Solutions | SevenX Labs",
+  title: {
+    absolute: "Industry Specific Software Solutions | SevenX Labs",
+  },
   description:
     "Discover how SevenX Labs delivers specialized software engineering across FinTech, E-Commerce, SaaS, and Startup domains.",
   alternates: {
     canonical: absoluteUrl("/industries"),
+  },
+  openGraph: {
+    title: "Industry Specific Software Solutions | SevenX Labs",
+    description:
+      "Discover how SevenX Labs delivers specialized software engineering across FinTech, E-Commerce, SaaS, and Startup domains.",
+    url: absoluteUrl("/industries"),
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Industry Specific Software Solutions | SevenX Labs",
+    description:
+      "Discover how SevenX Labs delivers specialized software engineering across FinTech, E-Commerce, SaaS, and Startup domains.",
   },
 };
 
@@ -54,6 +69,7 @@ export default function IndustriesIndexPage() {
               <div className="pt-6 border-t border-black/[0.06] flex items-center justify-between">
                 <Link
                   href={`/industries/${ind.slug}`}
+                  aria-label={`Explore SevenX Labs ${ind.title} industry solutions`}
                   className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-black group-hover:text-blue-600 transition-colors"
                 >
                   <span>Explore Industry</span>

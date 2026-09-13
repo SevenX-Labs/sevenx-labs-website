@@ -23,7 +23,7 @@ export default function Footer() {
         {/* ─── TOP SECTION: Brand Headline & Primary CTA ─── */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-14 border-b border-white/[0.08]">
           <div className="flex flex-col gap-4 max-w-xl">
-            <Link href="/" className="inline-flex items-center gap-2 focus:outline-none w-max">
+            <Link href="/" aria-label="SevenX Labs Homepage" className="inline-flex items-center gap-2 focus:outline-none w-max">
               <span className="font-general text-2xl sm:text-3xl font-extrabold tracking-tight text-white uppercase flex items-center gap-2">
                 <span>SevenX</span>
                 <span className="font-light text-zinc-400">Labs</span>
@@ -40,6 +40,7 @@ export default function Footer() {
           <div className="shrink-0">
             <Link
               href="/contact"
+              aria-label="Start a project with SevenX Labs"
               className="group inline-flex items-center gap-3.5 px-8 py-4 bg-white text-black text-xs font-mono font-bold uppercase tracking-[0.2em] rounded-full hover:bg-zinc-200 transition-all duration-300 shadow-xl shadow-white/5 hover:-translate-y-0.5 active:scale-[0.98]"
             >
               <span>Start a Project</span>
@@ -59,17 +60,18 @@ export default function Footer() {
             </span>
             <ul className="flex flex-col gap-2.5">
               {[
-                { name: "Home", href: "/" },
-                { name: "About", href: "/about" },
-                { name: "Services", href: "/services" },
-                { name: "Solutions", href: "/solutions" },
-                { name: "Industries", href: "/industries" },
-                { name: "Work", href: "/portfolio" },
-                { name: "Contact", href: "/contact" },
+                { name: "Home", href: "/", ariaLabel: "SevenX Labs Home Page" },
+                { name: "About", href: "/about", ariaLabel: "About SevenX Labs Studio" },
+                { name: "Services", href: "/services", ariaLabel: "View Engineering Services" },
+                { name: "Solutions", href: "/solutions", ariaLabel: "View Business Solutions" },
+                { name: "Industries", href: "/industries", ariaLabel: "View Industry Expertise" },
+                { name: "Work", href: "/portfolio", ariaLabel: "View Featured Portfolio Projects" },
+                { name: "Contact", href: "/contact", ariaLabel: "Contact Engineering Studio" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
+                    aria-label={item.ariaLabel}
                     className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center"
                   >
                     {item.name}
@@ -88,7 +90,7 @@ export default function Footer() {
               {[
                 { name: "Web Development", href: "/services/web-development" },
                 { name: "Mobile App Development", href: "/services/mobile-app-development" },
-                { name: "AI & Automation", href: "/services/ai-development" },
+                { name: "AI Development", href: "/services/ai-development" },
                 { name: "Custom Software", href: "/services/custom-software-development" },
                 { name: "UI/UX Design", href: "/services/ui-ux-design" },
                 { name: "Cloud & DevOps", href: "/services/cloud-devops" },
@@ -96,6 +98,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
+                    aria-label={`SevenX Labs ${item.name} Services`}
                     className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center"
                   >
                     {item.name}
@@ -120,6 +123,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
+                    aria-label={`SevenX Labs ${item.name} Solution`}
                     className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center"
                   >
                     {item.name}
@@ -141,6 +145,7 @@ export default function Footer() {
                     href={SITE_CONFIG.social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="SevenX Labs LinkedIn Profile"
                     className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
                   >
                     <span>LinkedIn</span>
@@ -156,6 +161,7 @@ export default function Footer() {
                     href={SITE_CONFIG.social.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="SevenX Labs GitHub Organization"
                     className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
                   >
                     <span>GitHub</span>
@@ -168,6 +174,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
+                  aria-label="Send email to SevenX Labs"
                   className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
                 >
                   <span>{SITE_CONFIG.email}</span>
@@ -177,23 +184,15 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ─── BOTTOM BAR: Copyright, Legal & Availability Badge ─── */}
+        {/* ─── BOTTOM BAR: Copyright & Availability Badge ─── */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-10 text-xs text-zinc-500 font-mono">
           <div className="flex items-center gap-2">
             <span>© {currentYear} SevenX Labs. All rights reserved.</span>
           </div>
 
-          <div className="flex flex-wrap items-center gap-6">
-            <div className="flex items-center gap-4">
-              <Link href="/about" className="hover:text-zinc-300 transition-colors">
-                Privacy & Terms
-              </Link>
-            </div>
-
-            <div className="flex items-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/[0.08] rounded-full text-zinc-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-              <span className="text-[11px]">Available for new projects</span>
-            </div>
+          <div className="flex items-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/[0.08] rounded-full text-zinc-400">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+            <span className="text-[11px]">Available for new projects</span>
           </div>
         </div>
       </div>

@@ -8,11 +8,26 @@ import { SOLUTIONS } from "@/lib/data/solutions";
 import { absoluteUrl } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Targeted Engineering Solutions | SevenX Labs",
+  title: {
+    absolute: "Targeted Engineering Solutions | SevenX Labs",
+  },
   description:
     "Explore SevenX Labs specialized engineering solutions: SaaS Development, MVP Development, AI Automation, and Enterprise Digital Transformation.",
   alternates: {
     canonical: absoluteUrl("/solutions"),
+  },
+  openGraph: {
+    title: "Targeted Engineering Solutions | SevenX Labs",
+    description:
+      "Explore SevenX Labs specialized engineering solutions: SaaS Development, MVP Development, AI Automation, and Enterprise Digital Transformation.",
+    url: absoluteUrl("/solutions"),
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Targeted Engineering Solutions | SevenX Labs",
+    description:
+      "Explore SevenX Labs specialized engineering solutions: SaaS Development, MVP Development, AI Automation, and Enterprise Digital Transformation.",
   },
 };
 
@@ -54,6 +69,7 @@ export default function SolutionsIndexPage() {
               <div className="pt-6 border-t border-black/[0.06] flex items-center justify-between">
                 <Link
                   href={`/solutions/${sol.slug}`}
+                  aria-label={`Explore SevenX Labs ${sol.title} solution`}
                   className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-black group-hover:text-blue-600 transition-colors"
                 >
                   <span>Explore Solution</span>

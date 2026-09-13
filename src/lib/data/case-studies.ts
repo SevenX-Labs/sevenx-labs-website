@@ -23,6 +23,10 @@ export interface CaseStudyDetail {
     label: string;
   }[];
   contribution: string;
+  relatedIndustry?: {
+    title: string;
+    slug: string;
+  };
   relatedServices: {
     title: string;
     slug: string;
@@ -44,11 +48,11 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
     overview:
       "Synapse AI is an enterprise automation engine built to orchestrate multi-step document extraction, domain Q&A, and workflow execution across unstructured company data repositories.",
     challenge:
-      "Enterprise teams were spending thousands of manual hours copying data between unstructured PDF reports, legacy databases, and CRM platforms, causing operational delays and error rates.",
+      "Enterprise teams were spending manual hours copying data between unstructured PDF reports, legacy databases, and CRM platforms, causing operational delays and error rates.",
     objective:
-      "Build a secure, private vector search and multi-agent pipeline that processes unstructured documents in seconds while providing zero-hallucination accuracy controls and complete audit trails.",
+      "Build a secure, private vector search and multi-agent pipeline that processes unstructured documents rapidly while providing accuracy controls and complete audit trails.",
     solution:
-      "SevenX Labs architected a hybrid Retrieval-Augmented Generation (RAG) platform using PGVector and LangChain connected to a custom Next.js admin portal. The platform parses incoming PDFs, extracts key entities into structured JSON schemas, and coordinates autonomous workflow execution.",
+      "SevenX Labs architected a hybrid Retrieval-Augmented Generation (RAG) platform using PGVector and LangChain connected to a custom Next.js admin portal. The platform parses incoming PDFs, extracts key entities into structured JSON schemas, and coordinates workflow execution.",
     architecture: [
       "Next.js App Router frontend with real-time SSE streaming for live token generation.",
       "FastAPI microservices handling document parsing, vector embedding generation, and prompt pipeline execution.",
@@ -57,7 +61,7 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
     ],
     features: [
       {
-        title: "Sub-Second Semantic Retrieval",
+        title: "Semantic Retrieval",
         description: "Hybrid vector search combining keyword sparse vectors with dense embeddings for high-precision retrieval.",
       },
       {
@@ -77,6 +81,10 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
     ],
     contribution:
       "SevenX Labs led product strategy, UX design, vector pipeline architecture, backend API engineering, and frontend dashboard implementation.",
+    relatedIndustry: {
+      title: "SaaS Industry Solutions",
+      slug: "saas",
+    },
     relatedServices: [
       { title: "AI Development & Automation", slug: "ai-development" },
       { title: "Web Development", slug: "web-development" },
@@ -95,13 +103,13 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
     image: "/portfolio_fintech.png",
     tags: ["React Native", "TypeScript", "Node.js", "WebSockets"],
     overview:
-      "FinFuse is a next-generation wealth management platform combining real-time stock and portfolio tracking, automated recurring investments, and interactive charting on web and mobile.",
+      "FinFuse is a wealth management platform combining real-time stock and portfolio tracking, automated recurring investments, and interactive charting on web and mobile.",
     challenge:
       "The client required an application capable of maintaining WebSocket price feeds across mobile and web during peak market opening hours without crashing or lagging.",
     objective:
       "Architect a unified React Native mobile codebase alongside a Next.js web application powered by a resilient WebSocket event backend.",
     solution:
-      "SevenX Labs engineered a high-concurrency Node.js microservices architecture backed by Redis pub/sub. The mobile application was built using React Native with custom native charting modules for 60fps rendering.",
+      "SevenX Labs engineered a high-concurrency Node.js microservices architecture backed by Redis pub/sub. The mobile application was built using React Native with custom native charting modules for responsive rendering.",
     architecture: [
       "React Native mobile app for iOS & Android sharing 85%+ code with web components.",
       "Node.js & Redis pub/sub microservices streaming real-time market ticks.",
@@ -110,7 +118,7 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
     features: [
       {
         title: "Real-Time Ticker Stream",
-        description: "Low-latency WebSocket connections delivering sub-100ms market updates.",
+        description: "Low-latency WebSocket connections delivering fast market updates.",
       },
       {
         title: "Interactive Financial Charts",
@@ -120,11 +128,15 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
     technologies: ["React Native", "Next.js", "TypeScript", "Node.js", "Redis", "WebSockets", "PostgreSQL"],
     results: [
       { stat: "100,000+", label: "Active daily investors" },
-      { stat: "99.99%", label: "System availability SLA" },
+      { stat: "99.9%", label: "System availability SLA" },
       { stat: "60 FPS", label: "Smooth chart rendering" },
     ],
     contribution:
       "Full design and end-to-end engineering of web portal, iOS app, Android app, and WebSocket streaming backend.",
+    relatedIndustry: {
+      title: "FinTech Industry Solutions",
+      slug: "fintech",
+    },
     relatedServices: [
       { title: "Mobile App Development", slug: "mobile-app-development" },
       { title: "Web Development", slug: "web-development" },
@@ -138,7 +150,7 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
     category: "E-Commerce",
     metaTitle: "Maison Lumina Luxury Case Study | SevenX Labs",
     metaDescription:
-      "How SevenX Labs designed and developed a high-converting luxury e-commerce web platform with interactive 3D product previews and sub-second loads.",
+      "How SevenX Labs designed and developed a luxury e-commerce web platform with interactive 3D product previews and optimized page loads.",
     metric: "+45% Conversion",
     image: "/portfolio_ecommerce.png",
     tags: ["E-Commerce", "Three.js", "TailwindCSS", "Stripe API"],
@@ -147,7 +159,7 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
     challenge:
       "Heavy 3D models typically slow down web pages, leading to high bounce rates and poor Core Web Vitals on mobile devices.",
     objective:
-      "Deliver a sub-second page load storefront featuring 3D product previews without sacrificing mobile loading speed.",
+      "Deliver a fast page load storefront featuring 3D product previews without sacrificing mobile loading speed.",
     solution:
       "SevenX Labs built a custom Next.js storefront using Three.js / React Three Fiber with Draco 3D mesh compression, reducing model load sizes by 75% while rendering photorealistic materials.",
     architecture: [
@@ -161,7 +173,7 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
         description: "Customers rotate, zoom, and swap materials on luxury furniture pieces in real-time.",
       },
       {
-        title: "Sub-Second LCP Performance",
+        title: "Optimized LCP Performance",
         description: "Optimized mesh loading ensuring instant page availability on mobile and desktop.",
       },
     ],
@@ -173,6 +185,10 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
     ],
     contribution:
       "Brand identity alignment, UI/UX design, 3D WebGL optimization, and full-stack Next.js web engineering.",
+    relatedIndustry: {
+      title: "E-Commerce Industry Solutions",
+      slug: "ecommerce",
+    },
     relatedServices: [
       { title: "Web Development", slug: "web-development" },
       { title: "UI/UX Design", slug: "ui-ux-design" },
@@ -185,8 +201,8 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
     category: "Cloud Ops",
     metaTitle: "KubeFlow Enterprise DevOps Case Study | SevenX Labs",
     metaDescription:
-      "Discover how SevenX Labs migrated legacy enterprise monoliths to automated multi-region Kubernetes clusters with 99.99% SLA.",
-    metric: "99.99% Uptime SLA",
+      "Discover how SevenX Labs migrated enterprise monoliths to automated multi-region Kubernetes clusters.",
+    metric: "99.9% Uptime",
     image: "/portfolio_cloud.png",
     tags: ["Kubernetes", "AWS / GCP", "Docker", "Terraform"],
     overview:
@@ -194,7 +210,7 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
     challenge:
       "Legacy monolithic infrastructure was suffering from deployment outages, manual server configuration drift, and high monthly cloud costs.",
     objective:
-      "Migrate workloads to automated Infrastructure as Code (IaC) using Terraform and Kubernetes, achieving 99.99% SLA uptime.",
+      "Migrate workloads to automated Infrastructure as Code (IaC) using Terraform and Kubernetes.",
     solution:
       "SevenX Labs architected a multi-region EKS/GKE cluster topology configured with automated blue/green deployment pipelines via GitHub Actions and Terraform.",
     architecture: [
@@ -214,12 +230,16 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
     ],
     technologies: ["Kubernetes", "AWS", "Google Cloud", "Terraform", "Docker", "GitHub Actions", "Datadog"],
     results: [
-      { stat: "99.99%", label: "Guaranteed uptime SLA" },
+      { stat: "99.9%", label: "System availability" },
       { stat: "35%", label: "Cloud cost savings" },
       { stat: "0", label: "Downtime during major releases" },
     ],
     contribution:
       "Cloud architecture design, Terraform IaC writing, Kubernetes cluster setup, and CI/CD pipeline automation.",
+    relatedIndustry: {
+      title: "SaaS Industry Solutions",
+      slug: "saas",
+    },
     relatedServices: [
       { title: "Cloud & DevOps", slug: "cloud-devops" },
       { title: "Custom Software Development", slug: "custom-software-development" },

@@ -6,11 +6,26 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { absoluteUrl } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Contact SevenX Labs | Start Your Product Project",
+  title: {
+    absolute: "Contact SevenX Labs | Start Your Product Project",
+  },
   description:
     "Get in touch with SevenX Labs to discuss your web application, mobile app, AI solution, or custom software project.",
   alternates: {
     canonical: absoluteUrl("/contact"),
+  },
+  openGraph: {
+    title: "Contact SevenX Labs | Start Your Product Project",
+    description:
+      "Get in touch with SevenX Labs to discuss your web application, mobile app, AI solution, or custom software project.",
+    url: absoluteUrl("/contact"),
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact SevenX Labs | Start Your Product Project",
+    description:
+      "Get in touch with SevenX Labs to discuss your web application, mobile app, AI solution, or custom software project.",
   },
 };
 

@@ -24,17 +24,26 @@ export async function generateMetadata({ params }: SolutionPageProps): Promise<M
   const sol = SOLUTIONS[slug];
   if (!sol) return {};
 
+  const fullTitle = sol.metaTitle.includes("SevenX Labs")
+    ? sol.metaTitle
+    : `${sol.metaTitle} | SevenX Labs`;
+
   return {
-    title: sol.metaTitle,
+    title: { absolute: fullTitle },
     description: sol.metaDescription,
     alternates: {
       canonical: absoluteUrl(`/solutions/${slug}`),
     },
     openGraph: {
-      title: sol.metaTitle,
+      title: fullTitle,
       description: sol.metaDescription,
       url: absoluteUrl(`/solutions/${slug}`),
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: fullTitle,
+      description: sol.metaDescription,
     },
   };
 }
