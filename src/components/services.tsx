@@ -77,7 +77,12 @@ export default function Services() {
   ];
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const windowH = window.innerHeight;
@@ -100,6 +105,7 @@ export default function Services() {
       if (targetStep !== activeIdxRef.current) {
         setActiveIdx(targetStep);
       }
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });

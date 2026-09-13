@@ -638,7 +638,17 @@ export default function ServicesParticleCanvas({ activeIdx }: ServicesParticleCa
     let disposed = false;
     const clock = new THREE.Clock();
 
+    let isVisible = true;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { isVisible = e.isIntersecting; });
+    }, { threshold: 0.01 });
+    if (mountRef.current) observer.observe(mountRef.current);
+
     const animate = () => {
+      if (!isVisible) {
+        animationFrameId = requestAnimationFrame(animate);
+        return;
+      }
       if (disposed) return;
       animationFrameId = requestAnimationFrame(animate);
 
@@ -720,6 +730,7 @@ export default function ServicesParticleCanvas({ activeIdx }: ServicesParticleCa
     resizeObserver.observe(container);
 
     return () => {
+      observer.disconnect();
       disposed = true;
       cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();

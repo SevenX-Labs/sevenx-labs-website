@@ -96,7 +96,7 @@ export default function HowWeWork() {
     const timer1 = setTimeout(updateCoords, 100);
     const timer2 = setTimeout(updateCoords, 400);
     window.addEventListener("resize", updateCoords);
-    window.addEventListener("scroll", updateCoords);
+    // scroll event listener removed to eliminate forced reflows
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);

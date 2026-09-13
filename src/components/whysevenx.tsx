@@ -274,7 +274,17 @@ function EngineeringCore({
     let frameId: number;
     const clock = new THREE.Clock();
 
+    let isVisible = true;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { isVisible = e.isIntersecting; });
+    }, { threshold: 0.01 });
+    if (container) observer.observe(container);
+
     const animate = () => {
+      if (!isVisible) {
+        frameId = requestAnimationFrame(animate);
+        return;
+      }
       if (disposed) return;
       frameId = requestAnimationFrame(animate);
 
@@ -349,6 +359,7 @@ function EngineeringCore({
     window.addEventListener("resize", onResize);
 
     return () => {
+      observer.disconnect();
       disposed = true;
       cancelAnimationFrame(frameId);
       window.removeEventListener("resize", onResize);

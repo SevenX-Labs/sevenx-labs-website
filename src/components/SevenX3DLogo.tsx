@@ -19,6 +19,12 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
     const container = containerRef.current;
     if (!container) return;
 
+    let isVisible = true;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { isVisible = e.isIntersecting; });
+    }, { threshold: 0.01 });
+    observer.observe(container);
+
     // ═══════════════════════════════════════════════════════
     // 1. SCENE SETUP — Local on Mobile/Tablet, Fullscreen on Desktop
     // ═══════════════════════════════════════════════════════
@@ -445,6 +451,10 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
       };
 
       const animate = () => {
+        if (!isVisible) {
+          animFrameId = requestAnimationFrame(animate);
+          return;
+        }
         animFrameId = requestAnimationFrame(animate);
         const now = performance.now();
 
@@ -650,6 +660,7 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
     window.addEventListener("resize", handleResize);
 
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(animFrameId);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);

@@ -132,6 +132,12 @@ const ParticleText = ({
     let gathering = false;
     let gatherStart = 0;
     let reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+
+    let isVisible = true;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { isVisible = e.isIntersecting; });
+    }, { threshold: 0.01 });
+    observer.observe(container);
     let width = 0;
     let height = 0;
     let dpr = 1;
@@ -418,6 +424,7 @@ const ParticleText = ({
     void sampleText();
 
     return () => {
+      observer.disconnect();
       buildId += 1;
       resizeObserver.disconnect();
       reduceMotionQuery?.removeEventListener('change', handleReduceMotionChange);
