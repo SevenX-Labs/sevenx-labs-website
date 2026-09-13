@@ -1,67 +1,14 @@
 "use client";
 
-import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
+import Link from "next/link";
+import { ArrowUpRight, ShieldCheck, Sparkles, Clock } from "lucide-react";
 
 export default function Testimonials() {
-  const testimonials = [
-    {
-      id: 1,
-      quote:
-        "SevenX Labs transformed our complex AI workflow into a lightning-fast enterprise web application. Their full-stack engineering team delivered 2 weeks ahead of deadline.",
-      author: "Elena Rostova",
-      role: "CTO at NexaFlow AI",
-      location: "San Francisco, CA",
-      metric: "80% Time Saved",
-      avatar: "/avatar_elena.png",
-      rating: 5,
-      tags: ["AI Agents", "Next.js", "Python"],
-    },
-    {
-      id: 2,
-      quote:
-        "The mobile app and WebSocket streaming backend built by SevenX Labs handles over 100,000 active investors with zero latency spikes. Outstanding performance engineering.",
-      author: "Marcus Vance",
-      role: "VP of Product at Horizon Fintech",
-      location: "London, UK",
-      metric: "100k+ Active Users",
-      avatar: "/avatar_marcus.png",
-      rating: 5,
-      tags: ["React Native", "WebSockets", "Redis"],
-    },
-    {
-      id: 3,
-      quote:
-        "Our luxury e-commerce conversion rate increased by 45% after SevenX Labs launched our 3D interactive WebGL store. Sub-second page loads on both mobile and desktop.",
-      author: "Sophia Chen",
-      role: "Head of Growth at OmniStore",
-      location: "Singapore",
-      metric: "+45% Conversion",
-      avatar: "/avatar_sophia.png",
-      rating: 5,
-      tags: ["Three.js", "TailwindCSS", "Stripe"],
-    },
-    {
-      id: 4,
-      quote:
-        "Migrating our cloud infrastructure to Kubernetes with SevenX Labs cut our AWS monthly spend by 35% while upgrading our system reliability to 99.99% uptime.",
-      author: "Alexander Wright",
-      role: "Managing Director at Apex",
-      location: "New York, NY",
-      metric: "35% Cloud Savings",
-      avatar: "/avatar_marcus.png",
-      rating: 5,
-      tags: ["Kubernetes", "AWS", "Terraform"],
-    },
-  ];
-
-  const loopTestimonials = [...testimonials, ...testimonials];
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
-
   return (
     <section
       id="testimonials"
-      className="relative w-full pt-12 pb-16 lg:pt-16 lg:pb-20 bg-[#FAF9F6] text-zinc-900 select-none overflow-hidden font-space border-t border-black/[0.06]"
+      className="relative w-full py-24 md:py-32 bg-[#FAF9F6] text-zinc-900 select-none overflow-hidden font-space border-t border-black/[0.06]"
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-blue-100/20 via-purple-100/15 to-transparent rounded-full blur-3xl pointer-events-none" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
@@ -81,106 +28,52 @@ export default function Testimonials() {
 
           <div className="flex flex-col gap-2 max-w-md">
             <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed font-normal">
-              Trusted by high-growth AI startups, enterprise fintech platforms, and visionary founders worldwide.
+              Trusted by high-growth startups, enterprise software platforms, and visionary founders.
             </p>
-            <span className="text-[11px] font-mono text-blue-600 font-bold uppercase tracking-wider flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping" />
-              HOVER CARD TO PAUSE AUTO-SCROLL
+          </div>
+        </div>
+
+        {/* COMING SOON SHOWCASE CARD */}
+        <div className="relative w-full rounded-[32px] bg-[#0D0D11] text-white border border-white/10 p-8 sm:p-12 md:p-16 overflow-hidden shadow-2xl flex flex-col items-center text-center justify-center gap-6">
+          <div className="absolute -top-24 -right-24 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+
+          <div className="relative z-10 flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-400 text-xs font-mono font-bold uppercase tracking-widest">
+            <Clock className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '6s' }} />
+            <span>Coming Soon</span>
+          </div>
+
+          <h3 className="relative z-10 font-general text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-white max-w-2xl leading-tight">
+            Client Testimonials & Case Reviews Are Currently Being Updated
+          </h3>
+
+          <p className="relative z-10 text-zinc-400 text-sm sm:text-base max-w-xl leading-relaxed font-normal">
+            We are currently documenting verified client reviews, impact metrics, and technical performance audits from our latest enterprise and startup deployments.
+          </p>
+
+          <div className="relative z-10 flex flex-wrap items-center justify-center gap-3 pt-2">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-zinc-300">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              Verified Client Feedback
+            </span>
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-zinc-300">
+              <Sparkles className="w-4 h-4 text-blue-400" />
+              Production Impact Metrics
             </span>
           </div>
-        </div>
 
-        <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-          <div className="flex items-center gap-6 sm:gap-8 w-max animate-marquee hover:[animation-play-state:paused] py-4">
-            {loopTestimonials.map((item, index) => {
-              const uniqueKey = `${item.id}-${index}`;
-              const isHovered = hoveredId === item.id;
-
-              return (
-                <div
-                  key={uniqueKey}
-                  onMouseEnter={() => setHoveredId(item.id)}
-                  onMouseLeave={() => setHoveredId(null)}
-                  className={`group relative w-[330px] sm:w-[380px] md:w-[420px] p-8 rounded-[28px] border transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden shadow-xl shrink-0 ${
-                    isHovered
-                      ? "bg-[#121217] text-white border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.25)] -translate-y-2 scale-[1.02]"
-                      : "bg-white text-zinc-900 border-black/[0.08] hover:border-blue-500/40 hover:shadow-2xl"
-                  }`}
-                >
-                  {isHovered && (
-                    <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-blue-600/30 via-purple-600/15 to-transparent rounded-full blur-2xl pointer-events-none" />
-                  )}
-
-                  <div className="relative z-10 flex flex-col gap-5">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1 text-amber-400" aria-label="5 out of 5 stars">
-                        {[...Array(item.rating)].map((_, i) => (
-                          <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                        ))}
-                      </div>
-
-                      <span className={`px-3 py-1 text-[11px] font-mono font-bold rounded-full border ${
-                        isHovered 
-                          ? "bg-blue-500/20 text-blue-400 border-blue-400/30" 
-                          : "bg-blue-50 text-blue-600 border-blue-200"
-                      }`}>
-                        {item.metric}
-                      </span>
-                    </div>
-
-                    <p className={`text-xs sm:text-sm md:text-base leading-relaxed font-normal italic min-h-[72px] ${
-                      isHovered ? "text-zinc-200" : "text-slate-700"
-                    }`}>
-                      &ldquo;{item.quote}&rdquo;
-                    </p>
-                  </div>
-
-                  <div className={`relative z-10 pt-5 mt-5 border-t flex items-center justify-between ${
-                    isHovered ? "border-white/10" : "border-black/[0.06]"
-                  }`}>
-                    <div className="flex items-center gap-3.5">
-                      <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-blue-500/40 shrink-0">
-                        <Image
-                          src={item.avatar}
-                          alt={item.author}
-                          fill
-                          sizes="44px"
-                          className="object-cover"
-                        />
-                      </div>
-
-                      <div className="flex flex-col">
-                        <span className={`font-general font-extrabold text-sm sm:text-base leading-tight ${
-                          isHovered ? "text-white" : "text-black"
-                        }`}>
-                          {item.author}
-                        </span>
-                        <span className={`text-[11px] font-mono ${
-                          isHovered ? "text-zinc-400" : "text-slate-600"
-                        }`}>
-                          {item.role}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className={`w-7 h-7 rounded-full flex items-center justify-center ${
-                      isHovered 
-                        ? "bg-blue-500/20 text-blue-400 border border-blue-400/30"
-                        : "bg-blue-50 text-blue-600 border border-blue-200"
-                    }`} aria-label="Verified Client">
-                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="relative z-10 pt-4">
+            <Link
+              href="/contact"
+              aria-label="Contact SevenX Labs to start a project"
+              className="group inline-flex items-center gap-3 px-7 py-3.5 bg-white text-black text-xs font-mono font-bold uppercase tracking-[0.2em] rounded-full hover:bg-zinc-200 transition-all duration-300 shadow-xl shadow-white/5 hover:-translate-y-0.5 active:scale-[0.98]"
+            >
+              <span>Work With Us</span>
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
           </div>
         </div>
-
       </div>
     </section>
   );
