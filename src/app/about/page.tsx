@@ -4,7 +4,6 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { CTASection } from "@/components/ui/CTASection";
-import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { absoluteUrl } from "@/lib/site-config";
 
@@ -54,7 +53,6 @@ const ABOUT_FAQS = [
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-zinc-900 flex flex-col">
-      <OrganizationJsonLd />
       <Navbar />
 
       <PageHeader

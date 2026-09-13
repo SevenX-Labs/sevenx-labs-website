@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -245,7 +246,7 @@ const CardNav: React.FC<CardNavProps> = ({
           <div className="logo-container flex items-center justify-center">
             {typeof logo === "string" ? (
               <Link href="/" onClick={handleLogoClick} className="focus:outline-none cursor-pointer">
-                <img src={logo} alt={logoAlt} className="logo h-[28px]" />
+                <Image src={logo} alt={logoAlt} width={140} height={28} className="logo h-[28px] w-auto object-contain" />
               </Link>
             ) : logo ? (
               <div onClick={handleLogoClick} className="cursor-pointer focus:outline-none">
