@@ -118,7 +118,7 @@ export default function Services() {
       id="services"
       className="relative w-full h-[320vh] bg-[#FAF9F6] text-zinc-900 font-space select-none border-t border-black/[0.06]"
     >
-      <div className="sticky top-0 w-full h-[100dvh] flex flex-col justify-between pt-16 sm:pt-20 lg:pt-24 pb-6 sm:pb-10 lg:pb-12 px-4 sm:px-8 lg:px-16 overflow-hidden">
+      <div className="sticky top-0 w-full h-[100dvh] flex flex-col justify-between pt-12 sm:pt-16 lg:pt-20 pb-4 sm:pb-8 lg:pb-10 px-4 sm:px-8 lg:px-16 overflow-hidden">
         
         {/* Ambient Gradient Background Glow */}
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-gradient-to-tr from-blue-100/25 via-purple-100/15 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -131,7 +131,7 @@ export default function Services() {
               CAPABILITIES & SERVICES
             </span>
 
-            <h2 className="font-general text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-black tracking-tight uppercase leading-[1.08]">
+            <h2 className="font-general text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-black tracking-tight uppercase leading-[1.08]">
               WHAT WE ENGINEER.
             </h2>
           </div>
@@ -144,12 +144,12 @@ export default function Services() {
         </div>
 
         {/* MAIN DISPLAY GRID */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-2 sm:my-4 overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto w-full flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-2 sm:my-4">
           
           {/* DESKTOP-ONLY 3D Interactive Emblem Pod (Hidden on mobile) */}
-          <div className="hidden lg:flex col-span-5 relative items-center justify-center h-full z-20">
-            <div className="relative w-full max-w-[460px] h-[420px] rounded-[32px] bg-white/70 backdrop-blur-xl border border-black/[0.08] shadow-2xl overflow-hidden flex flex-col items-center justify-center p-6 transition-transform duration-500 hover:scale-[1.01]">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-blue-50/20 to-purple-50/15 pointer-events-none" />
+          <div className="hidden lg:flex col-span-5 relative items-center justify-center h-full z-30">
+            <div className="relative w-full max-w-[460px] h-[440px] lg:h-[460px] rounded-[32px] bg-white/80 backdrop-blur-xl border border-black/[0.08] shadow-2xl overflow-hidden flex flex-col items-center justify-center p-6 transition-transform duration-500 hover:scale-[1.01]">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-blue-50/20 to-purple-50/15 pointer-events-none" />
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000004_1px,transparent_1px),linear-gradient(to_bottom,#00000004_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
               
               <div className="relative z-10 w-full h-full flex items-center justify-center">
@@ -163,35 +163,37 @@ export default function Services() {
             </div>
           </div>
 
-          {/* STACKED SERVICE CARDS CONTAINER (Full width on mobile, 7 cols on desktop) */}
-          <div className="col-span-1 lg:col-span-7 relative flex items-center justify-center z-10 h-[330px] sm:h-[390px] lg:h-[440px]">
+          {/* STACKED SERVICE CARDS CONTAINER */}
+          <div className="col-span-1 lg:col-span-7 relative flex items-center justify-center z-20 h-[330px] sm:h-[390px] lg:h-[460px]">
             {services.map((service, idx) => {
               const offset = idx - activeIdx;
               
-              let posX = offset * 360;
-              let opacity = 1;
-              let scale = 1;
+              // Positioning logic:
+              // offset === 0: active card (posX = 0, opacity = 1, scale = 1)
+              // offset === 1: next upcoming card peeking on right (posX = 320px, opacity = 0.7, scale = 0.94)
+              // offset > 1: upcoming cards offscreen to right (posX = 650px, opacity = 0)
+              // offset < 0: past cards slide out to left & fade out cleanly without overlapping 3D pod (posX = -120px, opacity = 0)
+              
+              let posX = 0;
+              let opacity = 0;
+              let scale = 0.95;
 
-              if (offset === -1) {
-                posX = -390;
-                opacity = 0.55;
-                scale = 0.92;
-              } else if (offset < -1) {
-                posX = offset * 420;
-                opacity = 0;
-                scale = 0.85;
-              } else if (offset === 0) {
+              if (offset === 0) {
                 posX = 0;
                 opacity = 1;
                 scale = 1;
               } else if (offset === 1) {
-                posX = 340;
-                opacity = 0.85;
+                posX = 320;
+                opacity = 0.7;
                 scale = 0.94;
-              } else {
-                posX = 700 + (offset - 2) * 340;
+              } else if (offset > 1) {
+                posX = 650;
                 opacity = 0;
                 scale = 0.9;
+              } else if (offset < 0) {
+                posX = -120;
+                opacity = 0;
+                scale = 0.92;
               }
 
               const isRevealed = offset === 0;
@@ -199,10 +201,10 @@ export default function Services() {
               return (
                 <div
                   key={service.number}
-                  className={`group absolute w-[88vw] max-w-[340px] sm:w-[380px] lg:w-[410px] h-full p-6 sm:p-7 md:p-9 rounded-[24px] sm:rounded-[28px] border transition-all duration-700 ease-out flex flex-col justify-between overflow-hidden shadow-2xl ${
+                  className={`group absolute w-[88vw] max-w-[340px] sm:w-[380px] lg:w-[410px] h-full p-6 sm:p-7 lg:p-8 rounded-[24px] sm:rounded-[28px] border transition-all duration-700 ease-out flex flex-col justify-between overflow-hidden shadow-2xl ${
                     isRevealed
                       ? "bg-[#121217] text-white border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.25)] opacity-100 scale-100"
-                      : "bg-[#181820] text-zinc-400 border-white/5 opacity-0 lg:opacity-70 scale-95 lg:scale-90"
+                      : "bg-[#181820] text-zinc-400 border-white/5 opacity-0 lg:opacity-70 scale-95 lg:scale-94"
                   }`}
                   style={{
                     transform: typeof window !== "undefined" && window.innerWidth < 1024
@@ -218,9 +220,9 @@ export default function Services() {
                   <div className="absolute bottom-4 right-4 w-36 h-36 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:12px_12px] opacity-30 pointer-events-none" />
 
                   {/* CARD TOP HEADER: Service Number + Link Button */}
-                  <div className="relative z-10 flex items-center justify-between">
+                  <div className="relative z-10 flex items-center justify-between shrink-0">
                     <span
-                      className={`font-general font-extrabold text-3xl sm:text-3xl transition-colors ${
+                      className={`font-general font-extrabold text-2xl sm:text-3xl transition-colors ${
                         isRevealed ? "text-[#3B82F6]" : "text-zinc-600"
                       }`}
                     >
@@ -250,7 +252,7 @@ export default function Services() {
 
                   {/* CARD BODY: Category, Title, Description, Tags */}
                   <div
-                    className={`relative z-10 flex-1 flex flex-col justify-center gap-2.5 sm:gap-3 transition-all duration-500 ${
+                    className={`relative z-10 flex-1 flex flex-col justify-center gap-2 sm:gap-2.5 transition-all duration-500 my-auto ${
                       isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                     }`}
                   >
@@ -274,7 +276,7 @@ export default function Services() {
                           {service.tags.slice(0, 4).map((tag) => (
                             <span
                               key={tag}
-                              className="px-2.5 py-0.5 bg-white/10 rounded-full text-[10px] sm:text-[11px] font-mono text-zinc-200 border border-white/10"
+                              className="px-2.5 py-0.5 bg-white/10 rounded-full text-[10px] sm:text-[11px] font-mono text-zinc-200 border border-white/10 shrink-0"
                             >
                               {tag}
                             </span>
@@ -285,7 +287,7 @@ export default function Services() {
                   </div>
 
                   {/* CARD FOOTER: Capability & Index */}
-                  <div className="relative z-10 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-zinc-400 pt-2 border-t border-white/5">
+                  <div className="relative z-10 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-zinc-400 pt-2 border-t border-white/5 shrink-0">
                     <span>CAPABILITY</span>
                     <span>0{idx + 1} / 06</span>
                   </div>
