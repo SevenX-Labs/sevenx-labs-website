@@ -8,6 +8,7 @@ import { CTASection } from "@/components/ui/CTASection";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { SOLUTIONS } from "@/lib/data/solutions";
 import { absoluteUrl } from "@/lib/site-config";
+import { ItemListJsonLd, FAQPageJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: {
@@ -51,15 +52,27 @@ const SOLUTION_FAQS = [
 export default function SolutionsIndexPage() {
   const solutionList = Object.values(SOLUTIONS);
 
+  const solutionItemList = solutionList.map((sol) => ({
+    name: sol.title,
+    url: absoluteUrl(`/solutions/${sol.slug}`),
+    description: sol.overview,
+  }));
+
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-zinc-900 flex flex-col">
+      <ItemListJsonLd
+        name="SevenX Labs Engineering Solutions"
+        description="High-impact software solutions tailored for business growth."
+        itemListElement={solutionItemList}
+      />
+      <FAQPageJsonLd faqs={SOLUTION_FAQS} />
       <Navbar />
 
       <PageHeader
         badge="BUSINESS SOLUTIONS"
         title="High-Impact Software Solutions Tailored to Your Growth Strategy"
         subtitle="Whether launching a new SaaS platform, building an investor-ready MVP, or automating operations, our solutions deliver rapid ROI."
-        breadcrumbs={[{ name: "Solutions" }]}
+        breadcrumbs={[{ name: "Solutions", href: "/solutions" }]}
       />
 
       {/* SOLUTIONS GRID */}

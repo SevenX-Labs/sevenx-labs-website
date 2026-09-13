@@ -1,4 +1,5 @@
 export interface CaseStudyDetail {
+  datePublished?: string;
   slug: string;
   title: string;
   subtitle: string;
@@ -36,6 +37,7 @@ export interface CaseStudyDetail {
 export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
   "synapse-ai-engine": {
     slug: "synapse-ai-engine",
+    datePublished: "2025-01-15",
     title: "Synapse AI Automation Engine",
     subtitle: "Enterprise LLM Agent Platform & Vector Search",
     category: "AI & SaaS",
@@ -145,6 +147,7 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
   },
   "maison-lumina": {
     slug: "maison-lumina",
+    datePublished: "2024-11-20",
     title: "Maison Lumina Luxury",
     subtitle: "3D E-Commerce Platform & Design System",
     category: "E-Commerce",
@@ -196,6 +199,7 @@ export const CASE_STUDIES: Record<string, CaseStudyDetail> = {
   },
   "kubeflow-enterprise": {
     slug: "kubeflow-enterprise",
+    datePublished: "2024-09-10",
     title: "KubeFlow Enterprise",
     subtitle: "Multi-Region Cloud Infrastructure & DevOps",
     category: "Cloud Ops",

@@ -38,7 +38,7 @@ export default function ContactPage() {
         badge="START A PROJECT"
         title="Let's Build Something Exceptional Together"
         subtitle="Have a new project in mind or looking to upgrade your existing software platform? Reach out to our engineering studio below."
-        breadcrumbs={[{ name: "Contact" }]}
+        breadcrumbs={[{ name: "Contact", href: "/contact" }]}
       />
       <Contact />
       <Footer />

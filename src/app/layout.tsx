@@ -63,10 +63,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="icon" href="/logo.png" type="image/png" sizes="any" />
         <link rel="apple-touch-icon" href="/logo.png" />
-        <OrganizationJsonLd />
-        <WebSiteJsonLd />
       </head>
       <body className="min-h-full flex flex-col">
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

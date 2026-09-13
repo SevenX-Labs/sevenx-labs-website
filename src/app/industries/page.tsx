@@ -8,6 +8,7 @@ import { CTASection } from "@/components/ui/CTASection";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { INDUSTRIES } from "@/lib/data/industries";
 import { absoluteUrl } from "@/lib/site-config";
+import { ItemListJsonLd, FAQPageJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: {
@@ -51,15 +52,27 @@ const INDUSTRY_FAQS = [
 export default function IndustriesIndexPage() {
   const industryList = Object.values(INDUSTRIES);
 
+  const industryItemList = industryList.map((ind) => ({
+    name: ind.title,
+    url: absoluteUrl(`/industries/${ind.slug}`),
+    description: ind.overview,
+  }));
+
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-zinc-900 flex flex-col">
+      <ItemListJsonLd
+        name="SevenX Labs Industry Solutions"
+        description="Specialized software engineering across FinTech, E-Commerce, SaaS, and Startups."
+        itemListElement={industryItemList}
+      />
+      <FAQPageJsonLd faqs={INDUSTRY_FAQS} />
       <Navbar />
 
       <PageHeader
         badge="INDUSTRY EXPERTISE"
         title="Software Engineering Tailored to Your Industry Dynamics"
         subtitle="We bring deep domain knowledge in FinTech, E-Commerce, SaaS, and Startup product development."
-        breadcrumbs={[{ name: "Industries" }]}
+        breadcrumbs={[{ name: "Industries", href: "/industries" }]}
       />
 
       {/* INDUSTRIES GRID */}

@@ -5,6 +5,8 @@ import Footer from "@/components/footer";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { CTASection } from "@/components/ui/CTASection";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
+import { FAQPageJsonLd } from "@/components/seo/JsonLd";
+import Link from "next/link";
 import { absoluteUrl } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -53,13 +55,14 @@ const ABOUT_FAQS = [
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-zinc-900 flex flex-col">
+      <FAQPageJsonLd faqs={ABOUT_FAQS} />
       <Navbar />
 
       <PageHeader
         badge="PRODUCT ENGINEERING STUDIO"
         title="We Build Digital Products That Move Business Forward"
         subtitle="SevenX Labs is a digital product studio partnering with startups and growth-stage companies to design, engineer, and scale resilient software applications."
-        breadcrumbs={[{ name: "About" }]}
+        breadcrumbs={[{ name: "About", href: "/about" }]}
       />
 
       {/* CORE PHILOSOPHY SECTION */}

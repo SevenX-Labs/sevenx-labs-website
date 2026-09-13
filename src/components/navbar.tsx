@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import CardNav, { CardNavItem } from "./CardNav";
 
@@ -20,8 +20,11 @@ export default function Navbar() {
       textColor: "#ffffff",
       links: [
         { label: "Web Development", href: "/services/web-development", ariaLabel: "Web Development Services" },
-        { label: "AI Development", href: "/services/ai-development", ariaLabel: "AI Development Services" },
         { label: "Mobile Apps", href: "/services/mobile-app-development", ariaLabel: "Mobile App Development" },
+        { label: "AI Development", href: "/services/ai-development", ariaLabel: "AI Development Services" },
+        { label: "Custom Software", href: "/services/custom-software-development", ariaLabel: "Custom Software Development" },
+        { label: "UI/UX Design", href: "/services/ui-ux-design", ariaLabel: "UI/UX Design Services" },
+        { label: "Cloud & DevOps", href: "/services/cloud-devops", ariaLabel: "Cloud and DevOps Services" },
         { label: "All Services", href: "/services", ariaLabel: "View All Engineering Services" },
       ],
     },
@@ -33,6 +36,7 @@ export default function Navbar() {
         { label: "SaaS Development", href: "/solutions/saas-development", ariaLabel: "SaaS Product Engineering" },
         { label: "MVP Development", href: "/solutions/mvp-development", ariaLabel: "Rapid MVP Development" },
         { label: "AI Automation", href: "/solutions/ai-automation", ariaLabel: "Enterprise AI Automation" },
+        { label: "Digital Transformation", href: "/solutions/digital-transformation", ariaLabel: "Digital Transformation Solutions" },
         { label: "All Solutions", href: "/solutions", ariaLabel: "View All Engineering Solutions" },
       ],
     },
@@ -49,12 +53,11 @@ export default function Navbar() {
       ],
     },
     {
-      label: "Portfolio & Work",
+      label: "Work",
       bgColor: "#231c2b",
       textColor: "#ffffff",
       links: [
         { label: "Selected Case Studies", href: "/portfolio", ariaLabel: "Portfolio Case Studies" },
-        { label: "Client Success", href: "/portfolio", ariaLabel: "View Featured Portfolio Projects" },
         { label: "Contact Studio", href: "/contact", ariaLabel: "Contact SevenX Labs" },
       ],
     },

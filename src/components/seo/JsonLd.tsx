@@ -128,3 +128,50 @@ export function BreadcrumbJsonLd({
 
   return <JsonLd data={schema} />;
 }
+
+export function FAQPageJsonLd({
+  faqs,
+}: {
+  faqs: { question: string; answer: string }[];
+}) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
+  return <JsonLd data={schema} />;
+}
+
+export function ItemListJsonLd({
+  name,
+  description,
+  itemListElement,
+}: {
+  name: string;
+  description?: string;
+  itemListElement: { name: string; url: string; description?: string }[];
+}) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    ...(description ? { description } : {}),
+    itemListElement: itemListElement.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: item.url,
+      ...(item.description ? { description: item.description } : {}),
+    })),
+  };
+
+  return <JsonLd data={schema} />;
+}

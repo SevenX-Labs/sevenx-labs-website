@@ -215,9 +215,7 @@ export default function Services() {
                     zIndex: 10 - Math.abs(offset),
                   }}
                 >
-                  {isRevealed && (
-                    <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-blue-600/30 via-purple-600/15 to-transparent rounded-full blur-2xl pointer-events-none" />
-                  )}
+                  <div className={`absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-blue-600/30 via-purple-600/15 to-transparent rounded-full blur-2xl pointer-events-none transition-opacity duration-500 ${isRevealed ? "opacity-100" : "opacity-0"}`} />
 
                   <div className="absolute bottom-4 right-4 w-36 h-36 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:12px_12px] opacity-30 pointer-events-none" />
 
@@ -252,40 +250,36 @@ export default function Services() {
                     </Link>
                   </div>
 
-                  {/* CARD BODY: Category, Title, Description, Tags */}
+                  {/* CARD BODY: Category, Title, Description, Tags — always in DOM for crawlability */}
                   <div
                     className={`relative z-10 flex-1 flex flex-col justify-center gap-2 sm:gap-2.5 transition-all duration-500 my-auto ${
                       isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                     }`}
                   >
-                    {isRevealed && (
-                      <>
-                        <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#3B82F6]">
-                          {service.category}
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#3B82F6]">
+                      {service.category}
+                    </span>
+
+                    <h3 className="font-general text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight uppercase">
+                      <Link href={`/services/${service.slug}`} aria-label={`View details for ${service.title}`}>
+                        {service.title}
+                      </Link>
+                    </h3>
+
+                    <p className="text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed font-normal">
+                      {service.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {service.tags.slice(0, 4).map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2.5 py-0.5 bg-white/10 rounded-full text-[10px] sm:text-[11px] font-mono text-zinc-200 border border-white/10 shrink-0"
+                        >
+                          {tag}
                         </span>
-
-                        <h3 className="font-general text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight uppercase">
-                          <Link href={`/services/${service.slug}`} aria-label={`View details for ${service.title}`}>
-                            {service.title}
-                          </Link>
-                        </h3>
-
-                        <p className="text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed font-normal">
-                          {service.description}
-                        </p>
-
-                        <div className="flex flex-wrap gap-1.5 pt-1">
-                          {service.tags.slice(0, 4).map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-2.5 py-0.5 bg-white/10 rounded-full text-[10px] sm:text-[11px] font-mono text-zinc-200 border border-white/10 shrink-0"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </>
-                    )}
+                      ))}
+                    </div>
                   </div>
 
                   {/* CARD FOOTER: Capability & Index */}

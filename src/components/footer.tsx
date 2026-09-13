@@ -23,17 +23,15 @@ export default function Footer() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-12">
         {/* ─── TOP SECTION: Brand Headline & Primary CTA ─── */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-14 border-b border-white/[0.08]">
-          <div className="flex flex-col gap-4 max-w-xl">
-            <Link href="/" aria-label="SevenX Labs Homepage" className="inline-flex items-center gap-2 focus:outline-none w-max">
-              <span className="font-general text-2xl sm:text-3xl font-extrabold tracking-tight text-white uppercase flex items-center gap-2">
-                <span>SevenX</span>
-                <span className="font-light text-zinc-400">Labs</span>
-                <span className="w-2 h-2 rounded-full bg-[#3B82F6] inline-block" />
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 pb-16 border-b border-white/[0.08]">
+          <div className="max-w-xl flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.6)]" />
+              <span className="text-sm font-mono font-bold tracking-[0.25em] text-white uppercase">
+                SEVENX LABS
               </span>
-            </Link>
-
-            <p className="font-general text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight uppercase">
+            </div>
+            <p className="font-general text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-[1.1] uppercase">
               Building digital products <br className="hidden sm:block" />
               <span className="text-zinc-400">that move business forward.</span>
             </p>
@@ -51,10 +49,10 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ─── MIDDLE SECTION: 4 Navigation Columns ─── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-10 md:gap-8 py-14 border-b border-white/[0.08]">
-          {/* Column 1: EXPLORE (col-span-3) */}
-          <div className="col-span-1 lg:col-span-3 flex flex-col gap-4">
+        {/* ─── MIDDLE SECTION: 5 Navigation Columns ─── */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 py-14 border-b border-white/[0.08]">
+          {/* Column 1: EXPLORE */}
+          <div className="flex flex-col gap-4">
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
               EXPLORE
             </span>
@@ -81,15 +79,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 2: SERVICES (col-span-3) */}
-          <div className="col-span-1 lg:col-span-3 flex flex-col gap-4">
+          {/* Column 2: SERVICES */}
+          <div className="flex flex-col gap-4">
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
               SERVICES
             </span>
             <ul className="flex flex-col gap-2.5">
               {[
                 { name: "Web Development", href: "/services/web-development" },
-                { name: "Mobile App Development", href: "/services/mobile-app-development" },
+                { name: "Mobile Apps", href: "/services/mobile-app-development" },
                 { name: "AI Development", href: "/services/ai-development" },
                 { name: "Custom Software", href: "/services/custom-software-development" },
                 { name: "UI/UX Design", href: "/services/ui-ux-design" },
@@ -108,8 +106,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: SOLUTIONS (col-span-3) */}
-          <div className="col-span-1 lg:col-span-3 flex flex-col gap-4">
+          {/* Column 3: SOLUTIONS */}
+          <div className="flex flex-col gap-4">
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
               SOLUTIONS
             </span>
@@ -133,8 +131,34 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: CONNECT (col-span-3) */}
-          <div className="col-span-1 lg:col-span-3 flex flex-col gap-4">
+          {/* Column 4: INDUSTRIES */}
+          <div className="flex flex-col gap-4">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
+              INDUSTRIES
+            </span>
+            <ul className="flex flex-col gap-2.5">
+              {[
+                { name: "FinTech", href: "/industries/fintech" },
+                { name: "E-Commerce", href: "/industries/ecommerce" },
+                { name: "SaaS", href: "/industries/saas" },
+                { name: "Startups", href: "/industries/startups" },
+                { name: "All Industries", href: "/industries" },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    aria-label={`SevenX Labs ${item.name} Industry Solutions`}
+                    className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 5: CONNECT */}
+          <div className="flex flex-col gap-4">
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
               CONNECT
             </span>
@@ -182,8 +206,10 @@ export default function Footer() {
 
         {/* ─── BOTTOM BAR: Copyright & Availability Badge ─── */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-10 text-xs text-zinc-500 font-mono">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <span>© {currentYear} SevenX Labs. All rights reserved.</span>
+            <Link href="/privacy" className="hover:text-zinc-300 transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-zinc-300 transition-colors">Terms of Service</Link>
           </div>
 
           <div className="flex items-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/[0.08] rounded-full text-zinc-400">

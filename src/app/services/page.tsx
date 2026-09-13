@@ -8,6 +8,7 @@ import { CTASection } from "@/components/ui/CTASection";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { SERVICES } from "@/lib/data/services";
 import { absoluteUrl } from "@/lib/site-config";
+import { ItemListJsonLd, FAQPageJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: {
@@ -55,15 +56,27 @@ const SERVICE_FAQS = [
 export default function ServicesIndexPage() {
   const serviceList = Object.values(SERVICES);
 
+  const serviceItemList = serviceList.map((srv) => ({
+    name: srv.title,
+    url: absoluteUrl(`/services/${srv.slug}`),
+    description: srv.overview,
+  }));
+
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-zinc-900 flex flex-col">
+      <ItemListJsonLd
+        name="SevenX Labs Engineering Services"
+        description="Comprehensive software engineering capabilities including Web, Mobile, AI, and Cloud development."
+        itemListElement={serviceItemList}
+      />
+      <FAQPageJsonLd faqs={SERVICE_FAQS} />
       <Navbar />
 
       <PageHeader
         badge="OUR CAPABILITIES"
         title="Software Engineering Services Built for Performance & Scale"
         subtitle="We design and engineer high-performance web applications, mobile apps, AI solutions, and custom software for growing businesses."
-        breadcrumbs={[{ name: "Services" }]}
+        breadcrumbs={[{ name: "Services", href: "/services" }]}
       />
 
       {/* SERVICES GRID */}

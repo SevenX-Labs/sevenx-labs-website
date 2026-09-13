@@ -7,7 +7,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { CTASection } from "@/components/ui/CTASection";
-import { JsonLd } from "@/components/seo/JsonLd";
+import { JsonLd, ArticleJsonLd } from "@/components/seo/JsonLd";
 import { CASE_STUDIES } from "@/lib/data/case-studies";
 import { absoluteUrl } from "@/lib/site-config";
 
@@ -70,6 +70,13 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyPageProps
 
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-zinc-900 flex flex-col">
+      <ArticleJsonLd
+        headline={study.title}
+        description={study.overview}
+        url={absoluteUrl(`/portfolio/${study.slug}`)}
+        datePublished={study.datePublished || "2025-01-01"}
+        authorName="SevenX Labs"
+      />
       <JsonLd data={creativeWorkSchema} />
       <Navbar />
 
