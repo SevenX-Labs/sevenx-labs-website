@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import CardNav, { CardNavItem } from "./CardNav";
 
@@ -33,7 +33,19 @@ export default function Navbar() {
         { label: "SaaS Development", href: "/solutions/saas-development", ariaLabel: "SaaS Product Engineering" },
         { label: "MVP Development", href: "/solutions/mvp-development", ariaLabel: "Rapid MVP Development" },
         { label: "AI Automation", href: "/solutions/ai-automation", ariaLabel: "Enterprise AI Automation" },
-        { label: "Industry Expertise", href: "/industries", ariaLabel: "View All Industry Sectors" },
+        { label: "All Solutions", href: "/solutions", ariaLabel: "View All Engineering Solutions" },
+      ],
+    },
+    {
+      label: "Industries",
+      bgColor: "#1c2520",
+      textColor: "#ffffff",
+      links: [
+        { label: "FinTech", href: "/industries/fintech", ariaLabel: "FinTech Engineering Services" },
+        { label: "E-Commerce", href: "/industries/ecommerce", ariaLabel: "E-Commerce Engineering" },
+        { label: "SaaS", href: "/industries/saas", ariaLabel: "SaaS Industry Solutions" },
+        { label: "Startups", href: "/industries/startups", ariaLabel: "Startup Engineering Solutions" },
+        { label: "All Industries", href: "/industries", ariaLabel: "View All Industry Sectors" },
       ],
     },
     {
