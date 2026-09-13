@@ -1,13 +1,18 @@
-"use client";
-
 import Link from "next/link";
+import React from "react";
+import { SITE_CONFIG } from "@/lib/site-config";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const showGithub = Boolean(
+    SITE_CONFIG.social.github &&
+      SITE_CONFIG.social.github.startsWith("http") &&
+      SITE_CONFIG.social.github !== "https://github.com"
+  );
 
   return (
     <footer className="relative w-full bg-[#0D0D11] text-white overflow-hidden font-sans border-t border-white/[0.08]">
-      {/* Background Architectural Grid & Subtle Ambient Glow */}
+      {/* Background Architectural Grid & Ambient Glow */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-10 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-3xl" />
@@ -15,7 +20,6 @@ export default function Footer() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-12">
-        
         {/* ─── TOP SECTION: Brand Headline & Primary CTA ─── */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-14 border-b border-white/[0.08]">
           <div className="flex flex-col gap-4 max-w-xl">
@@ -35,7 +39,7 @@ export default function Footer() {
 
           <div className="shrink-0">
             <Link
-              href="#contact"
+              href="/contact"
               className="group inline-flex items-center gap-3.5 px-8 py-4 bg-white text-black text-xs font-mono font-bold uppercase tracking-[0.2em] rounded-full hover:bg-zinc-200 transition-all duration-300 shadow-xl shadow-white/5 hover:-translate-y-0.5 active:scale-[0.98]"
             >
               <span>Start a Project</span>
@@ -46,21 +50,23 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ─── MIDDLE SECTION: 3 Navigation Columns ─── */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-10 md:gap-8 py-14 border-b border-white/[0.08]">
-          
-          {/* Column 1: EXPLORE (col-span-4) */}
-          <div className="col-span-1 lg:col-span-4 flex flex-col gap-4">
+        {/* ─── MIDDLE SECTION: 4 Navigation Columns ─── */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-10 md:gap-8 py-14 border-b border-white/[0.08]">
+          {/* Column 1: EXPLORE (col-span-3) */}
+          <div className="col-span-1 lg:col-span-3 flex flex-col gap-4">
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
               EXPLORE
             </span>
             <ul className="flex flex-col gap-2.5">
               {[
                 { name: "Home", href: "/" },
-                { name: "About", href: "/#about" },
-                { name: "Services", href: "/#services" },
+                { name: "About", href: "/about" },
+                { name: "Services", href: "/services" },
+                { name: "Solutions", href: "/solutions" },
+                { name: "Industries", href: "/industries" },
                 { name: "Work", href: "/portfolio" },
-                { name: "Process", href: "/#how-we-work" },
+                { name: "Insights", href: "/insights" },
+                { name: "Contact", href: "/contact" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link
@@ -74,18 +80,19 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 2: SERVICES (col-span-4) */}
-          <div className="col-span-1 lg:col-span-4 flex flex-col gap-4">
+          {/* Column 2: SERVICES (col-span-3) */}
+          <div className="col-span-1 lg:col-span-3 flex flex-col gap-4">
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
               SERVICES
             </span>
             <ul className="flex flex-col gap-2.5">
               {[
-                { name: "Web Development", href: "/#services" },
-                { name: "Mobile Development", href: "/#services" },
-                { name: "AI & Automation", href: "/#services" },
-                { name: "UI/UX Design", href: "/#services" },
-                { name: "Custom Software", href: "/#services" },
+                { name: "Web Development", href: "/services/web-development" },
+                { name: "Mobile App Development", href: "/services/mobile-app-development" },
+                { name: "AI & Automation", href: "/services/ai-development" },
+                { name: "Custom Software", href: "/services/custom-software-development" },
+                { name: "UI/UX Design", href: "/services/ui-ux-design" },
+                { name: "Cloud & DevOps", href: "/services/cloud-devops" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link
@@ -99,66 +106,88 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: CONNECT (col-span-4) */}
-          <div className="col-span-2 md:col-span-1 lg:col-span-4 flex flex-col gap-4">
+          {/* Column 3: SOLUTIONS (col-span-3) */}
+          <div className="col-span-1 lg:col-span-3 flex flex-col gap-4">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
+              SOLUTIONS
+            </span>
+            <ul className="flex flex-col gap-2.5">
+              {[
+                { name: "SaaS Development", href: "/solutions/saas-development" },
+                { name: "MVP Development", href: "/solutions/mvp-development" },
+                { name: "AI Automation", href: "/solutions/ai-automation" },
+                { name: "Digital Transformation", href: "/solutions/digital-transformation" },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: CONNECT (col-span-3) */}
+          <div className="col-span-1 lg:col-span-3 flex flex-col gap-4">
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
               CONNECT
             </span>
             <ul className="flex flex-col gap-2.5">
+              {SITE_CONFIG.social.linkedin && (
+                <li>
+                  <a
+                    href={SITE_CONFIG.social.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
+                  >
+                    <span>LinkedIn</span>
+                    <span className="text-xs text-zinc-500 group-hover:text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                      ↗
+                    </span>
+                  </a>
+                </li>
+              )}
+              {showGithub && (
+                <li>
+                  <a
+                    href={SITE_CONFIG.social.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
+                  >
+                    <span>GitHub</span>
+                    <span className="text-xs text-zinc-500 group-hover:text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                      ↗
+                    </span>
+                  </a>
+                </li>
+              )}
               <li>
                 <a
-                  href="https://linkedin.com/company/sevenx-labs"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`mailto:${SITE_CONFIG.email}`}
                   className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
                 >
-                  <span>LinkedIn</span>
-                  <span className="text-xs text-zinc-500 group-hover:text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    ↗
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
-                >
-                  <span>GitHub</span>
-                  <span className="text-xs text-zinc-500 group-hover:text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    ↗
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:sevenxlabs07@gmail.com"
-                  className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
-                >
-                  <span>Email</span>
+                  <span>{SITE_CONFIG.email}</span>
                 </a>
               </li>
             </ul>
           </div>
-
         </div>
 
         {/* ─── BOTTOM BAR: Copyright, Legal & Availability Badge ─── */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-10 text-xs text-zinc-500 font-mono">
-          
           <div className="flex items-center gap-2">
             <span>© {currentYear} SevenX Labs. All rights reserved.</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-6">
             <div className="flex items-center gap-4">
-              <Link href="#" className="hover:text-zinc-300 transition-colors">
-                Privacy
-              </Link>
-              <span>•</span>
-              <Link href="#" className="hover:text-zinc-300 transition-colors">
-                Terms
+              <Link href="/about" className="hover:text-zinc-300 transition-colors">
+                Privacy & Terms
               </Link>
             </div>
 
@@ -167,9 +196,7 @@ export default function Footer() {
               <span className="text-[11px]">Available for new projects</span>
             </div>
           </div>
-
         </div>
-
       </div>
     </footer>
   );

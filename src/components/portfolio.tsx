@@ -1,67 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import React, { useState } from "react";
+import { CASE_STUDIES } from "@/lib/data/case-studies";
 
 export default function Portfolio() {
-  const categories = ["All", "AI & ML", "Web & Mobile", "E-Commerce", "Cloud Ops"];
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const projects = [
-    {
-      id: 1,
-      title: "Synapse AI Engine",
-      subtitle: "Autonomous AI Agents & Custom LLM Pipeline",
-      category: "AI & ML",
-      description:
-        "Engineered an enterprise-grade AI automation platform powering multi-modal agents, RAG document search, and real-time LLM analytics.",
-      metric: "3.2M Daily Ops",
-      image: "/portfolio_ai_saas.png",
-      tags: ["AI Agents", "Python", "RAG Systems", "Next.js"],
-      link: "#",
-    },
-    {
-      id: 2,
-      title: "FinFuse Wealth Platform",
-      subtitle: "High-Concurrency Web & Mobile Trading App",
-      category: "Web & Mobile",
-      description:
-        "Built a real-time cross-platform iOS & Android trading mobile app and web dashboard handling 100,000+ daily active investors.",
-      metric: "100k+ Active Users",
-      image: "/portfolio_fintech.png",
-      tags: ["React Native", "TypeScript", "Node.js", "WebSockets"],
-      link: "#",
-    },
-    {
-      id: 3,
-      title: "Maison Lumina Luxury",
-      subtitle: "3D E-Commerce Platform & Design System",
-      category: "E-Commerce",
-      description:
-        "Designed and developed a high-converting luxury e-commerce web platform with interactive 3D product previews and sub-second page loads.",
-      metric: "+45% Conversion",
-      image: "/portfolio_ecommerce.png",
-      tags: ["E-Commerce", "Three.js", "TailwindCSS", "Stripe API"],
-      link: "#",
-    },
-    {
-      id: 4,
-      title: "KubeFlow Enterprise",
-      subtitle: "Multi-Region Cloud Infrastructure & DevOps",
-      category: "Cloud Ops",
-      description:
-        "Migrated legacy enterprise architecture to automated multi-region Kubernetes clusters with zero-downtime CI/CD deployment pipelines.",
-      metric: "99.99% Uptime SLA",
-      image: "/portfolio_cloud.png",
-      tags: ["Kubernetes", "AWS / GCP", "Docker", "Terraform"],
-      link: "#",
-    },
-  ];
+  const categories = ["All", "AI & SaaS", "Web & Mobile", "E-Commerce", "Cloud Ops"];
+
+  const projectsList = Object.values(CASE_STUDIES);
 
   const filteredProjects =
     activeCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+      ? projectsList
+      : projectsList.filter((p) => p.category === activeCategory);
 
   return (
     <section
@@ -76,7 +30,6 @@ export default function Portfolio() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col gap-12 sm:gap-16">
-        
         {/* HEADER & FILTER TABS */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div className="flex flex-col gap-3">
@@ -95,6 +48,7 @@ export default function Portfolio() {
             {categories.map((cat) => (
               <button
                 key={cat}
+                type="button"
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all duration-300 ${
                   activeCategory === cat
@@ -111,8 +65,9 @@ export default function Portfolio() {
         {/* PROJECTS GRID (2 Columns) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           {filteredProjects.map((project) => (
-            <div
-              key={project.id}
+            <Link
+              key={project.slug}
+              href={`/portfolio/${project.slug}`}
               className="group relative bg-white rounded-[32px] border border-black/[0.08] hover:border-blue-500/40 transition-all duration-500 overflow-hidden flex flex-col justify-between shadow-xl hover:shadow-2xl"
             >
               {/* IMAGE MOCKUP CONTAINER */}
@@ -151,8 +106,8 @@ export default function Portfolio() {
                   </h3>
                 </div>
 
-                <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed font-normal">
-                  {project.description}
+                <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed font-normal line-clamp-3">
+                  {project.overview}
                 </p>
 
                 {/* TECH TAGS & ARROW LINK */}
@@ -181,10 +136,9 @@ export default function Portfolio() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
-
       </div>
     </section>
   );

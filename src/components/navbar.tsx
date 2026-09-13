@@ -9,9 +9,9 @@ export default function Navbar() {
       bgColor: "#18181b",
       textColor: "#ffffff",
       links: [
-        { label: "About SevenX", href: "/#about", ariaLabel: "About SevenX Labs" },
-        { label: "Our Philosophy", href: "/#about", ariaLabel: "Our Engineering Philosophy" },
-        { label: "Why Choose Us", href: "/#why-sevenx", ariaLabel: "Why Choose SevenX Labs" },
+        { label: "About SevenX", href: "/about", ariaLabel: "About SevenX Labs" },
+        { label: "Our Philosophy", href: "/about#philosophy", ariaLabel: "Our Engineering Philosophy" },
+        { label: "Why Choose Us", href: "/about#why-sevenx", ariaLabel: "Why Choose SevenX Labs" },
       ],
     },
     {
@@ -19,29 +19,31 @@ export default function Navbar() {
       bgColor: "#1e1e24",
       textColor: "#ffffff",
       links: [
-        { label: "Web & Mobile Dev", href: "/#services", ariaLabel: "Web and Mobile Development" },
-        { label: "AI & Custom Software", href: "/#services", ariaLabel: "AI and Custom Software Engineering" },
-        { label: "Cloud & Architecture", href: "/#services", ariaLabel: "Cloud and Infrastructure Architecture" },
+        { label: "Web Development", href: "/services/web-development", ariaLabel: "Web Development Services" },
+        { label: "AI & Automation", href: "/services/ai-development", ariaLabel: "AI and Automation Services" },
+        { label: "Mobile Apps", href: "/services/mobile-app-development", ariaLabel: "Mobile App Development" },
+        { label: "All Services", href: "/services", ariaLabel: "View All Engineering Services" },
       ],
     },
     {
-      label: "How We Work",
+      label: "Solutions",
       bgColor: "#181f28",
       textColor: "#ffffff",
       links: [
-        { label: "Discovery & Strategy", href: "/#how-we-work", ariaLabel: "Discovery and Strategy Process" },
-        { label: "Sprint & Engineering", href: "/#how-we-work", ariaLabel: "Sprint and Agile Engineering" },
-        { label: "Launch & Scale", href: "/#how-we-work", ariaLabel: "Launch, QA and Scaling" },
+        { label: "SaaS Development", href: "/solutions/saas-development", ariaLabel: "SaaS Product Engineering" },
+        { label: "MVP Development", href: "/solutions/mvp-development", ariaLabel: "Rapid MVP Development" },
+        { label: "AI Automation", href: "/solutions/ai-automation", ariaLabel: "Enterprise AI Automation" },
+        { label: "All Solutions", href: "/solutions", ariaLabel: "View All Solutions" },
       ],
     },
     {
-      label: "Portfolio & Contact",
+      label: "Work & Insights",
       bgColor: "#231c2b",
       textColor: "#ffffff",
       links: [
-        { label: "Featured Work", href: "/portfolio", ariaLabel: "Portfolio Case Studies" },
-        { label: "Client Reviews", href: "/#testimonials", ariaLabel: "Client Reviews and Ratings" },
-        { label: "Start a Project", href: "/#contact", ariaLabel: "Contact SevenX Labs" },
+        { label: "Portfolio & Case Studies", href: "/portfolio", ariaLabel: "Portfolio Case Studies" },
+        { label: "Tech Insights & Blog", href: "/insights", ariaLabel: "SevenX Engineering Insights" },
+        { label: "Contact Studio", href: "/contact", ariaLabel: "Contact SevenX Labs" },
       ],
     },
   ];
@@ -54,10 +56,8 @@ export default function Navbar() {
       buttonBgColor="#111111"
       buttonTextColor="#ffffff"
       ctaText="Contact Us"
-      ctaHref="/#contact"
+      ctaHref="/contact"
       ease="power3.out"
     />
   );
 }
-
-
