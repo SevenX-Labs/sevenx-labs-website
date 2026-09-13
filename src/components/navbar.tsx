@@ -37,12 +37,12 @@ export default function Navbar() {
       ],
     },
     {
-      label: "Work & Insights",
+      label: "Portfolio & Work",
       bgColor: "#231c2b",
       textColor: "#ffffff",
       links: [
-        { label: "Portfolio & Case Studies", href: "/portfolio", ariaLabel: "Portfolio Case Studies" },
-        { label: "Tech Insights & Blog", href: "/insights", ariaLabel: "SevenX Engineering Insights" },
+        { label: "Selected Case Studies", href: "/portfolio", ariaLabel: "Portfolio Case Studies" },
+        { label: "Client Success", href: "/portfolio", ariaLabel: "View Featured Portfolio Projects" },
         { label: "Contact Studio", href: "/contact", ariaLabel: "Contact SevenX Labs" },
       ],
     },
