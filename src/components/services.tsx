@@ -8,7 +8,7 @@ const ServicesParticleCanvas = dynamic(
   () => import("./ServicesParticleCanvas"),
   {
     ssr: false,
-    loading: () => <div className="w-full h-[150px] lg:h-[360px]" />,
+    loading: () => <div className="w-full h-[120px] lg:h-[360px]" />,
   }
 );
 
@@ -118,14 +118,14 @@ export default function Services() {
       id="services"
       className="relative w-full h-[320vh] bg-[#FAF9F6] text-zinc-900 font-space select-none border-t border-black/[0.06]"
     >
-      <div className="sticky top-0 w-full h-screen flex flex-col justify-between pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-16 overflow-hidden">
+      <div className="sticky top-0 w-full h-[100dvh] flex flex-col justify-between pt-14 sm:pt-20 lg:pt-24 pb-4 sm:pb-8 lg:pb-12 px-4 sm:px-8 lg:px-16 overflow-hidden">
         
         {/* Ambient Gradient Background Glow */}
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-gradient-to-tr from-blue-100/25 via-purple-100/15 to-transparent rounded-full blur-3xl pointer-events-none" />
 
         {/* SECTION HEADER */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-6 shrink-0">
-          <div className="flex flex-col gap-1.5 sm:gap-3">
+        <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row md:items-end justify-between gap-2 sm:gap-6 shrink-0">
+          <div className="flex flex-col gap-1 sm:gap-3">
             <span className="px-3 sm:px-3.5 py-0.5 sm:py-1 bg-black/[0.04] text-[#3B82F6] text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-[0.25em] rounded-full border border-blue-200/60 w-max flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse" />
               CAPABILITIES & SERVICES
@@ -144,11 +144,11 @@ export default function Services() {
         </div>
 
         {/* MAIN DISPLAY GRID */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full flex-1 grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-6 lg:gap-8 items-center my-1 sm:my-4 overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto w-full flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center my-1 sm:my-4 overflow-hidden">
           
-          {/* 3D Interactive Emblem Pod */}
-          <div className="col-span-1 lg:col-span-5 relative flex items-center justify-center h-[140px] xs:h-[160px] sm:h-[220px] lg:h-full z-20">
-            <div className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[420px] lg:max-w-[460px] h-full rounded-[20px] sm:rounded-[32px] bg-white/70 backdrop-blur-xl border border-black/[0.08] shadow-lg lg:shadow-2xl overflow-hidden flex flex-col items-center justify-center p-2 sm:p-6 transition-transform duration-500 hover:scale-[1.01]">
+          {/* DESKTOP-ONLY 3D Interactive Emblem Pod */}
+          <div className="hidden lg:flex col-span-5 relative items-center justify-center h-full z-20">
+            <div className="relative w-full max-w-[460px] h-[420px] rounded-[32px] bg-white/70 backdrop-blur-xl border border-black/[0.08] shadow-2xl overflow-hidden flex flex-col items-center justify-center p-6 transition-transform duration-500 hover:scale-[1.01]">
               <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-blue-50/20 to-purple-50/15 pointer-events-none" />
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000004_1px,transparent_1px),linear-gradient(to_bottom,#00000004_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
               
@@ -156,57 +156,34 @@ export default function Services() {
                 <ServicesParticleCanvas activeIdx={activeIdx} />
               </div>
 
-              <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-black/[0.08] text-[9px] sm:text-[11px] font-mono font-bold text-zinc-700 shadow-sm flex items-center gap-1.5 sm:gap-2 z-20 pointer-events-none">
-                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#3B82F6] animate-ping" />
-                <span className="truncate max-w-[200px]">3D EMBLEM: {services[activeIdx].category}</span>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-black/[0.08] text-[11px] font-mono font-bold text-zinc-700 shadow-sm flex items-center gap-2 z-20 pointer-events-none">
+                <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-ping" />
+                <span>3D EMBLEM: {services[activeIdx].category}</span>
               </div>
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Stacked Services Cards */}
-          <div className="col-span-1 lg:col-span-7 relative flex items-center justify-center z-10 h-[220px] xs:h-[240px] sm:h-[300px] lg:h-full">
+          {/* STACKED SERVICE CARDS CONTAINER */}
+          <div className="col-span-1 lg:col-span-7 relative flex items-center justify-center z-10 h-[340px] xs:h-[370px] sm:h-[400px] lg:h-[440px]">
             {services.map((service, idx) => {
               const offset = idx - activeIdx;
               
-              let posX = offset * 360;
-              let opacity = 1;
-              let scale = 1;
-
-              if (offset === -1) {
-                posX = -390;
-                opacity = 0.55;
-                scale = 0.92;
-              } else if (offset < -1) {
-                posX = offset * 420;
-                opacity = 0;
-                scale = 0.85;
-              } else if (offset === 0) {
-                posX = 0;
-                opacity = 1;
-                scale = 1;
-              } else if (offset === 1) {
-                posX = 340;
-                opacity = 0.85;
-                scale = 0.94;
-              } else {
-                posX = 700 + (offset - 2) * 340;
-                opacity = 0;
-                scale = 0.9;
-              }
-
+              // On desktop (>= 1024px): show peek stack offset * 360
+              // On mobile (< 1024px): center active card cleanly without side peeking overflow
               const isRevealed = offset === 0;
 
               return (
                 <div
                   key={service.number}
-                  className={`group absolute w-[calc(100vw-32px)] max-w-[340px] sm:w-[380px] lg:w-[410px] h-full p-4 sm:p-7 md:p-9 rounded-[20px] sm:rounded-[28px] border transition-all duration-700 ease-out flex flex-col justify-between overflow-hidden shadow-xl lg:shadow-2xl ${
+                  className={`group absolute w-[90vw] max-w-[340px] xs:max-w-[360px] sm:w-[380px] lg:w-[410px] h-full p-4 xs:p-5 sm:p-7 md:p-9 rounded-[24px] sm:rounded-[28px] border transition-all duration-700 ease-out flex flex-col justify-between overflow-hidden shadow-xl lg:shadow-2xl ${
                     isRevealed
-                      ? "bg-[#121217] text-white border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.25)]"
-                      : "bg-[#181820] text-zinc-400 border-white/5 opacity-70"
+                      ? "bg-[#121217] text-white border-white/10 shadow-[0_25px_60px_rgba(0,0,0,0.25)] opacity-100 scale-100 pointer-events-auto"
+                      : "bg-[#181820] text-zinc-400 border-white/5 opacity-0 lg:opacity-70 scale-95 lg:scale-90 pointer-events-none lg:pointer-events-auto"
                   }`}
                   style={{
-                    transform: `translateX(${posX}px) scale(${scale})`,
-                    opacity: opacity,
+                    transform: typeof window !== "undefined" && window.innerWidth < 1024
+                      ? `translateX(${offset * 100}%) scale(${isRevealed ? 1 : 0.95})`
+                      : `translateX(${offset === -1 ? -390 : offset === 0 ? 0 : offset === 1 ? 340 : 700 + (offset - 2) * 340}px) scale(${offset === 0 ? 1 : offset === -1 ? 0.92 : offset === 1 ? 0.94 : 0.95})`,
                     zIndex: 10 - Math.abs(offset),
                   }}
                 >
@@ -216,6 +193,16 @@ export default function Services() {
 
                   <div className="absolute bottom-4 right-4 w-24 sm:w-36 h-24 sm:h-36 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:12px_12px] opacity-30 pointer-events-none" />
 
+                  {/* MOBILE 3D EMBLEM TOP SECTION (< lg) */}
+                  <div className="block lg:hidden relative w-full h-[110px] xs:h-[130px] rounded-xl bg-white/5 border border-white/10 overflow-hidden mb-2 shrink-0">
+                    <ServicesParticleCanvas activeIdx={idx} />
+                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[9px] font-mono text-zinc-300 pointer-events-none flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-ping" />
+                      <span>3D EMBLEM: {service.category}</span>
+                    </div>
+                  </div>
+
+                  {/* CARD TOP HEADER: Number + Explore CTA */}
                   <div className="relative z-10 flex items-center justify-between">
                     <span
                       className={`font-general font-extrabold text-xl sm:text-3xl transition-colors ${
@@ -246,8 +233,9 @@ export default function Services() {
                     </Link>
                   </div>
 
+                  {/* CARD BODY CONTENT */}
                   <div
-                    className={`relative z-10 flex-1 flex flex-col justify-center gap-1.5 sm:gap-3 transition-all duration-500 ${
+                    className={`relative z-10 flex-1 flex flex-col justify-center gap-1 sm:gap-3 transition-all duration-500 my-1 ${
                       isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                     }`}
                   >
@@ -257,13 +245,13 @@ export default function Services() {
                           {service.category}
                         </span>
 
-                        <h3 className="font-general text-base sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight uppercase">
+                        <h3 className="font-general text-sm xs:text-base sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight uppercase">
                           <Link href={`/services/${service.slug}`} aria-label={`View details for ${service.title}`}>
                             {service.title}
                           </Link>
                         </h3>
 
-                        <p className="text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed font-normal line-clamp-2 sm:line-clamp-none">
+                        <p className="text-zinc-300 text-[11px] xs:text-xs sm:text-sm md:text-base leading-relaxed font-normal line-clamp-2 sm:line-clamp-none">
                           {service.description}
                         </p>
 
@@ -281,7 +269,8 @@ export default function Services() {
                     )}
                   </div>
 
-                  <div className="relative z-10 flex items-center justify-between text-[9px] sm:text-[11px] font-mono text-zinc-400 pt-1.5 border-t border-white/5">
+                  {/* CARD FOOTER METADATA */}
+                  <div className="relative z-10 flex items-center justify-between text-[9px] sm:text-[11px] font-mono text-zinc-400 pt-1.5 border-t border-white/5 shrink-0">
                     <span>CAPABILITY</span>
                     <span>0{idx + 1} / 06</span>
                   </div>
@@ -292,13 +281,14 @@ export default function Services() {
 
         </div>
 
-        <div className="relative z-30 max-w-7xl mx-auto w-full flex items-center justify-between text-[11px] sm:text-xs font-mono text-zinc-500 shrink-0 pt-2 pb-1 bg-[#FAF9F6] border-t border-black/[0.06]">
+        {/* BOTTOM STATUS / SCROLL BAR */}
+        <div className="relative z-30 max-w-7xl mx-auto w-full flex items-center justify-between text-[10px] sm:text-xs font-mono text-zinc-500 shrink-0 pt-2 pb-2 sm:pb-3 bg-[#FAF9F6] border-t border-black/[0.06]">
           <div className="flex items-center gap-1.5 sm:gap-2">
             <span className="font-bold text-black text-xs sm:text-sm">0{activeIdx + 1}</span>
             <span>/ 06 SERVICES</span>
           </div>
 
-          <span className="uppercase font-semibold tracking-wider text-[10px] sm:text-[11px]">SCROLL DOWN TO REVEAL →</span>
+          <span className="uppercase font-semibold tracking-wider text-[9px] sm:text-[11px]">SCROLL DOWN TO REVEAL →</span>
         </div>
 
       </div>
