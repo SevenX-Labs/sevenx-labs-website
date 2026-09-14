@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   tagline: "Digital Products & Engineering Studio",
   description:
     "SevenX Labs designs and engineers high-performance web applications, mobile apps, AI solutions and custom software for startups and growing businesses.",
-  defaultDomain: "https://sevenx-labs.vercel.app",
+  defaultDomain: "https://sevenxlabs.in",
   get siteUrl() {
     return process.env.NEXT_PUBLIC_SITE_URL || this.defaultDomain;
   },
