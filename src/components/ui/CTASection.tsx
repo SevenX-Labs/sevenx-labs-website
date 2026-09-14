@@ -13,7 +13,7 @@ interface CTASectionProps {
 export function CTASection({
   title = "Ready to Build Something Extraordinary?",
   description = "Partner with SevenX Labs to design, engineer, and scale high-performance web, mobile, AI, and custom software products.",
-  buttonText = "Start Your Project",
+  buttonText = "START A PROJECT",
   buttonHref = "/contact",
 }: CTASectionProps) {
   return (

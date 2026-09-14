@@ -104,11 +104,11 @@ export default function Hero() {
 
             <div className="mt-3.5 sm:mt-6 flex flex-wrap items-center gap-4 sm:gap-6">
               <a
-                href="#contact"
+                href="/contact"
                 aria-label="Start a project with SevenX Labs"
                 className="group relative inline-flex items-center gap-3 pl-6 pr-3.5 py-3 sm:pl-7 sm:pr-4 sm:py-3.5 bg-black text-white text-sm font-semibold rounded-full overflow-hidden transition-all duration-300 hover:bg-zinc-800 shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-black/15 hover:-translate-y-0.5 active:scale-[0.98]"
               >
-                <span>Start a Project</span>
+                <span>START A PROJECT</span>
                 <span className="flex items-center justify-center w-7 h-7 bg-white/20 rounded-full transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M7 17L17 7" />
@@ -117,7 +117,7 @@ export default function Hero() {
                 </span>
               </a>
               <a
-                href="#portfolio"
+                href="/portfolio"
                 aria-label="View SevenX Labs portfolio case studies"
                 className="inline-flex items-center text-sm font-semibold text-zinc-700 hover:text-black transition-colors py-2 relative after:content-[''] after:absolute after:bottom-1 after:left-0 after:w-0 after:h-[1.5px] after:bg-black hover:after:w-full after:transition-all after:duration-300"
               >

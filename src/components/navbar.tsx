@@ -45,9 +45,11 @@ export default function Navbar() {
       bgColor: "#231c2b",
       textColor: "#ffffff",
       links: [
-        { label: "Selected Case Studies", href: "/portfolio", ariaLabel: "Portfolio Case Studies" },
-        { label: "Testimonials", href: "/#testimonials", ariaLabel: "Client Testimonials & Reviews" },
-        { label: "Contact Studio", href: "/contact", ariaLabel: "Contact SevenX Labs" },
+        { label: "Case Studies", href: "/portfolio", ariaLabel: "Portfolio Case Studies" },
+        { label: "Synapse AI Engine", href: "/portfolio/synapse-ai-engine", ariaLabel: "Synapse AI Engine Case Study" },
+        { label: "FinFuse", href: "/portfolio/finfuse", ariaLabel: "FinFuse Case Study" },
+        { label: "Maison Lumina", href: "/portfolio/maison-lumina", ariaLabel: "Maison Lumina Case Study" },
+        { label: "KubeFlow Enterprise", href: "/portfolio/kubeflow-enterprise", ariaLabel: "KubeFlow Enterprise Case Study" },
       ],
     },
   ];

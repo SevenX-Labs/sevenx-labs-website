@@ -263,9 +263,9 @@ export default function SolutionsIndexPage() {
       </section>
 
       <CTASection
-        title="NOT SURE WHICH SOLUTION FITS?"
+        title="Not Sure Which Solution Fits?"
         description="Tell us where growth is being held back — your product, your operations, or your infrastructure — and we'll map the fastest path to fixing it."
-        buttonText="START YOUR PROJECT"
+        buttonText="Start Your Project"
         buttonHref="/contact"
       />
       <Footer />

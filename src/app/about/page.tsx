@@ -249,35 +249,41 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#3B82F6]">
-                <Zap className="w-5 h-5" />
+          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            <div className="bg-white p-8 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col gap-4 hover:border-blue-300/60 hover:shadow-md transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50/80 border border-blue-100 flex items-center justify-center text-[#3B82F6] group-hover:scale-105 transition-transform shrink-0">
+                <Zap className="w-6 h-6" />
               </div>
-              <h3 className="font-general text-xl font-bold uppercase text-black">01 — Performance First</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Performance is part of the product experience, not something to fix after launch. We prioritize frontend rendering speed, API latency, and database query optimization from day one.
-              </p>
+              <div className="flex flex-col gap-2">
+                <h3 className="font-general text-xl font-extrabold uppercase text-black group-hover:text-[#3B82F6] transition-colors">Performance First</h3>
+                <p className="text-slate-600 text-sm leading-relaxed font-sans">
+                  Performance is part of the product experience, not something to fix after launch. We prioritize frontend rendering speed, API latency, and database query optimization from day one.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-white p-8 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#3B82F6]">
-                <Brain className="w-5 h-5" />
+            <div className="bg-white p-8 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col gap-4 hover:border-blue-300/60 hover:shadow-md transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50/80 border border-blue-100 flex items-center justify-center text-[#3B82F6] group-hover:scale-105 transition-transform shrink-0">
+                <Brain className="w-6 h-6" />
               </div>
-              <h3 className="font-general text-xl font-bold uppercase text-black">02 — Practical AI Architecture</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                We focus on AI where it creates real product or business value. Depending on the use case, this includes RAG systems, AI agents, document intelligence, vector search, and application-level evaluation.
-              </p>
+              <div className="flex flex-col gap-2">
+                <h3 className="font-general text-xl font-extrabold uppercase text-black group-hover:text-[#3B82F6] transition-colors">Practical AI Architecture</h3>
+                <p className="text-slate-600 text-sm leading-relaxed font-sans">
+                  We focus on AI where it creates real product or business value. Depending on the use case, this includes RAG systems, AI agents, document intelligence, vector search, and application-level evaluation.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-white p-8 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#3B82F6]">
-                <Code2 className="w-5 h-5" />
+            <div className="bg-white p-8 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col gap-4 hover:border-blue-300/60 hover:shadow-md transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50/80 border border-blue-100 flex items-center justify-center text-[#3B82F6] group-hover:scale-105 transition-transform shrink-0">
+                <Code2 className="w-6 h-6" />
               </div>
-              <h3 className="font-general text-xl font-bold uppercase text-black">03 — Clean Architecture</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Software should remain understandable after the first release. We favor modular systems, clear boundaries, maintainable code, and architectures that evolve cleanly as requirements change.
-              </p>
+              <div className="flex flex-col gap-2">
+                <h3 className="font-general text-xl font-extrabold uppercase text-black group-hover:text-[#3B82F6] transition-colors">Clean Architecture</h3>
+                <p className="text-slate-600 text-sm leading-relaxed font-sans">
+                  Software should remain understandable after the first release. We favor modular systems, clear boundaries, maintainable code, and architectures that evolve cleanly as requirements change.
+                </p>
+              </div>
             </div>
 
             <div className="bg-white p-8 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col gap-3">

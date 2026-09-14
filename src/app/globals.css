@@ -5,12 +5,43 @@
   --foreground: #171717;
 }
 
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-space-grotesk), var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono);
+  /* Refined Design System Tokens */
+  --color-dark-bg: #0D0D11;
+  --color-dark-surface: #14141A;
+  --color-light-bg: #FDFDFD;
+  --color-brand-blue: #3B82F6;
 }
+
+/* Global Content Container Utilities for consistent 1280px max-width across desktop */
+.content-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .content-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
 
 .font-space,
 .font-general,

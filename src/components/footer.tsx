@@ -1,5 +1,5 @@
 "use client";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Mail, Globe, Share2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { SITE_CONFIG } from "@/lib/site-config";
@@ -13,7 +13,7 @@ export default function Footer() {
   );
 
   return (
-    <footer className="relative w-full bg-[#0D0D11] text-white overflow-hidden font-sans border-t border-white/[0.08]">
+    <footer className="relative w-full bg-[#0D0D11] text-white overflow-hidden font-sans border-t border-white/10">
       {/* Background Architectural Grid & Ambient Glow */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-3xl" />
@@ -23,7 +23,7 @@ export default function Footer() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-12">
         {/* ─── TOP SECTION: Brand Headline & Primary CTA ─── */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 pb-16 border-b border-white/[0.08]">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 pb-16 border-b border-white/10">
           <div className="max-w-xl flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.6)]" />
@@ -50,10 +50,10 @@ export default function Footer() {
         </div>
 
         {/* ─── MIDDLE SECTION: 5 Navigation Columns ─── */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 py-14 border-b border-white/[0.08]">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 py-14 border-b border-white/10">
           {/* Column 1: EXPLORE */}
           <div className="flex flex-col gap-4">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#60A5FA]">
               EXPLORE
             </span>
             <ul className="flex flex-col gap-2.5">
@@ -62,6 +62,7 @@ export default function Footer() {
                 { name: "About", href: "/about", ariaLabel: "About SevenX Labs Studio" },
                 { name: "Services", href: "/services", ariaLabel: "View Engineering Services" },
                 { name: "Solutions", href: "/solutions", ariaLabel: "View Business Solutions" },
+                { name: "Industries", href: "/industries", ariaLabel: "View Industry Expertise" },
                 { name: "Work", href: "/portfolio", ariaLabel: "View Featured Portfolio Projects" },
                 { name: "Contact", href: "/contact", ariaLabel: "Contact Engineering Studio" },
               ].map((item) => (
@@ -80,7 +81,7 @@ export default function Footer() {
 
           {/* Column 2: SERVICES */}
           <div className="flex flex-col gap-4">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#60A5FA]">
               SERVICES
             </span>
             <ul className="flex flex-col gap-2.5">
@@ -107,7 +108,7 @@ export default function Footer() {
 
           {/* Column 3: SOLUTIONS */}
           <div className="flex flex-col gap-4">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#60A5FA]">
               SOLUTIONS
             </span>
             <ul className="flex flex-col gap-2.5">
@@ -134,10 +135,10 @@ export default function Footer() {
 
           {/* Column 5: CONNECT */}
           <div className="flex flex-col gap-4">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#60A5FA]">
               CONNECT
             </span>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-3">
               {SITE_CONFIG.social.linkedin && (
                 <li>
                   <a
@@ -145,8 +146,9 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="SevenX Labs LinkedIn Profile"
-                    className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
+                    className="text-sm text-zinc-300 hover:text-white transition-colors duration-200 inline-flex items-center gap-2 group"
                   >
+                    <Share2 className="w-4 h-4 text-[#60A5FA] shrink-0" />
                     <span>LinkedIn</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
@@ -159,8 +161,9 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="SevenX Labs GitHub Organization"
-                    className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
+                    className="text-sm text-zinc-300 hover:text-white transition-colors duration-200 inline-flex items-center gap-2 group"
                   >
+                    <Globe className="w-4 h-4 text-[#60A5FA] shrink-0" />
                     <span>GitHub</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
@@ -170,8 +173,9 @@ export default function Footer() {
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
                   aria-label="Send email to SevenX Labs"
-                  className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center gap-1.5 group"
+                  className="text-sm text-zinc-300 hover:text-white transition-colors duration-200 inline-flex items-center gap-2 group"
                 >
+                  <Mail className="w-4 h-4 text-[#60A5FA] shrink-0" />
                   <span>{SITE_CONFIG.email}</span>
                 </a>
               </li>
@@ -187,7 +191,7 @@ export default function Footer() {
             <Link href="/terms" className="hover:text-zinc-300 transition-colors">Terms of Service</Link>
           </div>
 
-          <div className="flex items-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/[0.08] rounded-full text-zinc-400">
+          <div className="flex items-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full text-zinc-400">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
             <span className="text-[11px]">Available for new projects</span>
           </div>
