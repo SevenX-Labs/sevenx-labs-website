@@ -26,10 +26,6 @@ export interface ServiceDetail {
     title: string;
     slug: string;
   }[];
-  relatedCaseStudies: {
-    title: string;
-    slug: string;
-  }[];
 }
 
 export const SERVICES: Record<string, ServiceDetail> = {
@@ -129,10 +125,6 @@ export const SERVICES: Record<string, ServiceDetail> = {
       { title: "SaaS Development", slug: "saas-development" },
       { title: "MVP Development", slug: "mvp-development" },
     ],
-    relatedCaseStudies: [
-      { title: "FinFuse Wealth Platform", slug: "finfuse" },
-      { title: "Maison Lumina Luxury", slug: "maison-lumina" },
-    ],
   },
 
   "mobile-app-development": {
@@ -225,9 +217,6 @@ export const SERVICES: Record<string, ServiceDetail> = {
     relatedSolutions: [
       { title: "MVP Development", slug: "mvp-development" },
       { title: "SaaS Development", slug: "saas-development" },
-    ],
-    relatedCaseStudies: [
-      { title: "FinFuse Wealth Platform", slug: "finfuse" },
     ],
   },
 
@@ -322,9 +311,6 @@ export const SERVICES: Record<string, ServiceDetail> = {
       { title: "AI Automation", slug: "ai-automation" },
       { title: "SaaS Development", slug: "saas-development" },
     ],
-    relatedCaseStudies: [
-      { title: "Synapse AI Intelligence", slug: "synapse-ai-engine" },
-    ],
   },
 
   "custom-software-development": {
@@ -417,9 +403,6 @@ export const SERVICES: Record<string, ServiceDetail> = {
     relatedSolutions: [
       { title: "Digital Transformation", slug: "digital-transformation" },
       { title: "SaaS Development", slug: "saas-development" },
-    ],
-    relatedCaseStudies: [
-      { title: "KubeFlow Enterprise", slug: "kubeflow-enterprise" },
     ],
   },
 
@@ -514,10 +497,6 @@ export const SERVICES: Record<string, ServiceDetail> = {
       { title: "MVP Development", slug: "mvp-development" },
       { title: "SaaS Development", slug: "saas-development" },
     ],
-    relatedCaseStudies: [
-      { title: "Maison Lumina Luxury", slug: "maison-lumina" },
-      { title: "FinFuse Wealth Platform", slug: "finfuse" },
-    ],
   },
 
   "cloud-devops": {
@@ -610,9 +589,6 @@ export const SERVICES: Record<string, ServiceDetail> = {
     relatedSolutions: [
       { title: "Digital Transformation", slug: "digital-transformation" },
       { title: "SaaS Development", slug: "saas-development" },
-    ],
-    relatedCaseStudies: [
-      { title: "KubeFlow Enterprise", slug: "kubeflow-enterprise" },
     ],
   },
 };

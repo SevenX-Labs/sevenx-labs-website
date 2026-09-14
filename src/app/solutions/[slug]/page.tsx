@@ -1,4 +1,3 @@
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -10,9 +9,13 @@ import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { ServiceJsonLd, BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/seo/JsonLd";
 import { SOLUTIONS } from "@/lib/data/solutions";
 import { absoluteUrl } from "@/lib/site-config";
+import { CheckCircle2, ArrowUpRight } from "lucide-react";
+import React from "react";
 
 interface SolutionPageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{
+    slug: string;
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -154,15 +157,15 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
         </div>
       </section>
 
-      {/* CONTEXTUAL INTERNAL LINKS: RELATED SERVICES & CASE STUDIES */}
-      <section className="py-16 bg-white border-y border-black/[0.06] w-full">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-10">
-          {sol.relatedServices && sol.relatedServices.length > 0 && (
+      {/* CONTEXTUAL INTERNAL LINKS: RELATED SERVICES */}
+      {sol.relatedServices && sol.relatedServices.length > 0 && (
+        <section className="py-16 bg-white border-y border-black/[0.06] w-full">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col md:flex-row md:items-center justify-between gap-8">
             <div className="flex flex-col gap-4">
               <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
-                UNDERLYING ENGINEERING
+                COMPLEMENTARY CAPABILITIES
               </span>
-              <h3 className="font-general text-xl font-bold uppercase text-black">Powered by Core Services</h3>
+              <h3 className="font-general text-xl font-bold uppercase text-black">Related Engineering Services</h3>
               <div className="flex flex-wrap gap-3">
                 {sol.relatedServices.map((svc) => (
                   <Link
@@ -176,30 +179,22 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
                 ))}
               </div>
             </div>
-          )}
 
-          {sol.relatedCaseStudies && sol.relatedCaseStudies.length > 0 && (
-            <div className="flex flex-col gap-4">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
-                FEATURED WORK
+            <div className="flex flex-col gap-3 max-w-sm">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-slate-500">
+                PORTFOLIO &amp; WORK
               </span>
-              <h3 className="font-general text-xl font-bold uppercase text-black">Related Case Studies</h3>
-              <div className="flex flex-wrap gap-3">
-                {sol.relatedCaseStudies.map((cs) => (
-                  <Link
-                    key={cs.slug}
-                    href={`/portfolio/${cs.slug}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#FAF9F6] hover:bg-blue-50 text-slate-800 hover:text-[#3B82F6] border border-black/[0.08] hover:border-blue-200 rounded-xl text-xs font-mono font-bold uppercase transition-colors group"
-                  >
-                    <span>{cs.title}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </Link>
-                ))}
-              </div>
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-2 text-sm font-mono font-bold uppercase text-black hover:text-[#3B82F6] transition-colors"
+              >
+                <span>Explore Featured Work</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
       {/* FAQ SECTION */}
       {sol.faqs && sol.faqs.length > 0 && (

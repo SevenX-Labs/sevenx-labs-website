@@ -617,100 +617,29 @@ export default function AboutPage() {
 
       
 
-            {/* SECTION 09 — SELECTED WORK */}
+            {/* SECTION 09 — OUR WORK & PORTFOLIO */}
       <section id="work" className="py-20 md:py-28 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full border-t border-black/[0.06]">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-          <div className="flex flex-col gap-3">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
-              PROVEN PRODUCTION DELIVERY
+        <div className="p-8 sm:p-12 md:p-16 bg-[#0D0D11] text-white rounded-3xl border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-8 relative overflow-hidden shadow-2xl">
+          <div className="absolute -top-24 -right-24 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="flex flex-col gap-4 max-w-2xl relative z-10">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#60A5FA]">
+              ENGINEERING PORTFOLIO
             </span>
-            <h2 className="font-general text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-black">
-              Featured Case Studies
+            <h2 className="font-general text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-white leading-tight">
+              EXPLORE OUR SELECTED WORK &amp; CASE STUDIES
             </h2>
-          </div>
-          <Link
-            href="/portfolio"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#3B82F6] hover:text-blue-700 transition-colors group"
-          >
-            <span>VIEW ALL CASE STUDIES</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-8 bg-white rounded-3xl border border-black/[0.08] shadow-sm flex flex-col justify-between gap-6 group hover:border-blue-300 transition-all">
-            <div className="flex flex-col gap-3">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#3B82F6]">AI & VECTOR SEARCH</span>
-              <h3 className="font-general text-2xl font-bold uppercase text-black group-hover:text-blue-600 transition-colors">
-                Synapse AI Intelligence Platform
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Enterprise knowledge retrieval and semantic search engine with PostgreSQL pgvector and LangChain RAG pipelines.
-              </p>
-            </div>
-            <Link
-              href="/portfolio/synapse-ai-engine"
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-black group-hover:text-blue-600 transition-colors"
-            >
-              <span>Explore Case Study</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
+            <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
+              Discover how SevenX Labs architects production systems, custom SaaS applications, AI workflows, and high-concurrency cloud infrastructure.
+            </p>
           </div>
 
-          <div className="p-8 bg-white rounded-3xl border border-black/[0.08] shadow-sm flex flex-col justify-between gap-6 group hover:border-blue-300 transition-all">
-            <div className="flex flex-col gap-3">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#3B82F6]">WEB & MOBILE</span>
-              <h3 className="font-general text-2xl font-bold uppercase text-black group-hover:text-blue-600 transition-colors">
-                FinFuse Wealth & Analytics Platform
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Real-time financial tracking platform built with React Native and Next.js, powered by low-latency WebSockets.
-              </p>
-            </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 relative z-10 shrink-0">
             <Link
-              href="/portfolio/finfuse"
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-black group-hover:text-blue-600 transition-colors"
+              href="/portfolio"
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-white text-black text-xs font-mono font-bold uppercase tracking-widest rounded-full hover:bg-zinc-200 transition-all group"
             >
-              <span>Explore Case Study</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="p-8 bg-white rounded-3xl border border-black/[0.08] shadow-sm flex flex-col justify-between gap-6 group hover:border-blue-300 transition-all">
-            <div className="flex flex-col gap-3">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#3B82F6]">E-COMMERCE & 3D WEB</span>
-              <h3 className="font-general text-2xl font-bold uppercase text-black group-hover:text-blue-600 transition-colors">
-                Maison Lumina Luxury Commerce
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Interactive 3D WebGL product customizer and high-performance Next.js luxury storefront with Draco mesh compression.
-              </p>
-            </div>
-            <Link
-              href="/portfolio/maison-lumina"
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-black group-hover:text-blue-600 transition-colors"
-            >
-              <span>Explore Case Study</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="p-8 bg-white rounded-3xl border border-black/[0.08] shadow-sm flex flex-col justify-between gap-6 group hover:border-blue-300 transition-all">
-            <div className="flex flex-col gap-3">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#3B82F6]">CLOUD & DEVOPS</span>
-              <h3 className="font-general text-2xl font-bold uppercase text-black group-hover:text-blue-600 transition-colors">
-                KubeFlow Enterprise Cloud
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Multi-region Kubernetes cluster architecture with automated blue/green CI/CD deployment pipelines and Terraform IaC.
-              </p>
-            </div>
-            <Link
-              href="/portfolio/kubeflow-enterprise"
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-black group-hover:text-blue-600 transition-colors"
-            >
-              <span>Explore Case Study</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <span>EXPLORE PORTFOLIO</span>
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Link>
           </div>
         </div>

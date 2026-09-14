@@ -17,10 +17,6 @@ export interface SolutionDetail {
     title: string;
     slug: string;
   }[];
-  relatedCaseStudies: {
-    title: string;
-    slug: string;
-  }[];
   faqs: {
     question: string;
     answer: string;
@@ -78,10 +74,6 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
     relatedServices: [
       { title: "Web Development", slug: "web-development" },
       { title: "Cloud & DevOps", slug: "cloud-devops" },
-    ],
-    relatedCaseStudies: [
-      { title: "FinFuse Wealth Platform", slug: "finfuse" },
-      { title: "Synapse AI Intelligence", slug: "synapse-ai-engine" },
     ],
     faqs: [
       {
@@ -159,10 +151,6 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
       { title: "Mobile App Development", slug: "mobile-app-development" },
       { title: "UI/UX Design", slug: "ui-ux-design" },
     ],
-    relatedCaseStudies: [
-      { title: "Maison Lumina Luxury", slug: "maison-lumina" },
-      { title: "FinFuse Wealth Platform", slug: "finfuse" },
-    ],
     faqs: [
       {
         question: "How long does an MVP build typically take?",
@@ -238,9 +226,6 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
       { title: "AI Development", slug: "ai-development" },
       { title: "Custom Software Development", slug: "custom-software-development" },
     ],
-    relatedCaseStudies: [
-      { title: "Synapse AI Intelligence", slug: "synapse-ai-engine" },
-    ],
     faqs: [
       {
         question: "What is the difference between AI Automation and standard Zapier/Make automations?",
@@ -315,9 +300,6 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
     relatedServices: [
       { title: "Custom Software Development", slug: "custom-software-development" },
       { title: "Cloud & DevOps", slug: "cloud-devops" },
-    ],
-    relatedCaseStudies: [
-      { title: "KubeFlow Enterprise", slug: "kubeflow-enterprise" },
     ],
     faqs: [
       {
