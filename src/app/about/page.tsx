@@ -134,15 +134,15 @@ export default function AboutPage() {
       {/* SECTION ANCHOR NAV */}
       <div className="sticky top-20 z-30 bg-[#FAF9F6]/90 backdrop-blur-md border-y border-black/[0.06] hidden md:block">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-3 flex items-center gap-8 text-xs font-mono uppercase tracking-wider text-slate-500 overflow-x-auto">
-          <a href="#overview" className="hover:text-[#3B82F6] transition-colors">Overview</a>
-          <a href="#capabilities" className="hover:text-[#3B82F6] transition-colors">Capabilities</a>
-          <a href="#philosophy" className="hover:text-[#3B82F6] transition-colors">Philosophy</a>
-          <a href="#approach" className="hover:text-[#3B82F6] transition-colors">Engineering Mindset</a>
-          <a href="#process" className="hover:text-[#3B82F6] transition-colors">How We Work</a>
-          <a href="#why-sevenx" className="hover:text-[#3B82F6] transition-colors">Why SevenX</a>
-          <a href="#who-we-work-with" className="hover:text-[#3B82F6] transition-colors">Who We Work With</a>
-          <a href="#technology" className="hover:text-[#3B82F6] transition-colors">Technology</a>
-          <a href="#work" className="hover:text-[#3B82F6] transition-colors">Featured Work</a>
+          <a href="/about#overview" className="hover:text-[#3B82F6] transition-colors">Overview</a>
+          <a href="/about#capabilities" className="hover:text-[#3B82F6] transition-colors">Capabilities</a>
+          <a href="/about#philosophy" className="hover:text-[#3B82F6] transition-colors">Philosophy</a>
+          <a href="/about#approach" className="hover:text-[#3B82F6] transition-colors">Engineering Mindset</a>
+          <a href="/about#process" className="hover:text-[#3B82F6] transition-colors">How We Work</a>
+          <a href="/about#why-sevenx" className="hover:text-[#3B82F6] transition-colors">Why SevenX</a>
+          <a href="/about#who-we-work-with" className="hover:text-[#3B82F6] transition-colors">Who We Work With</a>
+          <a href="/about#technology" className="hover:text-[#3B82F6] transition-colors">Technology</a>
+          <a href="/about#work" className="hover:text-[#3B82F6] transition-colors">Featured Work</a>
         </div>
       </div>
 
