@@ -41,18 +41,6 @@ export default function Navbar() {
       ],
     },
     {
-      label: "Industries",
-      bgColor: "#1c2520",
-      textColor: "#ffffff",
-      links: [
-        { label: "FinTech", href: "/industries/fintech", ariaLabel: "FinTech Engineering Services" },
-        { label: "E-Commerce", href: "/industries/ecommerce", ariaLabel: "E-Commerce Engineering" },
-        { label: "SaaS", href: "/industries/saas", ariaLabel: "SaaS Industry Solutions" },
-        { label: "Startups", href: "/industries/startups", ariaLabel: "Startup Engineering Solutions" },
-        { label: "All Industries", href: "/industries", ariaLabel: "View All Industry Sectors" },
-      ],
-    },
-    {
       label: "Work",
       bgColor: "#231c2b",
       textColor: "#ffffff",

@@ -62,7 +62,6 @@ export default function Footer() {
                 { name: "About", href: "/about", ariaLabel: "About SevenX Labs Studio" },
                 { name: "Services", href: "/services", ariaLabel: "View Engineering Services" },
                 { name: "Solutions", href: "/solutions", ariaLabel: "View Business Solutions" },
-                { name: "Industries", href: "/industries", ariaLabel: "View Industry Expertise" },
                 { name: "Work", href: "/portfolio", ariaLabel: "View Featured Portfolio Projects" },
                 { name: "Contact", href: "/contact", ariaLabel: "Contact Engineering Studio" },
               ].map((item) => (
@@ -131,31 +130,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: INDUSTRIES */}
-          <div className="flex flex-col gap-4">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
-              INDUSTRIES
-            </span>
-            <ul className="flex flex-col gap-2.5">
-              {[
-                { name: "FinTech", href: "/industries/fintech" },
-                { name: "E-Commerce", href: "/industries/ecommerce" },
-                { name: "SaaS", href: "/industries/saas" },
-                { name: "Startups", href: "/industries/startups" },
-                { name: "All Industries", href: "/industries" },
-              ].map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    aria-label={`SevenX Labs ${item.name} Industry Solutions`}
-                    className="text-sm text-zinc-400 hover:text-white transition-colors duration-200 inline-flex items-center"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+
 
           {/* Column 5: CONNECT */}
           <div className="flex flex-col gap-4">
