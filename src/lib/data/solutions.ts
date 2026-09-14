@@ -67,7 +67,7 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
       {
         title: "Automated Tenant Provisioning",
         description:
-          "Zero-touch tenant workspace creation, automated subdomains, invitation management, and self-service account administration.",
+          "Automated tenant workspace provisioning, custom subdomains, invitation workflows, and self-service account administration.",
       },
     ],
     idealFor: [

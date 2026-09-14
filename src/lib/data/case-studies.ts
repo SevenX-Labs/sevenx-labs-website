@@ -143,8 +143,8 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         description: "Seamless real-time synchronization across mobile apps and web administrative dashboards.",
       },
       {
-        title: "Smooth 60fps Mobile Performance",
-        description: "Fluid rendering across iOS and Android without frame drops during heavy data streaming.",
+        title: "High-Framerate Mobile Performance",
+        description: "Fluid rendering across iOS and Android during heavy real-time data streaming.",
       },
       {
         title: "Unified Codebase Velocity",
@@ -274,7 +274,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         description: "Minimized release-window maintenance disruption through automated rolling blue/green pipelines.",
       },
       {
-        title: "Elimination of Configuration Drift",
+        title: "Prevention of Configuration Drift",
         description: "Ensured consistent parity between staging and production environments via declarative IaC.",
       },
       {

@@ -26,12 +26,12 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
     cardTeaser:
       "We engineer high-concurrency financial platforms, secure payment gateways, and real-time trading dashboards built for strict data compliance and instant transaction execution.",
     overview:
-      "Financial technology applications demand low latency, zero data loss, and hardware-grade data security. We build custom real-time trading dashboards, mobile wealth management portals, payment processing gateways, and automated transaction ledgers built to perform under high market volume.",
+      "Financial technology applications demand low latency, high data integrity, and strict security controls. We build custom real-time trading dashboards, mobile wealth management portals, payment processing gateways, and automated transaction ledgers built to perform under high market volume.",
     challengesSolved: [
       {
         challenge: "High-Concurrency Data Processing",
         solution:
-          "WebSocket event streams, Redis caching layers, and asynchronous task workers handling 100,000+ active user connections with zero latency lags.",
+          "WebSocket event streams, Redis caching layers, and asynchronous task workers architected to handle high-concurrency traffic with minimal latency.",
       },
       {
         challenge: "Security & Regulatory Compliance",

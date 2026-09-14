@@ -270,7 +270,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
       {
         title: "Enterprise Data Privacy & Security",
         description:
-          "Deploying private models and private cloud endpoints with zero-data-retention agreements so internal company data is never used for public training.",
+          "Deploying private models and private cloud endpoints configured with zero-data-retention policies to safeguard internal company data from public model training.",
       },
     ],
     technologies: ["Python", "FastAPI", "LangChain", "PgVector", "PostgreSQL", "OpenAI API", "Anthropic Claude", "Docker"],
@@ -305,7 +305,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
       {
         question: "Is our proprietary company data exposed or used to train external models?",
         answer:
-          "No. We configure enterprise private API endpoints and zero-data-retention parameters, or deploy open-source models on your private cloud infrastructure, ensuring your internal data remains strictly confidential.",
+          "No. We configure enterprise private API endpoints with zero-data-retention parameters, or deploy open-source models on your private cloud infrastructure, designed to protect internal data confidentiality.",
       },
       {
         question: "What is the difference between AI Development and AI Automation?",
@@ -334,7 +334,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
     metaDescription:
       "SevenX Labs engineers bespoke software applications, modular backend systems, and operational platforms tailored to your business workflows.",
     h1: "Bespoke Custom Software Engineering",
-    tagline: "Clean Architecture, Scalable Backends, and Zero Vendor Lock-In",
+    tagline: "Clean Architecture, Scalable Backends, and Freedom from Vendor Lock-In",
     cardTeaser:
       "Tailored enterprise platforms, internal operating systems, and scalable backend infrastructure designed around your exact workflows.",
     overview:

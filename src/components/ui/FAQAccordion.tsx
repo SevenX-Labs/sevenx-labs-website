@@ -2,7 +2,6 @@
 
 import { ChevronDown } from "lucide-react";
 import React, { useState } from "react";
-import { JsonLd } from "@/components/seo/JsonLd";
 
 export interface FAQItem {
   question: string;
@@ -20,22 +19,8 @@ export function FAQAccordion({ faqs, items }: FAQAccordionProps) {
 
   if (!faqList || faqList.length === 0) return null;
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqList.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <>
-      <JsonLd data={faqSchema} />
       <div className="flex flex-col divide-y divide-black/10 border-y border-black/10">
         {faqList.map((faq, idx) => {
           const isOpen = openIndex === idx;

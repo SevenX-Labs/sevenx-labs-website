@@ -469,7 +469,7 @@ export default function SevenX3DLogo({ isReady = true }: SevenX3DLogoProps) {
 
         smoothScrollRatio += (currentScrollRatio - smoothScrollRatio) * 0.08;
 
-        // Dynamic Viewport Target Projections (Guarantees ZERO overlap on ALL zoom levels / screen sizes)
+        // Dynamic Viewport Target Projections (Ensures balanced layout across zoom levels and screen sizes)
         const heroPos = getAnchorWorldPos("hero-logo-anchor", 280, 30);
         const aboutPos = getAnchorWorldPos("about-logo-anchor", -310, -40);
 
