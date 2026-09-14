@@ -95,7 +95,7 @@ export default function IndustriesIndexPage() {
                 </h2>
 
                 <p className="text-slate-600 text-sm md:text-base leading-relaxed">
-                  {ind.overview}
+                  {ind.cardTeaser}
                 </p>
 
                 {/* Key capabilities preview */}
@@ -177,7 +177,7 @@ export default function IndustriesIndexPage() {
         <FAQAccordion items={INDUSTRY_FAQS} />
       </section>
 
-      <CTASection />
+      <CTASection title="SPECIALIZED SOFTWARE ENGINEERING FOR YOUR SECTOR" description="Discover how our domain-focused engineering teams solve sector-specific performance, data security, and scaling challenges." buttonText="DISCUSS YOUR INDUSTRY ROADMAP" buttonHref="/contact" />
       <Footer />
     </main>
   );

@@ -24,7 +24,7 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
     h1: "High-Concurrency FinTech Engineering Built on Trust and Speed",
     tagline: "Secure Payment Engines, Real-Time Trading Dashboards, and Wealth Management Platforms",
     cardTeaser:
-      "High-concurrency trading platforms, secure payment processing pipelines, biometric mobile apps, and automated financial ledgers.",
+      "We engineer high-concurrency financial platforms, secure payment gateways, and real-time trading dashboards built for strict data compliance and instant transaction execution.",
     overview:
       "Financial technology applications demand low latency, zero data loss, and hardware-grade data security. We build custom real-time trading dashboards, mobile wealth management portals, payment processing gateways, and automated transaction ledgers built to perform under high market volume.",
     challengesSolved: [
@@ -152,7 +152,7 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
     h1: "Agile Engineering Partner for High-Growth Startups",
     tagline: "Rapid Iteration, Senior Software Talent, and Production-Grade Code",
     cardTeaser:
-      "Embedded engineering squads for ambitious startup teams validating product ideas, building MVPs, and scaling initial releases.",
+      "We act as an embedded technical squad for early-stage founders, translating product wireframes into resilient v1.0 applications designed for rapid market launch and investor readiness.",
     overview:
       "Founders need to move fast without accumulating crippling technical debt. SevenX Labs operates as your dedicated product engineering squad, turning product concepts into production-grade web, mobile, and AI applications ready for market validation and investor calls.",
     challengesSolved: [
