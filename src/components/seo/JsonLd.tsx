@@ -25,7 +25,8 @@ export function OrganizationJsonLd() {
     name: SITE_CONFIG.name,
     legalName: SITE_CONFIG.legalName,
     url: SITE_CONFIG.siteUrl,
-    logo: `${SITE_CONFIG.siteUrl}/logo.png`,
+    logo: `${SITE_CONFIG.siteUrl}/icon-512.png`,
+    image: `${SITE_CONFIG.siteUrl}/icon-512.png`,
     description: SITE_CONFIG.description,
     email: SITE_CONFIG.email,
     ...(sameAs.length > 0 ? { sameAs } : {}),
@@ -39,6 +40,7 @@ export function WebSiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE_CONFIG.name,
+    alternateName: ["SevenX Labs", "SevenX", "SevenXLabs", "SevenX Labs Studio"],
     url: SITE_CONFIG.siteUrl,
     description: SITE_CONFIG.description,
   };
@@ -102,7 +104,7 @@ export function ArticleJsonLd({
       name: SITE_CONFIG.name,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_CONFIG.siteUrl}/logo.png`,
+        url: `${SITE_CONFIG.siteUrl}/icon-512.png`,
       },
     },
   };
