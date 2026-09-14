@@ -30,13 +30,14 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
     h1: "Engineered for Multi-Tenancy, High Retention and Global Scale",
     tagline: "From Multi-Tenant Architecture to Billing Integration & Control Panels",
     cardTeaser:
-      "Multi-tenant SaaS architectures featuring automated subscription billing, tenant isolation, SAML auth, and administrative control panels.",
+      "Engineering a commercial SaaS product requires more than feature parity — it demands airtight tenant data isolation, dependable recurring-revenue billing, and a deployment pipeline that can ship safely multiple times a week. We architect multi-tenant platforms using row-level security or schema-based isolation, integrate subscription logic through Stripe or Paddle, and build the CI/CD pipelines that let you onboard thousands of accounts without operational firefighting.",
     overview:
       "Engineering a commercial SaaS product requires robust data isolation, recurring revenue integration, and continuous deployment workflows. We partner with product founders and vendors to build SaaS platforms designed to handle thousands of concurrent tenant accounts without operational friction.",
     keyDeliverables: [
       "Multi-Tenant Database Architecture",
       "Stripe / Merchant Subscription Integration",
       "Authentication & OAuth / SAML Integration",
+      "Usage-Based Billing & Metering",
       "Admin Control Panels & Analytics Dashboards",
       "Public REST / GraphQL Developer APIs",
       "Automated CI/CD & Cloud Infrastructure",
@@ -91,7 +92,7 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
     h1: "Turn Product Concepts Into Investor-Ready MVPs",
     tagline: "Product Engineering Focused on Speed-to-Market and Scalable Foundations",
     cardTeaser:
-      "Rapid, production-ready MVP development designed for early market validation, investor demos, and scalable expansion.",
+      "Speed matters, but so does the code you're standing on six months after launch. Our MVP process narrows scope to the user journeys that actually prove product-market fit, then builds on production-grade foundations — Next.js, TypeScript, PostgreSQL — so the version you ship to your first 100 users can scale directly into v1.0 instead of being rebuilt from scratch.",
     overview:
       "We accelerate product launches by focusing on core functional journeys while maintaining high code quality. Our rapid MVP delivery process provides founders with an investor-ready application built on modern stacks, ensuring your initial version can evolve cleanly into your v1.0 architecture.",
     keyDeliverables: [
@@ -141,7 +142,7 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
     h1: "Automate Complex Workflows With Custom AI Pipelines",
     tagline: "Streamline Operational Bottlenecks with AI Agents and Data Engines",
     cardTeaser:
-      "Custom document intelligence engines, automated data extraction, and intelligent workflow agents with human review controls.",
+      "Manual workflows don't just cost time — they introduce the inconsistency and error rates that slow growing teams down. We design AI automation pipelines using retrieval-augmented generation and structured validation rules, connecting disparate databases, parsing unstructured documents, and routing edge cases to a human reviewer only when the model's confidence drops below a defined threshold.",
     overview:
       "Operational bottlenecks and manual data processing slow down business execution. We engineer custom AI automation software that connects disparate databases, parses unstructured documents, and executes multi-step operational workflows with automated validation rules.",
     keyDeliverables: [
@@ -191,7 +192,7 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
     h1: "Modernize Legacy Systems for Growth, Agility and Security",
     tagline: "Re-engineering Legacy Enterprise Architectures into Modern Digital Platforms",
     cardTeaser:
-      "System modernization, legacy codebase refactoring, cloud migrations, and modern API integration for enterprise platforms.",
+      "Legacy platforms rarely fail all at once — they slow teams down one workaround at a time. We modernize aging systems incrementally, using patterns like the Strangler Fig to migrate services module by module, layer in modern REST/GraphQL APIs, and move infrastructure to the cloud without a single high-risk, all-at-once cutover.",
     overview:
       "Aging technology platforms and fragmented databases limit operational agility. We systematically modernize legacy software through incremental refactoring, API integration layers, and zero-downtime cloud migrations that preserve core data integrity while unlocking modern capabilities.",
     keyDeliverables: [
