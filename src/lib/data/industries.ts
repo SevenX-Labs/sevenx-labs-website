@@ -82,6 +82,39 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
     ],
     caseStudySlugs: ["maison-lumina"],
   },
+  edtech: {
+    slug: "edtech",
+    title: "EdTech",
+    metaTitle: "EdTech Software Development & Learning Platforms | SevenX Labs",
+    metaDescription:
+      "SevenX Labs engineers interactive EdTech software, Learning Management Systems (LMS), virtual classroom portals, and AI-powered learning engines.",
+    h1: "Interactive EdTech Platforms & AI Learning Engines",
+    tagline: "Scalable LMS Architectures, Real-Time Assessment Systems, and Interactive Media Pipelines",
+    cardTeaser:
+      "Custom Learning Management Systems (LMS), live virtual classroom portals, video streaming engines, and AI-driven adaptive learning assessment platforms.",
+    overview:
+      "Educational technology requires highly responsive media streaming, real-time student analytics, and intuitive learning flows. We engineer custom LMS platforms, interactive virtual classroom software, and AI-assisted tutoring tools designed to engage learners and support institutional scalability.",
+    challengesSolved: [
+      {
+        challenge: "High Latency & Media Streaming Bottlenecks",
+        solution:
+          "HLS video streaming integration with edge CDN caching, interactive canvas whiteboards, and low-bandwidth WebRTC real-time audio/video streams.",
+      },
+      {
+        challenge: "Monotonous Student Engagement & Static Testing",
+        solution:
+          "AI-driven adaptive testing engines that dynamically calibrate problem difficulty based on real-time student performance metrics.",
+      },
+    ],
+    keyCapabilities: [
+      "Custom LMS & Portal Engineering",
+      "AI-Powered Adaptive Assessment Engines",
+      "Low-Latency WebRTC & Video Streaming",
+      "Gamified Learning & Progress Analytics",
+      "SCORM / LTI Interoperability Standards",
+    ],
+    caseStudySlugs: ["synapse-ai-engine"],
+  },
   saas: {
     slug: "saas",
     title: "SaaS",
