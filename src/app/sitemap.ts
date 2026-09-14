@@ -3,7 +3,6 @@ import { absoluteUrl } from "@/lib/site-config";
 import { SERVICES } from "@/lib/data/services";
 import { SOLUTIONS } from "@/lib/data/solutions";
 import { INDUSTRIES } from "@/lib/data/industries";
-import { CASE_STUDIES } from "@/lib/data/case-studies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString().split("T")[0];
@@ -44,18 +43,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const caseStudyRoutes = Object.keys(CASE_STUDIES).map((slug) => ({
-    url: absoluteUrl(`/portfolio/${slug}`),
-    lastModified: currentDate,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
-
   return [
     ...staticRoutes,
     ...serviceRoutes,
     ...solutionRoutes,
     ...industryRoutes,
-    ...caseStudyRoutes,
   ];
 }

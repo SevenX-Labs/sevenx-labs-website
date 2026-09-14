@@ -12,7 +12,6 @@ export interface IndustryDetail {
     solution: string;
   }[];
   keyCapabilities: string[];
-  caseStudySlugs: string[];
 }
 
 export const INDUSTRIES: Record<string, IndustryDetail> = {
@@ -47,7 +46,6 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
       "Cross-Platform Wealth Management Apps",
       "Multi-Currency Digital Wallets",
     ],
-    caseStudySlugs: ["finfuse"],
   },
   ecommerce: {
     slug: "ecommerce",
@@ -80,7 +78,6 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
       "Custom Inventory & Warehouse APIs",
       "Conversion Rate Optimization (CRO)",
     ],
-    caseStudySlugs: ["maison-lumina"],
   },
   edtech: {
     slug: "edtech",
@@ -113,7 +110,6 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
       "Gamified Learning & Progress Analytics",
       "SCORM / LTI Interoperability Standards",
     ],
-    caseStudySlugs: ["synapse-ai-engine"],
   },
   saas: {
     slug: "saas",
@@ -146,7 +142,6 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
       "Developer API Ecosystems",
       "Real-Time Telemetry & Account Analytics",
     ],
-    caseStudySlugs: ["synapse-ai-engine"],
   },
   startups: {
     slug: "startups",
@@ -179,6 +174,5 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
       "Cloud Infrastructure Setup",
       "Automated CI/CD & Production Deployment",
     ],
-    caseStudySlugs: ["synapse-ai-engine", "finfuse"],
   },
 };

@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import Navbar from "@/components/navbar";
 import Portfolio from "@/components/portfolio";
 import Footer from "@/components/footer";
-import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/seo/JsonLd";
-import { CASE_STUDIES } from "@/lib/data/case-studies";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { absoluteUrl } from "@/lib/site-config";
 import React from "react";
 
@@ -32,12 +31,6 @@ export const metadata: Metadata = {
 };
 
 export default function PortfolioPage() {
-  const caseStudyItems = Object.values(CASE_STUDIES).map((study) => ({
-    name: study.title,
-    url: absoluteUrl(`/portfolio/${study.slug}`),
-    description: study.overview,
-  }));
-
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-zinc-900 flex flex-col pt-16">
       <BreadcrumbJsonLd
@@ -45,11 +38,6 @@ export default function PortfolioPage() {
           { name: "Home", item: absoluteUrl("/") },
           { name: "Work", item: absoluteUrl("/portfolio") },
         ]}
-      />
-      <ItemListJsonLd
-        name="SevenX Labs Case Studies & Portfolio"
-        description="Featured software engineering case studies and technical delivery milestones."
-        itemListElement={caseStudyItems}
       />
       <Navbar />
       <Portfolio />

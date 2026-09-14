@@ -22,7 +22,6 @@ export interface ServiceDetail {
     question: string;
     answer: string;
   }[];
-  relatedCaseStudySlugs: string[];
   relatedServices: {
     title: string;
     slug: string;
@@ -107,7 +106,6 @@ export const SERVICES: Record<string, ServiceDetail> = {
           "Yes, we frequently audit, refactor, and modernize legacy codebases, improving rendering speed, code organization, and feature scalability.",
       },
     ],
-    relatedCaseStudySlugs: ["finfuse", "maison-lumina"],
     relatedServices: [
       { title: "Mobile App Development", slug: "mobile-app-development" },
       { title: "AI Development", slug: "ai-development" },
@@ -191,7 +189,6 @@ export const SERVICES: Record<string, ServiceDetail> = {
           "Yes, we manage the complete submission process, including certificate configuration, TestFlight beta distribution, and review guidelines compliance.",
       },
     ],
-    relatedCaseStudySlugs: ["finfuse"],
     relatedServices: [
       { title: "Web Development", slug: "web-development" },
       { title: "UI/UX Design", slug: "ui-ux-design" },
@@ -274,7 +271,6 @@ export const SERVICES: Record<string, ServiceDetail> = {
           "Yes, we build lightweight API microservices that connect directly to your existing database, backend servers, or web dashboard.",
       },
     ],
-    relatedCaseStudySlugs: ["synapse-ai-engine"],
     relatedServices: [
       { title: "Custom Software Development", slug: "custom-software-development" },
       { title: "Cloud & DevOps", slug: "cloud-devops" },
@@ -357,7 +353,6 @@ export const SERVICES: Record<string, ServiceDetail> = {
           "You retain full ownership of the custom codebase, intellectual property, architecture designs, and repository assets upon completion.",
       },
     ],
-    relatedCaseStudySlugs: ["synapse-ai-engine", "kubeflow-enterprise"],
     relatedServices: [
       { title: "Web Development", slug: "web-development" },
       { title: "AI Development", slug: "ai-development" },
@@ -441,7 +436,6 @@ export const SERVICES: Record<string, ServiceDetail> = {
           "Yes, our integrated team handles product strategy, UI/UX design, frontend development, and backend engineering in a single unified workflow.",
       },
     ],
-    relatedCaseStudySlugs: ["maison-lumina", "finfuse"],
     relatedServices: [
       { title: "Web Development", slug: "web-development" },
       { title: "Mobile App Development", slug: "mobile-app-development" },
@@ -533,7 +527,6 @@ export const SERVICES: Record<string, ServiceDetail> = {
           "We use rolling deployment strategies, blue/green cluster routing, health check probes, and automated rollback triggers if error metrics trip.",
       },
     ],
-    relatedCaseStudySlugs: ["kubeflow-enterprise"],
     relatedServices: [
       { title: "Custom Software Development", slug: "custom-software-development" },
       { title: "Web Development", slug: "web-development" },

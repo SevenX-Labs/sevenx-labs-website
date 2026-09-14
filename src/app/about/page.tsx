@@ -30,7 +30,6 @@ import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { FAQPageJsonLd } from "@/components/seo/JsonLd";
 import Link from "next/link";
 import { absoluteUrl } from "@/lib/site-config";
-import { CASE_STUDIES } from "@/lib/data/case-studies";
 
 export const metadata: Metadata = {
   title: {
@@ -76,12 +75,6 @@ const ABOUT_FAQS = [
 ];
 
 export default function AboutPage() {
-  const featuredCases = [
-    CASE_STUDIES["synapse-ai-engine"],
-    CASE_STUDIES["finfuse"],
-    CASE_STUDIES["maison-lumina"],
-    CASE_STUDIES["kubeflow-enterprise"],
-  ].filter(Boolean);
 
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-zinc-900 flex flex-col">
@@ -616,59 +609,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION 09 — OUR WORK */}
-      <section id="work" className="py-20 md:py-28 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full border-t border-black/[0.06]">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-          <div className="flex flex-col gap-3">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
-              SELECTED CASE STUDIES
-            </span>
-            <h2 className="font-general text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-black">
-              SEE THE ENGINEERING IN PRACTICE
-            </h2>
-          </div>
-          <Link
-            href="/portfolio"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#3B82F6] hover:text-blue-700 transition-colors group"
-          >
-            <span>EXPLORE OUR WORK</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {featuredCases.map((study) => (
-            <div key={study.slug} className="bg-white p-8 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col justify-between gap-6 hover:border-blue-200 transition-all duration-300">
-              <div className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#3B82F6] px-3 py-1 bg-blue-50 border border-blue-100 rounded-full">
-                    {study.category}
-                  </span>
-                  <span className="text-xs font-mono text-slate-500 font-bold">{study.metric}</span>
-                </div>
-                <h3 className="font-general text-2xl font-bold uppercase text-black">{study.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{study.overview}</p>
-              </div>
-
-              <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                <div className="flex flex-wrap gap-2">
-                  {study.tags.slice(0, 3).map((tag) => (
-                    <span key={tag} className="text-[11px] font-mono text-slate-500 bg-slate-50 px-2.5 py-1 rounded-md border border-slate-200/50">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <Link
-                  href={`/portfolio/${study.slug}`}
-                  className="text-xs font-mono font-bold text-[#3B82F6] hover:underline flex items-center gap-1 shrink-0"
-                >
-                  <span>View Case Study</span> →
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      
 
       {/* SECTION FAQS */}
       <section className="py-20 md:py-28 max-w-4xl mx-auto px-6 md:px-12 w-full border-t border-black/[0.06]">
