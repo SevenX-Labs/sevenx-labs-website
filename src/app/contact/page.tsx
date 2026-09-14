@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Contact from "@/components/contact";
-import { PageHeader } from "@/components/ui/PageHeader";
 import { absoluteUrl } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -31,15 +30,8 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#0D0D11] text-white flex flex-col pt-16">
+    <main className="min-h-screen bg-[#FAF9F6] text-zinc-900 flex flex-col pt-16">
       <Navbar />
-      <PageHeader
-        theme="dark"
-        badge="START A PROJECT"
-        title="Let's Build Something Exceptional Together"
-        subtitle="Have a new project in mind or looking to upgrade your existing software platform? Reach out to our engineering studio below."
-        breadcrumbs={[{ name: "Contact", href: "/contact" }]}
-      />
       <Contact />
       <Footer />
     </main>

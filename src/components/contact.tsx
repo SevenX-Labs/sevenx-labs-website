@@ -43,7 +43,7 @@ export default function Contact() {
     setTimeout(() => setCopiedEmail(false), 2200);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim()) {
       setErrorMsg("Please enter your name.");
@@ -61,10 +61,26 @@ export default function Contact() {
     setErrorMsg("");
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result.error || "Failed to send email inquiry.");
+      }
+
       setIsSubmitted(true);
-    }, 850);
+    } catch (err: any) {
+      console.error("Submission error:", err);
+      setErrorMsg(err.message || "An unexpected error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
