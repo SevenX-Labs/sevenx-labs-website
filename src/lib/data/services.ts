@@ -98,12 +98,12 @@ export const SERVICES: Record<string, ServiceDetail> = {
       {
         question: "What frameworks do you use for web development?",
         answer:
-          "We primarily build on Next.js, React, TypeScript, Node.js, and TailwindCSS for frontend applications, paired with PostgreSQL, Redis, and FastAPI for backend infrastructure.",
+          "We build using Next.js, React, TypeScript, Node.js, and PostgreSQL for fast, reliable, and easy-to-maintain web applications.",
       },
       {
         question: "Can SevenX Labs upgrade or rebuild an existing web application?",
         answer:
-          "Yes, we frequently audit, refactor, and modernize legacy codebases, improving rendering speed, code organization, and feature scalability.",
+          "Yes, we can update and rebuild existing websites or applications to improve loading speed, design, and performance.",
       },
     ],
     relatedServices: [
@@ -181,12 +181,12 @@ export const SERVICES: Record<string, ServiceDetail> = {
       {
         question: "Should we build a React Native app or separate native apps?",
         answer:
-          "React Native is ideal for 90% of cross-platform business applications, saving up to 40% in engineering timeline while delivering native UI speed.",
+          "React Native allows us to build for both iOS and Android at the same time, saving development time while delivering a fast native feel.",
       },
       {
         question: "Do you handle App Store and Google Play store submissions?",
         answer:
-          "Yes, we manage the complete submission process, including certificate configuration, TestFlight beta distribution, and review guidelines compliance.",
+          "Yes, we handle the entire submission process to make sure your app gets approved on both the Apple App Store and Google Play Store.",
       },
     ],
     relatedServices: [
@@ -263,12 +263,12 @@ export const SERVICES: Record<string, ServiceDetail> = {
       {
         question: "How do you prevent AI model hallucinations in business applications?",
         answer:
-          "We use strict RAG retrieval boundaries, schema-validated JSON outputs, temperature tuning, and automated ground-truth check logic.",
+          "We connect AI models directly to your verified business documents and data to ensure responses remain accurate and relevant.",
       },
       {
         question: "Can SevenX Labs integrate AI into our existing software system?",
         answer:
-          "Yes, we build lightweight API microservices that connect directly to your existing database, backend servers, or web dashboard.",
+          "Yes, we can add AI features directly into your existing website, web app, or software dashboard.",
       },
     ],
     relatedServices: [
@@ -345,7 +345,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
       {
         question: "How is custom software development structured?",
         answer:
-          "Project scope, technical complexity, third-party integrations, and milestone timelines are defined during an initial architecture discovery phase.",
+          "We start by discussing your exact business needs, defining key features, and providing clear timeline and cost milestones.",
       },
       {
         question: "Who owns the intellectual property (IP) of the software?",
@@ -428,12 +428,12 @@ export const SERVICES: Record<string, ServiceDetail> = {
       {
         question: "Do you provide design handoffs for internal development teams?",
         answer:
-          "Yes, we provide structured Figma libraries with design tokens, asset exports, responsive auto-layouts, and implementation guidelines.",
+          "Yes, we deliver organized Figma design files, UI components, and asset exports ready for any development team to build.",
       },
       {
         question: "Can SevenX Labs handle both design and development?",
         answer:
-          "Yes, our integrated team handles product strategy, UI/UX design, frontend development, and backend engineering in a single unified workflow.",
+          "Yes, our team handles everything from initial UI/UX designs to full-stack software development under one roof.",
       },
     ],
     relatedServices: [
@@ -519,12 +519,12 @@ export const SERVICES: Record<string, ServiceDetail> = {
       {
         question: "Which cloud platforms does SevenX Labs support?",
         answer:
-          "We primarily specialize in Amazon Web Services (AWS) and Google Cloud Platform (GCP), alongside modern Vercel/Cloudflare edge networks.",
+          "We work with major cloud providers like AWS, Google Cloud, and Vercel depending on your project needs and budget.",
       },
       {
         question: "How do you maintain zero-downtime deployments?",
         answer:
-          "We use rolling deployment strategies, blue/green cluster routing, health check probes, and automated rollback triggers if error metrics trip.",
+          "We deploy updates seamlessly without taking your application offline, using automated checks to ensure system stability.",
       },
     ],
     relatedServices: [

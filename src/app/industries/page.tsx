@@ -36,16 +36,16 @@ export const metadata: Metadata = {
 
 const INDUSTRY_FAQS = [
   {
-    question: "How do you ensure data security and compliance for FinTech software?",
-    answer: "We integrate end-to-end TLS encryption, field-level database encryption, SOC2 Type II compliance controls, PCI-DSS payment tokenization, and strict OAuth2/OIDC identity management."
+    question: "How do you keep user data and payments secure?",
+    answer: "We use standard encryption, secure payment gateways like Stripe, and strict access controls to keep your user and business data safe."
   },
   {
-    question: "How do you build E-Commerce platforms that handle traffic spikes during sales events?",
-    answer: "We utilize serverless API edge caching, CDN asset distribution, distributed Redis session caching, and decoupled headless checkout flows that scale horizontally on Kubernetes."
+    question: "Can your platforms handle high traffic during peak sales?",
+    answer: "Yes, we build fast websites and platforms using cloud caching and scaling techniques so your site stays live and fast during busy periods."
   },
   {
-    question: "Do you offer post-launch maintenance for industry applications?",
-    answer: "Yes, we provide SLA-backed SRE support, 24/7 uptime monitoring, vulnerability patching, database optimization, and continuous feature expansion contracts."
+    question: "Do you offer ongoing support after launch?",
+    answer: "Yes, we provide flexible monthly maintenance, monitoring, security updates, and feature improvements for all live applications."
   }
 ];
 

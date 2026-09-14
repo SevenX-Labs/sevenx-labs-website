@@ -72,12 +72,12 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
       {
         question: "How long does a production SaaS MVP development cycle take?",
         answer:
-          "Delivery timelines depend on product scope, technical complexity, third-party integrations, and feedback cycles.",
+          "An initial MVP usually takes 4 to 8 weeks depending on the number of features and core user journeys required.",
       },
       {
         question: "Which billing processors do you support for SaaS applications?",
         answer:
-          "We primarily integrate Stripe Billing, Paddle, and Chargebee, supporting localized payment methods, tax handling, and subscription logic.",
+          "We typically integrate Stripe or PayPal for easy subscription payments, automated billing, and invoice generation.",
       },
     ],
     relatedServiceSlug: "web-development",
@@ -127,7 +127,7 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
       {
         question: "What happens after the MVP is launched?",
         answer:
-          "We transition smoothly into continuous feature iterations based on user telemetry, feedback, and product milestones.",
+          "After launch, we help you add new features, fix bugs, and scale your product based on user feedback.",
       },
     ],
     relatedServiceSlug: "web-development",
@@ -177,7 +177,7 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
       {
         question: "How do you ensure AI automation reliability?",
         answer:
-          "We implement structured JSON schema enforcement, validation checks, and automated fallback logic with human-in-the-loop review triggers.",
+          "We test automated workflows thoroughly and add validation rules so complex edge cases can be escalated to human review if needed.",
       },
     ],
     relatedServiceSlug: "ai-development",
@@ -221,7 +221,7 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
       {
         question: "Can SevenX Labs modernize systems without rewriting everything from scratch?",
         answer:
-          "Yes, we frequently apply incremental migration strategies (such as the Strangler Fig pattern) to replace legacy modules step-by-step.",
+          "Yes, we can modernize your system step-by-step so your business keeps running smoothly without stopping operations.",
       },
     ],
     relatedServiceSlug: "custom-software-development",

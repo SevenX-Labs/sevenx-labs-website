@@ -57,20 +57,20 @@ export const metadata: Metadata = {
 
 const ABOUT_FAQS = [
   {
-    question: "What types of companies does SevenX Labs partner with?",
-    answer: "We partner with funded startups validating new products, growth-stage businesses expanding digital channels, established product teams requiring specialized engineering capability, and organizations modernizing legacy technology systems."
+    question: "What types of businesses does SevenX Labs work with?",
+    answer: "We work with startups, small-to-medium businesses, and growing product teams looking for reliable web, mobile, and software engineering."
   },
   {
-    question: "How does intellectual property (IP) transfer work?",
-    answer: "You retain 100% full ownership of all custom source code, architecture documentation, design systems, vector pipelines, and cloud infrastructure configurations upon delivery. We operate on a strict work-for-hire model."
+    question: "Who owns the code once the project is finished?",
+    answer: "You retain 100% full ownership of all custom source code, design files, and project assets upon final delivery."
   },
   {
-    question: "What is your typical project engagement model?",
-    answer: "We work through dedicated product engineering teams for ongoing product evolution as well as structured, milestone-based engagements for milestone delivery and rapid MVP creation."
+    question: "How do we work together on a project?",
+    answer: "We offer flexible project options, including fixed milestone delivery for MVPs as well as monthly dedicated engineering support for continuous product improvements."
   },
   {
-    question: "How do you guarantee product quality and production performance?",
-    answer: "Every application we engineer undergoes automated CI/CD verification, static code analysis, performance profiling, end-to-end security scanning, and strict type safety checks before deployment."
+    question: "How do you ensure our software runs reliably?",
+    answer: "We test code thoroughly, conduct performance checks, and follow standard security practices before deploying your project to live production."
   }
 ];
 
