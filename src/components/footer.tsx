@@ -186,8 +186,6 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-10 text-xs text-zinc-500 font-mono">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <span>© {currentYear} SevenX Labs. All rights reserved.</span>
-            <Link href="/privacy" className="hover:text-zinc-300 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-zinc-300 transition-colors">Terms of Service</Link>
           </div>
 
           <div className="flex items-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full text-zinc-400">
