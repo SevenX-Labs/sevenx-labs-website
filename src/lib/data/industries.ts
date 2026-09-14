@@ -5,6 +5,7 @@ export interface IndustryDetail {
   metaDescription: string;
   h1: string;
   tagline: string;
+  cardTeaser: string;
   overview: string;
   challengesSolved: {
     challenge: string;
@@ -23,8 +24,10 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
       "SevenX Labs engineers high-concurrency fintech platforms, trading apps, secure payment gateways, and banking software with strict security standards.",
     h1: "High-Concurrency FinTech Engineering Built on Trust and Speed",
     tagline: "Secure Payment Engines, Real-Time Trading Dashboards, and Wealth Management Platforms",
+    cardTeaser:
+      "High-concurrency trading platforms, secure payment processing pipelines, biometric mobile apps, and automated financial ledgers.",
     overview:
-      "Financial technology applications require sub-second latency, zero data loss, and hardware-grade security. We engineer custom trading dashboards, mobile wealth management apps, payment processing pipelines, and automated ledger software built to handle high transactional volume.",
+      "Financial technology applications demand low latency, zero data loss, and hardware-grade data security. We build custom real-time trading dashboards, mobile wealth management portals, payment processing gateways, and automated transaction ledgers built to perform under high market volume.",
     challengesSolved: [
       {
         challenge: "High-Concurrency Data Processing",
@@ -54,8 +57,10 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
       "SevenX Labs builds high-converting e-commerce web platforms, 3D interactive product configurators, and custom storefront architectures.",
     h1: "High-Converting E-Commerce Platforms & 3D Interactive Experiences",
     tagline: "Sub-Second Page Loads, Interactive 3D Product Previews, and Scalable Checkout Pipelines",
+    cardTeaser:
+      "Headless Next.js storefronts, 3D WebGL product customizers, multi-currency checkout, and warehouse API integrations.",
     overview:
-      "Modern e-commerce requires exceptional performance and immersive product presentation. We build custom head-less e-commerce storefronts, 3D interactive web previews using Three.js, and multi-currency checkout solutions optimized for conversion rate optimization.",
+      "Modern e-commerce success relies on rapid page responsiveness and immersive product presentation. We build custom headless web storefronts, 3D interactive product visualizers using Three.js, and multi-currency checkout systems designed to maximize user engagement and conversion rates.",
     challengesSolved: [
       {
         challenge: "Slow Page Load Drops Conversions",
@@ -85,13 +90,20 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
       "SevenX Labs builds multi-tenant B2B SaaS software platforms with subscription billing, role-based security, and cloud scalability.",
     h1: "Scalable B2B SaaS Products Engineered for High Retention",
     tagline: "From Initial Architecture to Enterprise Multi-Tenancy and Global Scale",
+    cardTeaser:
+      "Multi-tenant B2B SaaS architectures with automated subscription management, tenant isolation, and administrative control panels.",
     overview:
-      "We partner with SaaS companies to design, build, and scale multi-tenant software platforms. Our engineering focuses on clean API architecture, seamless subscription billing, robust role permissions, and fast dashboard interfaces.",
+      "We partner with SaaS companies to design, engineer, and expand multi-tenant cloud platforms. Our engineering unifies clean API design, subscription billing logic, fine-grained role permissions, and fast web dashboards to maximize customer retention.",
     challengesSolved: [
       {
         challenge: "Scaling Infrastructure Costs",
         solution:
           "Auto-scaling serverless edge routes, optimized database indexes, and efficient multi-tenant data partitioning.",
+      },
+      {
+        challenge: "Complex Onboarding & User Retention",
+        solution:
+          "Streamlined self-serve onboarding workflows, interactive product walkthroughs, and automated account telemetry.",
       },
     ],
     keyCapabilities: [
@@ -99,6 +111,7 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
       "Stripe Subscription & Billing Engines",
       "Role-Based Access Control (RBAC)",
       "Developer API Ecosystems",
+      "Real-Time Telemetry & Account Analytics",
     ],
     caseStudySlugs: ["synapse-ai-engine"],
   },
@@ -110,13 +123,20 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
       "SevenX Labs acts as a dedicated product engineering partner for ambitious startups, building MVPs and scaling v1.0 applications quickly.",
     h1: "Agile Engineering Partner for High-Growth Startups",
     tagline: "Rapid Iteration, Senior Software Talent, and Production-Grade Code",
+    cardTeaser:
+      "Embedded engineering squads for ambitious startup teams validating product ideas, building MVPs, and scaling initial releases.",
     overview:
-      "Startups need to move fast without accumulating crippling technical debt. SevenX Labs functions as your embedded product engineering team, turning wireframes into production applications ready for market launch and investor demos.",
+      "Founders need to move fast without accumulating crippling technical debt. SevenX Labs operates as your dedicated product engineering squad, turning product concepts into production-grade web, mobile, and AI applications ready for market validation and investor calls.",
     challengesSolved: [
       {
         challenge: "Uncertain Technical Direction",
         solution:
           "Senior technical guidance on cloud stack, database choices, and third-party integrations to prevent costly refactoring later.",
+      },
+      {
+        challenge: "Rapid Feature Scope Creep",
+        solution:
+          "Structured MVP roadmap prioritization focusing strictly on core validation metrics before expanding secondary feature sets.",
       },
     ],
     keyCapabilities: [
@@ -124,6 +144,7 @@ export const INDUSTRIES: Record<string, IndustryDetail> = {
       "Full-Stack Web & Mobile Apps",
       "Product Strategy & UX Design",
       "Cloud Infrastructure Setup",
+      "Automated CI/CD & Production Deployment",
     ],
     caseStudySlugs: ["synapse-ai-engine", "finfuse"],
   },

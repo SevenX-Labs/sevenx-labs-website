@@ -5,6 +5,7 @@ export interface SolutionDetail {
   metaDescription: string;
   h1: string;
   tagline: string;
+  cardTeaser: string;
   overview: string;
   keyDeliverables: string[];
   features: {
@@ -23,13 +24,15 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
   "saas-development": {
     slug: "saas-development",
     title: "SaaS Development",
-    metaTitle: "SaaS Development Services & Architecture",
+    metaTitle: "SaaS Product Engineering & Multi-Tenant Development",
     metaDescription:
-      "SevenX Labs builds multi-tenant SaaS products with recurring subscription architecture, custom dashboards, API engines, and cloud scalability.",
-    h1: "SaaS Products Designed, Built and Scaled by One Engineering Team",
-    tagline: "From Multi-Tenant Architecture to Billing Integration & Cloud Scalability",
+      "SevenX Labs builds multi-tenant B2B SaaS software platforms with subscription billing, role-based security, and cloud scalability.",
+    h1: "Engineered for Multi-Tenancy, High Retention and Global Scale",
+    tagline: "From Multi-Tenant Architecture to Billing Integration & Control Panels",
+    cardTeaser:
+      "Multi-tenant SaaS architectures featuring automated subscription billing, tenant isolation, SAML auth, and administrative control panels.",
     overview:
-      "Building a successful Software-as-a-Service (SaaS) product requires careful architectural planning. We engineer multi-tenant SaaS platforms equipped with authentication, subscription management (Stripe/Paddle), role-based permissions, telemetry analytics, and fast dashboard interfaces.",
+      "Engineering a commercial SaaS product requires robust data isolation, recurring revenue integration, and continuous deployment workflows. We partner with product founders and vendors to build SaaS platforms designed to handle thousands of concurrent tenant accounts without operational friction.",
     keyDeliverables: [
       "Multi-Tenant Database Architecture",
       "Stripe / Merchant Subscription Integration",
@@ -87,8 +90,10 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
       "Launch a production-grade Minimum Viable Product (MVP) with SevenX Labs. Fast iteration, robust code quality, and investor-ready design.",
     h1: "Turn Product Concepts Into Investor-Ready MVPs",
     tagline: "Product Engineering Focused on Speed-to-Market and Scalable Foundations",
+    cardTeaser:
+      "Rapid, production-ready MVP development designed for early market validation, investor demos, and scalable expansion.",
     overview:
-      "Launching an MVP shouldn't mean accumulating unmanageable technical debt. We build streamlined, production-grade MVPs that allow founders to validate market demand, onboard early adopters, and demonstrate product value.",
+      "We accelerate product launches by focusing on core functional journeys while maintaining high code quality. Our rapid MVP delivery process provides founders with an investor-ready application built on modern stacks, ensuring your initial version can evolve cleanly into your v1.0 architecture.",
     keyDeliverables: [
       "Core User Journeys & Product Design",
       "Production-Ready Frontend & Backend Code",
@@ -135,8 +140,10 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
       "Automate manual business workflows with custom AI agents, document processing pipelines, and intelligent system integrations engineered by SevenX Labs.",
     h1: "Automate Complex Workflows With Custom AI Pipelines",
     tagline: "Streamline Operational Bottlenecks with AI Agents and Data Engines",
+    cardTeaser:
+      "Custom document intelligence engines, automated data extraction, and intelligent workflow agents with human review controls.",
     overview:
-      "Manual data extraction, customer response handling, and multi-system data copying consume valuable team resources. SevenX Labs designs custom AI automation workflows that handle complex tasks with auditability and structured review rules.",
+      "Operational bottlenecks and manual data processing slow down business execution. We engineer custom AI automation software that connects disparate databases, parses unstructured documents, and executes multi-step operational workflows with automated validation rules.",
     keyDeliverables: [
       "Automated Document Processing Pipelines",
       "Customer Support AI Agents",
@@ -183,8 +190,10 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
       "Modernize legacy software systems, migrate to the cloud, and streamline digital operations with custom product engineering by SevenX Labs.",
     h1: "Modernize Legacy Systems for Growth, Agility and Security",
     tagline: "Re-engineering Legacy Enterprise Architectures into Modern Digital Platforms",
+    cardTeaser:
+      "System modernization, legacy codebase refactoring, cloud migrations, and modern API integration for enterprise platforms.",
     overview:
-      "Legacy software systems slow down growth and increase maintenance overhead. We help mid-market and enterprise organizations refactor legacy software, migrate to cloud platforms, and adopt modern digital tools.",
+      "Aging technology platforms and fragmented databases limit operational agility. We systematically modernize legacy software through incremental refactoring, API integration layers, and zero-downtime cloud migrations that preserve core data integrity while unlocking modern capabilities.",
     keyDeliverables: [
       "Legacy Codebase Modernization",
       "Cloud Infrastructure Migration",

@@ -250,8 +250,8 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyPageProps
       )}
 
       <CTASection
-        title="Have a Similar Product in Mind?"
-        description="Let's engineer a solution that delivers verified results for your business."
+        title={`BUILD A SYSTEM LIKE ${study.title.toUpperCase()}?`}
+        description={`Discuss how we can apply similar technical architecture and performance patterns to your ${study.category.toLowerCase()} platform.`}
       />
       <Footer />
     </main>

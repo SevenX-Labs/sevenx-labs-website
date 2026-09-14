@@ -99,7 +99,7 @@ export default function ServicesIndexPage() {
                 </h2>
 
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  {service.overview}
+                  {service.cardTeaser}
                 </p>
 
                 {/* Key deliverables preview */}
