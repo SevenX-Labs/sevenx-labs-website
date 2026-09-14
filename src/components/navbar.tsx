@@ -46,6 +46,7 @@ export default function Navbar() {
       textColor: "#ffffff",
       links: [
         { label: "Selected Case Studies", href: "/portfolio", ariaLabel: "Portfolio Case Studies" },
+        { label: "Testimonials", href: "/#testimonials", ariaLabel: "Client Testimonials & Reviews" },
         { label: "Contact Studio", href: "/contact", ariaLabel: "Contact SevenX Labs" },
       ],
     },
