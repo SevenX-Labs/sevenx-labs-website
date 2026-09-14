@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
 
         {/* ─── MIDDLE SECTION: 5 Navigation Columns ─── */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 py-14 border-b border-white/10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-14 border-b border-white/10">
           {/* Column 1: EXPLORE */}
           <div className="flex flex-col gap-4">
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#60A5FA]">
@@ -62,7 +62,6 @@ export default function Footer() {
                 { name: "About", href: "/about", ariaLabel: "About SevenX Labs Studio" },
                 { name: "Services", href: "/services", ariaLabel: "View Engineering Services" },
                 { name: "Solutions", href: "/solutions", ariaLabel: "View Business Solutions" },
-                { name: "Industries", href: "/industries", ariaLabel: "View Industry Expertise" },
                 { name: "Work", href: "/portfolio", ariaLabel: "View Featured Portfolio Projects" },
                 { name: "Contact", href: "/contact", ariaLabel: "Contact Engineering Studio" },
               ].map((item) => (

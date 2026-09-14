@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/site-config";
 import { SERVICES } from "@/lib/data/services";
 import { SOLUTIONS } from "@/lib/data/solutions";
-import { INDUSTRIES } from "@/lib/data/industries";
+import { CASE_STUDIES } from "@/lib/data/case-studies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString().split("T")[0];
@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/services",
     "/solutions",
-    "/industries",
     "/portfolio",
     "/contact",
   ].map((route) => ({
@@ -36,8 +35,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  const industryRoutes = Object.keys(INDUSTRIES).map((slug) => ({
-    url: absoluteUrl(`/industries/${slug}`),
+  const caseStudyRoutes = Object.keys(CASE_STUDIES).map((slug) => ({
+    url: absoluteUrl(`/portfolio/${slug}`),
     lastModified: currentDate,
     changeFrequency: "monthly" as const,
     priority: 0.8,
@@ -47,6 +46,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticRoutes,
     ...serviceRoutes,
     ...solutionRoutes,
-    ...industryRoutes,
+    ...caseStudyRoutes,
   ];
 }

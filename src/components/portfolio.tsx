@@ -2,13 +2,16 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, FolderGit2, Layers, Cpu, Clock } from "lucide-react";
+import { ArrowUpRight, FolderGit2, Layers, Cpu, Server, CheckCircle2 } from "lucide-react";
+import { CASE_STUDIES } from "@/lib/data/case-studies";
 
 export default function Portfolio() {
+  const caseStudyList = Object.values(CASE_STUDIES);
+
   return (
     <section
       id="portfolio"
-      className="relative w-full py-24 md:py-36 bg-[#FAF9F6] text-zinc-900 select-none font-space border-t border-black/[0.06] overflow-hidden"
+      className="relative w-full py-20 md:py-32 bg-[#FAF9F6] text-zinc-900 font-space border-t border-black/[0.06] overflow-hidden"
     >
       <div className="absolute top-1/3 -right-40 w-[650px] h-[650px] bg-gradient-to-br from-blue-100/20 via-purple-100/15 to-transparent rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 -left-40 w-[550px] h-[550px] bg-gradient-to-tr from-cyan-100/20 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -22,9 +25,9 @@ export default function Portfolio() {
               SELECTED CASE STUDIES
             </span>
 
-            <h2 className="font-general text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-black tracking-tight uppercase leading-[1.08]">
-              OUR PORTFOLIO.
-            </h2>
+            <h1 className="font-general text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-black tracking-tight uppercase leading-[1.08]">
+              FEATURED WORK.
+            </h1>
           </div>
 
           <div className="flex flex-col gap-2 max-w-md">
@@ -34,65 +37,66 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* COMING SOON SHOWCASE CARD */}
-        <div className="relative w-full rounded-[32px] bg-[#0D0D11] text-white border border-white/10 p-8 sm:p-12 md:p-20 overflow-hidden shadow-2xl flex flex-col items-center text-center justify-center gap-8">
-          <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-cyan-600/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-
-          <div className="relative z-10 flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-400 text-xs font-mono font-bold uppercase tracking-widest">
-            <Clock className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '6s' }} />
-            <span>Coming Soon</span>
-          </div>
-
-          <div className="relative z-10 flex flex-col items-center gap-4 max-w-3xl">
-            <h3 className="font-general text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-white leading-tight">
-              Case Studies & Featured Projects Showcase Coming Soon
-            </h3>
-
-            <p className="text-zinc-400 text-sm sm:text-base md:text-lg leading-relaxed font-normal max-w-2xl">
-              We are currently preparing detailed technical case studies highlighting full-stack architectures, real-time trading engines, document AI systems, and multi-region Kubernetes cloud infrastructure.
-            </p>
-          </div>
-
-          <div className="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-2xl pt-2">
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex flex-col items-center gap-2 text-center">
-              <FolderGit2 className="w-6 h-6 text-[#3B82F6]" />
-              <span className="font-general text-sm font-bold uppercase text-white">Full Architecture Breakdowns</span>
-              <span className="text-[11px] font-mono text-zinc-400">Deep system design diagrams & schemas</span>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex flex-col items-center gap-2 text-center">
-              <Cpu className="w-6 h-6 text-cyan-400" />
-              <span className="font-general text-sm font-bold uppercase text-white">Production AI & Web Platforms</span>
-              <span className="text-[11px] font-mono text-zinc-400">Sub-second latency & high concurrency</span>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex flex-col items-center gap-2 text-center">
-              <Layers className="w-6 h-6 text-purple-400" />
-              <span className="font-general text-sm font-bold uppercase text-white">Verified Client Impact</span>
-              <span className="text-[11px] font-mono text-zinc-400">Measurable revenue & efficiency metrics</span>
-            </div>
-          </div>
-
-          <div className="relative z-10 pt-4 flex flex-col sm:flex-row items-center gap-4">
-            <Link
-              href="/contact"
-              aria-label="Start a project with SevenX Labs"
-              className="group inline-flex items-center gap-3.5 px-8 py-4 bg-white text-black text-xs font-mono font-bold uppercase tracking-[0.2em] rounded-full hover:bg-zinc-200 transition-all duration-300 shadow-xl shadow-white/5 hover:-translate-y-0.5 active:scale-[0.98]"
+        {/* CASE STUDIES GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {caseStudyList.map((cs) => (
+            <div
+              key={cs.slug}
+              className="bg-white p-8 sm:p-10 rounded-3xl border border-black/[0.08] shadow-md hover:shadow-xl hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between gap-6 group"
             >
-              <span>Start a Project With Us</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Link>
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 bg-blue-50 text-[#3B82F6] border border-blue-100 text-[10px] font-mono font-bold uppercase tracking-widest rounded-full">
+                    {cs.category}
+                  </span>
+                </div>
 
-            <Link
-              href="/services"
-              aria-label="Explore SevenX Labs engineering services"
-              className="px-6 py-4 text-xs font-mono font-bold uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
-            >
-              Explore Capabilities →
-            </Link>
-          </div>
+                <h2 className="font-general text-2xl md:text-3xl font-extrabold uppercase text-black group-hover:text-blue-600 transition-colors">
+                  {cs.title}
+                </h2>
+
+                <p className="text-slate-600 text-sm leading-relaxed font-normal">
+                  {cs.overview}
+                </p>
+
+                <div className="flex flex-col gap-2 pt-2 border-t border-slate-100">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500">
+                    KEY OUTCOMES
+                  </span>
+                  <div className="flex flex-col gap-1.5">
+                    {cs.outcomes.slice(0, 2).map((out, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-xs font-sans text-slate-700">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#3B82F6] shrink-0 mt-0.5" />
+                        <span><strong>{out.title}:</strong> {out.description}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  {cs.technologies.slice(0, 5).map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2.5 py-1 bg-slate-50 rounded-lg border border-slate-200/60 text-[11px] font-mono font-bold text-slate-700"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-black/[0.06] flex items-center justify-between">
+                <Link
+                  href={`/portfolio/${cs.slug}`}
+                  aria-label={`View ${cs.title} technical case study`}
+                  className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-black group-hover:text-blue-600 transition-colors"
+                >
+                  <span>Explore Technical Case Study</span>
+                  <ArrowUpRight className="w-4 h-4 inline-block ml-1" />
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -73,7 +73,7 @@ export default function Services() {
       slug: "cloud-devops",
       category: "Infrastructure & Scale",
       description:
-        "High-availability cloud infrastructure on AWS and GCP, zero-downtime CI/CD pipelines, Kubernetes, and automated monitoring.",
+        "High-availability cloud infrastructure on AWS and GCP, automated CI/CD pipelines, Kubernetes, and continuous monitoring.",
       tags: ["AWS", "GCP", "Kubernetes", "Docker", "Terraform"],
     },
   ];

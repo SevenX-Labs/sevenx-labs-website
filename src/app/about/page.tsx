@@ -62,7 +62,7 @@ const ABOUT_FAQS = [
   },
   {
     question: "Who owns the code once the project is finished?",
-    answer: "You retain 100% full ownership of all custom source code, design files, and project assets upon final delivery."
+    answer: "You retain full ownership of all custom source code, design files, and project assets upon final delivery."
   },
   {
     question: "How do we work together on a project?",
@@ -416,7 +416,7 @@ export default function AboutPage() {
             </div>
             <h3 className="font-general text-xl font-bold uppercase text-black">LAUNCH & IMPROVE</h3>
             <p className="text-slate-600 text-xs leading-relaxed">
-              Deploy to production using automated zero-downtime pipelines, set up real-time telemetry and error monitoring, and continuously iterate.
+              Deploy to production using automated deployment pipelines designed for continuous availability, set up real-time telemetry and error monitoring, and continuously iterate.
             </p>
           </div>
         </div>
@@ -616,6 +616,105 @@ export default function AboutPage() {
       </section>
 
       
+
+            {/* SECTION 09 — SELECTED WORK */}
+      <section id="work" className="py-20 md:py-28 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full border-t border-black/[0.06]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div className="flex flex-col gap-3">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
+              PROVEN PRODUCTION DELIVERY
+            </span>
+            <h2 className="font-general text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-tight text-black">
+              Featured Case Studies
+            </h2>
+          </div>
+          <Link
+            href="/portfolio"
+            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#3B82F6] hover:text-blue-700 transition-colors group"
+          >
+            <span>VIEW ALL CASE STUDIES</span>
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="p-8 bg-white rounded-3xl border border-black/[0.08] shadow-sm flex flex-col justify-between gap-6 group hover:border-blue-300 transition-all">
+            <div className="flex flex-col gap-3">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#3B82F6]">AI & VECTOR SEARCH</span>
+              <h3 className="font-general text-2xl font-bold uppercase text-black group-hover:text-blue-600 transition-colors">
+                Synapse AI Intelligence Platform
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Enterprise knowledge retrieval and semantic search engine with PostgreSQL pgvector and LangChain RAG pipelines.
+              </p>
+            </div>
+            <Link
+              href="/portfolio/synapse-ai-engine"
+              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-black group-hover:text-blue-600 transition-colors"
+            >
+              <span>Explore Case Study</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="p-8 bg-white rounded-3xl border border-black/[0.08] shadow-sm flex flex-col justify-between gap-6 group hover:border-blue-300 transition-all">
+            <div className="flex flex-col gap-3">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#3B82F6]">WEB & MOBILE</span>
+              <h3 className="font-general text-2xl font-bold uppercase text-black group-hover:text-blue-600 transition-colors">
+                FinFuse Wealth & Analytics Platform
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Real-time financial tracking platform built with React Native and Next.js, powered by low-latency WebSockets.
+              </p>
+            </div>
+            <Link
+              href="/portfolio/finfuse"
+              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-black group-hover:text-blue-600 transition-colors"
+            >
+              <span>Explore Case Study</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="p-8 bg-white rounded-3xl border border-black/[0.08] shadow-sm flex flex-col justify-between gap-6 group hover:border-blue-300 transition-all">
+            <div className="flex flex-col gap-3">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#3B82F6]">E-COMMERCE & 3D WEB</span>
+              <h3 className="font-general text-2xl font-bold uppercase text-black group-hover:text-blue-600 transition-colors">
+                Maison Lumina Luxury Commerce
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Interactive 3D WebGL product customizer and high-performance Next.js luxury storefront with Draco mesh compression.
+              </p>
+            </div>
+            <Link
+              href="/portfolio/maison-lumina"
+              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-black group-hover:text-blue-600 transition-colors"
+            >
+              <span>Explore Case Study</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="p-8 bg-white rounded-3xl border border-black/[0.08] shadow-sm flex flex-col justify-between gap-6 group hover:border-blue-300 transition-all">
+            <div className="flex flex-col gap-3">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#3B82F6]">CLOUD & DEVOPS</span>
+              <h3 className="font-general text-2xl font-bold uppercase text-black group-hover:text-blue-600 transition-colors">
+                KubeFlow Enterprise Cloud
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Multi-region Kubernetes cluster architecture with automated blue/green CI/CD deployment pipelines and Terraform IaC.
+              </p>
+            </div>
+            <Link
+              href="/portfolio/kubeflow-enterprise"
+              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-black group-hover:text-blue-600 transition-colors"
+            >
+              <span>Explore Case Study</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* SECTION FAQS */}
       <section className="py-20 md:py-28 max-w-4xl mx-auto px-6 md:px-12 w-full border-t border-black/[0.06]">

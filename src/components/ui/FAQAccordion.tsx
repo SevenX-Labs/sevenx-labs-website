@@ -46,6 +46,7 @@ export function FAQAccordion({ faqs, items }: FAQAccordionProps) {
                 onClick={() => setOpenIndex(isOpen ? null : idx)}
                 className="w-full flex items-center justify-between text-left gap-4 focus:outline-none group"
                 aria-expanded={isOpen}
+                aria-controls={`faq-answer-${idx}`}
               >
                 <span className="font-general text-lg sm:text-xl font-bold text-black uppercase tracking-tight group-hover:text-blue-600 transition-colors">
                   {faq.question}
@@ -60,11 +61,14 @@ export function FAQAccordion({ faqs, items }: FAQAccordionProps) {
               </button>
 
               <div
-                className={`mt-4 text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl ${
-                  isOpen ? "block animate-fadeIn" : "hidden"
+                id={`faq-answer-${idx}`}
+                className={`transition-all duration-300 overflow-hidden ${
+                  isOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0 mt-0 pointer-events-none"
                 }`}
               >
-                {faq.answer}
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl font-normal">
+                  {faq.answer}
+                </p>
               </div>
             </div>
           );

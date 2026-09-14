@@ -13,218 +13,333 @@ export interface SolutionDetail {
     description: string;
   }[];
   idealFor: string[];
+  relatedServices: {
+    title: string;
+    slug: string;
+  }[];
+  relatedCaseStudies: {
+    title: string;
+    slug: string;
+  }[];
   faqs: {
     question: string;
     answer: string;
   }[];
-  relatedServiceSlug: string;
 }
 
 export const SOLUTIONS: Record<string, SolutionDetail> = {
   "saas-development": {
     slug: "saas-development",
     title: "SaaS Development",
-    metaTitle: "SaaS Product Engineering & Multi-Tenant Development",
+    metaTitle: "Multi-Tenant SaaS Product Engineering",
     metaDescription:
-      "SevenX Labs builds multi-tenant B2B SaaS software platforms with subscription billing, role-based security, and cloud scalability.",
-    h1: "Engineered for Multi-Tenancy, High Retention and Global Scale",
-    tagline: "From Multi-Tenant Architecture to Billing Integration & Control Panels",
+      "SevenX Labs architects multi-tenant B2B SaaS platforms with strict tenant data isolation, Stripe/Paddle subscription billing, and automated CI/CD pipelines.",
+    h1: "Multi-Tenant SaaS Product Engineering",
+    tagline: "Scalable Tenant Data Isolation, Automated Billing, and Multi-Region Deployments",
     cardTeaser:
-      "Engineering a commercial SaaS product requires more than feature parity — it demands airtight tenant data isolation, dependable recurring-revenue billing, and a deployment pipeline that can ship safely multiple times a week. We architect multi-tenant platforms using row-level security or schema-based isolation, integrate subscription logic through Stripe or Paddle, and build the CI/CD pipelines that let you onboard thousands of accounts without operational firefighting.",
+      "Engineering a commercial SaaS product requires more than feature parity — it demands dependable tenant data isolation, recurring-revenue billing, and a deployment pipeline that can ship safely multiple times a week. We architect multi-tenant platforms using row-level security or schema-based isolation, integrate subscription logic through Stripe or Paddle, and build the CI/CD pipelines that let you onboard thousands of accounts without operational firefighting.",
     overview:
-      "Engineering a commercial SaaS product requires robust data isolation, recurring revenue integration, and continuous deployment workflows. We partner with product founders and vendors to build SaaS platforms designed to handle thousands of concurrent tenant accounts without operational friction.",
+      "We architect and build commercial SaaS platforms designed for multi-tenant scalability, predictable subscription revenue, and automated tenant onboarding. From database partitioning with PostgreSQL Row-Level Security (RLS) to complex usage-based metering via Stripe or Paddle, we handle the foundational engineering required for software products to scale from pilot customers to thousands of concurrent organizations.",
     keyDeliverables: [
       "Multi-Tenant Database Architecture",
       "Stripe / Merchant Subscription Integration",
       "Authentication & OAuth / SAML Integration",
       "Usage-Based Billing & Metering",
-      "Admin Control Panels & Analytics Dashboards",
-      "Public REST / GraphQL Developer APIs",
-      "Automated CI/CD & Cloud Infrastructure",
+      "Tenant Provisioning & Self-Service Onboarding",
+      "Role-Based Access Control & Audit Logging",
     ],
     features: [
       {
-        title: "Multi-Tenant Data Isolation",
+        title: "Strict Tenant Data Isolation",
         description:
-          "Isolating tenant datasets via schema separation or row-level security (RLS) to maintain data confidentiality across organizational accounts.",
+          "Enforcing strict data boundaries using PostgreSQL Row-Level Security (RLS) or schema-per-tenant isolation using strict tenant isolation and database-level access controls to reduce the risk of cross-tenant data exposure.",
       },
       {
-        title: "Flexible Billing & Usage Tracking",
+        title: "Flexible Subscription & Metered Billing",
         description:
-          "Configuring tiered plans, usage-based metering, seat licensing, enterprise quotes, and automated invoice delivery.",
+          "Integrating tiered pricing, free trials, prorations, add-ons, and usage-based event metering through Stripe or Paddle webhooks.",
       },
       {
-        title: "Fast Onboarding & Frictionless UX",
+        title: "Enterprise SSO & SAML Authentication",
         description:
-          "Streamlined onboarding flows designed to minimize friction and assist user conversion.",
+          "Enabling corporate clients to authenticate seamlessly using Google Workspace, Microsoft Azure AD, Okta, and SAML 2.0 protocols.",
       },
       {
-        title: "Scalable Infrastructure",
+        title: "Automated Tenant Provisioning",
         description:
-          "Built on serverless edge networks and auto-scaling database pools to handle user spikes smoothly.",
+          "Zero-touch tenant workspace creation, automated subdomains, invitation management, and self-service account administration.",
       },
     ],
     idealFor: [
-      "B2B Software Startups",
-      "Established Businesses Launching SaaS Offerings",
-      "Enterprise Vendors Modernizing Legacy Products",
+      "Product Founders launching new B2B SaaS platforms",
+      "Software Vendors migrating on-prem tools to cloud SaaS",
+      "Growing SaaS teams scaling to multi-tenant architectures",
+    ],
+    relatedServices: [
+      { title: "Web Development", slug: "web-development" },
+      { title: "Cloud & DevOps", slug: "cloud-devops" },
+    ],
+    relatedCaseStudies: [
+      { title: "FinFuse Wealth Platform", slug: "finfuse" },
+      { title: "Synapse AI Intelligence", slug: "synapse-ai-engine" },
     ],
     faqs: [
       {
-        question: "How long does a production SaaS MVP development cycle take?",
+        question: "How do you handle multi-tenancy and data isolation for SaaS platforms?",
         answer:
-          "An initial MVP usually takes 4 to 8 weeks depending on the number of features and core user journeys required.",
+          "We isolate tenant data using either dedicated schemas or PostgreSQL Row-Level Security (RLS) policies depending on your compliance requirements, ensuring that database queries automatically restrict data access to the authenticated tenant context.",
       },
       {
-        question: "Which billing processors do you support for SaaS applications?",
+        question: "Can you integrate both recurring subscription tiers and usage-based metering?",
         answer:
-          "We typically integrate Stripe or PayPal for easy subscription payments, automated billing, and invoice generation.",
+          "Yes. We integrate subscription billing engines (such as Stripe Billing or Paddle) supporting fixed recurring plans, per-seat licenses, and background event-driven usage metering without requiring billing logic rewrites.",
+      },
+      {
+        question: "How does the platform support Enterprise Single Sign-On (SSO)?",
+        answer:
+          "We implement SAML 2.0 and OAuth OpenID Connect workflows, allowing your enterprise customers to enforce single sign-on through providers like Okta, Azure AD, and Google Workspace.",
+      },
+      {
+        question: "Who manages the cloud hosting and production deployments?",
+        answer:
+          "We configure automated CI/CD deployment pipelines on your AWS, GCP, or Vercel cloud accounts, handing over full administrative ownership upon deployment.",
       },
     ],
-    relatedServiceSlug: "web-development",
   },
+
   "mvp-development": {
     slug: "mvp-development",
     title: "MVP Development",
-    metaTitle: "MVP Development Services for Startups",
+    metaTitle: "Rapid MVP Development for Startups",
     metaDescription:
-      "Launch a production-grade Minimum Viable Product (MVP) with SevenX Labs. Fast iteration, robust code quality, and investor-ready design.",
-    h1: "Turn Product Concepts Into Investor-Ready MVPs",
-    tagline: "Product Engineering Focused on Speed-to-Market and Scalable Foundations",
+      "SevenX Labs builds investor-ready MVPs on production foundations using Next.js, TypeScript, and PostgreSQL for focused product launches.",
+    h1: "Rapid, Production-Grade MVP Development",
+    tagline: "Validate Product-Market Fit Fast on Foundations Built for v1.0",
     cardTeaser:
       "Speed matters, but so does the code you're standing on six months after launch. Our MVP process narrows scope to the user journeys that actually prove product-market fit, then builds on production-grade foundations — Next.js, TypeScript, PostgreSQL — so the version you ship to your first 100 users can scale directly into v1.0 instead of being rebuilt from scratch.",
     overview:
-      "We accelerate product launches by focusing on core functional journeys while maintaining high code quality. Our rapid MVP delivery process provides founders with an investor-ready application built on modern stacks, ensuring your initial version can evolve cleanly into your v1.0 architecture.",
+      "We help founders and product teams accelerate time-to-market by ruthlessly scoping early product versions to the core journeys that validate product-market fit. Rather than writing throwaway prototype scripts, we build on production-ready technology foundations (Next.js, TypeScript, PostgreSQL) so your initial release can scale directly into v1.0 without a costly rebuild.",
     keyDeliverables: [
-      "Core User Journeys & Product Design",
-      "Production-Ready Frontend & Backend Code",
-      "Essential Third-Party API Integrations",
-      "Product Analytics & Event Tracking",
-      "Scalable Cloud Hosting Setup",
+      "Product Discovery & Scope Prioritization",
+      "Interactive Figma UX/UI Prototype",
+      "Production-Grade Full-Stack Application",
+      "Authentication & Payment Processing",
+      "Analytics & User Telemetry Setup",
+      "Deployment & Investor Demo Preparation",
     ],
     features: [
       {
-        title: "Feature Prioritization Framework",
+        title: "Focused Scope Prioritization",
         description:
-          "Focusing strictly on high-impact features required to validate core value propositions while deferring non-essential scope.",
+          "Eliminating secondary feature creep to focus engineering bandwidth on the core differentiating value proposition.",
       },
       {
-        title: "Production Architecture",
+        title: "Non-Disposable Architecture",
         description:
-          "Building on modern stacks (Next.js, TypeScript, PostgreSQL) so your MVP code can evolve directly into your v1.0 product.",
+          "Writing strictly-typed, modular TypeScript code that serves as the permanent foundation for your future engineering team.",
       },
       {
-        title: "Polished UI/UX",
+        title: "Short, Focused Development Cycles",
         description:
-          "Delivering clean, responsive UI/UX and snappy interactions that instill confidence during user demos and investor calls.",
+          "Structured milestone delivery sprints providing early weekly builds for user testing and stakeholder review.",
+      },
+      {
+        title: "Investor-Ready Polish & Reliability",
+        description:
+          "High-fidelity visual design, responsive interfaces, and clean database architectures ready for investor diligence.",
       },
     ],
     idealFor: [
-      "Venture-Backed Founders",
-      "Bootstrapped Entrepreneurs",
-      "Corporate Innovation Labs Testing New Concepts",
+      "Early-stage Founders preparing to raise venture capital",
+      "Established businesses testing a new digital product idea",
+      "Product managers validating a new business unit feature",
+    ],
+    relatedServices: [
+      { title: "Web Development", slug: "web-development" },
+      { title: "Mobile App Development", slug: "mobile-app-development" },
+      { title: "UI/UX Design", slug: "ui-ux-design" },
+    ],
+    relatedCaseStudies: [
+      { title: "Maison Lumina Luxury", slug: "maison-lumina" },
+      { title: "FinFuse Wealth Platform", slug: "finfuse" },
     ],
     faqs: [
       {
-        question: "What happens after the MVP is launched?",
+        question: "How long does an MVP build typically take?",
         answer:
-          "After launch, we help you add new features, fix bugs, and scale your product based on user feedback.",
+          "Our MVP development process is optimized for focused delivery cycles, typically structured across short iterative milestones from initial scoping and UI/UX design to production deployment.",
+      },
+      {
+        question: "Will we need to rebuild the application from scratch after launching our MVP?",
+        answer:
+          "No. Because we build on production-grade stacks (Next.js, TypeScript, PostgreSQL) with clean modular code boundaries, your MVP code can evolve directly into your v1.0 architecture without throwaway rewrites.",
+      },
+      {
+        question: "How do you help decide which features belong in the MVP?",
+        answer:
+          "We collaborate during discovery to prioritize the single core user journey that proves product-market fit, moving secondary ideas to a post-launch roadmap to ensure fast delivery.",
+      },
+      {
+        question: "Can you assist with investor demos and technical diligence?",
+        answer:
+          "Yes. We ensure the application is visually polished, fully responsive, and supported by clean architectural documentation that passes technical due diligence.",
       },
     ],
-    relatedServiceSlug: "web-development",
   },
+
   "ai-automation": {
     slug: "ai-automation",
     title: "AI Automation",
-    metaTitle: "AI Automation Solutions & Workflows",
+    metaTitle: "Enterprise AI Workflow Automation Solutions",
     metaDescription:
-      "Automate manual business workflows with custom AI agents, document processing pipelines, and intelligent system integrations engineered by SevenX Labs.",
-    h1: "Automate Complex Workflows With Custom AI Pipelines",
-    tagline: "Streamline Operational Bottlenecks with AI Agents and Data Engines",
+      "SevenX Labs engineers custom AI automation pipelines for unstructured document parsing, database sync, and operational validation workflows.",
+    h1: "Enterprise AI Workflow & Document Automation",
+    tagline: "Intelligent Document Processing, Data Extraction, and Human-in-the-Loop Pipelines",
     cardTeaser:
       "Manual workflows don't just cost time — they introduce the inconsistency and error rates that slow growing teams down. We design AI automation pipelines using retrieval-augmented generation and structured validation rules, connecting disparate databases, parsing unstructured documents, and routing edge cases to a human reviewer only when the model's confidence drops below a defined threshold.",
     overview:
-      "Operational bottlenecks and manual data processing slow down business execution. We engineer custom AI automation software that connects disparate databases, parses unstructured documents, and executes multi-step operational workflows with automated validation rules.",
+      "We design and deploy custom AI automation pipelines that eliminate manual operational bottlenecks. By combining optical character recognition (OCR), large language models, structured validation schemas, and human-in-the-loop exception queues, our systems parse complex unstructured documents, synchronize databases, and execute multi-step operational workflows with high accuracy.",
     keyDeliverables: [
-      "Automated Document Processing Pipelines",
-      "Customer Support AI Agents",
-      "Multi-System Workflow Orchestration",
-      "Intelligent Data Extraction & Normalization",
-      "Human-in-the-Loop Review Interfaces",
+      "Unstructured Document Parsing & Extraction",
+      "Intelligent Invoice, Receipt & Contract Pipelines",
+      "Confidence-Scored Human-in-the-Loop Review Queues",
+      "Automated Database & CRM/ERP Synchronization",
+      "Real-Time Error Alerting & Audit Logging",
+      "Middleware API Connector Integration",
     ],
     features: [
       {
-        title: "Document Intelligence",
+        title: "Intelligent Document Processing (IDP)",
         description:
-          "Extracting structured JSON data from PDF invoices, contracts, receipts, and records using multimodal AI models.",
+          "Extracting clean, structured JSON data from messy PDFs, scans, emails, and contracts without manual templates.",
       },
       {
-        title: "Intelligent Workflow Agents",
+        title: "Confidence Scoring & Exception Routing",
         description:
-          "Software agents designed to execute multi-step operations across internal databases, CRMs, and communication tools.",
+          "Automatically approving high-confidence extractions while routing ambiguous edge cases to a human review queue.",
       },
       {
-        title: "Validation Controls",
+        title: "Non-Disruptive Middleware Integration",
         description:
-          "Structured JSON schema enforcement and validation rules with automatic escalation to human operators when ambiguity occurs.",
+          "Connecting automation pipelines directly to your existing databases, ERPs, and CRMs through secure middleware APIs.",
+      },
+      {
+        title: "Full Audit Trails & Data Lineage",
+        description:
+          "Logging every automated extraction and human confirmation with exact source paragraph coordinates for regulatory compliance.",
       },
     ],
     idealFor: [
-      "Operations-Heavy Enterprises",
-      "Fintech & Insurance Providers",
-      "Logistics & Supply Chain Companies",
+      "Operations teams overwhelmed by manual document data entry",
+      "Logistics, FinTech, and healthcare companies processing high-volume forms",
+      "Growing businesses looking to scale operations without linear headcount growth",
+    ],
+    relatedServices: [
+      { title: "AI Development", slug: "ai-development" },
+      { title: "Custom Software Development", slug: "custom-software-development" },
+    ],
+    relatedCaseStudies: [
+      { title: "Synapse AI Intelligence", slug: "synapse-ai-engine" },
     ],
     faqs: [
       {
-        question: "How do you ensure AI automation reliability?",
+        question: "What is the difference between AI Automation and standard Zapier/Make automations?",
         answer:
-          "We test automated workflows thoroughly and add validation rules so complex edge cases can be escalated to human review if needed.",
+          "Zapier handles simple if-this-then-that triggers between standardized APIs. Custom AI automation handles complex, unstructured, messy documents (PDFs, invoices, handwriting), performs semantic validation, and routes confidence-scored exceptions to human reviewers.",
+      },
+      {
+        question: "How do you handle edge cases when the AI model is uncertain?",
+        answer:
+          "Our pipelines output confidence scores for each extracted field. If confidence drops below your defined threshold, the item is automatically placed into a human-in-the-loop review dashboard for quick team verification.",
+      },
+      {
+        question: "Can AI automation pipelines integrate with legacy databases and ERP systems?",
+        answer:
+          "Yes. We build middleware API layers that read and write data to your existing ERP, CRM, or relational database without requiring alterations to your underlying legacy codebase.",
+      },
+      {
+        question: "How do you ensure data security and compliance?",
+        answer:
+          "All data pipelines are deployed on private, encrypted infrastructure and can be configured around your organization's data-retention and compliance requirements.",
       },
     ],
-    relatedServiceSlug: "ai-development",
   },
+
   "digital-transformation": {
     slug: "digital-transformation",
     title: "Digital Transformation",
-    metaTitle: "Digital Transformation & System Modernization",
+    metaTitle: "Legacy System Modernization & Cloud Migration",
     metaDescription:
-      "Modernize legacy software systems, migrate to the cloud, and streamline digital operations with custom product engineering by SevenX Labs.",
-    h1: "Modernize Legacy Systems for Growth, Agility and Security",
-    tagline: "Re-engineering Legacy Enterprise Architectures into Modern Digital Platforms",
+      "SevenX Labs modernizes legacy software through incremental refactoring, the Strangler Fig pattern, API middleware, and cloud migration designed for continuous operation.",
+    h1: "Legacy Software Modernization & Cloud Migration",
+    tagline: "Incremental System Refactoring, API Modernization, and Resilient Cloud Replatforming",
     cardTeaser:
       "Legacy platforms rarely fail all at once — they slow teams down one workaround at a time. We modernize aging systems incrementally, using patterns like the Strangler Fig to migrate services module by module, layer in modern REST/GraphQL APIs, and move infrastructure to the cloud without a single high-risk, all-at-once cutover.",
     overview:
-      "Aging technology platforms and fragmented databases limit operational agility. We systematically modernize legacy software through incremental refactoring, API integration layers, and zero-downtime cloud migrations that preserve core data integrity while unlocking modern capabilities.",
+      "We help established organizations modernize aging software architectures, brittle monolithic databases, and legacy infrastructure without the catastrophic risks of all-at-once ground-up rewrites. Using proven patterns like the Strangler Fig, we incrementally decouple modules, wrap legacy backends in modern API layers, and transition workloads to scalable cloud environments while maintaining uninterrupted business operations.",
     keyDeliverables: [
-      "Legacy Codebase Modernization",
-      "Cloud Infrastructure Migration",
-      "API & Database Integration",
-      "Security Best-Practices Review",
-      "Team Onboarding & Documentation",
+      "Legacy Architecture & Dependency Audit",
+      "Strangler Fig Incremental Migration Roadmap",
+      "Modern REST & GraphQL Middleware API Layers",
+      "Database Replication & Schema Modernization",
+      "Cloud Replatforming & Migration (AWS / GCP)",
+      "Automated CI/CD Deployment Pipeline Migration",
     ],
     features: [
       {
-        title: "Incremental Migration Strategy",
+        title: "Strangler Fig Incremental Migration",
         description:
-          "Executing gradual service cutovers to ensure business operations continue uninterrupted during major system upgrades.",
+          "Replacing legacy system features service by service behind an API gateway, eliminating the risk of massive all-at-once cutovers.",
       },
       {
-        title: "Modern API Layers",
+        title: "Legacy API Encapsulation",
         description:
-          "Connecting legacy databases with clean REST/GraphQL APIs, enabling instant connectivity to modern web and mobile apps.",
+          "Building modern REST/GraphQL middleware layers that unlock legacy database capabilities for modern web and mobile apps.",
+      },
+      {
+        title: "Database Migration & Data Integrity",
+        description:
+          "Employing real-time change data capture (CDC) and shadow writing to replicate and validate legacy data into modern PostgreSQL databases with controlled cutovers.",
+      },
+      {
+        title: "Modern DevOps & Infrastructure",
+        description:
+          "Containerizing legacy workloads with Docker and migrating them to automated Terraform-managed cloud environments.",
       },
     ],
     idealFor: [
-      "Mid-Market Enterprises",
-      "Established Organizations with Monolithic Legacy Systems",
+      "Enterprises running on legacy monolithic software that slows down releases",
+      "Companies facing difficulty hiring engineers for obsolete legacy stacks",
+      "Organizations needing to expose legacy backend data to modern web/mobile apps",
+    ],
+    relatedServices: [
+      { title: "Custom Software Development", slug: "custom-software-development" },
+      { title: "Cloud & DevOps", slug: "cloud-devops" },
+    ],
+    relatedCaseStudies: [
+      { title: "KubeFlow Enterprise", slug: "kubeflow-enterprise" },
     ],
     faqs: [
       {
-        question: "Can SevenX Labs modernize systems without rewriting everything from scratch?",
+        question: "Why is the Strangler Fig pattern safer than a complete ground-up rewrite?",
         answer:
-          "Yes, we can modernize your system step-by-step so your business keeps running smoothly without stopping operations.",
+          "Complete rewrites carry high failure rates because business operations must pause and release all new features simultaneously. The Strangler Fig pattern modernizes the system incrementally, replacing one service at a time behind an API gateway without disrupting live operations.",
+      },
+      {
+        question: "How do you protect data integrity and minimize downtime during legacy database migrations?",
+        answer:
+          "We use dual-write or change data capture (CDC) replication strategies where the legacy and modern databases run in parallel until data integrity is fully verified before switching traffic.",
+      },
+      {
+        question: "Can we build a modern frontend without replacing our entire legacy backend immediately?",
+        answer:
+          "Yes. We frequently build modern Next.js frontends connected to an API middleware layer that communicates with your legacy backend, providing immediate UX improvements while backend modernization proceeds.",
+      },
+      {
+        question: "How do you handle undocumented legacy codebases?",
+        answer:
+          "We conduct thorough code and database audits, map data flows and integration points, and reverse-engineer business logic into automated integration tests before refactoring.",
       },
     ],
-    relatedServiceSlug: "custom-software-development",
   },
 };

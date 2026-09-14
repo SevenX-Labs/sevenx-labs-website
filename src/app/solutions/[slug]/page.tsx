@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -7,9 +7,8 @@ import Footer from "@/components/footer";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { CTASection } from "@/components/ui/CTASection";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
-import { ServiceJsonLd } from "@/components/seo/JsonLd";
+import { ServiceJsonLd, BreadcrumbJsonLd, FAQPageJsonLd } from "@/components/seo/JsonLd";
 import { SOLUTIONS } from "@/lib/data/solutions";
-import { SERVICES } from "@/lib/data/services";
 import { absoluteUrl } from "@/lib/site-config";
 
 interface SolutionPageProps {
@@ -57,14 +56,20 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
     notFound();
   }
 
-  const relatedService = SERVICES[sol.relatedServiceSlug];
-
   return (
     <main className="min-h-screen bg-[#FAF9F6] text-zinc-900 flex flex-col">
+      <FAQPageJsonLd faqs={sol.faqs} />
       <ServiceJsonLd
         name={sol.title}
         description={sol.metaDescription}
         url={absoluteUrl(`/solutions/${sol.slug}`)}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: absoluteUrl("/") },
+          { name: "Solutions", item: absoluteUrl("/solutions") },
+          { name: sol.title, item: absoluteUrl(`/solutions/${slug}`) },
+        ]}
       />
 
       <Navbar />
@@ -75,28 +80,28 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
         subtitle={sol.tagline}
         breadcrumbs={[
           { name: "Solutions", href: "/solutions" },
-          { name: sol.title },
+          { name: sol.title, href: `/solutions/${slug}` },
         ]}
       />
 
       {/* OVERVIEW SECTION */}
       <section className="py-20 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-7 flex flex-col gap-6">
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
               SOLUTION OVERVIEW
             </span>
-            <p className="text-base sm:text-lg md:text-xl text-slate-700 font-medium leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-slate-700 font-normal leading-relaxed">
               {sol.overview}
             </p>
           </div>
 
-          <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-black/[0.08] shadow-md flex flex-col gap-4">
+          <div className="lg:col-span-5 bg-white p-8 sm:p-10 rounded-3xl border border-black/[0.08] shadow-md flex flex-col gap-5">
             <h2 className="font-general text-lg font-bold uppercase text-black">Key Deliverables</h2>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-3">
               {sol.keyDeliverables.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-sm text-zinc-700 font-medium">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+                <li key={idx} className="flex items-start gap-3 text-sm text-zinc-700 font-medium leading-relaxed">
+                  <CheckCircle2 className="w-4 h-4 text-[#3B82F6] shrink-0 mt-0.5" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -113,7 +118,7 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
               FEATURES & ADVANTAGES
             </span>
             <h2 className="font-general text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-black">
-              Designed for Measurable ROI
+              Designed for Measurable Business Value
             </h2>
           </div>
 
@@ -121,10 +126,10 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
             {sol.features.map((feat, idx) => (
               <div
                 key={idx}
-                className="p-8 bg-[#FAF9F6] rounded-3xl border border-black/[0.08] flex flex-col gap-3"
+                className="p-8 bg-[#FAF9F6] rounded-3xl border border-black/[0.08] flex flex-col gap-3 hover:border-blue-200 transition-all duration-300"
               >
                 <h3 className="font-general text-xl font-bold uppercase text-black">{feat.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{feat.description}</p>
+                <p className="text-slate-600 text-sm leading-relaxed font-normal">{feat.description}</p>
               </div>
             ))}
           </div>
@@ -133,49 +138,73 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
 
       {/* IDEAL FOR */}
       <section className="py-20 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full flex flex-col gap-8">
-        <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
-          TARGET ORGANIZATIONS
-        </span>
-        <h2 className="font-general text-3xl font-extrabold uppercase text-black">Ideal For</h2>
+        <div className="flex flex-col gap-2">
+          <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
+            TARGET ORGANIZATIONS
+          </span>
+          <h2 className="font-general text-3xl font-extrabold uppercase text-black">Ideal For</h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {sol.idealFor.map((item, idx) => (
-            <div key={idx} className="p-6 bg-white rounded-2xl border border-black/10 font-mono text-sm font-semibold text-zinc-800 shadow-sm flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#3B82F6]" />
+            <div key={idx} className="p-6 bg-white rounded-2xl border border-black/10 font-mono text-xs sm:text-sm font-semibold text-zinc-800 shadow-sm flex items-start gap-3 leading-relaxed">
+              <span className="w-2 h-2 rounded-full bg-[#3B82F6] shrink-0 mt-1.5" />
               <span>{item}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* RELATED SERVICE */}
-      {relatedService && (
-        <section className="py-16 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full">
-          <div className="p-8 bg-[#0D0D11] text-white rounded-3xl border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="flex flex-col gap-2 max-w-xl">
+      {/* CONTEXTUAL INTERNAL LINKS: RELATED SERVICES & CASE STUDIES */}
+      <section className="py-16 bg-white border-y border-black/[0.06] w-full">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-10">
+          {sol.relatedServices && sol.relatedServices.length > 0 && (
+            <div className="flex flex-col gap-4">
               <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
-                POWERED BY CORE SERVICE
+                UNDERLYING ENGINEERING
               </span>
-              <h3 className="font-general text-2xl font-bold uppercase text-white">
-                {relatedService.title}
-              </h3>
-              <p className="text-zinc-400 text-xs sm:text-sm">
-                Learn more about our underlying engineering capabilities and technology stack.
-              </p>
+              <h3 className="font-general text-xl font-bold uppercase text-black">Powered by Core Services</h3>
+              <div className="flex flex-wrap gap-3">
+                {sol.relatedServices.map((svc) => (
+                  <Link
+                    key={svc.slug}
+                    href={`/services/${svc.slug}`}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#FAF9F6] hover:bg-blue-50 text-slate-800 hover:text-[#3B82F6] border border-black/[0.08] hover:border-blue-200 rounded-xl text-xs font-mono font-bold uppercase transition-colors group"
+                  >
+                    <span>{svc.title}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </Link>
+                ))}
+              </div>
             </div>
-            <Link
-              href={`/services/${relatedService.slug}`}
-              className="px-6 py-3 bg-white text-black font-mono text-xs font-bold uppercase tracking-wider rounded-full hover:bg-zinc-200 transition-colors w-max shrink-0"
-            >
-              Explore Service <ArrowUpRight className="w-3.5 h-3.5 inline-block ml-1" />
-            </Link>
-          </div>
-        </section>
-      )}
+          )}
+
+          {sol.relatedCaseStudies && sol.relatedCaseStudies.length > 0 && (
+            <div className="flex flex-col gap-4">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
+                FEATURED WORK
+              </span>
+              <h3 className="font-general text-xl font-bold uppercase text-black">Related Case Studies</h3>
+              <div className="flex flex-wrap gap-3">
+                {sol.relatedCaseStudies.map((cs) => (
+                  <Link
+                    key={cs.slug}
+                    href={`/portfolio/${cs.slug}`}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#FAF9F6] hover:bg-blue-50 text-slate-800 hover:text-[#3B82F6] border border-black/[0.08] hover:border-blue-200 rounded-xl text-xs font-mono font-bold uppercase transition-colors group"
+                  >
+                    <span>{cs.title}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
 
       {/* FAQ SECTION */}
       {sol.faqs && sol.faqs.length > 0 && (
-        <section className="py-20 max-w-5xl mx-auto px-6 md:px-12 w-full flex flex-col gap-10">
-          <div className="flex flex-col gap-3">
+        <section className="py-20 max-w-4xl mx-auto px-6 md:px-12 w-full flex flex-col gap-10">
+          <div className="flex flex-col gap-3 text-center">
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#3B82F6]">
               FREQUENTLY ASKED QUESTIONS
             </span>
@@ -184,11 +213,16 @@ export default async function SolutionDetailPage({ params }: SolutionPageProps) 
             </h2>
           </div>
 
-          <FAQAccordion faqs={sol.faqs} />
+          <FAQAccordion items={sol.faqs} />
         </section>
       )}
 
-      <CTASection />
+      <CTASection
+        title={`READY TO ACCELERATE YOUR ${sol.title.toUpperCase()} ROADMAP?`}
+        description={`Partner with SevenX Labs to map the fastest technical path to building and scaling your ${sol.title.toLowerCase()} solution.`}
+        buttonText="START A PROJECT"
+        buttonHref="/contact"
+      />
       <Footer />
     </main>
   );

@@ -151,9 +151,9 @@ export default function ServicesIndexPage() {
 
             <div className="p-8 bg-white/[0.03] border border-white/10 rounded-3xl flex flex-col gap-4">
               <Shield className="w-8 h-8 text-[#3B82F6]" />
-              <h3 className="font-general text-xl font-bold uppercase text-white">Bank-Grade Security</h3>
+              <h3 className="font-general text-xl font-bold uppercase text-white">Security-First Architecture</h3>
               <p className="text-zinc-400 text-sm leading-relaxed">
-                SOC2, PCI-DSS, and HIPAA compliance readiness built directly into API endpoints, authentication middleware, and database encryption schemas.
+                Role-based access control (RBAC), end-to-end data encryption, secure authentication tokens, and strict input validation built into every endpoint.
               </p>
             </div>
 

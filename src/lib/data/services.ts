@@ -22,7 +22,11 @@ export interface ServiceDetail {
     question: string;
     answer: string;
   }[];
-  relatedServices: {
+  relatedSolutions: {
+    title: string;
+    slug: string;
+  }[];
+  relatedCaseStudies: {
     title: string;
     slug: string;
   }[];
@@ -32,504 +36,583 @@ export const SERVICES: Record<string, ServiceDetail> = {
   "web-development": {
     slug: "web-development",
     title: "Web Development",
-    metaTitle: "Web Development Company",
+    metaTitle: "Web Application Development Services",
     metaDescription:
-      "SevenX Labs builds high-performance web applications, custom SaaS platforms, and enterprise web solutions using Next.js, React, and TypeScript.",
-    h1: "Web Development That Turns Ideas Into High-Performance Products",
+      "SevenX Labs engineers high-performance web applications, customer portals, and enterprise dashboards using Next.js, React, TypeScript, and PostgreSQL.",
+    h1: "Full-Stack Web Application Development",
     tagline: "Custom Web Application Engineering Built for Speed, Scale, and Conversion",
     cardTeaser:
-      "Custom web applications, SaaS platforms, and interactive dashboards engineered with Next.js, React, and TypeScript.",
+      "Custom web applications, customer portals, and interactive dashboards engineered with Next.js, React, and TypeScript.",
     overview:
-      "We architect full-stack web products built around strict performance standards, clean code boundaries, and measurable conversion goals. Whether you need a customer-facing web application, an internal operations portal, or a scalable SaaS platform, our team handles front-end interactivity and server-side infrastructure in a single unified workflow.",
+      "We architect full-stack web products built around strict performance standards, clean code boundaries, and measurable conversion goals. Whether you need a customer-facing web application, an internal operations portal, or a scalable backend API layer, our team handles front-end interactivity and server-side infrastructure in a single unified workflow.",
     whatWeBuild: [
       "Custom Web Applications",
-      "SaaS Platforms",
-      "Business & Analytics Dashboards",
-      "E-commerce Platforms",
-      "API & Backend Systems",
-      "Frontend Engineering Architecture",
+      "Interactive Analytics Dashboards",
+      "Customer Portals & Admin Panels",
+      "E-Commerce & Checkout Platforms",
+      "High-Throughput REST & GraphQL APIs",
+      "Frontend Design System Implementations",
     ],
     capabilities: [
       {
-        title: "Full-Stack Web Engineering",
+        title: "Full-Stack TypeScript Architecture",
         description:
-          "End-to-end web product development utilizing React, Next.js, Node.js, and TypeScript for structured execution and smooth user experiences.",
+          "End-to-end web product development utilizing Next.js App Router, React 19, Node.js, and TypeScript for type safety and maintainability.",
       },
       {
-        title: "Multi-Tenant SaaS Architecture",
+        title: "Server-Side Rendering & Edge Caching",
         description:
-          "Designing scalable SaaS foundations with isolated data partitioning, subscription billing integration, role-based access control, and automated deployments.",
+          "Optimizing initial bundle size, server-side rendering (SSR), and edge caching for sub-second page loads and strong Core Web Vitals.",
       },
       {
-        title: "High-Concurrency Dashboards",
+        title: "Interactive Real-Time Dashboards",
         description:
-          "Building real-time data visualization platforms backed by WebSockets, Redis pub/sub streams, and responsive UI interfaces.",
+          "Building responsive data visualization interfaces powered by WebSockets, Redis pub/sub streams, and optimistic UI state updates.",
       },
       {
-        title: "Performance & Core Web Vitals",
+        title: "Relational Database & API Design",
         description:
-          "Optimizing initial bundle size, server-side rendering (SSR), edge caching, and browser execution for fast page availability.",
+          "Designing normalized PostgreSQL schemas, efficient query indexing, connection pooling, and authenticated API endpoints.",
       },
     ],
-    technologies: ["Next.js", "React", "TypeScript", "Node.js", "TailwindCSS", "PostgreSQL", "Redis"],
+    technologies: ["Next.js", "React", "TypeScript", "Node.js", "TailwindCSS", "PostgreSQL", "Redis", "Prisma"],
     process: [
       {
         step: "01",
-        title: "Architecture & Scoping",
-        description: "Defining data models, system boundaries, API contracts, and user flows.",
+        title: "Architecture & Data Modeling",
+        description: "Defining data models, system boundaries, API contracts, and user flows before writing code.",
       },
       {
         step: "02",
-        title: "UI/UX & Component Design",
-        description: "Designing responsive interfaces, component libraries, and interactive wireframes.",
+        title: "Component & UI Engineering",
+        description: "Translating design specifications into modular, accessible, and responsive TypeScript components.",
       },
       {
         step: "03",
-        title: "Sprint Engineering",
-        description: "Writing clean, type-safe code in two-week development sprints with continuous staging previews.",
+        title: "Backend & Integration",
+        description: "Engineering secure API endpoints, database migrations, third-party webhooks, and authentication.",
       },
       {
         step: "04",
-        title: "Testing & Deployment",
-        description: "Automated CI/CD setup, security vulnerability reviews, performance profiling, and production launch.",
+        title: "Testing, Optimization & Launch",
+        description: "Running automated end-to-end tests, load testing, Core Web Vitals audits, and production deployment.",
       },
     ],
     faqs: [
       {
-        question: "What frameworks do you use for web development?",
+        question: "Why do you use Next.js and TypeScript for web applications?",
         answer:
-          "We build using Next.js, React, TypeScript, Node.js, and PostgreSQL for fast, reliable, and easy-to-maintain web applications.",
+          "Next.js provides hybrid rendering (SSR, SSG, and ISR), excellent search engine crawlability, and fast edge performance. TypeScript ensures strict type safety across the entire stack, drastically reducing runtime bugs as your application grows.",
       },
       {
-        question: "Can SevenX Labs upgrade or rebuild an existing web application?",
+        question: "How do you ensure web applications maintain fast load times?",
         answer:
-          "Yes, we can update and rebuild existing websites or applications to improve loading speed, design, and performance.",
+          "We optimize Core Web Vitals by minimizing client JavaScript bundles, using server components where appropriate, optimizing image/asset delivery, and implementing efficient database indexing and caching layers.",
+      },
+      {
+        question: "Can you build custom administrative dashboards and internal tools?",
+        answer:
+          "Yes. We frequently engineer bespoke administrative portals, analytics dashboards, and back-office management interfaces with role-based access control and real-time data sync.",
+      },
+      {
+        question: "Who owns the code and intellectual property once completed?",
+        answer:
+          "You retain full ownership of all custom source code, design assets, and deployment configurations upon project delivery without any proprietary vendor lock-in.",
+      },
+      {
+        question: "Can you integrate our web application with existing databases or third-party APIs?",
+        answer:
+          "Yes. We routinely build middleware layers, webhook handlers, and secure REST/GraphQL connectors to integrate with CRMs, payment gateways, ERPs, and legacy databases.",
       },
     ],
-    relatedServices: [
-      { title: "Mobile App Development", slug: "mobile-app-development" },
-      { title: "AI Development", slug: "ai-development" },
-      { title: "UI/UX Design", slug: "ui-ux-design" },
+    relatedSolutions: [
+      { title: "SaaS Development", slug: "saas-development" },
+      { title: "MVP Development", slug: "mvp-development" },
+    ],
+    relatedCaseStudies: [
+      { title: "FinFuse Wealth Platform", slug: "finfuse" },
+      { title: "Maison Lumina Luxury", slug: "maison-lumina" },
     ],
   },
+
   "mobile-app-development": {
     slug: "mobile-app-development",
     title: "Mobile App Development",
-    metaTitle: "Mobile App Development Company",
+    metaTitle: "Cross-Platform Mobile App Development",
     metaDescription:
-      "SevenX Labs engineers native iOS and Android mobile apps alongside cross-platform React Native applications built for performance and scale.",
-    h1: "Mobile Apps Engineered for Smooth Performance and Native Feel",
-    tagline: "iOS, Android, and Cross-Platform React Native App Engineering",
+      "SevenX Labs builds high-performance iOS and Android mobile applications using React Native, offline-first data sync, and hardware integration.",
+    h1: "Cross-Platform Mobile App Development",
+    tagline: "Native Performance, Shared Codebase Velocity on iOS & Android",
     cardTeaser:
-      "Native iOS/Android and cross-platform React Native apps designed for fluid touch interactions, offline sync, and fast release cycles.",
+      "Native and cross-platform mobile applications delivering responsive performance, offline resilience, and hardware biometric security.",
     overview:
-      "From consumer mobile products to field-agent operational apps, we engineer mobile applications that deliver native rendering performance across devices. We unify cross-platform codebases to minimize engineering friction while writing native modules whenever deep hardware integration or complex background tasks are required.",
+      "We design and engineer mobile applications that deliver smooth native performance across iOS and Android from a unified codebase. By leveraging React Native, we eliminate the cost and overhead of maintaining separate platform teams while providing direct access to native device hardware, biometrics, and background services.",
     whatWeBuild: [
-      "React Native Apps",
-      "Native iOS Applications",
-      "Native Android Applications",
-      "Cross-Platform Mobile Codebases",
-      "Real-Time Chat & Telemetry Apps",
-      "App Store & Play Store Publishing",
+      "Cross-Platform iOS & Android Apps",
+      "Real-Time Streaming & Chat Apps",
+      "Offline-First Business Applications",
+      "FinTech & Transactional Mobile Portals",
+      "Hardware-Integrated Mobile Tools",
+      "Mobile Onboarding & Subscription Flows",
     ],
     capabilities: [
       {
-        title: "Cross-Platform React Native",
+        title: "React Native Architecture",
         description:
-          "Building single-codebase mobile applications sharing 85%+ logic between iOS and Android while maintaining native 60 FPS UI performance.",
+          "Engineering unified mobile applications that achieve native responsiveness and 60fps animations on both iOS and Android.",
       },
       {
-        title: "Offline Data Synchronization",
+        title: "Offline-First Data Synchronization",
         description:
-          "Implementing local SQLite/WatermelonDB storage with background sync for seamless operation in low-connectivity environments.",
+          "Implementing local SQLite/WatermelonDB caching with optimistic UI updates and background reconciliation when connectivity returns.",
       },
       {
-        title: "Biometric & Hardware Integration",
+        title: "Native Hardware & Biometrics",
         description:
-          "Integrating Face ID, Touch ID, camera hardware, push notifications, and location services directly into native device APIs.",
+          "Integrating device capabilities including Face ID, Touch ID, camera hardware, push notifications (APNs/FCM), and location services.",
       },
       {
-        title: "App Store CI/CD Pipelines",
+        title: "App Store Lifecycle & CI/CD",
         description:
-          "Automated mobile build releases via Fastlane and TestFlight for rapid QA feedback loops and zero-downtime updates.",
+          "Automating build pipelines with Fastlane, managing TestFlight/Google Play beta distribution, and handling App Store review compliance.",
       },
     ],
-    technologies: ["React Native", "TypeScript", "Swift", "Kotlin", "Fastlane", "SQLite", "Firebase"],
+    technologies: ["React Native", "Expo", "TypeScript", "iOS SDK", "Android SDK", "SQLite", "Firebase", "Fastlane"],
     process: [
       {
         step: "01",
-        title: "Mobile UX Mapping",
-        description: "Designing touch-first mobile interfaces, gesture controls, and navigation stacks.",
+        title: "Mobile UX & Device Flows",
+        description: "Designing touch-first mobile navigation, gesture interactions, and offline fallback states.",
       },
       {
         step: "02",
-        title: "Core Architecture Setup",
-        description: "Configuring state management, offline database storage, and API authentication logic.",
+        title: "Core Architecture & State",
+        description: "Setting up cross-platform state persistence, local database storage, and API client layers.",
       },
       {
         step: "03",
-        title: "Feature Engineering & Testing",
-        description: "Building screens, hardware integration, unit tests, and cross-device testing on physical hardware.",
+        title: "Native Bridge & Hardware Integration",
+        description: "Wiring push notifications, biometrics, deep linking, and third-party native SDKs.",
       },
       {
         step: "04",
-        title: "Store Submission & Launch",
-        description: "Managing Apple App Store and Google Play Store submission, compliance checks, and metadata configuration.",
+        title: "App Store Submission & Release",
+        description: "Managing signing certificates, provisioning profiles, store listing metadata, and staged rollouts.",
       },
     ],
     faqs: [
       {
-        question: "Should we build a React Native app or separate native apps?",
+        question: "Why choose React Native over building separate native iOS and Android apps?",
         answer:
-          "React Native allows us to build for both iOS and Android at the same time, saving development time while delivering a fast native feel.",
+          "React Native allows a single team to write, test, and maintain one unified codebase that compiles to native UI components on both iOS and Android. This can significantly reduce duplicated platform-specific development and maintenance effort while maintaining responsive native performance.",
       },
       {
-        question: "Do you handle App Store and Google Play store submissions?",
+        question: "How does the mobile app handle poor or offline network connectivity?",
         answer:
-          "Yes, we handle the entire submission process to make sure your app gets approved on both the Apple App Store and Google Play Store.",
+          "We engineer an offline-first architecture using local SQLite storage and optimistic UI updates. Actions taken offline are queued locally and automatically synced with the server once connectivity is restored.",
+      },
+      {
+        question: "Do you handle the Apple App Store and Google Play Store submission process?",
+        answer:
+          "Yes. We handle end-to-end store provisioning, including signing certificates, metadata configuration, TestFlight beta distribution, and addressing App Store review guidelines.",
+      },
+      {
+        question: "Can existing web backend APIs be reused for the mobile application?",
+        answer:
+          "Yes. We build standard RESTful or GraphQL API clients in the mobile app to securely communicate with your existing backend servers and databases.",
       },
     ],
-    relatedServices: [
-      { title: "Web Development", slug: "web-development" },
-      { title: "UI/UX Design", slug: "ui-ux-design" },
+    relatedSolutions: [
+      { title: "MVP Development", slug: "mvp-development" },
+      { title: "SaaS Development", slug: "saas-development" },
+    ],
+    relatedCaseStudies: [
+      { title: "FinFuse Wealth Platform", slug: "finfuse" },
     ],
   },
+
   "ai-development": {
     slug: "ai-development",
     title: "AI Development",
-    metaTitle: "AI Software Development & LLM Integration",
+    metaTitle: "Custom AI Development & LLM Engineering",
     metaDescription:
-      "SevenX Labs builds custom AI applications, production RAG pipelines, LLM integrations, AI agents, and vector search engines.",
-    h1: "Practical AI Engineering for Real-World Software Products",
-    tagline: "LLM Integrations, RAG Architectures, Vector Search, and Autonomous AI Agents",
+      "SevenX Labs builds custom AI applications, RAG pipelines, vector search systems, and autonomous agents with LangChain, PgVector, and Python.",
+    h1: "Enterprise AI Development & Engineering",
+    tagline: "Custom RAG Pipelines, Vector Indexing, and Deterministic AI Systems",
     cardTeaser:
-      "Production AI applications, RAG search engines, vector databases, and autonomous LLM workflows connected directly to your business data.",
+      "Autonomous AI systems, Retrieval-Augmented Generation (RAG) vector pipelines, and LLM integrations for intelligent digital products.",
     overview:
-      "We transition artificial intelligence from research experiments into production software. By orchestrating retrieval pipelines, vector embeddings, fine-tuned models, and structured evaluation checks, we build practical AI systems that process complex document workflows, automate repetitive tasks, and surface real-time data insights.",
+      "We engineer custom artificial intelligence systems that connect large language models with your organization's proprietary data stores. Rather than building generic wrapper scripts, we develop production RAG architectures, localized vector search indexes, deterministic evaluation guardrails, and autonomous agent workflows designed for technical accuracy and enterprise data privacy.",
     whatWeBuild: [
-      "RAG (Retrieval-Augmented Generation) Pipelines",
-      "Custom AI Agents & Workflows",
-      "LLM API Integrations",
-      "Vector Search Engines",
-      "Document Processing & Intelligence",
-      "Fine-Tuned Domain Models",
+      "Retrieval-Augmented Generation (RAG) Systems",
+      "Custom Vector Search & Semantic Indexes",
+      "Domain-Specific LLM Integrations",
+      "Autonomous Multi-Step AI Agents",
+      "Document Intelligence & Parsing Engines",
+      "Model Evaluation & Guardrail Pipelines",
     ],
     capabilities: [
       {
         title: "Production RAG Architecture",
         description:
-          "Connecting enterprise document repositories with vector databases (PgVector, Pinecone) for accurate ground-truth document retrieval.",
+          "Designing semantic chunking, embedding generation, and hybrid dense/sparse retrieval pipelines that ground LLM outputs in verified factual sources.",
       },
       {
-        title: "Autonomous AI Agents",
+        title: "Vector Databases & Semantic Search",
         description:
-          "Building multi-step AI workflow agents capable of tool execution, structured output validation, and external database querying.",
+          "Implementing scalable vector similarity indexing using PostgreSQL (`pgvector`) or dedicated vector databases with metadata filtering.",
       },
       {
-        title: "Structured Schema Extraction",
+        title: "Deterministic Guardrails & Evaluation",
         description:
-          "Extracting clean JSON payloads from unstructured PDFs, emails, invoices, and legacy contracts with strict schema enforcement.",
+          "Establishing confidence score thresholds, structured JSON schema outputs, and automated output evaluation metrics.",
       },
       {
-        title: "AI Evaluation & Guardrails",
+        title: "Enterprise Data Privacy & Security",
         description:
-          "Implementing hallucination monitoring, prompt injection prevention, latency tracking, and evaluation test suites.",
+          "Deploying private models and private cloud endpoints with zero-data-retention agreements so internal company data is never used for public training.",
       },
     ],
-    technologies: ["Python", "FastAPI", "LangChain", "LlamaIndex", "PgVector", "OpenAI API", "Hugging Face"],
+    technologies: ["Python", "FastAPI", "LangChain", "PgVector", "PostgreSQL", "OpenAI API", "Anthropic Claude", "Docker"],
     process: [
       {
         step: "01",
-        title: "Use-Case & Data Scoping",
-        description: "Evaluating your business data, accuracy expectations, latency thresholds, and API model costs.",
+        title: "Data Audit & Chunking Strategy",
+        description: "Analyzing source data formats, document hierarchies, and optimal token chunking boundaries.",
       },
       {
         step: "02",
-        title: "Vector Pipeline & RAG Prototyping",
-        description: "Chunking domain documents, indexing vector embeddings, and tuning retrieval strategies.",
+        title: "Vector Indexing & Embedding",
+        description: "Generating high-dimensional embeddings and indexing vectors with localized metadata filtering.",
       },
       {
         step: "03",
-        title: "Agent & Application Integration",
-        description: "Building production API endpoints, user interfaces, validation rules, and error fallback handlers.",
+        title: "Pipeline & Agent Orchestration",
+        description: "Building LangChain retrieval workflows, prompt templates, and deterministic output parsers.",
       },
       {
         step: "04",
-        title: "Evaluation & Production Scaling",
-        description: "Running automated accuracy benchmarks, monitoring inference costs, and deploying to cloud infrastructure.",
+        title: "Evaluation & Production Deployment",
+        description: "Benchmarking retrieval precision, response groundedness, token costs, and deploying behind secure APIs.",
       },
     ],
     faqs: [
       {
-        question: "How do you prevent AI model hallucinations in business applications?",
+        question: "How does Retrieval-Augmented Generation (RAG) improve answer grounding?",
         answer:
-          "We connect AI models directly to your verified business documents and data to ensure responses remain accurate and relevant.",
+          "RAG works by first searching your private database for the exact paragraphs relevant to a user's question, and then instructing the LLM to generate answers grounded in that retrieved context with source attribution.",
       },
       {
-        question: "Can SevenX Labs integrate AI into our existing software system?",
+        question: "Is our proprietary company data exposed or used to train external models?",
         answer:
-          "Yes, we can add AI features directly into your existing website, web app, or software dashboard.",
+          "No. We configure enterprise private API endpoints and zero-data-retention parameters, or deploy open-source models on your private cloud infrastructure, ensuring your internal data remains strictly confidential.",
+      },
+      {
+        question: "What is the difference between AI Development and AI Automation?",
+        answer:
+          "AI Development refers to engineering custom AI features, models, and RAG pipelines inside a software application. AI Automation focuses on applying AI to streamline and automate back-office operational business workflows.",
+      },
+      {
+        question: "How do you measure and evaluate AI performance in production?",
+        answer:
+          "We implement continuous evaluation metrics measuring context relevance, answer faithfulness, latency, and token consumption, backed by automated test suites that run against benchmark question-answer sets.",
       },
     ],
-    relatedServices: [
-      { title: "Custom Software Development", slug: "custom-software-development" },
-      { title: "Cloud & DevOps", slug: "cloud-devops" },
+    relatedSolutions: [
+      { title: "AI Automation", slug: "ai-automation" },
+      { title: "SaaS Development", slug: "saas-development" },
+    ],
+    relatedCaseStudies: [
+      { title: "Synapse AI Intelligence", slug: "synapse-ai-engine" },
     ],
   },
+
   "custom-software-development": {
     slug: "custom-software-development",
     title: "Custom Software Development",
-    metaTitle: "Custom Software Development Company",
+    metaTitle: "Custom Software Development Firm",
     metaDescription:
-      "SevenX Labs builds custom enterprise software, APIs, database architectures, and internal tools engineered for operational efficiency.",
-    h1: "Custom Software Engineered for Your Exact Business Workflows",
-    tagline: "Bespoke Software Platforms, Legacy Refactoring, and API Ecosystems",
+      "SevenX Labs engineers bespoke software applications, modular backend systems, and operational platforms tailored to your business workflows.",
+    h1: "Bespoke Custom Software Engineering",
+    tagline: "Clean Architecture, Scalable Backends, and Zero Vendor Lock-In",
     cardTeaser:
-      "Tailored enterprise software platforms, custom API integrations, and backend architectures built to solve specialized business bottlenecks.",
+      "Tailored enterprise platforms, internal operating systems, and scalable backend infrastructure designed around your exact workflows.",
     overview:
-      "When standard commercial software cannot support your business operations or unique data flows, we engineer custom software platforms built from the ground up. We create clean domain abstractions, decoupled microservices, and secure API bridges that integrate cleanly into your existing technical stack.",
+      "When off-the-shelf software packages impose operational constraints or costly per-seat licensing, bespoke software provides the exact functionality and data control your business needs. We engineer maintainable, modular software systems built with clear domain boundaries, strict security controls, and complete source code ownership.",
     whatWeBuild: [
-      "Custom Enterprise Software",
-      "Internal Operational Dashboards",
-      "API & Microservice Ecosystems",
-      "Database Architecture & Migrations",
-      "Legacy Software Refactoring",
-      "Automated Business Workflow Tools",
+      "Bespoke Business Applications",
+      "Internal Operations Platforms",
+      "Custom Workflow & Booking Engines",
+      "Multi-System API Gateways",
+      "Data Processing & Pipeline Services",
+      "Role-Based Administrative Portals",
     ],
     capabilities: [
       {
-        title: "Domain-Driven Design (DDD)",
+        title: "Domain-Driven Backend Design",
         description:
-          "Architecting software systems around clean domain models, modular service boundaries, and clear data flows.",
+          "Structuring clean modular monoliths or microservices where business logic is cleanly decoupled from infrastructure and third-party frameworks.",
       },
       {
-        title: "API Ecosystem Development",
+        title: "Role-Based Access & Security",
         description:
-          "Building secure REST and GraphQL API gateways equipped with rate-limiting, OAuth2 authentication, and interactive developer documentation.",
+          "Implementing granular permission hierarchies (RBAC), multi-factor authentication, audit logging, and encrypted data storage.",
       },
       {
-        title: "Database Architecture & Optimization",
+        title: "High-Throughput Relational Systems",
         description:
-          "Designing normalized relational schemas, query caching layers, indexing strategies, and automated data migration pipelines.",
+          "Architecting robust PostgreSQL database schemas with ACID compliance, connection pooling, and automated backup strategies.",
       },
       {
-        title: "Legacy System Modernization",
+        title: "Third-Party Integration Middleware",
         description:
-          "Incrementally decoupling monolithic codebases into maintainable microservices with zero operational downtime.",
+          "Connecting legacy databases, payment processors, communication APIs, and ERP systems through resilient middleware adapters.",
       },
     ],
-    technologies: ["Node.js", "Python", "FastAPI", "TypeScript", "PostgreSQL", "Redis", "Docker"],
+    technologies: ["TypeScript", "Node.js", "Python", "PostgreSQL", "Redis", "Docker", "Prisma", "OpenAPI"],
     process: [
       {
         step: "01",
-        title: "Domain Discovery & Schema Scoping",
-        description: "Mapping business logic, database relationships, operational edge cases, and API requirements.",
+        title: "Workflow Mapping & Discovery",
+        description: "Documenting business logic, entity relationships, security requirements, and operational bottlenecks.",
       },
       {
         step: "02",
-        title: "Architecture Blueprinting",
-        description: "Defining microservice boundaries, API specs, database schemas, and security permissions.",
+        title: "System Architecture Design",
+        description: "Drafting schema diagrams, API specifications, and infrastructure blueprints.",
       },
       {
         step: "03",
-        title: "Agile Development Sprints",
-        description: "Building backend modules, frontend interfaces, unit test coverage, and continuous integration pipelines.",
+        title: "Iterative Engineering Sprints",
+        description: "Building modular features with continuous integration, automated unit testing, and staging reviews.",
       },
       {
         step: "04",
-        title: "Integration & Hardening",
-        description: "Executing load testing, security auditing, third-party API validation, and production cutover.",
+        title: "Deployment & Knowledge Transfer",
+        description: "Production launch, complete documentation handoff, and infrastructure access transfer.",
       },
     ],
     faqs: [
       {
-        question: "How is custom software development structured?",
+        question: "When should a business invest in custom software instead of buying off-the-shelf tools?",
         answer:
-          "We start by discussing your exact business needs, defining key features, and providing clear timeline and cost milestones.",
+          "Custom software is ideal when commercial tools require clunky workarounds, create vendor lock-in, charge escalating per-user fees, or fail to support your proprietary competitive business processes.",
       },
       {
-        question: "Who owns the intellectual property (IP) of the software?",
+        question: "How do you ensure our internal team can maintain the codebase after delivery?",
         answer:
-          "You retain full ownership of the custom codebase, intellectual property, architecture designs, and repository assets upon completion.",
+          "We write clean, strictly-typed TypeScript/Python code following standard modular patterns, accompanied by comprehensive API documentation, setup guides, and automated test coverage.",
+      },
+      {
+        question: "Can custom software integrate with our existing accounting, CRM, or legacy databases?",
+        answer:
+          "Yes. We build custom API connectors and data synchronization pipelines to integrate seamlessly with your existing software ecosystem without disrupting active operations.",
+      },
+      {
+        question: "What is your development approach to avoid unnecessary complexity?",
+        answer:
+          "We prioritize modular monoliths over complex distributed microservices for early and mid-stage systems, keeping infrastructure simple, maintainable, and cost-effective until scale dictates otherwise.",
       },
     ],
-    relatedServices: [
-      { title: "Web Development", slug: "web-development" },
-      { title: "AI Development", slug: "ai-development" },
-      { title: "Cloud & DevOps", slug: "cloud-devops" },
+    relatedSolutions: [
+      { title: "Digital Transformation", slug: "digital-transformation" },
+      { title: "SaaS Development", slug: "saas-development" },
+    ],
+    relatedCaseStudies: [
+      { title: "KubeFlow Enterprise", slug: "kubeflow-enterprise" },
     ],
   },
+
   "ui-ux-design": {
     slug: "ui-ux-design",
     title: "UI/UX Design",
-    metaTitle: "UI/UX Design Services & Product Strategy",
+    metaTitle: "Product UI/UX Design & Design Systems",
     metaDescription:
-      "SevenX Labs creates intuitive product designs, wireframes, design systems, and visual interfaces that reduce friction and elevate user engagement.",
-    h1: "UI/UX Design That Makes Complex Products Simple to Use",
-    tagline: "User-Centered Product Architecture, Interactive Design Systems & Prototypes",
+      "SevenX Labs creates high-conversion product UI/UX designs, Figma design systems, interactive prototypes, and developer-ready interfaces.",
+    h1: "Product UI/UX Design & Design Systems",
+    tagline: "Clarity, Conversion, and Engineering-Ready Design Systems",
     cardTeaser:
-      "User-centered interface design, clickable prototypes, and tokenized Figma design systems built for clean developer handoff.",
+      "User research, interactive wireframing, high-fidelity UI systems, and conversion-focused product interfaces built for clarity.",
     overview:
-      "We shape digital product experiences by pairing clear user architecture with modern visual systems. Through interactive wireframing, component design tokens, and iterative user testing, we ensure every screen interface communicates clarity while transitioning smoothly into production code.",
+      "Great software design is about clear user journeys, intuitive data density, and frictionless conversion. We design digital products from user research through high-fidelity Figma design systems, ensuring that every interface is visually refined, accessible, and structured for seamless engineering handoff.",
     whatWeBuild: [
-      "Product Design & Wireframing",
-      "UI Design Systems & Tokens",
-      "Mobile & Web App Interface Design",
-      "Interactive Prototypes",
-      "UX Audits & Redesigns",
-      "Developer-Ready Design Handoffs",
+      "Figma Design Systems & Token Libraries",
+      "B2B SaaS & Web App Interfaces",
+      "Mobile App UI/UX (iOS & Android)",
+      "Complex Dashboard & Analytics Layouts",
+      "Interactive Clickable Prototypes",
+      "User Onboarding & Checkout Flows",
     ],
     capabilities: [
       {
-        title: "Design Systems & Component Libraries",
+        title: "Figma Component & Token Systems",
         description:
-          "Building scalable component kits and tokenized stylesheets for rapid, consistent visual execution.",
+          "Building scalable component libraries with auto-layout, responsive constraints, and design tokens that map directly to CSS/Tailwind variables.",
       },
       {
-        title: "User Experience Architecture",
+        title: "User Journey & Onboarding Optimization",
         description:
-          "User journey mapping, information hierarchy design, and intuitive navigation structures based on usability feedback.",
+          "Designing streamlined registration, onboarding, and activation flows that minimize user cognitive load and churn.",
       },
       {
-        title: "Visual Interface Design",
+        title: "Data Density & Dashboard UX",
         description:
-          "Modern typography, glassmorphism accents, smooth micro-interactions, and balanced color palettes tailored to brand identity.",
+          "Structuring complex tabular data, visual charts, and filtering mechanisms so power users can navigate dense information effortlessly.",
       },
       {
-        title: "Interactive Prototyping & Handoff",
+        title: "Accessibility & WCAG Compliance",
         description:
-          "Clickable prototypes for user testing alongside developer documentation for accurate translation into code.",
+          "Ensuring color contrast ratios, focus states, and typography hierarchies meet WCAG 2.1 AA accessibility standards.",
       },
     ],
-    technologies: ["Figma", "Framer", "Adobe CC", "TailwindCSS", "Tokens Studio", "GSAP / Motion"],
+    technologies: ["Figma", "FigJam", "Design Tokens", "Tailwind CSS", "Storybook", "WCAG 2.1 AA"],
     process: [
       {
         step: "01",
-        title: "UX Research & Discovery",
-        description: "User persona profiling, competitive audits, and core feature scoping.",
+        title: "Research & Journey Mapping",
+        description: "Mapping user personas, core operational workflows, and information architecture hierarchy.",
       },
       {
         step: "02",
-        title: "Wireframing & Information Architecture",
-        description: "Low-fidelity layout mapping for fast feedback on UX logic and screen flows.",
+        title: "Wireframing & Prototyping",
+        description: "Creating low-fidelity wireframes to validate layout concepts, interaction logic, and content hierarchy.",
       },
       {
         step: "03",
-        title: "Design System & UI Polishing",
-        description: "Creating visual tokens, high-fidelity screen designs, dark/light themes, and state variations.",
+        title: "High-Fidelity Visual Design",
+        description: "Applying typography scales, color tokens, micro-interactions, and component states.",
       },
       {
         step: "04",
-        title: "Prototype & Engineering Alignment",
-        description: "Interactive prototyping, usability validation, and developer handoff support.",
+        title: "Design System & Dev Handoff",
+        description: "Documenting spacing tokens, interaction states, and exporting production-ready Figma specs for developers.",
       },
     ],
     faqs: [
       {
-        question: "Do you provide design handoffs for internal development teams?",
+        question: "How do you ensure Figma designs translate smoothly into code?",
         answer:
-          "Yes, we deliver organized Figma design files, UI components, and asset exports ready for any development team to build.",
+          "Because our design team works alongside software engineers, we build Figma components using autolayout and design tokens that mirror CSS flexbox, grid, and Tailwind CSS utility classes.",
       },
       {
-        question: "Can SevenX Labs handle both design and development?",
+        question: "Do you provide clickable prototypes for user testing and investor presentations?",
         answer:
-          "Yes, our team handles everything from initial UI/UX designs to full-stack software development under one roof.",
+          "Yes. We create interactive, high-fidelity prototypes in Figma that simulate real user interactions, micro-animations, and screen transitions for stakeholders and user validation.",
+      },
+      {
+        question: "Can you redesign an existing software application without disrupting current users?",
+        answer:
+          "Yes. We conduct UX audits on existing platforms to identify friction points and iteratively modernize interfaces module by module to avoid jarring changes for active users.",
+      },
+      {
+        question: "What design assets do we receive at the end of the project?",
+        answer:
+          "You receive the complete Figma project file with organized component libraries, design token documentation, interactive prototypes, and exported graphic assets.",
       },
     ],
-    relatedServices: [
-      { title: "Web Development", slug: "web-development" },
-      { title: "Mobile App Development", slug: "mobile-app-development" },
+    relatedSolutions: [
+      { title: "MVP Development", slug: "mvp-development" },
+      { title: "SaaS Development", slug: "saas-development" },
+    ],
+    relatedCaseStudies: [
+      { title: "Maison Lumina Luxury", slug: "maison-lumina" },
+      { title: "FinFuse Wealth Platform", slug: "finfuse" },
     ],
   },
+
   "cloud-devops": {
     slug: "cloud-devops",
     title: "Cloud & DevOps",
-    metaTitle: "Cloud Infrastructure & DevOps Services",
+    metaTitle: "Cloud Infrastructure & DevOps Consulting",
     metaDescription:
-      "SevenX Labs architects resilient cloud environments on AWS and GCP with automated CI/CD pipelines, Kubernetes, Docker, and high availability.",
-    h1: "Cloud Infrastructure Built for Performance, Reliability and Scale",
-    tagline: "Automated Deployment Pipelines, Container Orchestration, and System Reliability",
+      "SevenX Labs architects cloud infrastructure on AWS and GCP, automated CI/CD deployment pipelines, Terraform IaC, and Kubernetes clusters.",
+    h1: "Cloud Infrastructure & DevOps Engineering",
+    tagline: "Infrastructure as Code, Automated CI/CD Pipelines, and High Availability",
     cardTeaser:
-      "Automated deployment pipelines, Kubernetes cluster management, Infrastructure as Code (IaC), and cloud reliability engineering.",
+      "High-availability cloud infrastructure on AWS and GCP, automated CI/CD deployment pipelines, Kubernetes, and continuous monitoring.",
     overview:
-      "Our cloud engineering team builds automated deployment foundations and resilient server topologies that maintain high uptime. By leveraging Terraform manifests, Docker containerization, and zero-downtime release pipelines, we eliminate manual server management and safeguard your production systems.",
+      "Reliable software requires dependable cloud infrastructure. We design, deploy, and maintain cloud environments using Infrastructure as Code (IaC), container orchestration, and automated CI/CD deployment pipelines. Our DevOps engineering ensures your applications deploy predictably, scale dynamically, and remain observable 24/7.",
     whatWeBuild: [
-      "Cloud Infrastructure Architecture",
-      "Automated CI/CD Pipelines",
-      "Kubernetes & Container Orchestration",
-      "Infrastructure as Code (IaC)",
-      "Database Optimization & Replication",
-      "Monitoring, Alerting & Security Auditing",
+      "Terraform Infrastructure as Code (IaC)",
+      "Automated CI/CD Build & Release Pipelines",
+      "Docker & Kubernetes (EKS / GKE) Clusters",
+      "Multi-Environment VPC & Cloud Networks",
+      "Database Clustering & Automated Backup Pipelines",
+      "Prometheus & Grafana Observability Stacks",
     ],
     capabilities: [
       {
         title: "Infrastructure as Code (Terraform)",
         description:
-          "Version-controlled, reproducible cloud provisioning preventing configuration drift and simplifying expansion.",
+          "Declaring entire cloud topologies in version-controlled Terraform code to ensure repeatable, drift-free environments across staging and production.",
       },
       {
-        title: "Automated CI/CD Release Engineering",
+        title: "Automated Rolling & Blue/Green Deployments",
         description:
-          "Zero-downtime blue/green or rolling deployments via GitHub Actions, GitLab CI, or ArgoCD.",
+          "Configuring blue/green and rolling release pipelines in GitHub Actions with automated smoke testing and rollback triggers to minimize deployment disruption.",
       },
       {
-        title: "High Availability & Failover Topology",
+        title: "Kubernetes & Container Orchestration",
         description:
-          "Multi-AZ failover design, automated database backups, read replicas, and disaster recovery planning.",
+          "Deploying and managing containerized applications on AWS EKS or GCP GKE with horizontal pod autoscaling and ingress controllers.",
       },
       {
-        title: "Cloud Cost Optimization (FinOps)",
+        title: "Observability & Alerting Telemetry",
         description:
-          "Auditing idle cloud resources, optimizing spot instances, right-sizing cluster nodes, and setting spending alerts.",
+          "Setting up centralized logging, distributed tracing, and Prometheus/Grafana dashboards for real-time performance and uptime monitoring.",
       },
     ],
-    technologies: [
-      "AWS",
-      "Google Cloud Platform (GCP)",
-      "Kubernetes",
-      "Docker",
-      "Terraform",
-      "GitHub Actions",
-      "Nginx",
-      "Datadog / Prometheus",
-    ],
+    technologies: ["AWS", "Google Cloud", "Terraform", "Docker", "Kubernetes", "GitHub Actions", "Prometheus", "Grafana"],
     process: [
       {
         step: "01",
-        title: "Infrastructure Audit",
-        description: "Evaluating existing topology, security policies, scaling limits, and cloud monthly expenditure.",
+        title: "Infrastructure Audit & Architecture",
+        description: "Evaluating current hosting, traffic patterns, security perimeters, and reliability bottlenecks.",
       },
       {
         step: "02",
-        title: "IaC & Pipeline Design",
-        description: "Drafting Terraform manifests, containerizing microservices, and defining build/deploy stages.",
+        title: "IaC Manifest Authoring",
+        description: "Writing modular Terraform configurations for VPCs, compute instances, databases, and IAM policies.",
       },
       {
         step: "03",
-        title: "Staging Migration & Load Testing",
-        description: "Deploying shadow staging environments, stress testing endpoints, and validating failover routines.",
+        title: "CI/CD Pipeline Automation",
+        description: "Implementing automated testing, Docker container builds, and deployment workflows in GitHub Actions.",
       },
       {
         step: "04",
-        title: "Production Cutover & Monitoring",
-        description: "Executing zero-downtime production cutovers with performance telemetry and automated alerting.",
+        title: "Telemetry & Production Cutover",
+        description: "Deploying observability agents, configuring alerts, and executing smooth traffic routing.",
       },
     ],
     faqs: [
       {
-        question: "Which cloud platforms does SevenX Labs support?",
+        question: "Why is Infrastructure as Code (IaC) with Terraform important?",
         answer:
-          "We work with major cloud providers like AWS, Google Cloud, and Vercel depending on your project needs and budget.",
+          "IaC eliminates manual console clicks by defining your entire infrastructure in code. This allows for automated environment replication (dev, staging, prod), version history tracking, and prevents configuration drift.",
       },
       {
-        question: "How do you maintain zero-downtime deployments?",
+        question: "How do you handle deployment updates to minimize service interruption?",
         answer:
-          "We deploy updates seamlessly without taking your application offline, using automated checks to ensure system stability.",
+          "We implement rolling deployments and blue/green release topologies where new application containers are health-checked before receiving live traffic to prevent service disruption and allow instant rollback if anomalies occur.",
+      },
+      {
+        question: "Can you help optimize and reduce our monthly AWS or Google Cloud bills?",
+        answer:
+          "Yes. We conduct cloud infrastructure audits to identify over-provisioned compute instances, unattached storage volumes, inefficient database tiers, and implement auto-scaling to control cloud spend.",
+      },
+      {
+        question: "Do you support both AWS and Google Cloud Platform (GCP)?",
+        answer:
+          "Yes. We have deep engineering experience architecting and managing production infrastructure across both AWS (EKS, ECS, RDS, S3) and GCP (GKE, Cloud SQL, Cloud Run).",
       },
     ],
-    relatedServices: [
-      { title: "Custom Software Development", slug: "custom-software-development" },
-      { title: "Web Development", slug: "web-development" },
+    relatedSolutions: [
+      { title: "Digital Transformation", slug: "digital-transformation" },
+      { title: "SaaS Development", slug: "saas-development" },
+    ],
+    relatedCaseStudies: [
+      { title: "KubeFlow Enterprise", slug: "kubeflow-enterprise" },
     ],
   },
 };
