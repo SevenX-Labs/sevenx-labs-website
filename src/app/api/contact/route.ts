@@ -1,8 +1,46 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+// In-memory IP rate limiter: Max 5 requests per 5 minutes per IP
+const rateLimitMap = new Map<string, number[]>();
+const RATE_LIMIT_WINDOW_MS = 5 * 60 * 1000; // 5 minutes
+const MAX_REQUESTS_PER_WINDOW = 5;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const userTimestamps = rateLimitMap.get(ip) || [];
+
+  // Filter timestamps within the 5-minute sliding window
+  const validTimestamps = userTimestamps.filter(
+    (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS
+  );
+
+  if (validTimestamps.length >= MAX_REQUESTS_PER_WINDOW) {
+    rateLimitMap.set(ip, validTimestamps);
+    return true; // Rate limit exceeded
+  }
+
+  validTimestamps.push(now);
+  rateLimitMap.set(ip, validTimestamps);
+  return false;
+}
+
 export async function POST(req: Request) {
   try {
+    // Extract IP address from request headers
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      req.headers.get("x-real-ip") ||
+      "127.0.0.1";
+
+    // Enforce 5 requests per 5 minutes rate limit
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: "Too many requests. Please wait 5 minutes before sending another inquiry." },
+        { status: 429 }
+      );
+    }
+
     const body = await req.json();
     const { name, email, projectDetails, projectType, budget } = body;
 
@@ -28,7 +66,7 @@ export async function POST(req: Request) {
     const resend = new Resend(apiKey);
 
     const resendResult = await resend.emails.send({
-      from: `SevenX Studio <${fromEmail}>`,
+      from: `SevenX Labs <${fromEmail}>`,
       to: [toEmail],
       replyTo: email,
       subject: `New Project Inquiry: ${name} [${projectType || "General"}]`,
