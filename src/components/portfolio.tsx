@@ -9,6 +9,7 @@ import {
   Globe,
   ShoppingBag,
   Layout,
+  Smartphone,
   Sparkles,
   CheckCircle2,
   Zap,
@@ -19,7 +20,7 @@ export interface PortfolioProject {
   id: string;
   title: string;
   subtitle: string;
-  category: "ecommerce" | "website" | "webapp";
+  category: "ecommerce" | "website" | "webapp" | "app";
   categoryLabel: string;
   image: string;
   url: string;
@@ -143,7 +144,7 @@ const PROJECTS: PortfolioProject[] = [
       "Interactive Wellness & Health Content",
       "Consultation Inquiry Flow",
     ],
-    tags: ["Healthcare", "Web App", "UI/UX Design", "Wellness"],
+    tags: ["Healthcare", "Website Project", "UI/UX Design", "Wellness"],
     badge: "Website Project",
     badgeBg: "bg-rose-500/10",
     badgeText: "text-rose-600",
@@ -196,7 +197,7 @@ export default function Portfolio() {
             </h1>
 
             <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed font-normal">
-              A curated showcase of production e-commerce stores, client websites, and web application admin portals engineered by SevenX Labs.
+              A curated showcase of production e-commerce stores, client websites, web applications, and mobile apps engineered by SevenX Labs.
             </p>
           </div>
 
@@ -248,7 +249,19 @@ export default function Portfolio() {
                   }`}
                 >
                   <Layout className="w-3.5 h-3.5" />
-                  Admin & Web Apps ({PROJECTS.filter((p) => p.category === "webapp").length})
+                  Admin ({PROJECTS.filter((p) => p.category === "webapp").length})
+                </button>
+
+                <button
+                  onClick={() => setActiveFilter("app")}
+                  className={`px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 ${
+                    activeFilter === "app"
+                      ? "bg-rose-600 text-white shadow-sm shadow-rose-600/20"
+                      : "text-zinc-600 hover:text-black hover:bg-black/[0.04]"
+                  }`}
+                >
+                  <Smartphone className="w-3.5 h-3.5" />
+                  Apps ({PROJECTS.filter((p) => p.category === "app").length})
                 </button>
               </div>
             </div>
@@ -257,6 +270,32 @@ export default function Portfolio() {
 
         {/* PROJECTS CONTAINER */}
         <div className="flex flex-col gap-8 md:gap-10">
+
+          {/* EMPTY STATE FOR APPS OR UNMATCHED FILTERS */}
+          {filteredProjects.length === 0 && (
+            <div className="relative w-full rounded-[28px] bg-white border border-black/[0.08] p-10 md:p-16 text-center flex flex-col items-center justify-center gap-4 shadow-lg">
+              <div className="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-600">
+                <Smartphone className="w-8 h-8" />
+              </div>
+
+              <div className="flex flex-col gap-1 max-w-lg">
+                <h3 className="font-general text-2xl font-extrabold text-black uppercase">
+                  Mobile & Native App Case Studies Coming Soon
+                </h3>
+                <p className="text-zinc-600 text-sm leading-relaxed">
+                  We design and engineer cross-platform iOS & Android mobile applications with offline sync, sub-second performance, and intuitive mobile UX. Verified client mobile case studies are currently being prepared.
+                </p>
+              </div>
+
+              <Link
+                href="/contact"
+                className="mt-2 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#3B82F6] transition-all shadow-md"
+              >
+                <span>Inquire About Mobile Apps</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
+          )}
 
           {/* FEATURED TOP CARD (When "All" is active) */}
           {featuredProject && (
@@ -386,129 +425,131 @@ export default function Portfolio() {
             </div>
           )}
 
-          {/* GRID PROJECTS (2 Columns on desktop, 1 column on mobile) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {gridProjects.map((project, idx) => (
-              <div
-                key={project.id}
-                className="group relative rounded-[28px] bg-white border border-black/[0.08] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 p-5 sm:p-7 flex flex-col justify-between gap-5"
-              >
-                {/* ACCENT GLOW OVERLAY */}
+          {/* GRID PROJECTS */}
+          {gridProjects.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {gridProjects.map((project, idx) => (
                 <div
-                  className={`absolute top-0 right-0 w-72 h-72 bg-gradient-to-br ${project.accentGlow} rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
-                />
+                  key={project.id}
+                  className="group relative rounded-[28px] bg-white border border-black/[0.08] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 p-5 sm:p-7 flex flex-col justify-between gap-5"
+                >
+                  {/* ACCENT GLOW OVERLAY */}
+                  <div
+                    className={`absolute top-0 right-0 w-72 h-72 bg-gradient-to-br ${project.accentGlow} rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
+                  />
 
-                <div className="relative z-10 flex flex-col gap-4">
-                  {/* macOS BROWSER MOCKUP CONTAINER */}
-                  <div className="relative w-full rounded-2xl bg-[#0F0F14] border border-black/20 overflow-hidden shadow-lg group-hover:border-black/30 transition-all duration-500">
-                    {/* BROWSER TOP HEADER BAR */}
-                    <div className="flex items-center justify-between px-3.5 py-2 bg-[#1A1A22] border-b border-white/10 text-xs font-mono">
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-sm" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-sm" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block shadow-sm" />
+                  <div className="relative z-10 flex flex-col gap-4">
+                    {/* macOS BROWSER MOCKUP CONTAINER */}
+                    <div className="relative w-full rounded-2xl bg-[#0F0F14] border border-black/20 overflow-hidden shadow-lg group-hover:border-black/30 transition-all duration-500">
+                      {/* BROWSER TOP HEADER BAR */}
+                      <div className="flex items-center justify-between px-3.5 py-2 bg-[#1A1A22] border-b border-white/10 text-xs font-mono">
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-sm" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-sm" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block shadow-sm" />
+                        </div>
+
+                        {/* URL BAR */}
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors text-[10px] truncate max-w-[170px] sm:max-w-xs group/url"
+                        >
+                          <Lock className="w-3 h-3 text-emerald-400 shrink-0" />
+                          <span className="truncate font-mono">https://{project.displayUrl}</span>
+                          <ExternalLink className="w-2.5 h-2.5 text-zinc-500 group-hover/url:text-white shrink-0 ml-auto" />
+                        </a>
                       </div>
 
-                      {/* URL BAR */}
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors text-[10px] truncate max-w-[170px] sm:max-w-xs group/url"
-                      >
-                        <Lock className="w-3 h-3 text-emerald-400 shrink-0" />
-                        <span className="truncate font-mono">https://{project.displayUrl}</span>
-                        <ExternalLink className="w-2.5 h-2.5 text-zinc-500 group-hover/url:text-white shrink-0 ml-auto" />
-                      </a>
+                      {/* SCREENSHOT PREVIEW IMAGE */}
+                      <div className="relative w-full aspect-[1351/768] bg-[#0F0F14] overflow-hidden">
+                        <Image
+                          src={project.image}
+                          alt={`${project.title} - ${project.subtitle}`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-contain object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                          priority={idx < 2}
+                        />
+                      </div>
                     </div>
 
-                    {/* SCREENSHOT PREVIEW IMAGE */}
-                    <div className="relative w-full aspect-[1351/768] bg-[#0F0F14] overflow-hidden">
-                      <Image
-                        src={project.image}
-                        alt={`${project.title} - ${project.subtitle}`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-contain object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                        priority={idx < 2}
-                      />
-                    </div>
-                  </div>
+                    {/* DETAILS */}
+                    <div className="flex flex-col gap-3">
+                      <div className="flex items-center justify-between gap-3 flex-wrap">
+                        <span
+                          className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider border ${project.badgeBg} ${project.badgeText} ${project.badgeBorder}`}
+                        >
+                          {project.badge}
+                        </span>
 
-                  {/* DETAILS */}
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center justify-between gap-3 flex-wrap">
-                      <span
-                        className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider border ${project.badgeBg} ${project.badgeText} ${project.badgeBorder}`}
-                      >
-                        {project.badge}
-                      </span>
+                        <span className="text-[11px] font-mono text-zinc-400">
+                          {project.categoryLabel}
+                        </span>
+                      </div>
 
-                      <span className="text-[11px] font-mono text-zinc-400">
-                        {project.categoryLabel}
-                      </span>
-                    </div>
+                      <div className="flex flex-col gap-0.5">
+                        <h3 className="font-general text-xl sm:text-2xl font-extrabold text-black tracking-tight uppercase leading-tight">
+                          {project.title}
+                        </h3>
+                        <p className="text-[#3B82F6] font-mono text-xs font-semibold">
+                          {project.subtitle}
+                        </p>
+                      </div>
 
-                    <div className="flex flex-col gap-0.5">
-                      <h3 className="font-general text-xl sm:text-2xl font-extrabold text-black tracking-tight uppercase leading-tight">
-                        {project.title}
-                      </h3>
-                      <p className="text-[#3B82F6] font-mono text-xs font-semibold">
-                        {project.subtitle}
+                      <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed font-normal">
+                        {project.description}
                       </p>
-                    </div>
 
-                    <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed font-normal">
-                      {project.description}
-                    </p>
+                      <div className="flex flex-col gap-1.5 pt-2 border-t border-black/[0.06]">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400">
+                          Highlights
+                        </span>
+                        <div className="flex flex-col gap-1">
+                          {project.highlights.map((item) => (
+                            <div key={item} className="flex items-center gap-2 text-xs font-medium text-zinc-800">
+                              <Zap className="w-3 h-3 text-[#3B82F6] shrink-0" />
+                              <span>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
 
-                    <div className="flex flex-col gap-1.5 pt-2 border-t border-black/[0.06]">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400">
-                        Highlights
-                      </span>
-                      <div className="flex flex-col gap-1">
-                        {project.highlights.map((item) => (
-                          <div key={item} className="flex items-center gap-2 text-xs font-medium text-zinc-800">
-                            <Zap className="w-3 h-3 text-[#3B82F6] shrink-0" />
-                            <span>{item}</span>
-                          </div>
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2 py-0.5 rounded-md bg-black/[0.04] border border-black/10 text-zinc-700 text-[10px] font-mono font-semibold"
+                          >
+                            #{tag}
+                          </span>
                         ))}
                       </div>
                     </div>
+                  </div>
 
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-0.5 rounded-md bg-black/[0.04] border border-black/10 text-zinc-700 text-[10px] font-mono font-semibold"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
+                  {/* FOOTER */}
+                  <div className="pt-3 border-t border-black/[0.06] flex items-center justify-between gap-3">
+                    <span className="text-[11px] font-mono text-zinc-400 hidden sm:inline-block">
+                      Live Production Deployment
+                    </span>
+
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit live site ${project.title}`}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#3B82F6] transition-all duration-300 shadow-md hover:-translate-y-0.5 active:scale-[0.98] w-full sm:w-auto justify-center"
+                    >
+                      <span>Visit Live Site</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
                   </div>
                 </div>
-
-                {/* FOOTER */}
-                <div className="pt-3 border-t border-black/[0.06] flex items-center justify-between gap-3">
-                  <span className="text-[11px] font-mono text-zinc-400 hidden sm:inline-block">
-                    Live Production Deployment
-                  </span>
-
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit live site ${project.title}`}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#3B82F6] transition-all duration-300 shadow-md hover:-translate-y-0.5 active:scale-[0.98] w-full sm:w-auto justify-center"
-                  >
-                    <span>Visit Live Site</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
         </div>
 
