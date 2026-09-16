@@ -202,12 +202,12 @@ export default function Footer() {
               )}
               <li>
                 <a
-                  href="mailto:hello@sevenxlabs.com"
+                  href="mailto:tanishka@sevenxlabs.in"
                   aria-label="Email SevenX Labs"
                   className="group inline-flex items-center gap-2 text-[14px] font-normal text-zinc-300 hover:text-white transition-all duration-300 ease-out"
                 >
                   <Mail className="w-4 h-4 text-[#60A5FA] shrink-0" />
-                  <span>hello@sevenxlabs.com</span>
+                  <span>tanishka@sevenxlabs.in</span>
                 </a>
               </li>
             </ul>

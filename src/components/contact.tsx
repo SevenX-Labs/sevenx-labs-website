@@ -34,7 +34,7 @@ export default function Contact() {
   const [errorMsg, setErrorMsg] = useState("");
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  const officialEmail = "sevenxlabs07@gmail.com";
+  const officialEmail = "tanishka@sevenxlabs.in";
   const linkedInUrl = "https://linkedin.com/company/sevenx-labs";
 
   const handleCopyEmail = () => {

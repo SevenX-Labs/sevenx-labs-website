@@ -8,7 +8,7 @@ export const SITE_CONFIG = {
   get siteUrl() {
     return process.env.NEXT_PUBLIC_SITE_URL || this.defaultDomain;
   },
-  email: "sevenxlabs07@gmail.com",
+  email: "tanishka@sevenxlabs.in",
   social: {
     linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://linkedin.com/company/sevenx-labs",
     github: process.env.NEXT_PUBLIC_GITHUB_URL || "", // Omit generic github link if not configured
