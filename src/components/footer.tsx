@@ -17,7 +17,6 @@ export default function Footer() {
   const exploreLinks = [
     { name: "Home", href: "/", ariaLabel: "SevenX Labs Home Page" },
     { name: "About", href: "/about", ariaLabel: "About SevenX Labs Studio" },
-    { name: "Careers", href: "/careers", ariaLabel: "Careers & Hiring at SevenX Labs" },
     { name: "Work", href: "/portfolio", ariaLabel: "View Featured Work and Case Studies" },
     { name: "Contact", href: "/contact", ariaLabel: "Contact SevenX Labs Studio" },
   ];
@@ -39,36 +38,29 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative w-full bg-[#0A0A0A] text-[#FAFAFA] font-sans overflow-hidden border-t border-white/10">
-      {/* ─── AMBIENT GLOW & WATERMARK BACKDROP ─── */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[750px] h-[200px] bg-blue-600/[0.05] blur-[100px] pointer-events-none" />
-      <div className="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 select-none text-[15vw] font-general font-black uppercase tracking-tighter text-white/[0.02] whitespace-nowrap leading-none z-0">
-        SEVENX LABS
-      </div>
+    <footer className="relative w-full bg-[#0D0D11] text-white overflow-hidden select-none border-t border-white/10 font-space">
+      {/* Background Ambient Glows */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-16 md:pt-24 pb-12 flex flex-col">
-        {/* ─── TOP SECTION: BRAND IDENTITY & START A PROJECT CTA ─── */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10 pb-14 border-b border-white/10">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-16 md:pt-20 pb-12">
+        {/* ─── TOP SECTION: BRAND & HIGH-IMPACT CALL TO ACTION ─── */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-14 border-b border-white/10">
           <div className="flex flex-col gap-4 max-w-2xl">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-3.5 group w-max"
-              aria-label="SevenX Labs Home"
-            >
-              <div className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/15 p-1.5 flex items-center justify-center shrink-0 group-hover:border-blue-400/40 transition-colors">
-                <Image
-                  src="/logo.png"
-                  alt="SevenX Labs Logo"
-                  width={28}
-                  height={28}
-                  className="object-contain"
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-general text-xl sm:text-2xl font-extrabold uppercase tracking-tight text-white flex items-center gap-1.5">
-                  SevenX Labs
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+            <Link href="/" aria-label="SevenX Labs Home" className="inline-block">
+              <div className="flex items-center gap-3">
+                <div className="relative w-8 h-8 rounded-xl bg-white flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/logo.png"
+                    alt="SevenX Labs Logo Icon"
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="font-general text-xl font-extrabold tracking-tight uppercase text-white">
+                  SevenX Labs<span className="text-[#60A5FA]">.</span>
                 </span>
               </div>
             </Link>
