@@ -17,6 +17,7 @@ export default function Footer() {
   const exploreLinks = [
     { name: "Home", href: "/", ariaLabel: "SevenX Labs Home Page" },
     { name: "About", href: "/about", ariaLabel: "About SevenX Labs Studio" },
+    { name: "Careers", href: "/careers", ariaLabel: "Careers & Hiring at SevenX Labs" },
     { name: "Work", href: "/portfolio", ariaLabel: "View Featured Work and Case Studies" },
     { name: "Contact", href: "/contact", ariaLabel: "Contact SevenX Labs Studio" },
   ];

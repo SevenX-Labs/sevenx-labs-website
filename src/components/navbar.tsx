@@ -10,6 +10,7 @@ export default function Navbar() {
       textColor: "#ffffff",
       links: [
         { label: "About SevenX", href: "/about", ariaLabel: "About SevenX Labs Studio" },
+        { label: "Careers & Hiring", href: "/careers", ariaLabel: "Careers and Open Positions at SevenX Labs" },
         { label: "Our Philosophy", href: "/about#philosophy", ariaLabel: "Our Engineering Philosophy" },
         { label: "Why Choose Us", href: "/about#why-sevenx", ariaLabel: "Why Choose SevenX Labs" },
       ],

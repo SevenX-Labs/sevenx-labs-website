@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services",
     "/solutions",
     "/portfolio",
+    "/careers",
     "/contact",
   ].map((route) => ({
     url: absoluteUrl(route),
