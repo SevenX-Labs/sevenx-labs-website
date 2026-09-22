@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -14,6 +14,10 @@ import {
   CheckCircle2,
   Zap,
   Lock,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 
 export interface PortfolioProject {
@@ -22,7 +26,8 @@ export interface PortfolioProject {
   subtitle: string;
   category: "ecommerce" | "website" | "webapp" | "app";
   categoryLabel: string;
-  image: string;
+  image?: string;
+  video?: string;
   url: string;
   displayUrl: string;
   description: string;
@@ -36,6 +41,31 @@ export interface PortfolioProject {
 }
 
 const PROJECTS: PortfolioProject[] = [
+  {
+    id: "turfzy-app",
+    title: "Turfzy App",
+    subtitle: "Cross-Platform iOS & Android Mobile Application",
+    category: "app",
+    categoryLabel: "Mobile App",
+    image: "/portfolio/app-preview.png",
+    video:
+      "https://res.cloudinary.com/cqpabdjk/video/upload/v1790086447/WhatsApp_Video_2026-09-20_at_5.50.16_PM.mp4",
+    url: "https://turfzy.com",
+    displayUrl: "Turfzy App",
+    description:
+      "Full-featured mobile application engineered for sports enthusiasts to discover local turfs, book slots in real-time, view leaderboards, and track match stats.",
+    highlights: [
+      "Real-Time Slot & Turf Booking Engine",
+      "Player Leaderboards & Match Tracking",
+      "Cross-Platform Native iOS & Android UI",
+    ],
+    tags: ["React Native", "iOS & Android", "Sports Booking", "Real-Time DB", "Mobile App"],
+    badge: "Mobile App",
+    badgeBg: "bg-rose-500/10",
+    badgeText: "text-rose-600",
+    badgeBorder: "border-rose-500/30",
+    accentGlow: "from-rose-500/15 via-pink-500/10 to-transparent",
+  },
   {
     id: "kickat",
     title: "Kickat E-Commerce",
@@ -153,6 +183,216 @@ const PROJECTS: PortfolioProject[] = [
   },
 ];
 
+function ProjectMediaPreview({
+  project,
+  isPriority = false,
+}: {
+  project: PortfolioProject;
+  isPriority?: boolean;
+}) {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current && project.video) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      const promise = videoRef.current.play();
+      if (promise !== undefined) {
+        promise.then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+      }
+    }
+  }, [project.video]);
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current
+          .play()
+          .then(() => setIsPlaying(true))
+          .catch(() => setIsPlaying(false));
+      }
+    }
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  if (project.category === "app") {
+    return (
+      <div className="relative w-full py-3 sm:py-5 flex items-center justify-center">
+        {/* STANDALONE SMARTPHONE MOCKUP - NO OUTER WEB CONTAINER */}
+        <div className="relative w-[170px] sm:w-[200px] aspect-[390/812] bg-[#16161E] rounded-[36px] p-2 border-[4px] border-zinc-800 shadow-2xl shadow-black/50 flex flex-col items-center group/phone hover:scale-[1.03] transition-transform duration-500">
+          {/* DYNAMIC ISLAND / CAMERA NOTCH */}
+          <div className="absolute top-3 z-30 w-16 h-3 rounded-full bg-black border border-white/10 flex items-center justify-center gap-1 pointer-events-none">
+            <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
+            <div className="w-1 h-1 rounded-full bg-blue-500/80 animate-pulse" />
+          </div>
+
+          {/* SCREEN CONTAINER - ONLY MOBILE APP VIDEO */}
+          <div className="relative w-full h-full rounded-[28px] overflow-hidden bg-black flex items-center justify-center">
+            {project.video && (
+              <>
+                <video
+                  ref={videoRef}
+                  src={project.video}
+                  poster={project.image}
+                  autoPlay
+                  muted={true}
+                  loop
+                  playsInline
+                  preload="auto"
+                  onLoadedMetadata={(e) => {
+                    e.currentTarget.muted = true;
+                    e.currentTarget
+                      .play()
+                      .then(() => setIsPlaying(true))
+                      .catch(() => setIsPlaying(false));
+                  }}
+                  onCanPlay={(e) => {
+                    e.currentTarget.muted = true;
+                    e.currentTarget
+                      .play()
+                      .then(() => setIsPlaying(true))
+                      .catch(() => setIsPlaying(false));
+                  }}
+                  className="w-full h-full object-cover"
+                />
+
+                {/* HOVER CONTROLS OVERLAY */}
+                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover/phone:opacity-100 transition-opacity flex items-center justify-center gap-1.5 z-20 pointer-events-auto">
+                  <button
+                    onClick={togglePlay}
+                    aria-label={isPlaying ? "Pause Video" : "Play Video"}
+                    className="p-2 rounded-full bg-black/80 hover:bg-black text-white backdrop-blur-md transition-all border border-white/20"
+                  >
+                    {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 ml-0.5" />}
+                  </button>
+                  <button
+                    onClick={toggleMute}
+                    aria-label={isMuted ? "Unmute Video" : "Mute Video"}
+                    className="p-2 rounded-full bg-black/80 hover:bg-black text-white backdrop-blur-md transition-all border border-white/20"
+                  >
+                    {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // DESKTOP / WEB APP BROWSER MOCKUP
+  return (
+    <div className="relative w-full rounded-2xl bg-[#0F0F14] border border-black/20 overflow-hidden shadow-xl group-hover:border-black/30 transition-all duration-500">
+      {/* BROWSER TOP HEADER BAR */}
+      <div className="flex items-center justify-between px-3.5 py-2 bg-[#1A1A22] border-b border-white/10 text-xs font-mono">
+        <div className="flex items-center gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-sm" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-sm" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block shadow-sm" />
+        </div>
+
+        {/* URL BAR */}
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors text-[10px] truncate max-w-[170px] sm:max-w-xs group/url"
+        >
+          <Lock className="w-3 h-3 text-emerald-400 shrink-0" />
+          <span className="truncate font-mono">https://{project.displayUrl}</span>
+          <ExternalLink className="w-2.5 h-2.5 text-zinc-500 group-hover/url:text-white shrink-0 ml-auto" />
+        </a>
+
+        <span
+          className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border hidden sm:inline-block ${project.badgeBg} ${project.badgeText} ${project.badgeBorder}`}
+        >
+          {project.badge}
+        </span>
+      </div>
+
+      {/* MEDIA CONTAINER */}
+      <div className="relative w-full aspect-[1351/720] bg-[#0F0F14] overflow-hidden group/browser">
+        {project.video ? (
+          <>
+            <video
+              ref={videoRef}
+              src={project.video}
+              poster={project.image}
+              autoPlay
+              muted={true}
+              loop
+              playsInline
+              preload="auto"
+              onLoadedMetadata={(e) => {
+                e.currentTarget.muted = true;
+                e.currentTarget
+                  .play()
+                  .then(() => setIsPlaying(true))
+                  .catch(() => setIsPlaying(false));
+              }}
+              className="w-full h-full object-cover object-top"
+            />
+            {!isPlaying && (
+              <button
+                onClick={togglePlay}
+                className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-1.5 text-white z-20 cursor-pointer"
+              >
+                <div className="w-10 h-10 rounded-full bg-[#3B82F6] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                  <Play className="w-5 h-5 ml-0.5 fill-white" />
+                </div>
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider">Play Video</span>
+              </button>
+            )}
+            {isPlaying && (
+              <div className="absolute bottom-2.5 right-2.5 opacity-0 group-hover/browser:opacity-100 transition-opacity flex items-center gap-1.5 z-20">
+                <button
+                  onClick={togglePlay}
+                  aria-label="Pause Video"
+                  className="p-1.5 rounded-full bg-black/80 hover:bg-black text-white backdrop-blur-md transition-all border border-white/20"
+                >
+                  <Pause className="w-3 h-3" />
+                </button>
+                <button
+                  onClick={toggleMute}
+                  aria-label={isMuted ? "Unmute Video" : "Mute Video"}
+                  className="p-1.5 rounded-full bg-black/80 hover:bg-black text-white backdrop-blur-md transition-all border border-white/20"
+                >
+                  {isMuted ? <VolumeX className="w-3 h-3" /> : <Volume2 className="w-3 h-3" />}
+                </button>
+              </div>
+            )}
+          </>
+        ) : project.image ? (
+          <Image
+            src={project.image}
+            alt={`${project.title} - ${project.subtitle}`}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-contain object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+            priority={isPriority}
+          />
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState<string>("all");
 
@@ -160,10 +400,6 @@ export default function Portfolio() {
     activeFilter === "all"
       ? PROJECTS
       : PROJECTS.filter((p) => p.category === activeFilter);
-
-  // Split featured (first project when "all") vs grid projects
-  const featuredProject = activeFilter === "all" ? filteredProjects[0] : null;
-  const gridProjects = activeFilter === "all" ? filteredProjects.slice(1) : filteredProjects;
 
   return (
     <section
@@ -188,7 +424,7 @@ export default function Portfolio() {
 
               <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/[0.04] text-zinc-600 text-[11px] font-mono font-medium rounded-full border border-black/10">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                5 Production Builds
+                {PROJECTS.length} Production Builds
               </span>
             </div>
 
@@ -201,19 +437,31 @@ export default function Portfolio() {
             </p>
           </div>
 
-          {/* RESPONSIVE FILTER NAVIGATION BAR */}
-          <div className="w-full pt-1">
-            <div className="w-full overflow-x-auto no-scrollbar pb-1">
-              <div className="p-1 rounded-2xl bg-white/90 backdrop-blur-md border border-black/10 shadow-md inline-flex items-center gap-1 min-w-max">
+          {/* CATEGORY FILTER TABS */}
+          <div className="flex items-center justify-between gap-4 flex-wrap pt-2">
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none max-w-full">
+              <div className="flex items-center gap-1.5 bg-black/[0.03] p-1.5 rounded-2xl border border-black/[0.06]">
                 <button
                   onClick={() => setActiveFilter("all")}
                   className={`px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 ${
                     activeFilter === "all"
-                      ? "bg-black text-white shadow-sm"
+                      ? "bg-black text-white shadow-md"
                       : "text-zinc-600 hover:text-black hover:bg-black/[0.04]"
                   }`}
                 >
                   All ({PROJECTS.length})
+                </button>
+
+                <button
+                  onClick={() => setActiveFilter("app")}
+                  className={`px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 ${
+                    activeFilter === "app"
+                      ? "bg-rose-600 text-white shadow-sm shadow-rose-600/20"
+                      : "text-zinc-600 hover:text-black hover:bg-black/[0.04]"
+                  }`}
+                >
+                  <Smartphone className="w-3.5 h-3.5" />
+                  Apps ({PROJECTS.filter((p) => p.category === "app").length})
                 </button>
 
                 <button
@@ -251,27 +499,15 @@ export default function Portfolio() {
                   <Layout className="w-3.5 h-3.5" />
                   Admin ({PROJECTS.filter((p) => p.category === "webapp").length})
                 </button>
-
-                <button
-                  onClick={() => setActiveFilter("app")}
-                  className={`px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 ${
-                    activeFilter === "app"
-                      ? "bg-rose-600 text-white shadow-sm shadow-rose-600/20"
-                      : "text-zinc-600 hover:text-black hover:bg-black/[0.04]"
-                  }`}
-                >
-                  <Smartphone className="w-3.5 h-3.5" />
-                  Apps ({PROJECTS.filter((p) => p.category === "app").length})
-                </button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* PROJECTS CONTAINER */}
-        <div className="flex flex-col gap-8 md:gap-10">
+        {/* FULL-WIDTH LIST OF PROJECTS */}
+        <div className="flex flex-col gap-6 md:gap-8">
 
-          {/* EMPTY STATE FOR APPS OR UNMATCHED FILTERS */}
+          {/* EMPTY STATE FOR UNMATCHED FILTERS */}
           {filteredProjects.length === 0 && (
             <div className="relative w-full rounded-[28px] bg-white border border-black/[0.08] p-10 md:p-16 text-center flex flex-col items-center justify-center gap-4 shadow-lg">
               <div className="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-600">
@@ -297,103 +533,67 @@ export default function Portfolio() {
             </div>
           )}
 
-          {/* FEATURED TOP CARD (When "All" is active) */}
-          {featuredProject && (
-            <div className="group relative rounded-[28px] bg-white border border-black/[0.08] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 p-5 sm:p-8 lg:p-10 bg-gradient-to-br from-white via-slate-50/50 to-white">
+          {/* COMPACT LIST ROW CARDS */}
+          {filteredProjects.map((project, idx) => (
+            <div
+              key={project.id}
+              className="group relative rounded-[24px] sm:rounded-[28px] bg-white border border-black/[0.08] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 p-4 sm:p-6 lg:p-7 bg-gradient-to-br from-white via-slate-50/40 to-white"
+            >
               {/* ACCENT GLOW OVERLAY */}
               <div
-                className={`absolute top-0 right-0 w-80 h-80 bg-gradient-to-br ${featuredProject.accentGlow} rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
+                className={`absolute top-0 right-0 w-72 h-72 bg-gradient-to-br ${project.accentGlow} rounded-full blur-3xl opacity-40 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
               />
 
-              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-                {/* LEFT: macOS BROWSER MOCKUP CONTAINER */}
-                <div className="lg:col-span-7 flex flex-col gap-2">
-                  <div className="relative w-full rounded-2xl bg-[#0F0F14] border border-black/20 overflow-hidden shadow-xl group-hover:border-black/30 transition-all duration-500">
-                    {/* BROWSER TOP HEADER BAR */}
-                    <div className="flex items-center justify-between px-4 py-2.5 bg-[#1A1A22] border-b border-white/10 text-xs font-mono">
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-sm" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-sm" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block shadow-sm" />
-                      </div>
-
-                      {/* URL BAR */}
-                      <a
-                        href={featuredProject.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 px-3 py-0.5 rounded-md bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors text-[11px] truncate max-w-[200px] sm:max-w-xs group/url"
-                      >
-                        <Lock className="w-3 h-3 text-emerald-400 shrink-0" />
-                        <span className="truncate font-mono">https://{featuredProject.displayUrl}</span>
-                        <ExternalLink className="w-3 h-3 text-zinc-500 group-hover/url:text-white shrink-0 ml-auto" />
-                      </a>
-
-                      <span
-                        className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border hidden sm:inline-block ${featuredProject.badgeBg} ${featuredProject.badgeText} ${featuredProject.badgeBorder}`}
-                      >
-                        {featuredProject.badge}
-                      </span>
-                    </div>
-
-                    {/* SCREENSHOT PREVIEW IMAGE */}
-                    <div className="relative w-full aspect-[1351/768] bg-[#0F0F14] overflow-hidden">
-                      <Image
-                        src={featuredProject.image}
-                        alt={`${featuredProject.title} - ${featuredProject.subtitle}`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 50vw"
-                        className="object-contain object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                        priority
-                      />
-                    </div>
-                  </div>
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
+                {/* LEFT: COMPACT MEDIA PREVIEW CONTAINER */}
+                <div className="lg:col-span-5 flex flex-col gap-2">
+                  <ProjectMediaPreview project={project} isPriority={idx === 0} />
                 </div>
 
                 {/* RIGHT: PROJECT DETAILS & HIGHLIGHTS */}
-                <div className="lg:col-span-5 flex flex-col justify-between gap-5">
-                  <div className="flex flex-col gap-3">
+                <div className="lg:col-span-7 flex flex-col justify-between gap-4">
+                  <div className="flex flex-col gap-2.5">
                     <div className="flex items-center justify-between gap-3 flex-wrap">
                       <span
-                        className={`px-3 py-0.5 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider border ${featuredProject.badgeBg} ${featuredProject.badgeText} ${featuredProject.badgeBorder}`}
+                        className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider border ${project.badgeBg} ${project.badgeText} ${project.badgeBorder}`}
                       >
-                        {featuredProject.badge}
+                        {project.badge}
                       </span>
 
-                      <span className="text-xs font-mono text-zinc-400">
-                        {featuredProject.categoryLabel}
+                      <span className="text-[11px] font-mono text-zinc-400">
+                        {project.categoryLabel}
                       </span>
                     </div>
 
                     <div className="flex flex-col gap-0.5">
-                      <h2 className="font-general text-2xl sm:text-3xl font-extrabold text-black tracking-tight uppercase leading-tight">
-                        {featuredProject.title}
+                      <h2 className="font-general text-xl sm:text-2xl font-extrabold text-black tracking-tight uppercase leading-tight">
+                        {project.title}
                       </h2>
-                      <p className="text-[#3B82F6] font-mono text-xs sm:text-sm font-semibold">
-                        {featuredProject.subtitle}
+                      <p className="text-[#3B82F6] font-mono text-xs font-semibold">
+                        {project.subtitle}
                       </p>
                     </div>
 
                     <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed font-normal">
-                      {featuredProject.description}
+                      {project.description}
                     </p>
 
-                    <div className="flex flex-col gap-1.5 pt-2 border-t border-black/[0.06]">
-                      <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400">
-                        Architecture Highlights
+                    <div className="flex flex-col gap-1 pt-1 border-t border-black/[0.06]">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400">
+                        Highlights
                       </span>
-                      <div className="flex flex-col gap-1.5">
-                        {featuredProject.highlights.map((item) => (
-                          <div key={item} className="flex items-center gap-2 text-xs font-medium text-zinc-800">
-                            <Zap className="w-3.5 h-3.5 text-[#3B82F6] shrink-0" />
-                            <span>{item}</span>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+                        {project.highlights.map((item) => (
+                          <div key={item} className="flex items-center gap-1.5 text-xs font-medium text-zinc-800">
+                            <Zap className="w-3 h-3 text-[#3B82F6] shrink-0" />
+                            <span className="truncate">{item}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-1.5 pt-1">
-                      {featuredProject.tags.map((tag) => (
+                    <div className="flex flex-wrap gap-1 pt-0.5">
+                      {project.tags.map((tag) => (
                         <span
                           key={tag}
                           className="px-2 py-0.5 rounded-md bg-black/[0.04] border border-black/10 text-zinc-700 text-[10px] font-mono font-semibold"
@@ -404,152 +604,26 @@ export default function Portfolio() {
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-black/[0.06] flex items-center justify-between gap-4">
-                    <span className="text-xs font-mono text-zinc-400 hidden sm:inline-block">
-                      Production Live Website
-                    </span>
-
-                    <a
-                      href={featuredProject.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Visit live site ${featuredProject.title}`}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#3B82F6] transition-all duration-300 shadow-md hover:-translate-y-0.5 active:scale-[0.98] w-full sm:w-auto justify-center"
-                    >
-                      <span>Visit Live Site</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* GRID PROJECTS */}
-          {gridProjects.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {gridProjects.map((project, idx) => (
-                <div
-                  key={project.id}
-                  className="group relative rounded-[28px] bg-white border border-black/[0.08] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 p-5 sm:p-7 flex flex-col justify-between gap-5"
-                >
-                  {/* ACCENT GLOW OVERLAY */}
-                  <div
-                    className={`absolute top-0 right-0 w-72 h-72 bg-gradient-to-br ${project.accentGlow} rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
-                  />
-
-                  <div className="relative z-10 flex flex-col gap-4">
-                    {/* macOS BROWSER MOCKUP CONTAINER */}
-                    <div className="relative w-full rounded-2xl bg-[#0F0F14] border border-black/20 overflow-hidden shadow-lg group-hover:border-black/30 transition-all duration-500">
-                      {/* BROWSER TOP HEADER BAR */}
-                      <div className="flex items-center justify-between px-3.5 py-2 bg-[#1A1A22] border-b border-white/10 text-xs font-mono">
-                        <div className="flex items-center gap-1.5">
-                          <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block shadow-sm" />
-                          <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block shadow-sm" />
-                          <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block shadow-sm" />
-                        </div>
-
-                        {/* URL BAR */}
-                        <a
-                          href={project.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-zinc-300 hover:text-white hover:bg-white/10 transition-colors text-[10px] truncate max-w-[170px] sm:max-w-xs group/url"
-                        >
-                          <Lock className="w-3 h-3 text-emerald-400 shrink-0" />
-                          <span className="truncate font-mono">https://{project.displayUrl}</span>
-                          <ExternalLink className="w-2.5 h-2.5 text-zinc-500 group-hover/url:text-white shrink-0 ml-auto" />
-                        </a>
-                      </div>
-
-                      {/* SCREENSHOT PREVIEW IMAGE */}
-                      <div className="relative w-full aspect-[1351/768] bg-[#0F0F14] overflow-hidden">
-                        <Image
-                          src={project.image}
-                          alt={`${project.title} - ${project.subtitle}`}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-contain object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                          priority={idx < 2}
-                        />
-                      </div>
-                    </div>
-
-                    {/* DETAILS */}
-                    <div className="flex flex-col gap-3">
-                      <div className="flex items-center justify-between gap-3 flex-wrap">
-                        <span
-                          className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider border ${project.badgeBg} ${project.badgeText} ${project.badgeBorder}`}
-                        >
-                          {project.badge}
-                        </span>
-
-                        <span className="text-[11px] font-mono text-zinc-400">
-                          {project.categoryLabel}
-                        </span>
-                      </div>
-
-                      <div className="flex flex-col gap-0.5">
-                        <h3 className="font-general text-xl sm:text-2xl font-extrabold text-black tracking-tight uppercase leading-tight">
-                          {project.title}
-                        </h3>
-                        <p className="text-[#3B82F6] font-mono text-xs font-semibold">
-                          {project.subtitle}
-                        </p>
-                      </div>
-
-                      <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed font-normal">
-                        {project.description}
-                      </p>
-
-                      <div className="flex flex-col gap-1.5 pt-2 border-t border-black/[0.06]">
-                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400">
-                          Highlights
-                        </span>
-                        <div className="flex flex-col gap-1">
-                          {project.highlights.map((item) => (
-                            <div key={item} className="flex items-center gap-2 text-xs font-medium text-zinc-800">
-                              <Zap className="w-3 h-3 text-[#3B82F6] shrink-0" />
-                              <span>{item}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="flex flex-wrap gap-1.5 pt-1">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-0.5 rounded-md bg-black/[0.04] border border-black/10 text-zinc-700 text-[10px] font-mono font-semibold"
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* FOOTER */}
-                  <div className="pt-3 border-t border-black/[0.06] flex items-center justify-between gap-3">
+                  <div className="pt-2.5 border-t border-black/[0.06] flex items-center justify-between gap-4">
                     <span className="text-[11px] font-mono text-zinc-400 hidden sm:inline-block">
-                      Live Production Deployment
+                      Production Deployment
                     </span>
 
                     <a
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`Visit live site ${project.title}`}
+                      aria-label={`Visit live project ${project.title}`}
                       className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#3B82F6] transition-all duration-300 shadow-md hover:-translate-y-0.5 active:scale-[0.98] w-full sm:w-auto justify-center"
                     >
-                      <span>Visit Live Site</span>
+                      <span>Visit Live Showcase</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </a>
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
-          )}
+          ))}
 
         </div>
 
@@ -565,11 +639,11 @@ export default function Portfolio() {
             </div>
 
             <h2 className="font-general text-xl sm:text-2xl md:text-3xl font-extrabold uppercase tracking-tight text-white leading-tight">
-              Have an Idea for an E-Commerce or Custom Web Application?
+              Have an Idea for a Mobile App, E-Commerce, or Web Application?
             </h2>
 
             <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-normal">
-              We design and engineer high-concurrency web applications, bespoke client portals, and scalable e-commerce systems with sub-second performance.
+              We design and engineer high-concurrency web applications, iOS & Android mobile apps, bespoke client portals, and scalable e-commerce systems with sub-second performance.
             </p>
           </div>
 
