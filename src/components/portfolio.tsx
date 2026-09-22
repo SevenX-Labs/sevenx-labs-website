@@ -46,7 +46,7 @@ const PROJECTS: PortfolioProject[] = [
     image: "/portfolio/turfzy-poster.png",
     video:
       "https://res.cloudinary.com/cqpabdjk/video/upload/v1790086447/WhatsApp_Video_2026-09-20_at_5.50.16_PM.mp4",
-    url: "https://turfzy.com",
+    url: "https://res.cloudinary.com/cqpabdjk/video/upload/v1790086447/WhatsApp_Video_2026-09-20_at_5.50.16_PM.mp4",
     displayUrl: "Turfzy App",
     description:
       "Full-featured mobile application engineered for sports enthusiasts to discover local turfs, book slots in real-time, view leaderboards, and track match stats.",
