@@ -14,10 +14,6 @@ import {
   CheckCircle2,
   Zap,
   Lock,
-  Play,
-  Pause,
-  Volume2,
-  VolumeX,
 } from "lucide-react";
 
 export interface PortfolioProject {
@@ -47,7 +43,7 @@ const PROJECTS: PortfolioProject[] = [
     subtitle: "Cross-Platform iOS & Android Mobile Application",
     category: "app",
     categoryLabel: "Mobile App",
-    image: "/portfolio/app-preview.png",
+    image: "/portfolio/turfzy-poster.png",
     video:
       "https://res.cloudinary.com/cqpabdjk/video/upload/v1790086447/WhatsApp_Video_2026-09-20_at_5.50.16_PM.mp4",
     url: "https://turfzy.com",
@@ -190,50 +186,38 @@ function ProjectMediaPreview({
   project: PortfolioProject;
   isPriority?: boolean;
 }) {
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // INTERSECTION OBSERVER FOR VIEWPORT AUTOPLAY WHEN SCROLLED INTO VIEW
   useEffect(() => {
-    if (videoRef.current && project.video) {
-      videoRef.current.defaultMuted = true;
-      videoRef.current.muted = true;
-      const promise = videoRef.current.play();
-      if (promise !== undefined) {
-        promise.then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
-      }
-    }
+    const video = videoRef.current;
+    if (!video || !project.video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.muted = true;
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
   }, [project.video]);
-
-  const togglePlay = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        videoRef.current
-          .play()
-          .then(() => setIsPlaying(true))
-          .catch(() => setIsPlaying(false));
-      }
-    }
-  };
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
 
   if (project.category === "app") {
     return (
       <div className="relative w-full py-3 sm:py-5 flex items-center justify-center">
-        {/* STANDALONE SMARTPHONE MOCKUP - NO OUTER WEB CONTAINER */}
+        {/* STANDALONE SMARTPHONE MOCKUP */}
         <div className="relative w-[170px] sm:w-[200px] aspect-[390/812] bg-[#16161E] rounded-[36px] p-2 border-[4px] border-zinc-800 shadow-2xl shadow-black/50 flex flex-col items-center group/phone hover:scale-[1.03] transition-transform duration-500">
           {/* DYNAMIC ISLAND / CAMERA NOTCH */}
           <div className="absolute top-3 z-30 w-16 h-3 rounded-full bg-black border border-white/10 flex items-center justify-center gap-1 pointer-events-none">
@@ -241,54 +225,20 @@ function ProjectMediaPreview({
             <div className="w-1 h-1 rounded-full bg-blue-500/80 animate-pulse" />
           </div>
 
-          {/* SCREEN CONTAINER - ONLY MOBILE APP VIDEO */}
+          {/* SCREEN CONTAINER - VIDEO + POSTER */}
           <div className="relative w-full h-full rounded-[28px] overflow-hidden bg-black flex items-center justify-center">
             {project.video && (
-              <>
-                <video
-                  ref={videoRef}
-                  src={project.video}
-                  poster={project.image}
-                  autoPlay
-                  muted={true}
-                  loop
-                  playsInline
-                  preload="auto"
-                  onLoadedMetadata={(e) => {
-                    e.currentTarget.muted = true;
-                    e.currentTarget
-                      .play()
-                      .then(() => setIsPlaying(true))
-                      .catch(() => setIsPlaying(false));
-                  }}
-                  onCanPlay={(e) => {
-                    e.currentTarget.muted = true;
-                    e.currentTarget
-                      .play()
-                      .then(() => setIsPlaying(true))
-                      .catch(() => setIsPlaying(false));
-                  }}
-                  className="w-full h-full object-cover"
-                />
-
-                {/* HOVER CONTROLS OVERLAY */}
-                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover/phone:opacity-100 transition-opacity flex items-center justify-center gap-1.5 z-20 pointer-events-auto">
-                  <button
-                    onClick={togglePlay}
-                    aria-label={isPlaying ? "Pause Video" : "Play Video"}
-                    className="p-2 rounded-full bg-black/80 hover:bg-black text-white backdrop-blur-md transition-all border border-white/20"
-                  >
-                    {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 ml-0.5" />}
-                  </button>
-                  <button
-                    onClick={toggleMute}
-                    aria-label={isMuted ? "Unmute Video" : "Mute Video"}
-                    className="p-2 rounded-full bg-black/80 hover:bg-black text-white backdrop-blur-md transition-all border border-white/20"
-                  >
-                    {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
-                  </button>
-                </div>
-              </>
+              <video
+                ref={videoRef}
+                src={project.video}
+                poster={project.image}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="w-full h-full object-cover"
+              />
             )}
           </div>
         </div>
@@ -329,55 +279,17 @@ function ProjectMediaPreview({
       {/* MEDIA CONTAINER */}
       <div className="relative w-full aspect-[1351/720] bg-[#0F0F14] overflow-hidden group/browser">
         {project.video ? (
-          <>
-            <video
-              ref={videoRef}
-              src={project.video}
-              poster={project.image}
-              autoPlay
-              muted={true}
-              loop
-              playsInline
-              preload="auto"
-              onLoadedMetadata={(e) => {
-                e.currentTarget.muted = true;
-                e.currentTarget
-                  .play()
-                  .then(() => setIsPlaying(true))
-                  .catch(() => setIsPlaying(false));
-              }}
-              className="w-full h-full object-cover object-top"
-            />
-            {!isPlaying && (
-              <button
-                onClick={togglePlay}
-                className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-1.5 text-white z-20 cursor-pointer"
-              >
-                <div className="w-10 h-10 rounded-full bg-[#3B82F6] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-                  <Play className="w-5 h-5 ml-0.5 fill-white" />
-                </div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider">Play Video</span>
-              </button>
-            )}
-            {isPlaying && (
-              <div className="absolute bottom-2.5 right-2.5 opacity-0 group-hover/browser:opacity-100 transition-opacity flex items-center gap-1.5 z-20">
-                <button
-                  onClick={togglePlay}
-                  aria-label="Pause Video"
-                  className="p-1.5 rounded-full bg-black/80 hover:bg-black text-white backdrop-blur-md transition-all border border-white/20"
-                >
-                  <Pause className="w-3 h-3" />
-                </button>
-                <button
-                  onClick={toggleMute}
-                  aria-label={isMuted ? "Unmute Video" : "Mute Video"}
-                  className="p-1.5 rounded-full bg-black/80 hover:bg-black text-white backdrop-blur-md transition-all border border-white/20"
-                >
-                  {isMuted ? <VolumeX className="w-3 h-3" /> : <Volume2 className="w-3 h-3" />}
-                </button>
-              </div>
-            )}
-          </>
+          <video
+            ref={videoRef}
+            src={project.video}
+            poster={project.image}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover object-top"
+          />
         ) : project.image ? (
           <Image
             src={project.image}
