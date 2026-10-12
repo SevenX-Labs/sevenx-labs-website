@@ -38,6 +38,36 @@ export interface PortfolioProject {
 
 const PROJECTS: PortfolioProject[] = [
   {
+  id: "puretyfarm-web",
+  title: "PuretyFarm Website",
+  subtitle: "Premium A2 Cow Milk Delivery Platform",
+  category: "web",
+  categoryLabel: "Web Development",
+  image: "/portfolio/puretyfarm-web.png",
+  video: "",
+  url: "https://puretyfarm.in",
+  displayUrl: "puretyfarm.in",
+  description:
+    "A premium digital platform for PuretyFarm, bringing fresh A2 cow milk delivery to customers in Raipur. Designed to showcase products, simplify subscription plans, and help customers start their milk delivery journey online.",
+  highlights: [
+    "Premium A2 Cow Milk Delivery Experience",
+    "Milk Subscription & Plan Discovery",
+    "Customer-Focused Responsive Web Design",
+  ],
+  tags: [
+    "Web Development",
+    "A2 Milk Delivery",
+    "E-Commerce",
+    "Subscriptions",
+    "Responsive Design",
+  ],
+  badge: "Live Website",
+  badgeBg: "bg-emerald-500/10",
+  badgeText: "text-emerald-600",
+  badgeBorder: "border-emerald-500/30",
+  accentGlow: "from-emerald-500/15 via-green-500/10 to-transparent",
+},
+  {
     id: "turfzy-app",
     title: "Turfzy App",
     subtitle: "Cross-Platform iOS & Android Mobile Application",
@@ -69,8 +99,8 @@ const PROJECTS: PortfolioProject[] = [
     category: "ecommerce",
     categoryLabel: "E-Commerce",
     image: "/portfolio/kickat.png",
-    url: "https://kickat.co.in",
-    displayUrl: "kickat.co.in",
+    url: "https://kickat.in",
+    displayUrl: "kickat.in",
     description:
       "A complete custom e-commerce solution engineered for seamless product discovery, fast checkout flow, inventory synchronization, and high online sales conversion.",
     highlights: [
