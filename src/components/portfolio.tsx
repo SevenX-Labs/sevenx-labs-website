@@ -41,7 +41,7 @@ const PROJECTS: PortfolioProject[] = [
   id: "puretyfarm-web",
   title: "PuretyFarm Website",
   subtitle: "Premium A2 Cow Milk Delivery Platform",
-  category: "web",
+  category: "webapp",
   categoryLabel: "Web Development",
   image: "/portfolio/puretyfarm-web.png",
   video: "",
