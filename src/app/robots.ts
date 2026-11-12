@@ -1,13 +1,12 @@
-import { MetadataRoute } from "next";
-import { absoluteUrl } from "@/lib/site-config";
+import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/"],
+      disallow: ["/api/", "/_next/"],
     },
-    sitemap: absoluteUrl("/sitemap.xml"),
+    sitemap: "https://sevenxlabs.in/sitemap.xml",
   };
 }

@@ -7,30 +7,32 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { CTASection } from "@/components/ui/CTASection";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { SERVICES } from "@/lib/data/services";
-import { absoluteUrl } from "@/lib/site-config";
+import { SITE_CONFIG, absoluteUrl } from "@/lib/site-config";
 import { ItemListJsonLd, FAQPageJsonLd } from "@/components/seo/JsonLd";
+
+const servicesTitle = "Product & Software Engineering Services | SevenX Labs";
+const servicesDescription =
+  "Explore SevenX Labs product engineering services: Web Development, Mobile Apps, AI Development, Custom Software, UI/UX Design, and Cloud DevOps.";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Product Engineering Services | SevenX Labs",
+    absolute: servicesTitle,
   },
-  description:
-    "Explore SevenX Labs product engineering services: Web Development, Mobile Apps, AI Development, Custom Software, UI/UX Design, and Cloud DevOps.",
+  description: servicesDescription,
   alternates: {
     canonical: absoluteUrl("/services"),
   },
   openGraph: {
-    title: "Product Engineering Services | SevenX Labs",
-    description:
-      "Explore SevenX Labs product engineering services: Web Development, Mobile Apps, AI Development, Custom Software, UI/UX Design, and Cloud DevOps.",
+    title: servicesTitle,
+    description: servicesDescription,
     url: absoluteUrl("/services"),
+    siteName: SITE_CONFIG.name,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Product Engineering Services | SevenX Labs",
-    description:
-      "Explore SevenX Labs product engineering services: Web Development, Mobile Apps, AI Development, Custom Software, UI/UX Design, and Cloud DevOps.",
+    title: servicesTitle,
+    description: servicesDescription,
   },
 };
 
@@ -163,6 +165,28 @@ export default function ServicesIndexPage() {
               <p className="text-zinc-400 text-sm leading-relaxed">
                 Decoupled microservice and micro-frontend architectures designed to handle millions of requests without costly refactoring.
               </p>
+            </div>
+          </div>
+
+          <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+            <p className="text-zinc-400 text-sm">
+              Looking for outcome-focused engagement roadmaps like SaaS, MVP, or AI Automation?
+            </p>
+            <div className="flex flex-wrap items-center gap-6">
+              <Link
+                href="/solutions"
+                className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#60A5FA] hover:text-white transition-colors"
+              >
+                <span>Explore Business Solutions</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-white hover:text-[#60A5FA] transition-colors"
+              >
+                <span>View Case Studies</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>

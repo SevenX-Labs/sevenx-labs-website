@@ -316,7 +316,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
   "custom-software-development": {
     slug: "custom-software-development",
     title: "Custom Software Development",
-    metaTitle: "Custom Software Development Firm",
+    metaTitle: "Custom Software Development Services",
     metaDescription:
       "SevenX Labs engineers bespoke software applications, modular backend systems, and operational platforms tailored to your business workflows.",
     h1: "Bespoke Custom Software Engineering",
@@ -411,7 +411,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
     title: "UI/UX Design",
     metaTitle: "Product UI/UX Design & Design Systems",
     metaDescription:
-      "SevenX Labs creates high-conversion product UI/UX designs, Figma design systems, interactive prototypes, and developer-ready interfaces.",
+      "SevenX Labs designs high-conversion product UI/UX, Figma design systems, interactive prototypes, and developer-ready interfaces for web and mobile.",
     h1: "Product UI/UX Design & Design Systems",
     tagline: "Clarity, Conversion, and Engineering-Ready Design Systems",
     cardTeaser:
@@ -504,7 +504,7 @@ export const SERVICES: Record<string, ServiceDetail> = {
     title: "Cloud & DevOps",
     metaTitle: "Cloud Infrastructure & DevOps Consulting",
     metaDescription:
-      "SevenX Labs architects cloud infrastructure on AWS and GCP, automated CI/CD deployment pipelines, Terraform IaC, and Kubernetes clusters.",
+      "SevenX Labs architects scalable AWS and GCP cloud infrastructure, automated CI/CD pipelines, Terraform IaC, and production Kubernetes clusters.",
     h1: "Cloud Infrastructure & DevOps Engineering",
     tagline: "Infrastructure as Code, Automated CI/CD Pipelines, and High Availability",
     cardTeaser:

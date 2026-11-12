@@ -1,9 +1,10 @@
 "use client";
-import { Check, ArrowUpRight } from "lucide-react";
+import { Check, ArrowUpRight, Mail, Phone, Briefcase } from "lucide-react";
 
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { SITE_CONFIG } from "@/lib/site-config";
 
 /* ═══════════════════════════════════════════════════════════════
    CONTACT / START A PROJECT — SevenX Labs
@@ -34,8 +35,10 @@ export default function Contact() {
   const [errorMsg, setErrorMsg] = useState("");
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  const officialEmail = "tanishka@sevenxlabs.in";
-  const linkedInUrl = "https://linkedin.com/company/sevenx-labs";
+  const officialEmail = SITE_CONFIG.email;
+  const careersEmail = SITE_CONFIG.careersEmail;
+  const contactPhone = SITE_CONFIG.phone;
+  const linkedInUrl = SITE_CONFIG.social.linkedin;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(officialEmail);
@@ -176,6 +179,30 @@ export default function Contact() {
                   </svg>
                 </a>
 
+              </div>
+
+              <div className="flex flex-col gap-2 pt-2 text-xs sm:text-sm font-mono text-slate-700">
+                <a
+                  href={`mailto:${officialEmail}`}
+                  className="inline-flex items-center gap-2 hover:text-[#3B82F6] transition-colors w-max"
+                >
+                  <Mail className="w-4 h-4 text-[#3B82F6] shrink-0" />
+                  <span>{officialEmail}</span>
+                </a>
+                <a
+                  href={`tel:${contactPhone}`}
+                  className="inline-flex items-center gap-2 hover:text-[#3B82F6] transition-colors w-max"
+                >
+                  <Phone className="w-4 h-4 text-[#3B82F6] shrink-0" />
+                  <span>{contactPhone}</span>
+                </a>
+                <a
+                  href={`mailto:${careersEmail}`}
+                  className="inline-flex items-center gap-2 hover:text-[#3B82F6] transition-colors w-max"
+                >
+                  <Briefcase className="w-4 h-4 text-[#3B82F6] shrink-0" />
+                  <span>Careers: {careersEmail}</span>
+                </a>
               </div>
 
               {/* Response Time Indicator */}

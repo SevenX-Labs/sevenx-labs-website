@@ -18,6 +18,7 @@ import {
   Send,
 } from "lucide-react";
 import { CAREER_STATS, CULTURE_VALUES } from "@/lib/data/careers";
+import { SITE_CONFIG } from "@/lib/site-config";
 
 export function CareersContent() {
   return (
@@ -103,11 +104,25 @@ export function CareersContent() {
               No Active Job Openings Currently Available
             </h2>
             <p className="text-xs sm:text-sm md:text-base text-zinc-400 leading-relaxed font-normal">
-              We do not have any open job vacancies at the moment. However, if you are an exceptional engineer or designer interested in reaching out, please submit your contact details directly on our contact page.
+              We do not have any open job vacancies at the moment. However, if you are an exceptional engineer or designer interested in reaching out, email your profile to{" "}
+              <a
+                href={`mailto:${SITE_CONFIG.careersEmail}`}
+                className="text-[#60A5FA] hover:underline font-mono"
+              >
+                {SITE_CONFIG.careersEmail}
+              </a>{" "}
+              or submit your contact details on our contact page.
             </p>
           </div>
 
-          <div className="pt-2">
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href={`mailto:${SITE_CONFIG.careersEmail}`}
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white text-xs font-mono font-bold uppercase tracking-[0.2em] rounded-full hover:bg-blue-500 transition-all duration-300 shadow-xl"
+            >
+              <Mail className="w-4 h-4" />
+              <span>{SITE_CONFIG.careersEmail}</span>
+            </a>
             <Link
               href="/contact"
               className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-black text-xs font-mono font-bold uppercase tracking-[0.2em] rounded-full hover:bg-zinc-200 transition-all duration-300 shadow-xl"

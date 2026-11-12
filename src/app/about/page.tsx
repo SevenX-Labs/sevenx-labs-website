@@ -29,29 +29,30 @@ import { CTASection } from "@/components/ui/CTASection";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { FAQPageJsonLd } from "@/components/seo/JsonLd";
 import Link from "next/link";
-import { absoluteUrl } from "@/lib/site-config";
+import { SITE_CONFIG, absoluteUrl } from "@/lib/site-config";
+
+const aboutDescription =
+  "SevenX Labs is a product engineering studio building high-performance web apps, mobile platforms, AI systems, and cloud infrastructure for growing teams.";
 
 export const metadata: Metadata = {
   title: {
     absolute: "About SevenX Labs | Digital Products & Engineering Studio",
   },
-  description:
-    "SevenX Labs is a software engineering and product studio partnering with ambitious companies to design, engineer, and scale high-performance digital products, AI systems, and cloud infrastructure.",
+  description: aboutDescription,
   alternates: {
     canonical: absoluteUrl("/about"),
   },
   openGraph: {
     title: "About SevenX Labs | Digital Products & Engineering Studio",
-    description:
-      "SevenX Labs is a software engineering and product studio partnering with ambitious companies to design, engineer, and scale high-performance digital products, AI systems, and cloud infrastructure.",
+    description: aboutDescription,
     url: absoluteUrl("/about"),
+    siteName: SITE_CONFIG.name,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "About SevenX Labs | Digital Products & Engineering Studio",
-    description:
-      "SevenX Labs is a software engineering and product studio partnering with ambitious companies to design, engineer, and scale high-performance digital products, AI systems, and cloud infrastructure.",
+    description: aboutDescription,
   },
 };
 
@@ -103,22 +104,38 @@ export default function AboutPage() {
             </div>
             
             <div className="flex flex-wrap md:flex-col gap-3 shrink-0 pt-2 border-t md:border-t-0 md:border-l border-slate-100 md:pl-8">
-              <div className="flex items-center gap-2 text-xs font-mono text-slate-600">
-                <CheckCircle2 className="w-4 h-4 text-[#3B82F6]" />
-                <span>Web & SaaS Platforms</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs font-mono text-slate-600">
-                <CheckCircle2 className="w-4 h-4 text-[#3B82F6]" />
+              <Link
+                href="/services/web-development"
+                className="flex items-center gap-2 text-xs font-mono text-slate-600 hover:text-[#3B82F6] transition-colors group"
+              >
+                <CheckCircle2 className="w-4 h-4 text-[#3B82F6] shrink-0" />
+                <span>Web &amp; SaaS Platforms</span>
+                <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
+              </Link>
+              <Link
+                href="/services/mobile-app-development"
+                className="flex items-center gap-2 text-xs font-mono text-slate-600 hover:text-[#3B82F6] transition-colors group"
+              >
+                <CheckCircle2 className="w-4 h-4 text-[#3B82F6] shrink-0" />
                 <span>Cross-Platform Mobile</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs font-mono text-slate-600">
-                <CheckCircle2 className="w-4 h-4 text-[#3B82F6]" />
-                <span>Production AI & RAG</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs font-mono text-slate-600">
-                <CheckCircle2 className="w-4 h-4 text-[#3B82F6]" />
-                <span>Cloud & DevOps Pipelines</span>
-              </div>
+                <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
+              </Link>
+              <Link
+                href="/services/ai-development"
+                className="flex items-center gap-2 text-xs font-mono text-slate-600 hover:text-[#3B82F6] transition-colors group"
+              >
+                <CheckCircle2 className="w-4 h-4 text-[#3B82F6] shrink-0" />
+                <span>Production AI &amp; RAG</span>
+                <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
+              </Link>
+              <Link
+                href="/services/cloud-devops"
+                className="flex items-center gap-2 text-xs font-mono text-slate-600 hover:text-[#3B82F6] transition-colors group"
+              >
+                <CheckCircle2 className="w-4 h-4 text-[#3B82F6] shrink-0" />
+                <span>Cloud &amp; DevOps Pipelines</span>
+                <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
+              </Link>
             </div>
           </div>
         </div>
@@ -150,13 +167,22 @@ export default function AboutPage() {
               ONE TEAM ACROSS THE PRODUCT LIFECYCLE
             </h2>
           </div>
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#3B82F6] hover:text-blue-700 transition-colors group"
-          >
-            <span>EXPLORE SERVICES</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Link>
+          <div className="flex flex-wrap items-center gap-6 shrink-0">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#3B82F6] hover:text-blue-700 transition-colors group"
+            >
+              <span>EXPLORE SERVICES</span>
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
+            <Link
+              href="/solutions"
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-black hover:text-[#3B82F6] transition-colors group"
+            >
+              <span>EXPLORE SOLUTIONS</span>
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -170,12 +196,20 @@ export default function AboutPage() {
                 We design and engineer web, mobile and custom software products around real business and user requirements — from customer-facing applications to internal platforms and SaaS products.
               </p>
             </div>
-            <ul className="flex flex-wrap gap-2 pt-2 border-t border-slate-100 text-xs font-mono text-slate-600">
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">Web Applications</li>
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">SaaS Platforms</li>
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">Mobile Apps</li>
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">APIs & Dashboards</li>
-            </ul>
+            <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-100 text-xs font-mono text-slate-600">
+              <Link href="/services/web-development" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                Web Applications
+              </Link>
+              <Link href="/solutions/saas-development" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                SaaS Platforms
+              </Link>
+              <Link href="/services/mobile-app-development" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                Mobile Apps
+              </Link>
+              <Link href="/services/custom-software-development" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                Custom Software &amp; APIs
+              </Link>
+            </div>
           </div>
 
           <div className="bg-white p-8 sm:p-10 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col justify-between gap-6 hover:border-blue-200 transition-all duration-300">
@@ -188,12 +222,20 @@ export default function AboutPage() {
                 We build practical AI systems that connect models, business data and software workflows to solve specific product and operational problems.
               </p>
             </div>
-            <ul className="flex flex-wrap gap-2 pt-2 border-t border-slate-100 text-xs font-mono text-slate-600">
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">LLM Integrations</li>
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">RAG Architectures</li>
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">Vector Search</li>
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">AI Agents & Workflows</li>
-            </ul>
+            <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-100 text-xs font-mono text-slate-600">
+              <Link href="/services/ai-development" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                LLM Integrations
+              </Link>
+              <Link href="/services/ai-development" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                RAG Architectures
+              </Link>
+              <Link href="/services/ai-development" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                Vector Search
+              </Link>
+              <Link href="/solutions/ai-automation" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                AI Agents &amp; Workflows
+              </Link>
+            </div>
           </div>
 
           <div className="bg-white p-8 sm:p-10 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col justify-between gap-6 hover:border-blue-200 transition-all duration-300">
@@ -206,12 +248,20 @@ export default function AboutPage() {
                 We design digital products around clear user journeys, usable interfaces and design systems that can move cleanly into engineering.
               </p>
             </div>
-            <ul className="flex flex-wrap gap-2 pt-2 border-t border-slate-100 text-xs font-mono text-slate-600">
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">User Flows & UX</li>
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">UI Design Systems</li>
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">Interactive Prototypes</li>
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">Responsive Design</li>
-            </ul>
+            <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-100 text-xs font-mono text-slate-600">
+              <Link href="/services/ui-ux-design" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                User Flows &amp; UX
+              </Link>
+              <Link href="/services/ui-ux-design" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                UI Design Systems
+              </Link>
+              <Link href="/services/ui-ux-design" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                Interactive Prototypes
+              </Link>
+              <Link href="/solutions/mvp-development" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                MVP Product Design
+              </Link>
+            </div>
           </div>
 
           <div className="bg-white p-8 sm:p-10 rounded-3xl border border-black/[0.08] shadow-sm flex flex-col justify-between gap-6 hover:border-blue-200 transition-all duration-300">
@@ -219,17 +269,25 @@ export default function AboutPage() {
               <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#3B82F6]">
                 <Server className="w-6 h-6" />
               </div>
-              <h3 className="font-general text-2xl font-bold uppercase text-black">CLOUD & INFRASTRUCTURE</h3>
+              <h3 className="font-general text-2xl font-bold uppercase text-black">CLOUD &amp; INFRASTRUCTURE</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 We build the infrastructure and deployment foundations required to run applications reliably in production.
               </p>
             </div>
-            <ul className="flex flex-wrap gap-2 pt-2 border-t border-slate-100 text-xs font-mono text-slate-600">
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">AWS & GCP</li>
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">Docker & Kubernetes</li>
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">CI/CD Pipelines</li>
-              <li className="px-3 py-1 bg-slate-50 rounded-lg border border-slate-200/60">IaC & Telemetry</li>
-            </ul>
+            <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-100 text-xs font-mono text-slate-600">
+              <Link href="/services/cloud-devops" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                AWS &amp; GCP
+              </Link>
+              <Link href="/services/cloud-devops" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                Docker &amp; Kubernetes
+              </Link>
+              <Link href="/services/cloud-devops" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                CI/CD Pipelines
+              </Link>
+              <Link href="/solutions/digital-transformation" className="px-3 py-1 bg-slate-50 hover:bg-blue-50 hover:text-[#3B82F6] rounded-lg border border-slate-200/60 transition-colors">
+                Cloud Migration &amp; IaC
+              </Link>
+            </div>
           </div>
         </div>
       </section>

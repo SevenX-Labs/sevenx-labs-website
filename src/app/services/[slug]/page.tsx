@@ -5,9 +5,9 @@ import Footer from "@/components/footer";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { CTASection } from "@/components/ui/CTASection";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
-import { BreadcrumbJsonLd, FAQPageJsonLd, ServiceJsonLd } from "@/components/seo/JsonLd";
+import { FAQPageJsonLd, ServiceJsonLd } from "@/components/seo/JsonLd";
 import { SERVICES } from "@/lib/data/services";
-import { absoluteUrl } from "@/lib/site-config";
+import { SITE_CONFIG, absoluteUrl } from "@/lib/site-config";
 import Link from "next/link";
 import { ArrowUpRight, Check, CheckCircle2 } from "lucide-react";
 
@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: fullTitle,
       description: service.metaDescription,
       url: absoluteUrl(`/services/${slug}`),
+      siteName: SITE_CONFIG.name,
       type: "website",
     },
     twitter: {
@@ -58,13 +59,6 @@ export default async function ServiceDetailPage({ params }: Props) {
         name={service.title}
         description={service.metaDescription}
         url={absoluteUrl(`/services/${slug}`)}
-      />
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", item: absoluteUrl("/") },
-          { name: "Services", item: absoluteUrl("/services") },
-          { name: service.title, item: absoluteUrl(`/services/${slug}`) },
-        ]}
       />
       <Navbar />
 
@@ -162,15 +156,31 @@ export default async function ServiceDetailPage({ params }: Props) {
 
             <div className="flex flex-col gap-3 max-w-sm">
               <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-slate-500">
-                PORTFOLIO &amp; WORK
+                CONTINUE EXPLORING
               </span>
-              <Link
-                href="/portfolio"
-                className="inline-flex items-center gap-2 text-sm font-mono font-bold uppercase text-black hover:text-[#3B82F6] transition-colors"
-              >
-                <span>Explore Featured Work</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
+              <div className="flex flex-wrap items-center gap-5">
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase text-black hover:text-[#3B82F6] transition-colors"
+                >
+                  <span>All Engineering Services</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link
+                  href="/solutions"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase text-black hover:text-[#3B82F6] transition-colors"
+                >
+                  <span>All Business Solutions</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link
+                  href="/portfolio"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase text-[#3B82F6] hover:text-blue-700 transition-colors"
+                >
+                  <span>Explore Featured Work</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>

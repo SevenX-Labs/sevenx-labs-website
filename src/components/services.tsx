@@ -17,9 +17,17 @@ const ServicesParticleCanvas = dynamic(
 export default function Services() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const activeIdxRef = useRef(0);
   activeIdxRef.current = activeIdx;
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile, { passive: true });
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const services = [
     {
@@ -138,10 +146,26 @@ export default function Services() {
             </h2>
           </div>
 
-          <div className="flex flex-col gap-1 sm:gap-2 max-w-md">
+          <div className="flex flex-col gap-2 sm:gap-3 max-w-md">
             <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed font-normal">
               Scroll down to explore our core product engineering, AI automation, and cloud architecture capabilities.
             </p>
+            <div className="flex flex-wrap items-center gap-4 pt-0.5">
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#3B82F6] hover:text-blue-700 transition-colors"
+              >
+                <span>Explore All Services</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <Link
+                href="/solutions"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-zinc-700 hover:text-black transition-colors"
+              >
+                <span>Explore Business Solutions</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -209,7 +233,7 @@ export default function Services() {
                       : "bg-[#181820] text-zinc-400 border-white/5 opacity-0 lg:opacity-70 scale-95 lg:scale-94"
                   }`}
                   style={{
-                    transform: typeof window !== "undefined" && window.innerWidth < 1024
+                    transform: isMobile
                       ? `translateX(${offset * 100}%) scale(${isRevealed ? 1 : 0.95})`
                       : `translateX(${posX}px) scale(${scale})`,
                     zIndex: 10 - Math.abs(offset),
@@ -282,9 +306,15 @@ export default function Services() {
                     </div>
                   </div>
 
-                  {/* CARD FOOTER: Capability & Index */}
+                  {/* CARD FOOTER: Primary Service Link & Index */}
                   <div className="relative z-10 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-zinc-400 pt-2 border-t border-white/5 shrink-0">
-                    <span>CAPABILITY</span>
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center gap-1.5 font-bold uppercase tracking-wider text-[#60A5FA] hover:text-white transition-colors"
+                    >
+                      <span>Explore {service.title}</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
                     <span>0{idx + 1} / 06</span>
                   </div>
                 </div>

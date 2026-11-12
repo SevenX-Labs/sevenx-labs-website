@@ -6,31 +6,33 @@ import { CTASection } from "@/components/ui/CTASection";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { ItemListJsonLd, FAQPageJsonLd } from "@/components/seo/JsonLd";
 import { SOLUTIONS } from "@/lib/data/solutions";
-import { absoluteUrl } from "@/lib/site-config";
+import { SITE_CONFIG, absoluteUrl } from "@/lib/site-config";
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle2, TrendingUp, Zap, ShieldCheck, HelpCircle } from "lucide-react";
 
+const solutionsTitle = "Custom Software & SaaS Engineering Solutions | SevenX Labs";
+const solutionsDescription =
+  "Explore SevenX Labs specialized engineering solutions: SaaS Development, MVP Development, AI Automation, and Enterprise Digital Transformation.";
+
 export const metadata: Metadata = {
   title: {
-    absolute: "Targeted Engineering Solutions | SevenX Labs",
+    absolute: solutionsTitle,
   },
-  description:
-    "Explore SevenX Labs specialized engineering solutions: SaaS Development, MVP Development, AI Automation, and Enterprise Digital Transformation.",
+  description: solutionsDescription,
   alternates: {
     canonical: absoluteUrl("/solutions"),
   },
   openGraph: {
-    title: "Targeted Engineering Solutions | SevenX Labs",
-    description:
-      "Explore SevenX Labs specialized engineering solutions: SaaS Development, MVP Development, AI Automation, and Enterprise Digital Transformation.",
+    title: solutionsTitle,
+    description: solutionsDescription,
     url: absoluteUrl("/solutions"),
+    siteName: SITE_CONFIG.name,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Targeted Engineering Solutions | SevenX Labs",
-    description:
-      "Explore SevenX Labs specialized engineering solutions: SaaS Development, MVP Development, AI Automation, and Enterprise Digital Transformation.",
+    title: solutionsTitle,
+    description: solutionsDescription,
   },
 };
 
@@ -244,6 +246,28 @@ export default function SolutionsIndexPage() {
                   Production codebases written in TypeScript with strong test coverage, clear API documentation, and clean, modular architecture that keeps future maintenance costs low.
                 </p>
               </div>
+            </div>
+          </div>
+
+          <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+            <p className="text-zinc-400 text-sm">
+              Need specialized engineering capabilities across web, mobile, AI, or cloud DevOps?
+            </p>
+            <div className="flex flex-wrap items-center gap-6">
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#60A5FA] hover:text-white transition-colors"
+              >
+                <span>Explore Engineering Services</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-white hover:text-[#60A5FA] transition-colors"
+              >
+                <span>View Case Studies</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>

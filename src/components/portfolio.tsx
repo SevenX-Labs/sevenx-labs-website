@@ -452,26 +452,27 @@ export default function Portfolio() {
           {/* EMPTY STATE FOR UNMATCHED FILTERS */}
           {filteredProjects.length === 0 && (
             <div className="relative w-full rounded-[28px] bg-white border border-black/[0.08] p-10 md:p-16 text-center flex flex-col items-center justify-center gap-4 shadow-lg">
-              <div className="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-600">
-                <Smartphone className="w-8 h-8" />
+              <div className="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#3B82F6]">
+                <Layout className="w-8 h-8" />
               </div>
 
               <div className="flex flex-col gap-1 max-w-lg">
                 <h3 className="font-general text-2xl font-extrabold text-black uppercase">
-                  Mobile & Native App Case Studies Coming Soon
+                  No Projects in This Filter
                 </h3>
                 <p className="text-zinc-600 text-sm leading-relaxed">
-                  We design and engineer cross-platform iOS & Android mobile applications with offline sync, sub-second performance, and intuitive mobile UX. Verified client mobile case studies are currently being prepared.
+                  Explore all production web platforms, e-commerce builds, mobile applications, and administrative systems engineered by SevenX Labs.
                 </p>
               </div>
 
-              <Link
-                href="/contact"
-                className="mt-2 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#3B82F6] transition-all shadow-md"
+              <button
+                type="button"
+                onClick={() => setActiveFilter("all")}
+                className="mt-2 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#3B82F6] transition-all shadow-md cursor-pointer"
               >
-                <span>Inquire About Mobile Apps</span>
+                <span>Show All Projects</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </Link>
+              </button>
             </div>
           )}
 

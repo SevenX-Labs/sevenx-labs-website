@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Mail, Share2, Globe } from "lucide-react";
+import { ArrowUpRight, Mail, Phone, Share2, Globe, Briefcase } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 export default function Footer() {
@@ -108,9 +108,12 @@ export default function Footer() {
 
           {/* COLUMN 2: SERVICES */}
           <div className="flex flex-col gap-4">
-            <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#60A5FA]">
+            <Link
+              href="/services"
+              className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#60A5FA] hover:text-white transition-colors w-max"
+            >
               SERVICES
-            </span>
+            </Link>
             <ul className="flex flex-col gap-3">
               {servicesLinks.map((item) => (
                 <li key={item.name}>
@@ -128,9 +131,12 @@ export default function Footer() {
 
           {/* COLUMN 3: SOLUTIONS */}
           <div className="flex flex-col gap-4">
-            <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#60A5FA]">
+            <Link
+              href="/solutions"
+              className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#60A5FA] hover:text-white transition-colors w-max"
+            >
               SOLUTIONS
-            </span>
+            </Link>
             <ul className="flex flex-col gap-3">
               {solutionsLinks.map((item) => (
                 <li key={item.name}>
@@ -154,7 +160,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-3.5">
               <li>
                 <a
-                  href={SITE_CONFIG.social.linkedin || "https://linkedin.com/company/sevenx-labs"}
+                  href={SITE_CONFIG.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="SevenX Labs LinkedIn"
@@ -167,7 +173,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://x.com/sevenxlabs"
+                  href={SITE_CONFIG.social.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="SevenX Labs Twitter / X"
@@ -195,12 +201,32 @@ export default function Footer() {
               )}
               <li>
                 <a
-                  href="mailto:tanishka@sevenxlabs.in"
+                  href={`mailto:${SITE_CONFIG.email}`}
                   aria-label="Email SevenX Labs"
                   className="group inline-flex items-center gap-2 text-[14px] font-normal text-zinc-300 hover:text-white transition-all duration-300 ease-out"
                 >
                   <Mail className="w-4 h-4 text-[#60A5FA] shrink-0" />
-                  <span>tanishka@sevenxlabs.in</span>
+                  <span>{SITE_CONFIG.email}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${SITE_CONFIG.careersEmail}`}
+                  aria-label="Careers Email SevenX Labs"
+                  className="group inline-flex items-center gap-2 text-[14px] font-normal text-zinc-300 hover:text-white transition-all duration-300 ease-out"
+                >
+                  <Briefcase className="w-4 h-4 text-[#60A5FA] shrink-0" />
+                  <span>{SITE_CONFIG.careersEmail} (Careers)</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${SITE_CONFIG.phone}`}
+                  aria-label="Call SevenX Labs"
+                  className="group inline-flex items-center gap-2 text-[14px] font-normal text-zinc-300 hover:text-white transition-all duration-300 ease-out"
+                >
+                  <Phone className="w-4 h-4 text-[#60A5FA] shrink-0" />
+                  <span>{SITE_CONFIG.phone}</span>
                 </a>
               </li>
             </ul>
@@ -220,9 +246,13 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center gap-4 text-xs text-zinc-500">
-              <span className="hover:text-zinc-300 transition-colors duration-300 cursor-pointer">Privacy</span>
-              <span className="w-1 h-1 rounded-full bg-zinc-700" />
-              <span className="hover:text-zinc-300 transition-colors duration-300 cursor-pointer">Terms</span>
+              <Link href="/privacy" className="hover:text-zinc-300 transition-colors duration-300">
+                Privacy
+              </Link>
+              <span className="w-1 h-1 rounded-full bg-zinc-700" aria-hidden="true" />
+              <Link href="/terms" className="hover:text-zinc-300 transition-colors duration-300">
+                Terms
+              </Link>
             </div>
           </div>
         </div>

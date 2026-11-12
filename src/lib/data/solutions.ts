@@ -102,9 +102,9 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
   "mvp-development": {
     slug: "mvp-development",
     title: "MVP Development",
-    metaTitle: "Rapid MVP Development for Startups",
+    metaTitle: "Rapid MVP Development for Startups & Teams",
     metaDescription:
-      "SevenX Labs builds investor-ready MVPs on production foundations using Next.js, TypeScript, and PostgreSQL for focused product launches.",
+      "SevenX Labs builds investor-ready MVPs on production foundations with Next.js, TypeScript, and PostgreSQL for rapid, scalable product launches.",
     h1: "Rapid, Production-Grade MVP Development",
     tagline: "Validate Product-Market Fit Fast on Foundations Built for v1.0",
     cardTeaser:
@@ -180,7 +180,7 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
     title: "AI Automation",
     metaTitle: "Enterprise AI Workflow Automation Solutions",
     metaDescription:
-      "SevenX Labs engineers custom AI automation pipelines for unstructured document parsing, database sync, and operational validation workflows.",
+      "SevenX Labs engineers custom AI automation pipelines for unstructured document parsing, database sync, and operational workflows with human review.",
     h1: "Enterprise AI Workflow & Document Automation",
     tagline: "Intelligent Document Processing, Data Extraction, and Human-in-the-Loop Pipelines",
     cardTeaser:
@@ -255,7 +255,7 @@ export const SOLUTIONS: Record<string, SolutionDetail> = {
     title: "Digital Transformation",
     metaTitle: "Legacy System Modernization & Cloud Migration",
     metaDescription:
-      "SevenX Labs modernizes legacy software through incremental refactoring, the Strangler Fig pattern, API middleware, and cloud migration designed for continuous operation.",
+      "SevenX Labs modernizes legacy software via incremental refactoring, Strangler Fig architecture, API middleware, and zero-downtime cloud migration.",
     h1: "Legacy Software Modernization & Cloud Migration",
     tagline: "Incremental System Refactoring, API Modernization, and Resilient Cloud Replatforming",
     cardTeaser:

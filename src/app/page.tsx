@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Hero from "@/components/hero";
 import About from "@/components/about";
 import Services from "@/components/services";
@@ -9,7 +10,29 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { ItemListJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SERVICES } from "@/lib/data/services";
-import { absoluteUrl } from "@/lib/site-config";
+import { SITE_CONFIG, absoluteUrl } from "@/lib/site-config";
+
+const homeTitle = "SevenX Labs | Custom Software, Web & AI Engineering";
+
+export const metadata: Metadata = {
+  title: { absolute: homeTitle },
+  description: SITE_CONFIG.description,
+  alternates: {
+    canonical: absoluteUrl("/"),
+  },
+  openGraph: {
+    title: homeTitle,
+    description: SITE_CONFIG.description,
+    url: absoluteUrl("/"),
+    siteName: SITE_CONFIG.name,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: homeTitle,
+    description: SITE_CONFIG.description,
+  },
+};
 
 export default function Home() {
   const serviceItems = Object.values(SERVICES).map((service) => ({

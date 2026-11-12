@@ -15,7 +15,11 @@ export function JsonLd({ data }: JsonLdProps) {
 }
 
 export function OrganizationJsonLd() {
-  const sameAs = [SITE_CONFIG.social.linkedin, SITE_CONFIG.social.github].filter(
+  const sameAs = [
+    SITE_CONFIG.social.linkedin,
+    SITE_CONFIG.social.twitter,
+    SITE_CONFIG.social.github,
+  ].filter(
     (url): url is string => Boolean(url && url.startsWith("http") && url !== "https://github.com")
   );
 
@@ -29,6 +33,7 @@ export function OrganizationJsonLd() {
     image: `${SITE_CONFIG.siteUrl}/icon-512.png`,
     description: SITE_CONFIG.description,
     email: SITE_CONFIG.email,
+    telephone: SITE_CONFIG.phone,
     ...(sameAs.length > 0 ? { sameAs } : {}),
   };
 

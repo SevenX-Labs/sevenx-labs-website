@@ -32,15 +32,12 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
   },
   title: {
-    default: "SevenX Labs | Software Development Company | Web, Mobile & AI",
+    default: "SevenX Labs | Custom Software, Web & AI Engineering",
     template: "%s | SevenX Labs",
   },
   description: SITE_CONFIG.description,
-  alternates: {
-    canonical: absoluteUrl("/"),
-  },
   openGraph: {
-    title: "SevenX Labs — Software Development Company | Web, Mobile & AI",
+    title: "SevenX Labs | Custom Software, Web & AI Engineering",
     description: SITE_CONFIG.description,
     url: absoluteUrl("/"),
     siteName: SITE_CONFIG.name,
@@ -49,7 +46,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SevenX Labs — Software Development Company | Web, Mobile & AI",
+    title: "SevenX Labs | Custom Software, Web & AI Engineering",
     description: SITE_CONFIG.description,
   },
   icons: {
